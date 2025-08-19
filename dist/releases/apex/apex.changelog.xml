@@ -6,4 +6,5 @@
 <include file="f200/f200.xml" relativeToChangelogFile="true"/>
 <include file="f100/f100.xml" relativeToChangelogFile="true"/>
 <include file="f242/f242.xml" relativeToChangelogFile="true"/>
+<include file="f102/f102.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
