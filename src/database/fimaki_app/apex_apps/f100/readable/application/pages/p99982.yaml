@@ -39,7 +39,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Revisa tu correo ============================
-  id: 28356585747394800
+  id: 20175273157173042
   identification: 
     name: Revisa tu correo
     type: Static Content
@@ -64,7 +64,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Register # 83747020628381746
+    parent-region: Register # 75565708038159988
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -97,7 +97,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Register ====================================
-  id: 83747020628381746
+  id: 75565708038159988
   identification: 
     name: Register
     type: Static Content
@@ -147,7 +147,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P99982_ID_USUARIO_TEMP ===================
-  id: 28738440572034393
+  id: 20557127981812635
   identification: 
     name: P99982_ID_USUARIO_TEMP
     type: Hidden
@@ -178,14 +178,14 @@ page-items:
 
 buttons: 
 - # ====== Button: EXIT ========================================
-  id: 28356737818394802
+  id: 20175425228173044
   identification: 
     button-name: EXIT
     label: Iniciar sesión
 
   layout: 
     sequence: 10
-    region: Revisa tu correo # 28356585747394800
+    region: Revisa tu correo # 20175273157173042
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -211,14 +211,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: SEND_EMAIL ==================================
-  id: 28508389857140060
+  id: 20327077266918302
   identification: 
     button-name: SEND_EMAIL
     label: Reenviar correo de activación
 
   layout: 
     sequence: 10
-    region: Revisa tu correo # 28356585747394800
+    region: Revisa tu correo # 20175273157173042
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -242,7 +242,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Check_TP ============================
-  id: 28514604044140083
+  id: 20333291453918325
   identification: 
     name: Check_TP
 
@@ -258,11 +258,11 @@ dynamic-actions:
     - P99982_PERSON_TYPE
 
   configuration: 
-    build-option: Commented Out # 23875207405324371
+    build-option: Commented Out # 15693894815102613
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 28515101074140087
+    id: 20333788483918329
     identification: 
       action: Execute JavaScript Code
 
@@ -281,12 +281,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Check_TP # 28514604044140083
+      event: Check_TP # 20333291453918325
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: On Change ===========================
-  id: 28515421452140088
+  id: 20334108861918330
   identification: 
     name: On Change
 
@@ -308,7 +308,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 28515961465140090
+    id: 20334648874918332
     identification: 
       action: Hide
 
@@ -322,12 +322,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: On Change # 28515421452140088
+      event: On Change # 20334108861918330
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 28516485432140092
+    id: 20335172841918334
     identification: 
       action: Show
 
@@ -338,12 +338,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: On Change # 28515421452140088
+      event: On Change # 20334108861918330
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Hide ========================================
-    id: 28516966846140093
+    id: 20335654255918335
     identification: 
       action: Hide
 
@@ -354,12 +354,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: On Change # 28515421452140088
+      event: On Change # 20334108861918330
       fire-when-event-result-is: False
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 28517424025140095
+    id: 20336111434918337
     identification: 
       action: Show
 
@@ -374,12 +374,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: On Change # 28515421452140088
+      event: On Change # 20334108861918330
       fire-when-event-result-is: False
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Hide Items ==========================
-  id: 28517886307140096
+  id: 20336573716918338
   identification: 
     name: Hide Items
 
@@ -392,7 +392,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 28518394960140098
+    id: 20337082369918340
     identification: 
       action: Hide
 
@@ -407,13 +407,13 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Hide Items # 28517886307140096
+      event: Hide Items # 20336573716918338
       fire-when-event-result-is: True
       fire-on-initialization: true
 
 processes: 
 - # ====== Process: Enviar Correo de Activacion ================
-  id: 30176496419805429
+  id: 21995183829583671
   identification: 
     name: Enviar Correo de Activacion
     type: Execute Code

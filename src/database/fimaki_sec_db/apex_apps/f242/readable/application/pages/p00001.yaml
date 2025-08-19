@@ -38,7 +38,7 @@ server-cache:
 
 regions: 
 - # ====== Region: IAM =========================================
-  id: 31562883133042851
+  id: 23377787618817675
   identification: 
     name: IAM
     type: Static Content

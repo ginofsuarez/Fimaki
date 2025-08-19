@@ -55,7 +55,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Error =======================================
-  id: 63082005842506943
+  id: 54900693252285185
   identification: 
     name: Error
     type: Static Content
@@ -104,14 +104,14 @@ regions:
 
 buttons: 
 - # ====== Button: VOLVER ======================================
-  id: 31994125193359848
+  id: 23812812603138090
   identification: 
     button-name: VOLVER
     label: Volver al Inicio
 
   layout: 
     sequence: 10
-    region: Error # 63082005842506943
+    region: Error # 54900693252285185
     slot: NEXT
     start-new-layout: false
     start-new-row: true

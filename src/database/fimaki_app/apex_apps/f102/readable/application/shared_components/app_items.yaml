@@ -1,0 +1,27 @@
+---
+- # ====== Application Item: P_ID_PERSONA ======================
+  id: 51530814610678709
+  identification: 
+    name: P_ID_PERSONA
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 41718511897776
+
+- # ====== Application Item: P_ID_ROL_PERSONA ==================
+  id: 51624057919062833
+  identification: 
+    name: P_ID_ROL_PERSONA
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 41718518643596
+

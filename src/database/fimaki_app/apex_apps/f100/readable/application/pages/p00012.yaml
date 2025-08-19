@@ -38,7 +38,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Felicitaciones ==============================
-  id: 36752850544645679
+  id: 28571537954423921
   identification: 
     name: Felicitaciones
     type: Static Content
@@ -85,14 +85,14 @@ regions:
 
 buttons: 
 - # ====== Button: CONTINUAR ===================================
-  id: 36752959508645680
+  id: 28571646918423922
   identification: 
     button-name: CONTINUAR
     label: Explorar Oportunidades
 
   layout: 
     sequence: 10
-    region: Felicitaciones # 36752850544645679
+    region: Felicitaciones # 28571537954423921
     slot: NEXT
     start-new-layout: false
     start-new-row: true

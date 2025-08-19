@@ -1,0 +1,925 @@
+---
+# ====== Page: Oportunidades =================================
+id: 5
+identification: 
+  name: Oportunidades
+  alias: OPORTUNIDADES
+  title: Oportunidades
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .factura-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 0px;
+    }
+    
+    .factura-header-left {
+      flex-shrink: 0;
+    }
+    
+    .empresa-ticker {
+      background-color: #5e3c8a;
+      color: white;
+      font-weight: bold;
+      font-size: 13px;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+    }
+    
+    .factura-header-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .empresa-nombre {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #5e3c8a;
+    }
+    
+    .favorito i {
+      color: #bbb;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    
+    .empresa-score {
+      font-size: 13px;
+      color: #666;
+      margin-top: 2px;
+    }
+    
+    .score-valor {
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .score-label {
+      color: green;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+    
+    .factura-monto-compuesto {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    
+    .monto-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .monto-total {
+      font-size: 26px;         /* 🔼 Más alto que antes */
+      font-weight: bold;        /* 🔥 Bien gordito */
+      color: #5e3c8a;
+      margin-bottom: 18px;
+      letter-spacing: -0.3px;
+    }
+    
+    .monto-restante {
+      font-size: 14px;
+      color: rgb(74, 120, 18);
+      font-weight: 500;        /* 💪 Bold para todo el texto */
+    }
+    
+    .vence-en {
+      font-size: 13px;
+      color: rgb(50, 48, 47);
+    }
+    
+    
+    .monto-label {
+      font-size: 12px;
+      color: #999;
+      margin-top: 2px;
+    }
+    .monto-separador {
+      font-size: 20px;
+      font-weight: 300;
+      color: #bbb;
+      padding-top: 4px;
+    }
+    .factura-precio-bloque {
+      text-align: left;
+      margin-bottom: 16px;
+      font-family: 'Segoe UI', sans-serif;
+      letter-spacing: -0.2px; /* ← más compacta como la imagen */
+    }
+    
+    .porcentaje-retorno {
+      font-weight: normal;
+    }
+    /* Score operación - estilo pill tab */
+    .score-operacion-container {
+      text-align: center;
+      margin-top: 16px;
+    }
+    
+    .score-operacion-label {
+      font-size: 13px;
+      color: #666;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    
+    .score-tabs {
+      display: inline-flex;
+      background-color: #f1eeee;
+      border-radius: 24px;
+      padding: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      gap: 4px;
+    }
+    
+    .pill {
+      padding: 6px 12px;
+      border-radius: 20px;
+      color: #333;
+      cursor: default;
+    }
+    
+    .pill.active {
+      background-color: white;
+      box-shadow: 0px 1px 4px rgba(0,0,0,0.1);
+      color: #5e3c8a;
+      font-weight: 700;
+    }
+    
+    
+    .factura-botonera {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid #e3e7ed;
+      padding-top: 16px;
+      margin-top: 20px;
+    }
+    
+    .boton-link,
+    .boton-invertir {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      font-size: 15px;
+      color: #5e3c8a;
+      text-decoration: none;
+    }
+    
+    .boton-link:hover,
+    .boton-invertir:hover {
+      text-decoration: underline;
+    }
+    
+    .separador-vertical {
+      width: 1px;
+      height: 24px;
+      background-color: #ccc;
+    }
+    
+    .empresa-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+    
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Facturas [Grid] =============================
+  id: 27546257905549850
+  identification: 
+    name: Facturas [Grid]
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select 'Gloria S.R.L.' as "Pagador"
+               , 15 as "Score De Riesgo"
+               , 35 as "Tasa Rendimiento"
+               , 15000 as "Monto Total"
+               , 15000 as "Monto Restante"
+               , 12 as "Plazo Estimado"
+               , '30%' as "Financiado"
+            from dual;
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    css-classes: 
+    - u-hidden
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 27686409051791401
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 27694528988823277
+      identification: 
+        name: Primary Report
+        alias: 276946
+
+    columns: 
+    - # ====== Column: Pagador =====================================
+      id: 27686510098791402
+      identification: 
+        column-name: Pagador
+        type: Plain Text
+
+      heading: 
+        heading: Pagador
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Score De Riesgo =============================
+      id: 27686608291791403
+      identification: 
+        column-name: Score De Riesgo
+        type: Plain Text
+
+      heading: 
+        heading: Score De Riesgo
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Tasa Rendimiento ============================
+      id: 27686737096791404
+      identification: 
+        column-name: Tasa Rendimiento
+        type: Plain Text
+
+      heading: 
+        heading: Tasa Rendimiento
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Monto Total =================================
+      id: 27686895887791405
+      identification: 
+        column-name: Monto Total
+        type: Plain Text
+
+      heading: 
+        heading: Monto Total
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Monto Restante ==============================
+      id: 27686971832791406
+      identification: 
+        column-name: Monto Restante
+        type: Plain Text
+
+      heading: 
+        heading: Monto Restante
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Plazo Estimado ==============================
+      id: 27687092321791407
+      identification: 
+        column-name: Plazo Estimado
+        type: Plain Text
+
+      heading: 
+        heading: Plazo Estimado
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Financiado ==================================
+      id: 27687169786791408
+      identification: 
+        column-name: Financiado
+        type: Plain Text
+
+      heading: 
+        heading: Financiado
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Facturas [Cards] ============================
+  id: 27687430384791411
+  identification: 
+    name: Facturas [Cards]
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select empresa_pagador
+               , score_pagador_rc
+               , 35 as "Tasa Rendimiento"
+               , TO_CHAR(saldo_a_pago, '&NUMBER_FORMAT.') as saldo_a_pago
+               , vence_en
+               , '30%' as "Financiado"
+               , fecha_vencimiento
+               , score_operacion_rc
+               , apex_page.get_url (
+                    p_page   => 6
+                  , p_items  => 'P6_ID_FACTURA'
+                  , p_values => id_factura
+                 ) as url_invertir
+               , prefijo_moneda
+               -- Cálculo del Monto Restante (saldo disponible a invertir)
+               , to_char(saldo_a_pago - nvl(( select sum(i.monto_invertido)
+                                                from bko_inversion_factura i
+                                               where i.id_factura = f.id_factura
+                                            ), 0),'&NUMBER_FORMAT.') as monto_restante
+            from factura_v f;
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 27688390352791420
+    appearance: 
+      layout: Grid
+      grid-columns: Auto
+
+    title: 
+      advanced-formatting: true
+      html-expression: |
+        <div class="factura-header">
+          <div class="factura-header-left">
+            <div class="empresa-ticker">
+              <img src="#APP_FILES#BCP.jpg" alt="Logo empresa" class="empresa-logo">
+            </div>
+          </div>
+        
+          <div class="factura-header-right">
+            <div class="empresa-nombre">
+              <span class="nombre">&EMPRESA_PAGADOR.</span>
+            </div>
+            <div class="empresa-score">
+              Riesgo bajo
+            </div>
+          </div>
+        </div>
+        
+
+    subtitle: 
+      advanced-formatting: false
+
+    body: 
+      advanced-formatting: true
+      html-expression: |
+        <div class="factura-card-body" style="padding: 12px; font-size: 14px; color: #333;">
+        
+        <div class="factura-precio-bloque">
+          <div class="monto-total">&PREFIJO_MONEDA.&MONTO_RESTANTE.</div>
+          Monto disponible
+        
+          <div class="monto-secundario">
+            <div class="monto-restante">&PREFIJO_MONEDA.&SALDO_A_PAGO. monto total a financiar</div>
+            <div class="vence-en">Vence en &VENCE_EN.</div>
+          </div>
+        </div>
+        
+        <!-- Score de operación -->
+        <div class="score-operacion-container">
+          <div class="score-operacion-label">Riesgo de operación</div>
+          <div class="score-tabs">
+            <div class="pill">Bajo</div>
+            <div class="pill active">Medio</div>
+            <div class="pill">Alto</div>
+          </div>
+        </div>
+        
+        
+          <!-- Botonera al pie -->
+        <div class="factura-botonera">
+          <a href="&URL_HISTORIAL." class="boton-link">
+            <span class="fa fa-clock"></span> Historial
+          </a>
+        
+          <div class="separador-vertical"></div>
+        
+          <a href="&URL_INVERTIR." class="boton-invertir">
+            <span class="fa fa-arrow-circle-up"></span> Invertir
+          </a>
+        </div>
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: No Icon
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+buttons: 
+- # ====== Button: GRILLA ======================================
+  id: 27687218493791409
+  identification: 
+    button-name: GRILLA
+    label: Grilla
+
+  layout: 
+    sequence: 20
+    region: Breadcrumb # 47354893015532988
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-list
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CARDS =======================================
+  id: 27687394853791410
+  identification: 
+    button-name: CARDS
+    label: Cards
+
+  layout: 
+    sequence: 40
+    region: Breadcrumb # 47354893015532988
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-tiles-2x2
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: FILTROS =====================================
+  id: 30154757935477713
+  identification: 
+    button-name: FILTROS
+    label: Grilla
+
+  layout: 
+    sequence: 10
+    region: Breadcrumb # 47354893015532988
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--gapRight
+    icon: fa-filter
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:8:&SESSION.::&DEBUG.:8::'
+      page: 8 # Filtros Marketplace
+      clear-cache: 8
+
+    warn-on-unsaved-changes: Do Not Check
+

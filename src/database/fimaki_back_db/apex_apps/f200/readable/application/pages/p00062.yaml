@@ -70,7 +70,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Buttons =====================================
-  id: 45123986391905132
+  id: 36946868276691242
   identification: 
     name: Buttons
     type: Static Content
@@ -108,7 +108,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Consolidado =================================
-  id: 45124456733905137
+  id: 36947338618691247
   identification: 
     name: Consolidado
     type: Interactive Report
@@ -141,7 +141,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Tabs # 45404446653378312
+    parent-region: Tabs # 37227328538164422
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -171,7 +171,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 45124541586905138
+    id: 36947423471691248
     link: 
       link-column: Exclude Link Column
 
@@ -230,14 +230,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 45410763657383786
+      id: 37233645542169896
       identification: 
         name: Primary Report
         alias: 372337
 
     columns: 
     - # ====== Column: ID_FACTURA ==================================
-      id: 45124669871905139
+      id: 36947551756691249
       identification: 
         column-name: ID_FACTURA
         type: Hidden
@@ -255,7 +255,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INVERSIONISTA ===============================
-      id: 45124734399905140
+      id: 36947616284691250
       identification: 
         column-name: INVERSIONISTA
         type: Plain Text
@@ -296,7 +296,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONTO_CAPITAL ===============================
-      id: 45402413854378291
+      id: 37225295739164401
       identification: 
         column-name: MONTO_CAPITAL
         type: Plain Text
@@ -340,7 +340,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INTERES_MORATORIO ===========================
-      id: 45402525089378293
+      id: 37225406974164403
       identification: 
         column-name: INTERES_MORATORIO
         type: Plain Text
@@ -384,7 +384,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TOTAL_POR_INVERSIONISTA =====================
-      id: 45402656498378294
+      id: 37225538383164404
       identification: 
         column-name: TOTAL_POR_INVERSIONISTA
         type: Plain Text
@@ -428,7 +428,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INTERES_ORDINARIO ===========================
-      id: 45404528359378313
+      id: 37227410244164423
       identification: 
         column-name: INTERES_ORDINARIO
         type: Plain Text
@@ -514,7 +514,7 @@ regions:
         alignment: center
 
 - # ====== Region: Distribucion Detallada ======================
-  id: 45402864087378296
+  id: 37225745972164406
   identification: 
     name: Distribucion Detallada
     type: Interactive Report
@@ -531,7 +531,7 @@ regions:
           m.TIPO_MOVIMIENTO_RC,
           m.TIPO_MOVIMIENTO,
           m.FECHA_MOVIMIENTO,
-          m.MONTO,
+          m.MONTO * m.SIGNO  as monto_movimiento,
           m.MONEDA_RC,
           m.TASA_INTERES,
           m.SIGNO,
@@ -552,13 +552,20 @@ regions:
           m.ID_FACTURA = :P62_ID_FACTURA
           AND m.ESTADO_RC = 'ACTIVO'
       ORDER BY 
-          m.INVERSIONISTA, m.FECHA_MOVIMIENTO, m.TIPO_MOVIMIENTO_RC;
+          m.id_inversion_factura
+          , CASE m.TIPO_MOVIMIENTO_RC
+              WHEN 'INVERSION' THEN 1
+              WHEN 'DEVOLUCION_CAPITAL' THEN 2
+              WHEN 'PAGO_INTERES' THEN 3
+              WHEN 'PAGO_INTERES_MORA' THEN 4
+              ELSE 5
+          END;
     page-items-to-submit: 
     - P62_ID_FACTURA
 
   layout: 
     sequence: 20
-    parent-region: Tabs # 45404446653378312
+    parent-region: Tabs # 37227328538164422
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -588,7 +595,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 45402999911378297
+    id: 37225881796164407
     link: 
       link-column: Exclude Link Column
 
@@ -647,14 +654,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 45417770324397714
+      id: 37240652209183824
       identification: 
         name: Primary Report
         alias: 372407
 
     columns: 
     - # ====== Column: NRO_OPERACION ===============================
-      id: 44942990607955203
+      id: 36765872492741313
       identification: 
         column-name: NRO_OPERACION
         type: Plain Text
@@ -695,7 +702,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_FACTURA ==================================
-      id: 45403111961378298
+      id: 37225993846164408
       identification: 
         column-name: ID_FACTURA
         type: Hidden
@@ -713,7 +720,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INVERSIONISTA ===============================
-      id: 45403210078378299
+      id: 37226091963164409
       identification: 
         column-name: INVERSIONISTA
         type: Plain Text
@@ -754,7 +761,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TOTAL_POR_INVERSIONISTA =====================
-      id: 45403612726378303
+      id: 37226494611164413
       identification: 
         column-name: TOTAL_POR_INVERSIONISTA
         type: Plain Text
@@ -798,7 +805,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_ROL_PERSONA ==============================
-      id: 45403624824378304
+      id: 37226506709164414
       identification: 
         column-name: ID_ROL_PERSONA
         type: Hidden
@@ -816,7 +823,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TIPO_MOVIMIENTO_RC ==========================
-      id: 45403809025378305
+      id: 37226690910164415
       identification: 
         column-name: TIPO_MOVIMIENTO_RC
         type: Hidden
@@ -834,7 +841,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TIPO_MOVIMIENTO =============================
-      id: 45403881261378306
+      id: 37226763146164416
       identification: 
         column-name: TIPO_MOVIMIENTO
         type: Plain Text
@@ -875,7 +882,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_MOVIMIENTO ============================
-      id: 45404001026378307
+      id: 37226882911164417
       identification: 
         column-name: FECHA_MOVIMIENTO
         type: Plain Text
@@ -919,58 +926,14 @@ regions:
       security: 
         escape-special-characters: true
 
-    - # ====== Column: MONTO =======================================
-      id: 45404029148378308
-      identification: 
-        column-name: MONTO
-        type: Plain Text
-
-      heading: 
-        heading: Monto Movimiento
-        alignment: end
-
-      single-row-view: 
-        use-column-heading: true
-
-      layout: 
-        sequence: 90
-        column-alignment: end
-
-      accessibility: 
-        value-identifies-row: false
-
-      appearance: 
-        format-mask: '&NUMBER_FORMAT.'
-
-      source: 
-        primary-key: false
-
-      column-filter: 
-        type: Default Based on Column Type
-
-      enable-users-to: 
-        hide: true
-        sort: true
-        filter: true
-        highlight: true
-        control-break: true
-        aggregate: true
-        compute: true
-        chart: true
-        group-by: true
-        pivot: true
-
-      security: 
-        escape-special-characters: true
-
     - # ====== Column: MONEDA_RC ===================================
-      id: 45404194027378309
+      id: 37227075912164419
       identification: 
         column-name: MONEDA_RC
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_MONEDA # 44239467711699799
+        list-of-values: LOV_MONEDA # 36062349596485909
 
       heading: 
         heading: Moneda
@@ -1005,7 +968,7 @@ regions:
         pivot: true
 
     - # ====== Column: TASA_INTERES ================================
-      id: 45404250759378310
+      id: 37227132644164420
       identification: 
         column-name: TASA_INTERES
         type: Plain Text
@@ -1049,7 +1012,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SIGNO =======================================
-      id: 45404351319378311
+      id: 37227233204164421
       identification: 
         column-name: SIGNO
         type: Plain Text
@@ -1090,7 +1053,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ASIENTO =====================================
-      id: 45404664702378314
+      id: 37227546587164424
       identification: 
         column-name: ASIENTO
         type: Plain Text
@@ -1108,6 +1071,50 @@ regions:
 
       accessibility: 
         value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONTO_MOVIMIENTO ============================
+      id: 42065260865500307
+      identification: 
+        column-name: MONTO_MOVIMIENTO
+        type: Plain Text
+
+      heading: 
+        heading: Monto Movimiento
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 140
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
 
       source: 
         primary-key: false
@@ -1173,7 +1180,7 @@ regions:
         alignment: center
 
 - # ====== Region: Tabs ========================================
-  id: 45404446653378312
+  id: 37227328538164422
   identification: 
     name: Tabs
     type: Static Content
@@ -1213,7 +1220,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P62_ID_FACTURA ===========================
-  id: 45402789536378295
+  id: 37225671421164405
   identification: 
     name: P62_ID_FACTURA
     type: Hidden
@@ -1244,14 +1251,14 @@ page-items:
 
 buttons: 
 - # ====== Button: OK ==========================================
-  id: 45124050950905133
+  id: 36946932835691243
   identification: 
     button-name: OK
     label: Ok
 
   layout: 
     sequence: 10
-    region: Buttons # 45123986391905132
+    region: Buttons # 36946868276691242
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -1273,7 +1280,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onClick - OK ========================
-  id: 45124287159905135
+  id: 36947169044691245
   identification: 
     name: onClick - OK
 
@@ -1285,17 +1292,17 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: OK # 45124050950905133
+    button: OK # 36946932835691243
 
   actions: 
   - # ====== Action: Close Dialog ================================
-    id: 45124330729905136
+    id: 36947212614691246
     identification: 
       action: Close Dialog
 
     execution: 
       sequence: 10
-      event: onClick - OK # 45124287159905135
+      event: onClick - OK # 36947169044691245
       fire-when-event-result-is: True
       fire-on-initialization: false
 

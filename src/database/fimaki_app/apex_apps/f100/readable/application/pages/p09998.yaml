@@ -47,14 +47,14 @@ server-cache:
 
 regions: 
 - # ====== Region: Form-1 ======================================
-  id: 18719219392201160
+  id: 10537906801979402
   identification: 
     name: Form-1
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Register # 24063514437558962
+    parent-region: Register # 15882201847337204
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -86,14 +86,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Form-2 ======================================
-  id: 18719660875201164
+  id: 10538348284979406
   identification: 
     name: Form-2
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: Register # 24063514437558962
+    parent-region: Register # 15882201847337204
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -125,7 +125,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Register ====================================
-  id: 24063514437558962
+  id: 15882201847337204
   identification: 
     name: Register
     type: Static Content
@@ -178,7 +178,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P9998_EMAIL ==============================
-  id: 18719164714201159
+  id: 10537852123979401
   identification: 
     name: P9998_EMAIL
     type: Text Field
@@ -196,7 +196,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Form-1 # 18719219392201160
+    region: Form-1 # 10537906801979402
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -236,7 +236,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_PASSWORD ===========================
-  id: 18719388574201161
+  id: 10538075983979403
   identification: 
     name: P9998_PASSWORD
     type: Password
@@ -250,7 +250,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Form-1 # 18719219392201160
+    region: Form-1 # 10537906801979402
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -287,7 +287,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_PASSWORD_CONFIRM ===================
-  id: 18719426779201162
+  id: 10538114188979404
   identification: 
     name: P9998_PASSWORD_CONFIRM
     type: Password
@@ -301,7 +301,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Form-1 # 18719219392201160
+    region: Form-1 # 10537906801979402
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -338,7 +338,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_PHONE_NUMBER =======================
-  id: 18719598918201163
+  id: 10538286327979405
   identification: 
     name: P9998_PHONE_NUMBER
     type: Text Field
@@ -356,7 +356,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Form-1 # 18719219392201160
+    region: Form-1 # 10537906801979402
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -396,7 +396,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_NAME ===============================
-  id: 18719806996201165
+  id: 10538494405979407
   identification: 
     name: P9998_NAME
     type: Text Field
@@ -414,7 +414,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -456,7 +456,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_DNI ================================
-  id: 18720011422201167
+  id: 10538698831979409
   identification: 
     name: P9998_DNI
     type: Number Field
@@ -471,7 +471,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -511,7 +511,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_BIRTH_DATE =========================
-  id: 18720082452201168
+  id: 10538769861979410
   identification: 
     name: P9998_BIRTH_DATE
     type: Date Picker
@@ -530,7 +530,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -572,7 +572,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_CHECKBOXES =========================
-  id: 18721765520201185
+  id: 10540452929979427
   identification: 
     name: P9998_CHECKBOXES
     type: Checkbox Group
@@ -590,7 +590,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -631,7 +631,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_PERSON_TYPE ========================
-  id: 18721865326201186
+  id: 10540552735979428
   identification: 
     name: P9998_PERSON_TYPE
     type: Radio Group
@@ -646,7 +646,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Form-1 # 18719219392201160
+    region: Form-1 # 10537906801979402
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -692,7 +692,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_COMPANY_NAME =======================
-  id: 18722153830201189
+  id: 10540841239979431
   identification: 
     name: P9998_COMPANY_NAME
     type: Text Field
@@ -710,7 +710,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -752,7 +752,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_M_SECOND_NAME ======================
-  id: 18722295918201190
+  id: 10540983327979432
   identification: 
     name: P9998_M_SECOND_NAME
     type: Text Field
@@ -770,7 +770,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -812,7 +812,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_F_SECOND_NAME ======================
-  id: 18722335552201191
+  id: 10541022961979433
   identification: 
     name: P9998_F_SECOND_NAME
     type: Text Field
@@ -830,7 +830,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -872,7 +872,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_COUNTRY ============================
-  id: 18722845059201196
+  id: 10541532468979438
   identification: 
     name: P9998_COUNTRY
     type: Combobox
@@ -895,7 +895,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -943,7 +943,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_SUB_1 ==============================
-  id: 18722955404201197
+  id: 10541642813979439
   identification: 
     name: P9998_SUB_1
     type: Combobox
@@ -966,7 +966,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1021,7 +1021,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9998_SUB_2 ==============================
-  id: 18723014843201198
+  id: 10541702252979440
   identification: 
     name: P9998_SUB_2
     type: Combobox
@@ -1044,7 +1044,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1100,14 +1100,14 @@ page-items:
 
 buttons: 
 - # ====== Button: next ========================================
-  id: 18718965927199801
+  id: 10537653336978043
   identification: 
     button-name: next
     label: Siguiente
 
   layout: 
     sequence: 10
-    region: Form-1 # 18719219392201160
+    region: Form-1 # 10537906801979402
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1126,14 +1126,14 @@ buttons:
     execute-validations: false
 
 - # ====== Button: create_user =================================
-  id: 18719903603201166
+  id: 10538591012979408
   identification: 
     button-name: create_user
     label: Crear Cuenta
 
   layout: 
     sequence: 20
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -1158,14 +1158,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: back ========================================
-  id: 18721198109201179
+  id: 10539885518979421
   identification: 
     button-name: back
     label: Atras
 
   layout: 
     sequence: 30
-    region: Form-2 # 18719660875201164
+    region: Form-2 # 10538348284979406
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -1185,7 +1185,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Load ================================
-  id: 18720551462201173
+  id: 10539238871979415
   identification: 
     name: Load
 
@@ -1198,22 +1198,22 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 18720660209201174
+    id: 10539347618979416
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Region
-      region: Form-2 # 18719660875201164
+      region: Form-2 # 10538348284979406
 
     execution: 
       sequence: 10
-      event: Load # 18720551462201173
+      event: Load # 10539238871979415
       fire-when-event-result-is: True
       fire-on-initialization: true
 
 - # ====== Dynamic Action: Next ================================
-  id: 18720807738201175
+  id: 10539495147979417
   identification: 
     name: Next
 
@@ -1225,41 +1225,41 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: next # 18718965927199801
+    button: next # 10537653336978043
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 18720896374201176
+    id: 10539583783979418
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Region
-      region: Form-1 # 18719219392201160
+      region: Form-1 # 10537906801979402
 
     execution: 
       sequence: 10
-      event: Next # 18720807738201175
+      event: Next # 10539495147979417
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 18721010498201177
+    id: 10539697907979419
     identification: 
       action: Show
 
     affected-elements: 
       selection-type: Region
-      region: Form-2 # 18719660875201164
+      region: Form-2 # 10538348284979406
 
     execution: 
       sequence: 20
-      event: Next # 18720807738201175
+      event: Next # 10539495147979417
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Back ================================
-  id: 18721296194201180
+  id: 10539983603979422
   identification: 
     name: Back
 
@@ -1271,41 +1271,41 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: back # 18721198109201179
+    button: back # 10539885518979421
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 18721379090201181
+    id: 10540066499979423
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Region
-      region: Form-2 # 18719660875201164
+      region: Form-2 # 10538348284979406
 
     execution: 
       sequence: 10
-      event: Back # 18721296194201180
+      event: Back # 10539983603979422
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 18721506149201182
+    id: 10540193558979424
     identification: 
       action: Show
 
     affected-elements: 
       selection-type: Region
-      region: Form-1 # 18719219392201160
+      region: Form-1 # 10537906801979402
 
     execution: 
       sequence: 20
-      event: Back # 18721296194201180
+      event: Back # 10539983603979422
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Check_TP ============================
-  id: 18722678138201194
+  id: 10541365547979436
   identification: 
     name: Check_TP
 
@@ -1317,11 +1317,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: next # 18718965927199801
+    button: next # 10537653336978043
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 18722747853201195
+    id: 10541435262979437
     identification: 
       action: Execute JavaScript Code
 
@@ -1340,7 +1340,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Check_TP # 18722678138201194
+      event: Check_TP # 10541365547979436
       fire-when-event-result-is: True
       fire-on-initialization: false
 

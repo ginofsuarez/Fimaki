@@ -64,7 +64,7 @@ server-cache:
 
 regions: 
 - # ====== Region: FIMAKI_INV ==================================
-  id: 23881925804324468
+  id: 15700613214102710
   identification: 
     name: FIMAKI_INV
     type: Static Content
@@ -107,13 +107,13 @@ regions:
 
 page-items: 
 - # ====== Page Item: P9999_USERNAME ===========================
-  id: 23882364799324479
+  id: 15701052209102721
   identification: 
     name: P9999_USERNAME
     type: Text Field
 
   label: 
-    label: Username
+    label: Correo electrónico
     alignment: Left
 
   settings: 
@@ -125,7 +125,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: FIMAKI_INV # 23881925804324468
+    region: FIMAKI_INV # 15700613214102710
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -168,13 +168,13 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9999_PASSWORD ===========================
-  id: 23882749036324481
+  id: 15701436446102723
   identification: 
     name: P9999_PASSWORD
     type: Password
 
   label: 
-    label: Password
+    label: Clave secreta
     alignment: Left
 
   settings: 
@@ -182,7 +182,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: FIMAKI_INV # 23881925804324468
+    region: FIMAKI_INV # 15700613214102710
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -222,7 +222,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9999_REMEMBER ===========================
-  id: 23883196617324483
+  id: 15701884027102725
   identification: 
     name: P9999_REMEMBER
     type: Checkbox
@@ -236,7 +236,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: FIMAKI_INV # 23881925804324468
+    region: FIMAKI_INV # 15700613214102710
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -276,14 +276,14 @@ page-items:
 
 buttons: 
 - # ====== Button: LOGIN =======================================
-  id: 23883565980324484
+  id: 15702253390102726
   identification: 
     button-name: LOGIN
     label: Iniciar Sesión
 
   layout: 
     sequence: 40
-    region: FIMAKI_INV # 23881925804324468
+    region: FIMAKI_INV # 15700613214102710
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -305,14 +305,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: REGISTRARSE =================================
-  id: 42544796085458805
+  id: 34363483495237047
   identification: 
     button-name: REGISTRARSE
     label: Registrarse
 
   layout: 
     sequence: 50
-    region: FIMAKI_INV # 23881925804324468
+    region: FIMAKI_INV # 15700613214102710
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -341,14 +341,14 @@ buttons:
     value: Y
 
 - # ====== Button: FORGOT_PASSWORD =============================
-  id: 46723419701785360
+  id: 38542107111563602
   identification: 
     button-name: FORGOT_PASSWORD
     label: ¿Ha olvidado su contraseña?
 
   layout: 
     sequence: 40
-    region: FIMAKI_INV # 23881925804324468
+    region: FIMAKI_INV # 15700613214102710
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -378,7 +378,7 @@ buttons:
 
 processes: 
 - # ====== Process: Login ======================================
-  id: 23883924343324486
+  id: 15702611753102728
   identification: 
     name: Login
     type: Execute Code
@@ -404,7 +404,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Set Username Cookie ========================
-  id: 23885806046324493
+  id: 15704493456102735
   identification: 
     name: Set Username Cookie
     type: Invoke API
@@ -426,7 +426,7 @@ processes:
 
   parameters: 
   - # ====== Parameter: p_username ===============================
-    id: 23886341546324494
+    id: 15705028956102736
     identification: 
       name: p_username
 
@@ -444,7 +444,7 @@ processes:
       display-sequence: 1
 
   - # ====== Parameter: p_consent ================================
-    id: 23886755010324495
+    id: 15705442420102737
     identification: 
       name: p_consent
 
@@ -461,7 +461,7 @@ processes:
       display-sequence: 2
 
 - # ====== Process: Get Username Cookie ========================
-  id: 23887318542324496
+  id: 15706005952102738
   identification: 
     name: Get Username Cookie
     type: Execute Code
@@ -480,7 +480,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Clear Page(s) Cache ========================
-  id: 23887671314324497
+  id: 15706358724102739
   identification: 
     name: Clear Page(s) Cache
     type: Clear Session State
@@ -498,7 +498,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Resetear Estado de Login ===================
-  id: 42544861762458806
+  id: 34363549172237048
   identification: 
     name: Resetear Estado de Login
     type: Clear Session State

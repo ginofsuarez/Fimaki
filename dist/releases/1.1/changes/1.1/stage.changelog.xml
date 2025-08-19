@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+<include file="admin/object_grants/object_grants_as_grantor.fimaki_inv_db.table.inv_usuario_token.sql" relativeToChangelogFile="true"/>
+<include file="admin/object_grants/object_grants_as_grantor.fimaki_sec_db.package_spec.iam_auth_encryption.sql" relativeToChangelogFile="true"/>
+<include file="admin/object_grants/object_grants_as_grantor.sys.package_spec.dbms_crypto.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_persona.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_archivo.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_archivo_empresa.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_archivo_factura.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_contacto.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_contacto_persona.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_cuenta_bancaria.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_deposito_comprobante.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_deposito_comprobante_jn.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_direccion_persona.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_empresa.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_empresa_score.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_factura.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_institucion_financiera.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_inversion_factura.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_movimiento_financiero.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_rol_persona.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_score_empresa.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/bko_solicitud_deposito.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/mail_template.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/usuario_token.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/tables/variable_sistema.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_inv_db/tables/inv_usuario_temporal.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_inv_db/tables/inv_usuario_token.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_sec_db/tables/iam_usuario.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/indexes/idx_bko_deposito_comp_jn_dt.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/indexes/idx_bko_deposito_comp_jn_id.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/indexes/idx_bko_deposito_comp_jn_op.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/package_specs/bko_operaciones_pkg.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/package_specs/utils_pkg.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_app/synonyms/bko_persona_pkg.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_app/synonyms/bko_solicitud_deposito_pkg.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_app/synonyms/iam_auth_encryption.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_inv_db/synonyms/bko_pais.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_inv_db/synonyms/emp_archivos_tmp_v.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_inv_db/synonyms/subdivision_geografica.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_sec_db/synonyms/utils_pkg.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_app/procedures/app_post_auth.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/package_bodies/bko_solicitud_deposito_pkg.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_back_db/triggers/bko_factura_bu_trg.sql" relativeToChangelogFile="true"/>
+<include file="fimaki_sec_db/package_bodies/iam_authz_utils.sql" relativeToChangelogFile="true"/>
+</databaseChangeLog>

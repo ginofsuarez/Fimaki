@@ -38,7 +38,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Plantillas de Correo ========================
-  id: 50184678803969108
+  id: 42007560688755218
   identification: 
     name: Plantillas de Correo
     type: Interactive Report
@@ -82,7 +82,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 50184777235969108
+    id: 42007659120755218
     link: 
       link-column: Link to Custom Target
       target: 
@@ -152,14 +152,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 50191671826984947
+      id: 42014553711771057
       identification: 
         name: Primary Report
         alias: 420146
 
     columns: 
     - # ====== Column: ID_TEMPLATE =================================
-      id: 50185426174969111
+      id: 42008308059755221
       identification: 
         column-name: ID_TEMPLATE
         type: Hidden
@@ -177,7 +177,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CODIGO ======================================
-      id: 50185860817969113
+      id: 42008742702755223
       identification: 
         column-name: CODIGO
         type: Plain Text
@@ -218,7 +218,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NOMBRE ======================================
-      id: 50186221856969114
+      id: 42009103741755224
       identification: 
         column-name: NOMBRE
         type: Plain Text
@@ -259,7 +259,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ASUNTO ======================================
-      id: 50186678020969115
+      id: 42009559905755225
       identification: 
         column-name: ASUNTO
         type: Plain Text
@@ -300,7 +300,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CONTENIDO_HTML ==============================
-      id: 50187038197969116
+      id: 42009920082755226
       identification: 
         column-name: CONTENIDO_HTML
         type: Plain Text
@@ -341,13 +341,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ACTIVO ======================================
-      id: 50187466431969117
+      id: 42010348316755227
       identification: 
         column-name: ACTIVO
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SI_NO # 38066481741234781
+        list-of-values: LOV_SI_NO # 29889363626020891
 
       heading: 
         heading: Activo
@@ -382,7 +382,7 @@ regions:
         pivot: true
 
     - # ====== Column: CREADO_POR ==================================
-      id: 50187886525969118
+      id: 42010768410755228
       identification: 
         column-name: CREADO_POR
         type: Plain Text
@@ -423,7 +423,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREADO ======================================
-      id: 50188269846969119
+      id: 42011151731755229
       identification: 
         column-name: CREADO
         type: Plain Text
@@ -465,7 +465,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO_POR ==============================
-      id: 50188708051969119
+      id: 42011589936755229
       identification: 
         column-name: MODIFICADO_POR
         type: Plain Text
@@ -506,7 +506,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO ==================================
-      id: 50189049834969120
+      id: 42011931719755230
       identification: 
         column-name: MODIFICADO
         type: Plain Text
@@ -592,14 +592,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREATE ======================================
-  id: 50189613986969122
+  id: 42012495871755232
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 10
-    region: Plantillas de Correo # 50184678803969108
+    region: Plantillas de Correo # 42007560688755218
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -624,7 +624,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Edit Report - Dialog Closed =========
-  id: 50189842496969122
+  id: 42012724381755232
   identification: 
     name: Edit Report - Dialog Closed
 
@@ -636,11 +636,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Plantillas de Correo # 50184678803969108
+    region: Plantillas de Correo # 42007560688755218
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 50190370990969124
+    id: 42013252875755234
     identification: 
       action: Refresh
 
@@ -649,11 +649,11 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Plantillas de Correo # 50184678803969108
+      region: Plantillas de Correo # 42007560688755218
 
     execution: 
       sequence: 10
-      event: Edit Report - Dialog Closed # 50189842496969122
+      event: Edit Report - Dialog Closed # 42012724381755232
       fire-when-event-result-is: True
       fire-on-initialization: false
 

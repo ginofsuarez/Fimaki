@@ -1,0 +1,908 @@
+---
+# ====== Page: Mis inversiones ===============================
+id: 203
+identification: 
+  name: Mis inversiones
+  alias: MIS-INVERSIONES
+  title: Mis inversiones
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Resumen =====================================
+  id: 46768384825115403
+  identification: 
+    name: Resumen
+    title: Resumen de Inversiones
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      WITH rol AS (
+        SELECT rp.id_rol_persona
+        FROM   bko_rol_persona rp
+        WHERE  rp.id_persona = :P_ID_PERSONA
+          AND  rp.activo_sn  = 'S'
+          AND  rp.tipo_rol_rc = 'INVERSNSTA'
+      ),
+      depositos AS (
+        SELECT NVL(SUM(mf.monto),0) AS monto
+        FROM   bko_movimiento_financiero mf
+        WHERE  mf.id_rol_persona     = (SELECT id_rol_persona FROM rol)
+          AND  mf.tipo_movimiento_rc = 'DEPOSITO'
+          AND  mf.estado_rc          = 'CONFIRMADO'
+          AND  mf.moneda_rc          = NVL(:P203_MONEDA_RC, mf.moneda_rc)
+      ),
+      inversiones AS (
+        SELECT NVL(SUM(mf.monto),0) AS monto
+        FROM   bko_movimiento_financiero mf
+        WHERE  mf.id_rol_persona     = (SELECT id_rol_persona FROM rol)
+          AND  mf.tipo_movimiento_rc = 'INVERSION'
+          AND  mf.estado_rc          = 'ACTIVO'
+          AND  mf.moneda_rc          = NVL(:P203_MONEDA_RC, mf.moneda_rc)
+      ),
+      res AS (
+        SELECT d.monto - i.monto AS efectivo_disponible
+        FROM   depositos d
+        CROSS JOIN inversiones i
+      ),
+      
+      /* Rendimiento acumulado HASTA HOY (desde fecha_inversión) */
+      rend_actual AS (
+        SELECT NVL(SUM(
+                 ( POWER(
+                     1 + CASE
+                           WHEN f.tasa_interes IS NULL THEN 0
+                           WHEN f.tasa_interes > 1 THEN f.tasa_interes/100  -- 12 => 0.12
+                           ELSE f.tasa_interes                               -- ya decimal
+                         END,
+                     GREATEST(0, TRUNC(SYSDATE) - TRUNC(mf.fecha_movimiento)) / 360
+                   ) - 1
+                 ) * mf.monto
+               ),0) AS total_rend_actual
+        FROM   bko_movimiento_financiero mf
+        LEFT JOIN bko_factura f
+               ON f.id_factura = mf.id_factura
+        WHERE  mf.id_rol_persona     = (SELECT id_rol_persona FROM rol)
+          AND  mf.tipo_movimiento_rc = 'INVERSION'
+          AND  mf.estado_rc          = 'ACTIVO'
+          AND  mf.moneda_rc          = NVL(:P203_MONEDA_RC, mf.moneda_rc)
+          AND  f.tasa_interes IS NOT NULL
+      ),
+      
+      /* Rendimiento desde HOY hasta VENCIMIENTO */
+      rend_final AS (
+        SELECT NVL(SUM(
+                 ( POWER(
+                     1 + CASE
+                           WHEN f.tasa_interes IS NULL THEN 0
+                           WHEN f.tasa_interes > 1 THEN f.tasa_interes/100
+                           ELSE f.tasa_interes
+                         END,
+                     GREATEST(0, TRUNC(f.fecha_vencimiento) - TRUNC(SYSDATE)) / 360
+                   ) - 1
+                 ) * mf.monto
+               ),0) AS total_rend_final
+        FROM   bko_movimiento_financiero mf
+        LEFT JOIN bko_factura f
+               ON f.id_factura = mf.id_factura
+        WHERE  mf.id_rol_persona     = (SELECT id_rol_persona FROM rol)
+          AND  mf.tipo_movimiento_rc = 'INVERSION'
+          AND  mf.estado_rc          = 'ACTIVO'
+          AND  mf.moneda_rc          = NVL(:P203_MONEDA_RC, mf.moneda_rc)
+          AND  f.tasa_interes IS NOT NULL
+          AND  f.fecha_vencimiento IS NOT NULL
+      ),
+      
+      aportes_tot AS (
+        SELECT NVL(SUM(mf.monto),0) AS total_aportes
+        FROM   bko_movimiento_financiero mf
+        WHERE  mf.id_rol_persona     = (SELECT id_rol_persona FROM rol)
+          AND  mf.tipo_movimiento_rc = 'INVERSION'
+          AND  mf.estado_rc          = 'ACTIVO'
+          AND  mf.moneda_rc          = NVL(:P203_MONEDA_RC, mf.moneda_rc)
+      ),
+      
+      final_calc AS (
+        SELECT 
+          a.total_aportes,
+          ract.total_rend_actual,
+          rfin.total_rend_final,
+          e.efectivo_disponible,
+          a.total_aportes + rfin.total_rend_final + e.efectivo_disponible AS valor_final
+        FROM aportes_tot a
+        CROSS JOIN rend_actual ract
+        CROSS JOIN rend_final rfin
+        CROSS JOIN res e
+      )
+      
+      /* Cards */
+      SELECT TO_CHAR(valor_final,         'FM999G999G990D00') AS TITLE, 'Valor final'                      AS SUBTITLE FROM final_calc
+      UNION ALL
+      SELECT TO_CHAR(total_aportes,      'FM999G999G990D00') AS TITLE, 'Aportes totales'                  AS SUBTITLE FROM final_calc
+      UNION ALL
+      SELECT TO_CHAR(total_rend_final,   'FM999G999G990D00') AS TITLE, 'Rendimiento al final del plazo'   AS SUBTITLE FROM final_calc
+      UNION ALL
+      SELECT TO_CHAR(total_rend_actual,  'FM999G999G990D00') AS TITLE, 'Rendimiento a la fecha'           AS SUBTITLE FROM final_calc
+      UNION ALL
+      SELECT TO_CHAR(efectivo_disponible,'FM999G999G990D00') AS TITLE, 'Efectivo disponible'               AS SUBTITLE FROM final_calc;
+      
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 46768497534115404
+    appearance: 
+      layout: Grid
+      grid-columns: 5 Columns
+
+    title: 
+      advanced-formatting: false
+      column: TITLE
+
+    subtitle: 
+      advanced-formatting: false
+      column: SUBTITLE
+
+    body: 
+      advanced-formatting: false
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: No Icon
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+- # ====== Region: Detalle Inversiones =========================
+  id: 46768533878115405
+  identification: 
+    name: Detalle Inversiones
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      WITH rol AS (
+        SELECT rp.id_rol_persona
+        FROM   bko_rol_persona rp
+        WHERE  rp.id_persona = :P_ID_PERSONA
+          AND  rp.activo_sn  = 'S'
+          AND  rp.tipo_rol_rc = 'INVERSNSTA'
+      ),
+      datos AS (
+        SELECT
+            mf.fecha_movimiento                                                    AS fecha_inversion,
+            mf.monto                                                              AS monto_invertido,
+            f.tasa_interes                                                        AS tea_raw,     -- 12 = 12%
+            f.tasa_interes / 100                                                  AS tea_dec,     -- 0.12
+            (TRUNC(f.fecha_vencimiento) - TRUNC(CURRENT_DATE))                    AS dias,        -- vencimiento - hoy
+            mf.moneda_rc                                                          AS moneda,
+            p_cedente.razon_social                                                AS razon_social,
+            /* N° Factura = serie - numero */
+            CASE
+              WHEN f.serie IS NULL AND f.numero IS NULL THEN NULL
+              ELSE TRIM(f.serie) || '-' || TO_CHAR(f.numero)
+            END                                                                    AS num_factura,
+            f.fecha_vencimiento                                                    AS fecha_vencimiento,
+      
+            /* Rendimiento actual: desde fecha_inversion hasta hoy */
+            ROUND(
+              CASE
+                WHEN f.tasa_interes IS NOT NULL THEN
+                  ( POWER(1 + (f.tasa_interes/100),
+                          GREATEST(0, TRUNC(CURRENT_DATE) - TRUNC(mf.fecha_movimiento)) / 360
+                         ) - 1
+                  ) * mf.monto
+                ELSE 0
+              END
+            , 2)                                                                  AS rendimiento_actual,
+      
+            /* Rendimiento final: desde hoy hasta vencimiento (usa nuevo DÍAS) */
+            ROUND(
+              CASE
+                WHEN f.tasa_interes IS NOT NULL AND f.fecha_vencimiento IS NOT NULL THEN
+                  ( POWER(1 + (f.tasa_interes/100),
+                          GREATEST(0, TRUNC(f.fecha_vencimiento) - TRUNC(CURRENT_DATE)) / 360
+                         ) - 1
+                  ) * mf.monto
+                ELSE 0
+              END
+            , 2)                                                                  AS rendimiento_final,
+      
+            /* Valor actual = monto + rendimiento_actual */
+            ROUND(
+              CASE
+                WHEN f.tasa_interes IS NOT NULL THEN
+                  ( POWER(1 + (f.tasa_interes/100),
+                          GREATEST(0, TRUNC(CURRENT_DATE) - TRUNC(mf.fecha_movimiento)) / 360
+                         ) - 1
+                  ) * mf.monto + mf.monto
+                ELSE mf.monto
+              END
+            , 2)                                                                  AS valor_actual,
+      
+            /* Valor final = monto + rendimiento_final (usa nuevo DÍAS) */
+            ROUND(
+              CASE
+                WHEN f.tasa_interes IS NOT NULL AND f.fecha_vencimiento IS NOT NULL THEN
+                  ( POWER(1 + (f.tasa_interes/100),
+                          GREATEST(0, TRUNC(f.fecha_vencimiento) - TRUNC(CURRENT_DATE)) / 360
+                         ) - 1
+                  ) * mf.monto + mf.monto
+                ELSE mf.monto
+              END
+            , 2)                                                                  AS valor_final
+        FROM   bko_movimiento_financiero mf
+        LEFT JOIN bko_factura   f           ON f.id_factura         = mf.id_factura
+        LEFT JOIN bko_empresa   e_cedente   ON e_cedente.id_empresa = f.id_empresa_cedente
+        LEFT JOIN bko_persona   p_cedente   ON p_cedente.id_persona = e_cedente.id_persona
+        WHERE  mf.id_rol_persona      = (SELECT id_rol_persona FROM rol)
+          AND  mf.estado_rc           = 'ACTIVO'
+          AND  mf.tipo_movimiento_rc  = 'INVERSION'
+          AND  mf.moneda_rc = NVL(:P203_MONEDA_RC, mf.moneda_rc)
+      )
+      SELECT
+        "Fecha de Inversión",
+        "Razón social",
+        "N° Factura",
+        "Fecha de vencimiento",
+        "Montos invertidos",
+        "TEA %",
+        "DÍAS",
+        "Rendimiento actual",
+        "Rendimiento final",
+        "Valor actual",
+        "Valor final"
+      FROM (
+        /* Detalle */
+        SELECT
+          0 AS sort_key,
+          TO_CHAR(fecha_inversion, 'DD/MM/YYYY')                AS "Fecha de Inversión",
+          NVL(razon_social,'')                                  AS "Razón social",
+          NVL(num_factura,'')                                   AS "N° Factura",
+          TO_CHAR(fecha_vencimiento, 'DD/MM/YYYY')              AS "Fecha de vencimiento",
+          TO_CHAR(monto_invertido, 'FM999G999G990D00')          AS "Montos invertidos",
+          TO_CHAR(tea_raw, 'FM999G999G990D00')                  AS "TEA %",
+          TO_CHAR(dias)                                         AS "DÍAS",
+          TO_CHAR(rendimiento_actual, 'FM999G999G990D00')       AS "Rendimiento actual",
+          TO_CHAR(rendimiento_final, 'FM999G999G990D00')        AS "Rendimiento final",
+          TO_CHAR(valor_actual, 'FM999G999G990D00')             AS "Valor actual",
+          TO_CHAR(valor_final, 'FM999G999G990D00')              AS "Valor final"
+        FROM datos
+      
+        UNION ALL
+      
+        /* Totales */
+        SELECT
+          1 AS sort_key,
+          'TOTAL'                                               AS "Fecha de Inversión",
+          CAST(NULL AS VARCHAR2(400))                           AS "Razón social",
+          CAST(NULL AS VARCHAR2(100))                           AS "N° Factura",
+          CAST(NULL AS VARCHAR2(20))                            AS "Fecha de vencimiento",
+          TO_CHAR(SUM(monto_invertido), 'FM999G999G990D00')     AS "Montos invertidos",
+          CAST(NULL AS VARCHAR2(50))                            AS "TEA %",
+          CAST(NULL AS VARCHAR2(50))                            AS "DÍAS",
+          TO_CHAR(SUM(rendimiento_actual), 'FM999G999G990D00')  AS "Rendimiento actual",
+          TO_CHAR(SUM(rendimiento_final), 'FM999G999G990D00')   AS "Rendimiento final",
+          TO_CHAR(SUM(valor_actual), 'FM999G999G990D00')        AS "Valor actual",
+          TO_CHAR(SUM(valor_final), 'FM999G999G990D00')         AS "Valor final"
+        FROM datos
+      )
+      ORDER BY sort_key, "Fecha de Inversión" ASC;
+      
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 15
+
+    appearance: 
+      template-type: Theme
+      template: Standard
+      template-options: 
+      - '#DEFAULT#'
+      - t-Report--altRowsDefault
+      - t-Report--rowHighlight
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: Fecha de Inversión ==========================
+    id: 46770302520115423
+    identification: 
+      column-name: Fecha de Inversión
+      type: Plain Text
+
+    heading: 
+      heading: Fecha De Inversión
+      alignment: start
+
+    layout: 
+      sequence: 10
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: Montos invertidos ===========================
+    id: 46770461474115424
+    identification: 
+      column-name: Montos invertidos
+      type: Plain Text
+
+    heading: 
+      heading: Montos Invertidos
+      alignment: start
+
+    layout: 
+      sequence: 50
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TEA % =======================================
+    id: 46770557592115425
+    identification: 
+      column-name: TEA %
+      type: Plain Text
+
+    heading: 
+      heading: Tea %
+      alignment: start
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: DÍAS ========================================
+    id: 46770670874115426
+    identification: 
+      column-name: DÍAS
+      type: Plain Text
+
+    heading: 
+      heading: Días
+      alignment: start
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: Rendimiento actual ==========================
+    id: 46770749849115427
+    identification: 
+      column-name: Rendimiento actual
+      type: Plain Text
+
+    heading: 
+      heading: Rendimiento Actual
+      alignment: start
+
+    layout: 
+      sequence: 80
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: Rendimiento final ===========================
+    id: 46770893055115428
+    identification: 
+      column-name: Rendimiento final
+      type: Plain Text
+
+    heading: 
+      heading: Rendimiento Final
+      alignment: start
+
+    layout: 
+      sequence: 90
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: Valor actual ================================
+    id: 46770923812115429
+    identification: 
+      column-name: Valor actual
+      type: Plain Text
+
+    heading: 
+      heading: Valor Actual
+      alignment: start
+
+    layout: 
+      sequence: 100
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: Valor final =================================
+    id: 46771048995115430
+    identification: 
+      column-name: Valor final
+      type: Plain Text
+
+    heading: 
+      heading: Valor Final
+      alignment: start
+
+    layout: 
+      sequence: 110
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: Razón social ================================
+    id: 46771244936115432
+    identification: 
+      column-name: Razón social
+      type: Plain Text
+
+    heading: 
+      heading: Razón Social
+      alignment: start
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: N° Factura ==================================
+    id: 46771321641115433
+    identification: 
+      column-name: N° Factura
+      type: Plain Text
+
+    heading: 
+      heading: N° Factura
+      alignment: start
+
+    layout: 
+      sequence: 20
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: Fecha de vencimiento ========================
+    id: 46771498360115434
+    identification: 
+      column-name: Fecha de vencimiento
+      type: Plain Text
+
+    heading: 
+      heading: Fecha De Vencimiento
+      alignment: start
+
+    layout: 
+      sequence: 40
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+page-items: 
+- # ====== Page Item: P203_MONEDA_RC ===========================
+  id: 46769753188115417
+  identification: 
+    name: P203_MONEDA_RC
+    type: Select List
+
+  label: 
+    label: Moneda
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: Submit Page
+    execute-validations: true
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Soles;PEN,Dólares;USD'
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: PEN
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P203_FECHA_ACTUAL ========================
+  id: 46771199700115431
+  identification: 
+    name: P203_FECHA_ACTUAL
+    type: Display Only
+
+  label: 
+    label: Fecha Actual
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: SQL Query (return single value)
+    sql-query-(return-single-value): SELECT TO_CHAR(CURRENT_DATE, 'DD/MM/YYYY') FROM dual;
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+

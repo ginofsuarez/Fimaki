@@ -78,7 +78,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Validación bancaria =========================
-  id: 32069230646927764
+  id: 23887918056706006
   identification: 
     name: Validación bancaria
     type: Static Content
@@ -131,7 +131,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Mensaje =====================================
-  id: 32070093599927772
+  id: 23888781009706014
   identification: 
     name: Mensaje
     type: Static Content
@@ -151,7 +151,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Validación bancaria # 32069230646927764
+    parent-region: Validación bancaria # 23887918056706006
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -191,14 +191,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Footer ======================================
-  id: 34530698758986068
+  id: 26349386168764310
   identification: 
     name: Footer
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Validación bancaria # 32069230646927764
+    parent-region: Validación bancaria # 23887918056706006
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -231,7 +231,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P202_PREF_PRIMER_DEPOSITO ================
-  id: 32069380639927765
+  id: 23888068049706007
   identification: 
     name: P202_PREF_PRIMER_DEPOSITO
     type: Checkbox
@@ -245,7 +245,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Footer # 34530698758986068
+    region: Footer # 26349386168764310
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -280,7 +280,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P202_ID_CUENTA_BANCARIA ==================
-  id: 32069798262927769
+  id: 23888485672706011
   identification: 
     name: P202_ID_CUENTA_BANCARIA
     type: Hidden
@@ -290,7 +290,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Validación bancaria # 32069230646927764
+    region: Validación bancaria # 23887918056706006
     slot: BODY
 
   advanced: 
@@ -311,14 +311,14 @@ page-items:
 
 buttons: 
 - # ====== Button: DEPOSITO ====================================
-  id: 32069432444927766
+  id: 23888119854706008
   identification: 
     button-name: DEPOSITO
     label: Registrar Depósito
 
   layout: 
     sequence: 20
-    region: Validación bancaria # 32069230646927764
+    region: Validación bancaria # 23887918056706006
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -345,14 +345,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: NUEVA =======================================
-  id: 32069519546927767
+  id: 23888206956706009
   identification: 
     button-name: NUEVA
     label: Crear otra cuenta bancaria
 
   layout: 
     sequence: 30
-    region: Validación bancaria # 32069230646927764
+    region: Validación bancaria # 23887918056706006
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -378,14 +378,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CANCELAR ====================================
-  id: 32069622347927768
+  id: 23888309757706010
   identification: 
     button-name: CANCELAR
     label: Cancelar
 
   layout: 
     sequence: 40
-    region: Validación bancaria # 32069230646927764
+    region: Validación bancaria # 23887918056706006
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -412,7 +412,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Guardar Preferencia =================
-  id: 32069862461927770
+  id: 23888549871706012
   identification: 
     name: Guardar Preferencia
 
@@ -429,7 +429,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 32069915597927771
+    id: 23888603007706013
     identification: 
       action: Execute Server-side Code
 
@@ -443,7 +443,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Guardar Preferencia # 32069862461927770
+      event: Guardar Preferencia # 23888549871706012
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true

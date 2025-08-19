@@ -48,7 +48,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Editar Tipo de Código =======================
-  id: 35677237749128873
+  id: 27500119633914983
   identification: 
     name: Editar Tipo de Código
     type: Form
@@ -98,7 +98,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 35685357405128918
+  id: 27508239289915028
   identification: 
     name: Buttons
     type: Static Content
@@ -136,7 +136,7 @@ regions:
       show-line-breaks: true
 
 - # ====== Region: Auditoria ===================================
-  id: 36675954030138128
+  id: 28498835914924238
   identification: 
     name: Auditoria
     type: Static Content
@@ -184,7 +184,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P510_ID_CODIGO_REF_TIPO ==================
-  id: 35677539130128877
+  id: 27500421014914987
   identification: 
     name: P510_ID_CODIGO_REF_TIPO
     type: Hidden
@@ -194,14 +194,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Editar Tipo de Código # 35677237749128873
+    region: Editar Tipo de Código # 27500119633914983
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: ID_CODIGO_REF_TIPO
     data-type: NUMBER
     query-only: true
@@ -217,7 +217,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P510_CODIGO ==============================
-  id: 35677941396128883
+  id: 27500823280914993
   identification: 
     name: P510_CODIGO
     type: Text Field
@@ -235,7 +235,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Editar Tipo de Código # 35677237749128873
+    region: Editar Tipo de Código # 27500119633914983
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -259,7 +259,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: CODIGO
     data-type: VARCHAR2
     query-only: false
@@ -281,7 +281,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P510_NOMBRE ==============================
-  id: 35678357659128885
+  id: 27501239543914995
   identification: 
     name: P510_NOMBRE
     type: Text Field
@@ -299,7 +299,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Editar Tipo de Código # 35677237749128873
+    region: Editar Tipo de Código # 27500119633914983
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -323,7 +323,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: NOMBRE
     data-type: VARCHAR2
     query-only: false
@@ -341,7 +341,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P510_DESCRIPCION =========================
-  id: 35678700809128887
+  id: 27501582693914997
   identification: 
     name: P510_DESCRIPCION
     type: Text Field
@@ -359,7 +359,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Editar Tipo de Código # 35677237749128873
+    region: Editar Tipo de Código # 27500119633914983
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -383,7 +383,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: DESCRIPCION
     data-type: VARCHAR2
     query-only: false
@@ -401,7 +401,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P510_SISTEMA_SN ==========================
-  id: 35679147096128888
+  id: 27502028980914998
   identification: 
     name: P510_SISTEMA_SN
     type: Switch
@@ -419,7 +419,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Editar Tipo de Código # 35677237749128873
+    region: Editar Tipo de Código # 27500119633914983
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -442,7 +442,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: SISTEMA_SN
     data-type: VARCHAR2
     query-only: false
@@ -457,7 +457,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P510_ACTIVO_SN ===========================
-  id: 35679563559128890
+  id: 27502445443915000
   identification: 
     name: P510_ACTIVO_SN
     type: Switch
@@ -475,7 +475,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Editar Tipo de Código # 35677237749128873
+    region: Editar Tipo de Código # 27500119633914983
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -498,7 +498,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: ACTIVO_SN
     data-type: VARCHAR2
     query-only: false
@@ -513,7 +513,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P510_CREADO_POR ==========================
-  id: 35679938698128892
+  id: 27502820582915002
   identification: 
     name: P510_CREADO_POR
     type: Display Only
@@ -530,7 +530,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 36675954030138128
+    region: Auditoria # 28498835914924238
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -549,7 +549,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -565,7 +565,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P510_CREADO ==============================
-  id: 35680348551128893
+  id: 27503230435915003
   identification: 
     name: P510_CREADO
     type: Display Only
@@ -582,7 +582,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 36675954030138128
+    region: Auditoria # 28498835914924238
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -602,7 +602,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -618,7 +618,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P510_MODIFICADO_POR ======================
-  id: 35681155856128899
+  id: 27504037740915009
   identification: 
     name: P510_MODIFICADO_POR
     type: Display Only
@@ -635,7 +635,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 36675954030138128
+    region: Auditoria # 28498835914924238
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -654,7 +654,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -670,7 +670,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P510_MODIFICADO ==========================
-  id: 35681577805128901
+  id: 27504459689915011
   identification: 
     name: P510_MODIFICADO
     type: Display Only
@@ -687,7 +687,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 36675954030138128
+    region: Auditoria # 28498835914924238
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -707,7 +707,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -724,14 +724,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 35685746934128919
+  id: 27508628818915029
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 35685357405128918
+    region: Buttons # 27508239289915028
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -750,14 +750,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 35687098615128926
+  id: 27509980499915036
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 35685357405128918
+    region: Buttons # 27508239289915028
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -788,14 +788,14 @@ buttons:
     item: P510_ID_CODIGO_REF_TIPO
 
 - # ====== Button: SAVE ========================================
-  id: 35687487837128928
+  id: 27510369721915038
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 35685357405128918
+    region: Buttons # 27508239289915028
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -821,14 +821,14 @@ buttons:
     item: P510_ID_CODIGO_REF_TIPO
 
 - # ====== Button: CREATE ======================================
-  id: 35687972002128929
+  id: 27510853886915039
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 35685357405128918
+    region: Buttons # 27508239289915028
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -855,7 +855,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 35685835286128919
+  id: 27508717170915029
   identification: 
     name: Cancel Dialog
 
@@ -867,23 +867,23 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 35685746934128919
+    button: CANCEL # 27508628818915029
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 35686629379128924
+    id: 27509511263915034
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 35685835286128919
+      event: Cancel Dialog # 27508717170915029
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: P510_CREADO must be timestamp ===========
-  id: 35680813981128898
+  id: 27503695865915008
   identification: 
     name: P510_CREADO must be timestamp
 
@@ -898,10 +898,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P510_CREADO # 35680348551128893
+    associated-item: P510_CREADO # 27503230435915003
 
 - # ====== Validation: P510_MODIFICADO must be timestamp =======
-  id: 35682005282128903
+  id: 27504887166915013
   identification: 
     name: P510_MODIFICADO must be timestamp
 
@@ -916,16 +916,16 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P510_MODIFICADO # 35681577805128901
+    associated-item: P510_MODIFICADO # 27504459689915011
 
 processes: 
 - # ====== Process: Initialize form Editar Tipo de Código ======
-  id: 35688353914128931
+  id: 27511235798915041
   identification: 
     name: Initialize form Editar Tipo de Código
     type: Form - Initialization
     execution-chain: None
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
 
   execution: 
     sequence: 10
@@ -933,12 +933,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Editar Tipo de Código =========
-  id: 35688771436128933
+  id: 27511653320915043
   identification: 
     name: Process form Editar Tipo de Código
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Editar Tipo de Código # 35677237749128873
+    form-region: Editar Tipo de Código # 27500119633914983
 
   settings: 
     target-type: Region Source
@@ -955,7 +955,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 35689105279128934
+  id: 27511987163915044
   identification: 
     name: Close Dialog
     type: Close Dialog

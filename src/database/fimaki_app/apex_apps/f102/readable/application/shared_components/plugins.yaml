@@ -1,0 +1,534 @@
+---
+- # ====== Plugin: Advanced Slider =============================
+  id: 7001394360964491705
+  identification: 
+    name: Advanced Slider
+    internal-name: HR.BILOG.MGORICKI.ADVANCED_SLIDER
+    type: Item
+
+  advanced: 
+    quick-pick: false
+
+  subscription: 
+    version-number: 41721104940954
+
+  source: 
+    pl/sql-code: |2
+        procedure p_render_item (
+            p_item   in            apex_plugin.t_item,
+            p_plugin in            apex_plugin.t_plugin,
+            p_param  in            apex_plugin.t_item_render_param,
+            p_result in out nocopy apex_plugin.t_item_render_result) 
+        AS
+          v_css_path    varchar2(200)  := p_plugin.file_prefix||p_plugin.attribute_01;
+          v_js_path     varchar2(200)  := p_plugin.file_prefix||p_plugin.attribute_02;
+          v_onload_code varchar2(2000);
+          v_name        varchar2(30);
+          v_readonly    varchar2(1) := 'N';
+          v_file_version pls_integer := 1;
+        BEGIN
+          v_name := apex_plugin.get_input_name_for_page_item(false);
+          
+          sys.htp.prn('<div class="slider_container"><input type="hidden" id="'||p_item.name||'" value="'||p_param.value||'" name="'||v_name||'" /><div id="'||p_item.name||'_slider"></div></div>');
+          
+          p_result.is_navigable := true;
+          
+          -- add cssPCK_PLUGINS
+      
+          apex_css.add_file (p_name => 'jquery-ui-1.10.4.slider.min.css?v='||v_file_version
+                           , p_directory => v_css_path
+                           , p_skip_extension => true);
+      
+          apex_css.add_file (p_name => 'jquery-ui-slider-pips.css?v='||v_file_version
+                           , p_directory => v_css_path
+                           , p_skip_extension => true);          
+                           
+          apex_css.add_file (p_name => 'advanced.slider.1.0.0.css?v='||v_file_version
+                           , p_directory => v_css_path
+                           , p_skip_extension => true);                      
+                      
+          if p_param.is_readonly then
+            v_readonly := 'Y';
+          end if;
+          
+          -- add JS
+          apex_javascript.add_library (p_name => 'jquery-ui-1.12.1.slider.min.js?v='||v_file_version
+                                     , p_directory => v_js_path
+                                     , p_skip_extension => true);
+                                     
+          apex_javascript.add_library (p_name => 'jquery-ui-slider-pips#MIN#.js?v='||v_file_version
+                                     , p_directory => v_js_path
+                                     , p_skip_extension => true);                               
+                                    
+          apex_javascript.add_library (p_name => 'advanced.slider.1.0.0#MIN#.js?v='||v_file_version
+                                     , p_directory => v_js_path
+                                     , p_skip_extension => true);
+                                     
+                      
+          -- onload kod
+          v_onload_code := 'apex.jQuery("#'||p_item.name||'").advancedslider({  '||
+            apex_javascript.add_attribute (p_name => 'range'
+                                         , p_value => p_item.attribute_01
+                                         , p_add_comma => true)||
+            apex_javascript.add_attribute (p_name => 'sliderColor'
+                                         , p_value => p_item.attribute_10
+                                         , p_add_comma => true)||                                   
+            apex_javascript.add_attribute (p_name => 'min'
+                                         , p_value => p_item.attribute_02
+                                         , p_add_comma => true)||              
+            apex_javascript.add_attribute (p_name => 'max'
+                                         , p_value => p_item.attribute_03
+                                         , p_add_comma => true)|| 
+            apex_javascript.add_attribute (p_name => 'step'
+                                         , p_value => p_item.attribute_07
+                                         , p_add_comma => true)||                                    
+            apex_javascript.add_attribute (p_name => 'showPips'
+                                         , p_value => p_item.attribute_05
+                                         , p_add_comma => true)|| 
+            apex_javascript.add_attribute (p_name => 'pipPrefix'
+                                         , p_value => p_item.attribute_08
+                                         , p_add_comma => true)|| 
+            apex_javascript.add_attribute (p_name => 'pipSufix'
+                                         , p_value => p_item.attribute_09
+                                         , p_add_comma => true)||                                    
+            apex_javascript.add_attribute (p_name => 'showTooltips'
+                                         , p_value => p_item.attribute_06
+                                         , p_add_comma => true)||     
+            apex_javascript.add_attribute (p_name => 'readonly'
+                                         , p_value => v_readonly
+                                         , p_add_comma => true)||    
+            apex_javascript.add_attribute (p_name => 'pipStep'
+                                         , p_value => p_item.attribute_04
+                                         , p_add_comma => false)                                       
+          ||'})';
+          
+          
+          apex_javascript.add_onload_code (p_code => v_onload_code);
+      --  
+          
+        END p_render_item;
+
+  callbacks: 
+    api-interface: Procedure with Legacy Attributes [deprecated]
+    render-procedure/function-name: p_render_item
+
+  supported-for: 
+    component-type: 
+    - Page Items
+
+  standard-attributes: 
+    attributes: 
+    - Is Visible Widget
+    - Standard Form Element
+    - Session State Changeable
+    - Has Read Only Attribute
+    - Has Source Attributes
+
+  custom-attributes: 
+    substitute-attribute-values: true
+
+  information: 
+    version: 1.0.3
+    about-url: 'https://apex.oracle.com/pls/apex/f?p=apexbyg:advancedslider'
+    help-text: |
+      v1.0.1 Added triggering on change DA event
+      v1.0.3 New version of APEX UI slider (1.12.1) - fixes modal close icon
+
+  custom-attributes: 
+  - # ====== Custom Attribute: CSS URL ===========================
+    id: 69502946343522302
+    identification: 
+      static-id: attribute_01
+      attribute: 1
+      name: CSS URL
+      scope: Application
+
+    layout: 
+      sequence: 10
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    default: 
+      value: advanced_slider/css/
+
+    help: 
+      help-text: Path to CSS files
+
+  - # ====== Custom Attribute: JS URL ============================
+    id: 69508691032532055
+    identification: 
+      static-id: attribute_02
+      attribute: 2
+      name: JS URL
+      scope: Application
+
+    layout: 
+      sequence: 20
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    default: 
+      value: advanced_slider/js/
+
+    help: 
+      help-text: Path to JS files
+
+  - # ====== Custom Attribute: Steps =============================
+    id: 6991634768539366590
+    identification: 
+      static-id: attribute_07
+      attribute: 7
+      name: Steps
+      scope: Component
+
+    layout: 
+      sequence: 35
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: 1
+
+    help: 
+      help-text: Steps of slider.
+
+  - # ====== Custom Attribute: Pip Steps =========================
+    id: 6991643189926410052
+    identification: 
+      static-id: attribute_04
+      attribute: 4
+      name: Pip Steps
+      scope: Component
+
+    layout: 
+      sequence: 55
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: 1
+
+    condition: 
+      depending-on-custom-attribute: Show Pips # 7010332360777611828
+      depending-on-condition-type: equal to
+      expression: Y
+      always-evaluate: true
+
+    help: 
+      help-text: Define pip steps. Only visually, not like slider steps.
+
+  - # ====== Custom Attribute: Pip Prefix ========================
+    id: 6991647200005433934
+    identification: 
+      static-id: attribute_08
+      attribute: 8
+      name: Pip Prefix
+      scope: Component
+
+    layout: 
+      sequence: 57
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Show Pips # 7010332360777611828
+      depending-on-condition-type: equal to
+      expression: Y
+      always-evaluate: true
+
+    help: 
+      help-text: Prefix of a pip.
+
+  - # ====== Custom Attribute: Pip Sufix =========================
+    id: 6991650824227436248
+    identification: 
+      static-id: attribute_09
+      attribute: 9
+      name: Pip Sufix
+      scope: Component
+
+    layout: 
+      sequence: 59
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Show Pips # 7010332360777611828
+      depending-on-condition-type: equal to
+      expression: Y
+      always-evaluate: true
+
+    help: 
+      help-text: Sufix of a pip.
+
+  - # ====== Custom Attribute: Background color ==================
+    id: 6991703917727588546
+    identification: 
+      static-id: attribute_10
+      attribute: 10
+      name: Background color
+      scope: Component
+
+    layout: 
+      sequence: 15
+
+    settings: 
+      type: Color
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Range # 7010316665785637614
+      depending-on-condition-type: equal to
+      expression: Y
+      always-evaluate: true
+
+    help: 
+      help-text: Define backgrounc color. By default is defined by jQuery UI theme.
+
+    examples: 
+      examples: '#f6f6f6'
+
+  - # ====== Custom Attribute: Range =============================
+    id: 7010316665785637614
+    identification: 
+      static-id: attribute_01
+      attribute: 1
+      name: Range
+      scope: Component
+
+    layout: 
+      sequence: 10
+
+    settings: 
+      type: Yes/No
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    default: 
+      value: N
+
+    help: 
+      help-text: "Choose between simple and range slider. If it's range slider values of min and max values are separated with colon (:), for example 1:10."
+
+  - # ====== Custom Attribute: Min. value ========================
+    id: 7010320193952770179
+    identification: 
+      static-id: attribute_02
+      attribute: 2
+      name: Min. value
+      scope: Component
+
+    layout: 
+      sequence: 20
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: 0
+
+    help: 
+      help-text: Minimal allowed value.
+
+  - # ====== Custom Attribute: Max. value ========================
+    id: 7010320827019772429
+    identification: 
+      static-id: attribute_03
+      attribute: 3
+      name: Max. value
+      scope: Component
+
+    layout: 
+      sequence: 30
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: 100
+
+    help: 
+      help-text: Maximal allowed value.
+
+  - # ====== Custom Attribute: Show Pips =========================
+    id: 7010332360777611828
+    identification: 
+      static-id: attribute_05
+      attribute: 5
+      name: Show Pips
+      scope: Component
+
+    layout: 
+      sequence: 50
+
+    settings: 
+      type: Yes/No
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    default: 
+      value: N
+
+    help: 
+      help-text: Show pip line below.
+
+  - # ====== Custom Attribute: Show Tooltip ======================
+    id: 7010333929111612883
+    identification: 
+      static-id: attribute_06
+      attribute: 6
+      name: Show Tooltip
+      scope: Component
+
+    layout: 
+      sequence: 60
+
+    settings: 
+      type: Yes/No
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    default: 
+      value: N
+
+    help: 
+      help-text: It this option is on, there's no label inside of a slider.
+
+  files: 
+  - # ====== File: advanced_slider/js/jquery-ui-1.12.1.slider.js =
+    id: 41970800881932729
+    identification: 
+      file-name: advanced_slider/js/jquery-ui-1.12.1.slider.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: advanced_slider/js/jquery-ui-1.12.1.slider.min.
+    id: 41971121221932731
+    identification: 
+      file-name: advanced_slider/js/jquery-ui-1.12.1.slider.min.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: advanced_slider/css/advanced.slider.1.0.0.css =
+    id: 69540921593615277
+    identification: 
+      file-name: advanced_slider/css/advanced.slider.1.0.0.css
+
+    attributes: 
+      mime-type: text/css
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: advanced_slider/css/jquery-ui-1.10.4.slider.min
+    id: 69541565390615282
+    identification: 
+      file-name: advanced_slider/css/jquery-ui-1.10.4.slider.min.css
+
+    attributes: 
+      mime-type: text/css
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: advanced_slider/css/jquery-ui-slider-pips.css =
+    id: 69542369907615288
+    identification: 
+      file-name: advanced_slider/css/jquery-ui-slider-pips.css
+
+    attributes: 
+      mime-type: text/css
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: advanced_slider/js/advanced.slider.1.0.0.js ===
+    id: 69543206166615295
+    identification: 
+      file-name: advanced_slider/js/advanced.slider.1.0.0.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: advanced_slider/js/advanced.slider.1.0.0.min.js
+    id: 69544006850615303
+    identification: 
+      file-name: advanced_slider/js/advanced.slider.1.0.0.min.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: advanced_slider/js/jquery-ui-1.10.4.slider.min.
+    id: 69544742903615310
+    identification: 
+      file-name: advanced_slider/js/jquery-ui-1.10.4.slider.min.js
+
+    attributes: 
+      mime-type: application/x-javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: advanced_slider/js/jquery-ui-slider-pips.js ===
+    id: 69545559097615320
+    identification: 
+      file-name: advanced_slider/js/jquery-ui-slider-pips.js
+
+    attributes: 
+      mime-type: application/x-javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: advanced_slider/js/jquery-ui-slider-pips.min.js
+    id: 69546361298615329
+    identification: 
+      file-name: advanced_slider/js/jquery-ui-slider-pips.min.js
+
+    attributes: 
+      mime-type: application/x-javascript
+      file-character-set: Unicode UTF-8
+

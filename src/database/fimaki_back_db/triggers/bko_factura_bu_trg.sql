@@ -1,16 +1,24 @@
 create or replace editionable trigger fimaki_back_db.bko_factura_bu_trg before
-    update on fimaki_back_db.bko_factura
+    insert or update on fimaki_back_db.bko_factura
     for each row
 begin
-    :new.modificado := localtimestamp;
-    :new.modificado_por := nvl(
-        sys_context('APEX$SESSION', 'APP_USER'),
-        user
-    );
+    if inserting then
+        :new.creado := current_timestamp;
+        :new.creado_por := nvl(
+            sys_context('APEX$SESSION', 'APP_USER'),
+            user
+        );
+    elsif updating then
+        :new.modificado := current_timestamp;
+        :new.modificado_por := nvl(
+            sys_context('APEX$SESSION', 'APP_USER'),
+            user
+        );
+    end if;
 end bko_factura_bu_trg;
 /
 
 alter trigger fimaki_back_db.bko_factura_bu_trg enable;
 
 
--- sqlcl_snapshot {"hash":"6bcfbc1c7ee31fb768501230edfda134eb036e13","type":"TRIGGER","name":"BKO_FACTURA_BU_TRG","schemaName":"FIMAKI_BACK_DB","sxml":""}
+-- sqlcl_snapshot {"hash":"788f8df5a0ff31cbbf31001d14747609ad1b735c","type":"TRIGGER","name":"BKO_FACTURA_BU_TRG","schemaName":"FIMAKI_BACK_DB","sxml":""}

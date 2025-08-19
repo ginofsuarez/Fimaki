@@ -1,6 +1,6 @@
 ---
 - # ====== Application Item: P_ID_PERSONA ======================
-  id: 32029978691121780
+  id: 23848666100900022
   identification: 
     name: P_ID_PERSONA
     scope: Application
@@ -13,7 +13,7 @@
     version-number: 41718511897776
 
 - # ====== Application Item: P_ID_ROL_PERSONA ==================
-  id: 32123221999505904
+  id: 23941909409284146
   identification: 
     name: P_ID_ROL_PERSONA
     scope: Application
@@ -26,7 +26,7 @@
     version-number: 41718518643596
 
 - # ====== Application Item: G_TOKEN_ERROR_MSG =================
-  id: 37104708201186537
+  id: 28923395610964779
   identification: 
     name: G_TOKEN_ERROR_MSG
     scope: Application
@@ -39,7 +39,7 @@
     version-number: 41720445145267
 
 - # ====== Application Item: LOGIN_FAILED ======================
-  id: 44929482288564163
+  id: 36748169698342405
   identification: 
     name: LOGIN_FAILED
     scope: Global

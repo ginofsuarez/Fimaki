@@ -1,0 +1,136 @@
+---
+# ====== Theme: Universal Theme ==============================
+id: 42
+identification: 
+  theme-number: 42
+  name: Universal Theme
+  identifier: UNIVERSAL_THEME
+  version: 24.2
+
+navigation: 
+  type: List
+  navigation-bar-type: List
+
+javascript: 
+  file-urls: 
+  - '#APEX_FILES#libraries/apex/#MIN_DIRECTORY#widget.stickyWidget#MIN#.js?v=#APEX_VERSION#'
+  - '#THEME_FILES#js/theme42#MIN#.js?v=#APEX_VERSION#'
+
+css: 
+  file-urls: 
+  - '#THEME_FILES#css/Core#MIN#.css?v=#APEX_VERSION#'
+
+component-defaults: 
+  current-theme-style: 'Vita (FIMAKI) '
+  page: Standard
+  navigation-bar-list: Navigation Bar
+  navigation-menu-list-position: Side
+  navigation-menu-list-(top): Top Navigation Menu
+  navigation-menu-list-(side): Side Navigation Menu
+  login-page: Login
+  error-page: Login
+  printer-friendly-page: Standard
+  breadcrumb: Breadcrumb
+  button: Text
+  legacy-calendar: Calendar
+  default-label: Optional - Floating
+  optional-label: Optional - Floating
+  required-label: Required - Floating
+  list: Links List
+  region: Standard
+  classic-report: Standard
+
+region-defaults: 
+  breadcrumbs: Title Bar
+  charts: Standard
+  forms: Standard
+  lists: Standard
+  reports: Standard
+  wizards: Standard
+  interactive-reports: Interactive Report
+
+dialog-defaults: 
+  dialog-content-region: Blank with Attributes
+  dialog-button-region: Buttons Container
+  dialog-page: Modal Dialog
+
+icons: 
+  library: Font APEX
+
+files: 
+  file-prefix: '#APEX_FILES#themes/theme_42/24.2/'
+
+styles: 
+- # ====== Style: Vita (FIMAKI) ================================
+  id: 40819991737659360
+  identification: 
+    name: Vita (FIMAKI)
+
+  settings: 
+    is-public: true
+    accessibility-tested: true
+
+  theme-roller-attributes: 
+    read-only: false
+    input-parameter-file-urls: '#THEME_FILES#less/theme/Vita.less'
+    output-css-file-url: '#THEME_DB_FILES#13137843227880673.css'
+    json-configuration: '{"classes":[],"vars":{"@g_Accent-BG":"#283b3f","@g_Accent-OG":"#e9e1de","@g_Container-BorderRadius":"8px","@Head-Height":"72px","@g_Button-BG":"#d9d7ef","@g_Button-Text":"#383838","@l_Button-Hot-BG":"#8b4eb0","@l_Button-Hot-Text":"#ffffff","@g_Link-Base":"#283b3f"},"customCSS":"","useCustomLess":"N"}'
+
+- # ====== Style: Fimaki =======================================
+  id: 43601994014850834
+  identification: 
+    name: Fimaki
+
+  settings: 
+    is-public: true
+    accessibility-tested: true
+
+  theme-roller-attributes: 
+    read-only: false
+    input-parameter-file-urls: '#THEME_FILES#less/theme/Vita.less'
+    output-css-file-url: '#THEME_DB_FILES#7978916237963448.css'
+    json-configuration: '{"classes":[],"vars":{"@g_Accent-BG":"#283b3f","@g_Accent-OG":"#e9e1de","@g_Focus":"#54e8d4","@g_Nav-BG":"#54e8d4","@g_Nav-FG":"#000000","@g_Nav-Active-BG":"#8b4eb0","@g_Nav-Active-FG":"#ffffff","@g_Link-Base":"#8b4eb0","@g_Nav-Icon":"#54e8d4","@g_Nav-Icon-Active":"#ffffff","@g_Nav-Accent-BG":"#c1beed","@g_Nav-Accent-FG":"#000000","@g_Nav-Badge-BG":"#c1beed","@g_Nav-Badge-FG":"#000000","@g_NavBarMenu-BG":"#c1beed","@g_NavBarMenu-FG":"#262626","@g_NavBarMenu-Active-BG":"#c1beed","@g_NavBarMenu-Active-FG":"#000000","@g_Region-Header-BG":"#8b4eb0","@g_Region-Header-FG":"#ffffff","@g_Region-BG":"#c1beed","@g_Region-FG":"#262626","@g_Disabled-BG":"#e9e1de","@g_Disabled-FG":"#000000","@g_Form-Item-BG":"#b7b4ea","@g_Form-Item-FG":"#000000","@g_Color-Palette-1":"#54e8d4","@g_Color-Palette-1-FG":"#8b4eb0","@g_Color-Palette-2":"#e9e1de","@g_Color-Palette-2-FG":"#283b3f","@g_Color-Palette-3":"#8b4eb0","@g_Color-Palette-3-FG":"#e9e1de","@g_Color-Palette-4":"#54e8d4","@g_Color-Palette-4-FG":"#e9e1de","@g_Color-Palette-5":"#283b3f","@g_Color-Palette-5-FG":"#54e8d4","@g_Color-Palette-6":"#c1beed","@g_Color-Palette-6-FG":"#8b4eb0","@g_Color-Palette-7":"#ffffff","@g_Color-Palette-7-FG":"#ffffff","@g_Color-Palette-8":"#ffffff","@g_Color-Palette-8-FG":"#ffffff","@g_Color-Palette-9":"#ffffff","@g_Color-Palette-9-FG":"#ffffff","@g_Color-Palette-10":"#ffffff","@g_Color-Palette-10-FG":"#ffffff","@g_Color-Palette-11":"#ffffff","@g_Color-Palette-11-FG":"#ffffff","@g_Color-Palette-12":"#ffffff","@g_Color-Palette-12-FG":"#ffffff","@g_Color-Palette-13":"#ffffff","@g_Color-Palette-13-FG":"#ffffff","@g_Color-Palette-14":"#ffffff","@g_Color-Palette-14-FG":"#ffffff","@g_Color-Palette-15":"#ffffff","@g_Color-Palette-15-FG":"#ffffff","@Head-Height":"72px"},"customCSS":"","useCustomLess":"N"}'
+
+- # ====== Style: Vita (FIMAKI)  ===============================
+  id: 47324717520120136
+  identification: 
+    name: 'Vita (FIMAKI) '
+
+  settings: 
+    is-public: true
+    accessibility-tested: true
+
+  theme-roller-attributes: 
+    read-only: false
+    input-parameter-file-urls: '#THEME_FILES#less/theme/Vita.less'
+    output-css-file-url: '#THEME_DB_FILES#19642569010341449.css'
+    json-configuration: '{"classes":[],"vars":{"@g_Accent-BG":"#283b3f","@g_Accent-OG":"#e9e1de","@g_Container-BorderRadius":"8px","@Head-Height":"72px","@g_Button-BG":"#d9d7ef","@g_Button-Text":"#383838","@l_Button-Hot-BG":"#8b4eb0","@l_Button-Hot-Text":"#ffffff","@g_Link-Base":"#283b3f","@g_Nav-Icon":"#8b4eb0","@g_Nav-Icon-Active":"#f2f2f2","@g_Nav-BG":"#ffffff","@g_Nav-FG":"#8b4eb0","@g_Nav-Active-BG":"#8b4eb0","@g_Nav-Active-FG":"#f2f2f2","@g_Button-BorderRadius":"4px","@g_Form-BorderRadius":"4px"},"customCSS":"","useCustomLess":"N"}'
+
+files: 
+- # ====== File: 13137843227880673.css =========================
+  id: 40820439441659365
+  identification: 
+    file-name: 13137843227880673.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== File: 7978916237963448.css ==========================
+  id: 43602421029850839
+  identification: 
+    file-name: 7978916237963448.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== File: 19642569010341449.css =========================
+  id: 47325067156120141
+  identification: 
+    file-name: 19642569010341449.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+

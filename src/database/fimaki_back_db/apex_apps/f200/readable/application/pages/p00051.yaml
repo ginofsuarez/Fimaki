@@ -120,7 +120,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Persona =====================================
-  id: 40010188863031534
+  id: 31833070747817644
   identification: 
     name: Persona
     type: Form
@@ -164,7 +164,7 @@ regions:
       enabled: false
 
 - # ====== Region: Contactos ===================================
-  id: 42473088152089853
+  id: 34295970036875963
   identification: 
     name: Contactos
     type: Interactive Report
@@ -215,7 +215,7 @@ regions:
 
   layout: 
     sequence: 80
-    parent-region: Tabs # 44282979478289927
+    parent-region: Tabs # 36105861363076037
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -246,7 +246,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 40721965177789325
+    id: 32544847062575435
     link: 
       link-column: Link to Custom Target
       target: 
@@ -312,14 +312,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 41177354288360077
+      id: 33000236173146187
       identification: 
         name: Primary Report
         alias: 330003
 
     columns: 
     - # ====== Column: TIPO_DOCUMENTO_RC ===========================
-      id: 40722032925789326
+      id: 32544914810575436
       identification: 
         column-name: TIPO_DOCUMENTO_RC
         type: Plain Text
@@ -360,7 +360,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NUMERO_DOC ==================================
-      id: 40722186065789327
+      id: 32545067950575437
       identification: 
         column-name: NUMERO_DOC
         type: Plain Text
@@ -401,7 +401,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_CONTACTO =================================
-      id: 40722222515789328
+      id: 32545104400575438
       identification: 
         column-name: ID_CONTACTO
         type: Hidden
@@ -419,7 +419,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NOMBRES =====================================
-      id: 40722401559789329
+      id: 32545283444575439
       identification: 
         column-name: NOMBRES
         type: Plain Text
@@ -460,7 +460,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: APELLIDO_PATERNO ============================
-      id: 40722437445789330
+      id: 32545319330575440
       identification: 
         column-name: APELLIDO_PATERNO
         type: Plain Text
@@ -501,7 +501,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: APELLIDO_MATERNO ============================
-      id: 40722549496789331
+      id: 32545431381575441
       identification: 
         column-name: APELLIDO_MATERNO
         type: Plain Text
@@ -542,13 +542,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CARGO_RC ====================================
-      id: 40722672182789332
+      id: 32545554067575442
       identification: 
         column-name: CARGO_RC
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_CARGO # 45068286632490694
+        list-of-values: LOV_CARGO # 36891168517276804
 
       heading: 
         heading: Cargo
@@ -583,7 +583,7 @@ regions:
         pivot: true
 
     - # ====== Column: CORREO ======================================
-      id: 40722787042789333
+      id: 32545668927575443
       identification: 
         column-name: CORREO
         type: Plain Text
@@ -624,7 +624,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TELEFONO_1 ==================================
-      id: 40722839611789334
+      id: 32545721496575444
       identification: 
         column-name: TELEFONO_1
         type: Plain Text
@@ -665,7 +665,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_PERSONA ==================================
-      id: 40722923801789335
+      id: 32545805686575445
       identification: 
         column-name: ID_PERSONA
         type: Hidden
@@ -683,13 +683,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TIPO_CONTACTO_RC ============================
-      id: 42539783424450929
+      id: 34362665309237039
       identification: 
         column-name: TIPO_CONTACTO_RC
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_TIPO_CONTACTO # 44144806342328305
+        list-of-values: LOV_TIPO_CONTACTO # 35967688227114415
 
       heading: 
         heading: Tipo Contacto
@@ -724,7 +724,7 @@ regions:
         pivot: true
 
     - # ====== Column: TELEFONO_2 ==================================
-      id: 42539893498450930
+      id: 34362775383237040
       identification: 
         column-name: TELEFONO_2
         type: Plain Text
@@ -765,7 +765,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NOTAS =======================================
-      id: 42539990174450931
+      id: 34362872059237041
       identification: 
         column-name: NOTAS
         type: Plain Text
@@ -806,7 +806,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ACTIVO_SN ===================================
-      id: 42540080472450932
+      id: 34362962357237042
       identification: 
         column-name: ACTIVO_SN
         type: Plain Text
@@ -889,14 +889,14 @@ regions:
         alignment: center
 
 - # ====== Region: Persona jurídica ============================
-  id: 43663384303875327
+  id: 35486266188661437
   identification: 
     name: Persona jurídica
     type: Static Content
 
   layout: 
     sequence: 40
-    parent-region: Persona # 40010188863031534
+    parent-region: Persona # 31833070747817644
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: false
@@ -930,7 +930,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Información Registral =======================
-  id: 43663906450875332
+  id: 35486788335661442
   identification: 
     name: Información Registral
     type: Form
@@ -944,7 +944,7 @@ regions:
 
   layout: 
     sequence: 40
-    parent-region: Persona jurídica # 43663384303875327
+    parent-region: Persona jurídica # 35486266188661437
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -977,7 +977,7 @@ regions:
       enabled: false
 
 - # ====== Region: Dirección ===================================
-  id: 43666259916875355
+  id: 35489141801661465
   identification: 
     name: Dirección
     type: Interactive Report
@@ -1026,7 +1026,7 @@ regions:
 
   layout: 
     sequence: 60
-    parent-region: Tabs # 44282979478289927
+    parent-region: Tabs # 36105861363076037
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1057,7 +1057,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 41316218314470196
+    id: 33139100199256306
     link: 
       link-column: Link to Custom Target
       target: 
@@ -1124,14 +1124,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 41348862518699786
+      id: 33171744403485896
       identification: 
         name: Primary Report
         alias: 331718
 
     columns: 
     - # ====== Column: ID_DIRECCION_PERSONA ========================
-      id: 41316347380470197
+      id: 33139229265256307
       identification: 
         column-name: ID_DIRECCION_PERSONA
         type: Hidden
@@ -1149,7 +1149,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TELEFONO_PRINCIPAL ==========================
-      id: 41316531088470199
+      id: 33139412973256309
       identification: 
         column-name: TELEFONO_PRINCIPAL
         type: Plain Text
@@ -1190,7 +1190,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TELEFONO_SECUNDARIO =========================
-      id: 41316706777470200
+      id: 33139588662256310
       identification: 
         column-name: TELEFONO_SECUNDARIO
         type: Plain Text
@@ -1231,7 +1231,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_PERSONA ==================================
-      id: 41316797257470201
+      id: 33139679142256311
       identification: 
         column-name: ID_PERSONA
         type: Hidden
@@ -1249,13 +1249,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ACTIVO_SN ===================================
-      id: 41316822717470202
+      id: 33139704602256312
       identification: 
         column-name: ACTIVO_SN
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SI_NO # 38066481741234781
+        list-of-values: LOV_SI_NO # 29889363626020891
 
       heading: 
         heading: Activo
@@ -1290,7 +1290,7 @@ regions:
         pivot: true
 
     - # ====== Column: ID_PAIS =====================================
-      id: 41316944575470203
+      id: 33139826460256313
       identification: 
         column-name: ID_PAIS
         type: Hidden
@@ -1308,13 +1308,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_SUBDIVISION_N1 ===========================
-      id: 41317111051470204
+      id: 33139992936256314
       identification: 
         column-name: ID_SUBDIVISION_N1
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SUBDIVISON_N1 # 44136788162019460
+        list-of-values: LOV_SUBDIVISON_N1 # 35959670046805570
 
       heading: 
         heading: Departamento
@@ -1349,13 +1349,13 @@ regions:
         pivot: true
 
     - # ====== Column: ID_SUBDIVISION_N2 ===========================
-      id: 41317210365470205
+      id: 33140092250256315
       identification: 
         column-name: ID_SUBDIVISION_N2
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SUBDIVISION_N2 # 44137773572031308
+        list-of-values: LOV_SUBDIVISION_N2 # 35960655456817418
 
       heading: 
         heading: Provincia
@@ -1390,7 +1390,7 @@ regions:
         pivot: true
 
     - # ====== Column: CREADO_POR ==================================
-      id: 41317242495470206
+      id: 33140124380256316
       identification: 
         column-name: CREADO_POR
         type: Plain Text
@@ -1431,7 +1431,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREADO ======================================
-      id: 41317404934470207
+      id: 33140286819256317
       identification: 
         column-name: CREADO
         type: Plain Text
@@ -1473,7 +1473,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO_POR ==============================
-      id: 41317481978470208
+      id: 33140363863256318
       identification: 
         column-name: MODIFICADO_POR
         type: Plain Text
@@ -1514,7 +1514,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO ==================================
-      id: 41317537187470209
+      id: 33140419072256319
       identification: 
         column-name: MODIFICADO
         type: Plain Text
@@ -1556,13 +1556,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PRINCIPAL_SN ================================
-      id: 41317671965470210
+      id: 33140553850256320
       identification: 
         column-name: PRINCIPAL_SN
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SI_NO # 38066481741234781
+        list-of-values: LOV_SI_NO # 29889363626020891
 
       heading: 
         heading: Principal
@@ -1597,7 +1597,7 @@ regions:
         pivot: true
 
     - # ====== Column: DIRECCION ===================================
-      id: 42539457189450926
+      id: 34362339074237036
       identification: 
         column-name: DIRECCION
         type: Plain Text
@@ -1638,13 +1638,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_SUBDIVISION_N3 ===========================
-      id: 42539520031450927
+      id: 34362401916237037
       identification: 
         column-name: ID_SUBDIVISION_N3
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SUBDIVISION_N3 # 44138048778034477
+        list-of-values: LOV_SUBDIVISION_N3 # 35960930662820587
 
       heading: 
         heading: Distrito
@@ -1721,7 +1721,7 @@ regions:
         alignment: center
 
 - # ====== Region: Facturas ====================================
-  id: 44281346101289911
+  id: 36104227986076021
   identification: 
     name: Facturas
     type: Interactive Report
@@ -1763,7 +1763,7 @@ regions:
 
   layout: 
     sequence: 120
-    parent-region: Tabs # 44282979478289927
+    parent-region: Tabs # 36105861363076037
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1794,7 +1794,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 44281459118289912
+    id: 36104341003076022
     link: 
       link-column: Link to Custom Target
       target: 
@@ -1861,14 +1861,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 44297247706318866
+      id: 36120129591104976
       identification: 
         name: Primary Report
         alias: 281769
 
     columns: 
     - # ====== Column: SCORE_OPERACION_RC ==========================
-      id: 39177882137142624
+      id: 31000764021928734
       identification: 
         column-name: SCORE_OPERACION_RC
         type: Plain Text
@@ -1909,7 +1909,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SCORE_CEDENTE_RC ============================
-      id: 39178013939142625
+      id: 31000895823928735
       identification: 
         column-name: SCORE_CEDENTE_RC
         type: Plain Text
@@ -1950,7 +1950,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SCORE_PAGADOR_RC ============================
-      id: 39178078257142626
+      id: 31000960141928736
       identification: 
         column-name: SCORE_PAGADOR_RC
         type: Plain Text
@@ -1991,7 +1991,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_FACTURA ==================================
-      id: 46275624819803227
+      id: 38098506704589337
       identification: 
         column-name: ID_FACTURA
         type: Plain Text
@@ -2032,7 +2032,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_INGRESO ===============================
-      id: 46275755913803228
+      id: 38098637798589338
       identification: 
         column-name: FECHA_INGRESO
         type: Plain Text
@@ -2074,7 +2074,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_EMISION ===============================
-      id: 46275835434803229
+      id: 38098717319589339
       identification: 
         column-name: FECHA_EMISION
         type: Plain Text
@@ -2119,7 +2119,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_PAGO ==================================
-      id: 46275894188803230
+      id: 38098776073589340
       identification: 
         column-name: FECHA_PAGO
         type: Plain Text
@@ -2161,7 +2161,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TIPO_COMPROBANTE_RC =========================
-      id: 46276057659803231
+      id: 38098939544589341
       identification: 
         column-name: TIPO_COMPROBANTE_RC
         type: Plain Text
@@ -2202,7 +2202,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TIPO_COMPROBANTE ============================
-      id: 46276088248803232
+      id: 38098970133589342
       identification: 
         column-name: TIPO_COMPROBANTE
         type: Plain Text
@@ -2243,7 +2243,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SERIE =======================================
-      id: 46276217157803233
+      id: 38099099042589343
       identification: 
         column-name: SERIE
         type: Plain Text
@@ -2284,7 +2284,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NUMERO ======================================
-      id: 46276317590803234
+      id: 38099199475589344
       identification: 
         column-name: NUMERO
         type: Plain Text
@@ -2325,7 +2325,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONEDA_RC ===================================
-      id: 46276388773803235
+      id: 38099270658589345
       identification: 
         column-name: MONEDA_RC
         type: Plain Text
@@ -2366,7 +2366,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONEDA ======================================
-      id: 46276521282803236
+      id: 38099403167589346
       identification: 
         column-name: MONEDA
         type: Plain Text
@@ -2407,7 +2407,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONTO_TOTAL =================================
-      id: 46276639481803237
+      id: 38099521366589347
       identification: 
         column-name: MONTO_TOTAL
         type: Plain Text
@@ -2451,7 +2451,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DETRACCION ==================================
-      id: 46276740010803238
+      id: 38099621895589348
       identification: 
         column-name: DETRACCION
         type: Plain Text
@@ -2492,7 +2492,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DESCUENTOS ==================================
-      id: 46276849487803239
+      id: 38099731372589349
       identification: 
         column-name: DESCUENTOS
         type: Plain Text
@@ -2533,7 +2533,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SALDO_A_PAGO ================================
-      id: 46276886130803240
+      id: 38099768015589350
       identification: 
         column-name: SALDO_A_PAGO
         type: Plain Text
@@ -2577,7 +2577,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_VENCIMIENTO ===========================
-      id: 46277069399803241
+      id: 38099951284589351
       identification: 
         column-name: FECHA_VENCIMIENTO
         type: Plain Text
@@ -2622,7 +2622,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: OBSERVACION =================================
-      id: 46277142092803242
+      id: 38100023977589352
       identification: 
         column-name: OBSERVACION
         type: Plain Text
@@ -2663,7 +2663,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_EMPRESA_CEDENTE ==========================
-      id: 46277225616803243
+      id: 38100107501589353
       identification: 
         column-name: ID_EMPRESA_CEDENTE
         type: Plain Text
@@ -2704,7 +2704,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_EMPRESA_PAGADOR ==========================
-      id: 46277306983803244
+      id: 38100188868589354
       identification: 
         column-name: ID_EMPRESA_PAGADOR
         type: Plain Text
@@ -2745,7 +2745,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ESTADO_FACTURA_RC ===========================
-      id: 46277453019803245
+      id: 38100334904589355
       identification: 
         column-name: ESTADO_FACTURA_RC
         type: Plain Text
@@ -2786,7 +2786,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ESTADO_FACTURA ==============================
-      id: 46277495193803246
+      id: 38100377078589356
       identification: 
         column-name: ESTADO_FACTURA
         type: Plain Text
@@ -2827,7 +2827,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EMPRESA_CEDENTE =============================
-      id: 46277590851803247
+      id: 38100472736589357
       identification: 
         column-name: EMPRESA_CEDENTE
         type: Plain Text
@@ -2868,7 +2868,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EMPRESA_PAGADOR =============================
-      id: 46277772081803248
+      id: 38100653966589358
       identification: 
         column-name: EMPRESA_PAGADOR
         type: Plain Text
@@ -2951,14 +2951,14 @@ regions:
         alignment: center
 
 - # ====== Region: Tabs ========================================
-  id: 44282979478289927
+  id: 36105861363076037
   identification: 
     name: Tabs
     type: Static Content
 
   layout: 
     sequence: 50
-    parent-region: Persona # 40010188863031534
+    parent-region: Persona # 31833070747817644
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: false
@@ -2991,7 +2991,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Datos Bancarios =============================
-  id: 44859510670364519
+  id: 36682392555150629
   identification: 
     name: Datos Bancarios
     type: Interactive Grid
@@ -3021,7 +3021,7 @@ regions:
 
   layout: 
     sequence: 90
-    parent-region: Tabs # 44282979478289927
+    parent-region: Tabs # 36105861363076037
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -3049,7 +3049,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 44906742022529412
+    id: 36729623907315522
     edit: 
       enabled: true
       allowed-operations: 
@@ -3129,14 +3129,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 44914864330566220
+      id: 36737746215352330
       identification: 
         name: Primary Report
         alias: 287945
 
   columns: 
   - # ====== Column: ID_PERSONA ==================================
-    id: 44907184564529417
+    id: 36730066449315527
     identification: 
       column-name: ID_PERSONA
       type: Hidden
@@ -3170,7 +3170,7 @@ regions:
       sort: false
 
   - # ====== Column: ID_PAIS =====================================
-    id: 44907473103529419
+    id: 36730354988315529
     identification: 
       column-name: ID_PAIS
       type: Hidden
@@ -3204,7 +3204,7 @@ regions:
       sort: false
 
   - # ====== Column: CREADO_POR ==================================
-    id: 44907743196529422
+    id: 36730625081315532
     identification: 
       column-name: CREADO_POR
       type: Hidden
@@ -3235,7 +3235,7 @@ regions:
       sort: false
 
   - # ====== Column: CREADO ======================================
-    id: 44907807420529423
+    id: 36730689305315533
     identification: 
       column-name: CREADO
       type: Hidden
@@ -3266,7 +3266,7 @@ regions:
       sort: false
 
   - # ====== Column: MODIFICADO_POR ==============================
-    id: 44907950121529424
+    id: 36730832006315534
     identification: 
       column-name: MODIFICADO_POR
       type: Hidden
@@ -3297,7 +3297,7 @@ regions:
       sort: false
 
   - # ====== Column: MODIFICADO ==================================
-    id: 44908077534529425
+    id: 36730959419315535
     identification: 
       column-name: MODIFICADO
       type: Hidden
@@ -3328,7 +3328,7 @@ regions:
       sort: false
 
   - # ====== Column: ID_CUENTA_BANCARIA ==========================
-    id: 44908232305529427
+    id: 36731114190315537
     identification: 
       column-name: ID_CUENTA_BANCARIA
       type: Hidden
@@ -3359,7 +3359,7 @@ regions:
       sort: false
 
   - # ====== Column: NUMERO_CUENTA ===============================
-    id: 44908319229529428
+    id: 36731201114315538
     identification: 
       column-name: NUMERO_CUENTA
       type: Text Field
@@ -3414,7 +3414,7 @@ regions:
       hide: true
 
   - # ====== Column: CCI =========================================
-    id: 44908459542529429
+    id: 36731341427315539
     identification: 
       column-name: CCI
       type: Text Field
@@ -3469,7 +3469,7 @@ regions:
       hide: true
 
   - # ====== Column: ALIAS =======================================
-    id: 44908485368529430
+    id: 36731367253315540
     identification: 
       column-name: ALIAS
       type: Hidden
@@ -3503,7 +3503,7 @@ regions:
       sort: false
 
   - # ====== Column: ES_PRINCIPAL_SN =============================
-    id: 44908656752529431
+    id: 36731538637315541
     identification: 
       column-name: ES_PRINCIPAL_SN
       type: Select List
@@ -3525,7 +3525,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_SI_NO # 38066481741234781
+      list-of-values: LOV_SI_NO # 29889363626020891
       display-extra-values: false
       display-null-value: false
 
@@ -3561,7 +3561,7 @@ regions:
       hide: true
 
   - # ====== Column: ID_INSTITUCION ==============================
-    id: 44908766514529432
+    id: 36731648399315542
     identification: 
       column-name: ID_INSTITUCION
       type: Select List
@@ -3621,7 +3621,7 @@ regions:
       hide: true
 
   - # ====== Column: MONEDA_RC ===================================
-    id: 44908804498529433
+    id: 36731686383315543
     identification: 
       column-name: MONEDA_RC
       type: Select List
@@ -3682,7 +3682,7 @@ regions:
       hide: true
 
   - # ====== Column: TIPO_CUENTA_RC ==============================
-    id: 44908965113529434
+    id: 36731846998315544
     identification: 
       column-name: TIPO_CUENTA_RC
       type: Select List
@@ -3743,7 +3743,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 44909038155529435
+    id: 36731920040315545
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -3752,7 +3752,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 44909127459529436
+    id: 36732009344315546
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -3804,7 +3804,7 @@ regions:
       alignment: center
 
 - # ====== Region: Buttons =====================================
-  id: 44861116044364535
+  id: 36683997929150645
   identification: 
     name: Buttons
     type: Static Content
@@ -3842,7 +3842,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Score Cedente ===============================
-  id: 45998652865143927
+  id: 37821534749930037
   identification: 
     name: Score Cedente
     type: Interactive Report
@@ -3866,7 +3866,7 @@ regions:
 
   layout: 
     sequence: 100
-    parent-region: Tabs # 44282979478289927
+    parent-region: Tabs # 36105861363076037
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -3896,7 +3896,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 46000115571143942
+    id: 37822997455930052
     link: 
       link-column: Exclude Link Column
 
@@ -3954,14 +3954,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 46081449466850507
+      id: 37904331351636617
       identification: 
         name: Primary Report
         alias: 299611
 
     columns: 
     - # ====== Column: CODIGO ======================================
-      id: 44285986566289958
+      id: 36108868451076068
       identification: 
         column-name: CODIGO
         type: Plain Text
@@ -4005,7 +4005,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_SCORE ====================================
-      id: 46000187579143943
+      id: 37823069463930053
       identification: 
         column-name: ID_SCORE
         type: Hidden
@@ -4023,7 +4023,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_ROL_PERSONA ==============================
-      id: 46000337786143944
+      id: 37823219670930054
       identification: 
         column-name: ID_ROL_PERSONA
         type: Hidden
@@ -4041,13 +4041,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SCORE_RC ====================================
-      id: 46000467662143945
+      id: 37823349546930055
       identification: 
         column-name: SCORE_RC
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SCORE_ACTIVO # 47089999243687220
+        list-of-values: LOV_SCORE_ACTIVO # 38912881128473330
 
       heading: 
         heading: Descripción
@@ -4082,7 +4082,7 @@ regions:
         pivot: true
 
     - # ====== Column: FECHA_REEVALUACION ==========================
-      id: 46000500420143946
+      id: 37823382304930056
       identification: 
         column-name: FECHA_REEVALUACION
         type: Plain Text
@@ -4124,13 +4124,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ACTIVO_SN ===================================
-      id: 46000645219143947
+      id: 37823527103930057
       identification: 
         column-name: ACTIVO_SN
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SI_NO # 38066481741234781
+        list-of-values: LOV_SI_NO # 29889363626020891
 
       heading: 
         heading: Activo
@@ -4165,7 +4165,7 @@ regions:
         pivot: true
 
     - # ====== Column: CREADO_POR ==================================
-      id: 46000768789143948
+      id: 37823650673930058
       identification: 
         column-name: CREADO_POR
         type: Hidden
@@ -4183,7 +4183,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREADO ======================================
-      id: 46000850712143949
+      id: 37823732596930059
       identification: 
         column-name: CREADO
         type: Plain Text
@@ -4228,7 +4228,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO_POR ==============================
-      id: 46000929623143950
+      id: 37823811507930060
       identification: 
         column-name: MODIFICADO_POR
         type: Hidden
@@ -4246,7 +4246,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO ==================================
-      id: 46001006387143951
+      id: 37823888271930061
       identification: 
         column-name: MODIFICADO
         type: Hidden
@@ -4306,14 +4306,14 @@ regions:
         alignment: center
 
 - # ====== Region: Info ========================================
-  id: 46275299598803224
+  id: 38098181483589334
   identification: 
     name: Info
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: Datos Generales # 46275545132803226
+    parent-region: Datos Generales # 38098427017589336
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -4345,14 +4345,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Scoring =====================================
-  id: 46275446153803225
+  id: 38098328038589335
   identification: 
     name: Scoring
     type: Static Content
 
   layout: 
     sequence: 30
-    parent-region: Datos Generales # 46275545132803226
+    parent-region: Datos Generales # 38098427017589336
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: false
@@ -4384,14 +4384,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Datos Generales =============================
-  id: 46275545132803226
+  id: 38098427017589336
   identification: 
     name: Datos Generales
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Persona jurídica # 43663384303875327
+    parent-region: Persona jurídica # 35486266188661437
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -4426,7 +4426,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Subir Archivo ===============================
-  id: 47135889545656143
+  id: 38958771430442253
   identification: 
     name: Subir Archivo
     type: Static Content
@@ -4468,14 +4468,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Dropzone ====================================
-  id: 47136224321656146
+  id: 38959106206442256
   identification: 
     name: Dropzone
     type: Dropzone 2
 
   layout: 
     sequence: 10
-    parent-region: Subir Archivo # 47135889545656143
+    parent-region: Subir Archivo # 38958771430442253
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -4525,7 +4525,7 @@ regions:
       image-resizing: False
 
 - # ====== Region: Score Pagador ===============================
-  id: 47704099590723615
+  id: 39526981475509725
   identification: 
     name: Score Pagador
     type: Interactive Report
@@ -4549,7 +4549,7 @@ regions:
 
   layout: 
     sequence: 110
-    parent-region: Tabs # 44282979478289927
+    parent-region: Tabs # 36105861363076037
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -4579,7 +4579,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 47704192490723616
+    id: 39527074375509726
     link: 
       link-column: Exclude Link Column
 
@@ -4637,14 +4637,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 47732802177019067
+      id: 39555684061805177
       identification: 
         name: Primary Report
         alias: 316125
 
     columns: 
     - # ====== Column: ID_SCORE ====================================
-      id: 47704331958723617
+      id: 39527213843509727
       identification: 
         column-name: ID_SCORE
         type: Hidden
@@ -4662,7 +4662,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_ROL_PERSONA ==============================
-      id: 47704410779723618
+      id: 39527292664509728
       identification: 
         column-name: ID_ROL_PERSONA
         type: Hidden
@@ -4680,13 +4680,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SCORE_RC ====================================
-      id: 47704572743723619
+      id: 39527454628509729
       identification: 
         column-name: SCORE_RC
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SCORE_ACTIVO # 47089999243687220
+        list-of-values: LOV_SCORE_ACTIVO # 38912881128473330
 
       heading: 
         heading: Descripción
@@ -4721,7 +4721,7 @@ regions:
         pivot: true
 
     - # ====== Column: CODIGO ======================================
-      id: 47704605180723620
+      id: 39527487065509730
       identification: 
         column-name: CODIGO
         type: Plain Text
@@ -4765,7 +4765,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREADO ======================================
-      id: 47704778712723621
+      id: 39527660597509731
       identification: 
         column-name: CREADO
         type: Plain Text
@@ -4810,7 +4810,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_REEVALUACION ==========================
-      id: 47704870477723622
+      id: 39527752362509732
       identification: 
         column-name: FECHA_REEVALUACION
         type: Plain Text
@@ -4852,13 +4852,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ACTIVO_SN ===================================
-      id: 47704940263723623
+      id: 39527822148509733
       identification: 
         column-name: ACTIVO_SN
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SI_NO # 38066481741234781
+        list-of-values: LOV_SI_NO # 29889363626020891
 
       heading: 
         heading: Activo
@@ -4893,7 +4893,7 @@ regions:
         pivot: true
 
     - # ====== Column: CREADO_POR ==================================
-      id: 47704988875723624
+      id: 39527870760509734
       identification: 
         column-name: CREADO_POR
         type: Hidden
@@ -4911,7 +4911,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO_POR ==============================
-      id: 47705172184723625
+      id: 39528054069509735
       identification: 
         column-name: MODIFICADO_POR
         type: Hidden
@@ -4929,7 +4929,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO ==================================
-      id: 47705259467723626
+      id: 39528141352509736
       identification: 
         column-name: MODIFICADO
         type: Hidden
@@ -4990,7 +4990,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P51_LOGO_PREVIEW =========================
-  id: 39178872988142634
+  id: 31001754872928744
   identification: 
     name: P51_LOGO_PREVIEW
     type: Display Image
@@ -5011,7 +5011,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5044,7 +5044,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ESTADO_RC ============================
-  id: 40010903899031541
+  id: 31833785783817651
   identification: 
     name: P51_ESTADO_RC
     type: Hidden
@@ -5054,14 +5054,14 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Información Registral # 43663906450875332
+    region: Información Registral # 35486788335661442
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: ESTADO_RC
     data-type: VARCHAR2
     query-only: false
@@ -5081,7 +5081,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ID_PERSONA ===========================
-  id: 40011078094031542
+  id: 31833959978817652
   identification: 
     name: P51_ID_PERSONA
     type: Hidden
@@ -5091,14 +5091,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Persona # 40010188863031534
+    region: Persona # 31833070747817644
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Persona # 40010188863031534
+    form-region: Persona # 31833070747817644
     column: ID_PERSONA
     data-type: NUMBER
     query-only: true
@@ -5114,7 +5114,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_TIPO_DOCUMENTO_RC ====================
-  id: 43663630282875329
+  id: 35486512167661439
   identification: 
     name: P51_TIPO_DOCUMENTO_RC
     type: Select List
@@ -5131,7 +5131,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Info # 46275299598803224
+    region: Info # 38098181483589334
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5152,7 +5152,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_TIPO_DOC # 39963535521186116
+    list-of-values: LOV_TIPO_DOC # 31786417405972226
     display-extra-values: false
     display-null-value: false
 
@@ -5160,7 +5160,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Persona # 40010188863031534
+    form-region: Persona # 31833070747817644
     column: TIPO_DOCUMENTO_RC
     data-type: VARCHAR2
     query-only: false
@@ -5185,7 +5185,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_NUMERO_DOC ===========================
-  id: 43663712788875330
+  id: 35486594673661440
   identification: 
     name: P51_NUMERO_DOC
     type: Text Field
@@ -5203,7 +5203,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Info # 46275299598803224
+    region: Info # 38098181483589334
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5227,7 +5227,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Persona # 40010188863031534
+    form-region: Persona # 31833070747817644
     column: NUMERO_DOC
     data-type: VARCHAR2
     query-only: false
@@ -5249,7 +5249,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_CIIU_RC ==============================
-  id: 43664661109875339
+  id: 35487542994661449
   identification: 
     name: P51_CIIU_RC
     type: Popup LOV
@@ -5274,7 +5274,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Información Registral # 43663906450875332
+    region: Información Registral # 35486788335661442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5309,7 +5309,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: CIIU_RC
     data-type: VARCHAR2
     query-only: false
@@ -5327,7 +5327,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_TIPO_PERSONA_RC ======================
-  id: 43847482264751214
+  id: 35670364149537324
   identification: 
     name: P51_TIPO_PERSONA_RC
     type: Hidden
@@ -5337,14 +5337,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Persona # 40010188863031534
+    region: Persona # 31833070747817644
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Persona # 40010188863031534
+    form-region: Persona # 31833070747817644
     column: TIPO_PERSONA_RC
     data-type: VARCHAR2
     query-only: false
@@ -5360,7 +5360,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_RAZON_SOCIAL =========================
-  id: 43848110802751220
+  id: 35670992687537330
   identification: 
     name: P51_RAZON_SOCIAL
     type: Text Field
@@ -5378,7 +5378,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Info # 46275299598803224
+    region: Info # 38098181483589334
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5402,7 +5402,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Persona # 40010188863031534
+    form-region: Persona # 31833070747817644
     column: RAZON_SOCIAL
     data-type: VARCHAR2
     query-only: false
@@ -5420,7 +5420,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_NOMBRE_COMERCIAL =====================
-  id: 43849017251751229
+  id: 35671899136537339
   identification: 
     name: P51_NOMBRE_COMERCIAL
     type: Text Field
@@ -5438,7 +5438,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Info # 46275299598803224
+    region: Info # 38098181483589334
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5462,7 +5462,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: NOMBRE_COMERCIAL
     data-type: VARCHAR2
     query-only: false
@@ -5480,7 +5480,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ID_EMPRESA ===========================
-  id: 43849212589751231
+  id: 35672094474537341
   identification: 
     name: P51_ID_EMPRESA
     type: Hidden
@@ -5497,7 +5497,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: ID_EMPRESA
     data-type: NUMBER
     query-only: true
@@ -5513,7 +5513,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ACTIVIDAD_ECONOMICA_RC ===============
-  id: 43849288118751232
+  id: 35672170003537342
   identification: 
     name: P51_ACTIVIDAD_ECONOMICA_RC
     type: Select List
@@ -5530,7 +5530,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Información Registral # 43663906450875332
+    region: Información Registral # 35486788335661442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5564,7 +5564,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: ACTIVIDAD_ECONOMICA_RC
     data-type: VARCHAR2
     query-only: false
@@ -5582,7 +5582,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_FECHA_CONSTITUCION ===================
-  id: 43849567975751234
+  id: 35672449860537344
   identification: 
     name: P51_FECHA_CONSTITUCION
     type: Date Picker
@@ -5602,7 +5602,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Info # 46275299598803224
+    region: Info # 38098181483589334
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5628,7 +5628,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: FECHA_CONSTITUCION
     data-type: DATE
     query-only: false
@@ -5646,7 +5646,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_PAGINA_WEB ===========================
-  id: 43849651068751235
+  id: 35672532953537345
   identification: 
     name: P51_PAGINA_WEB
     type: Text Field
@@ -5664,7 +5664,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Info # 46275299598803224
+    region: Info # 38098181483589334
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5688,7 +5688,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: PAGINA_WEB
     data-type: VARCHAR2
     query-only: false
@@ -5706,7 +5706,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_TIPO_SOCIEDAD_RC =====================
-  id: 43850045598751239
+  id: 35672927483537349
   identification: 
     name: P51_TIPO_SOCIEDAD_RC
     type: Select List
@@ -5723,7 +5723,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Información Registral # 43663906450875332
+    region: Información Registral # 35486788335661442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5757,7 +5757,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: TIPO_SOCIEDAD_RC
     data-type: VARCHAR2
     query-only: false
@@ -5775,7 +5775,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_TAMANO_RC ============================
-  id: 43850156955751240
+  id: 35673038840537350
   identification: 
     name: P51_TAMANO_RC
     type: Select List
@@ -5792,7 +5792,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Información Registral # 43663906450875332
+    region: Información Registral # 35486788335661442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5826,7 +5826,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: TAMANO_RC
     data-type: VARCHAR2
     query-only: false
@@ -5844,7 +5844,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_AMBITO_OPERACIONAL_RC ================
-  id: 43850297832751242
+  id: 35673179717537352
   identification: 
     name: P51_AMBITO_OPERACIONAL_RC
     type: Select List
@@ -5861,7 +5861,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Información Registral # 43663906450875332
+    region: Información Registral # 35486788335661442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5895,7 +5895,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: AMBITO_OPERACIONAL_RC
     data-type: VARCHAR2
     query-only: false
@@ -5913,7 +5913,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_REGIMEN_TRIBUTARIO_RC ================
-  id: 43850436628751243
+  id: 35673318513537353
   identification: 
     name: P51_REGIMEN_TRIBUTARIO_RC
     type: Select List
@@ -5930,7 +5930,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Información Registral # 43663906450875332
+    region: Información Registral # 35486788335661442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -5964,7 +5964,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: REGIMEN_TRIBUTARIO_RC
     data-type: VARCHAR2
     query-only: false
@@ -5982,7 +5982,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_TIPO_CONTRIBUYENTE_RC ================
-  id: 43850572182751244
+  id: 35673454067537354
   identification: 
     name: P51_TIPO_CONTRIBUYENTE_RC
     type: Select List
@@ -5999,7 +5999,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Información Registral # 43663906450875332
+    region: Información Registral # 35486788335661442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -6033,7 +6033,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: TIPO_CONTRIBUYENTE_RC
     data-type: VARCHAR2
     query-only: false
@@ -6051,7 +6051,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ID_PAIS ==============================
-  id: 43851102996751250
+  id: 35673984881537360
   identification: 
     name: P51_ID_PAIS
     type: Hidden
@@ -6061,14 +6061,14 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Persona # 40010188863031534
+    region: Persona # 31833070747817644
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Persona # 40010188863031534
+    form-region: Persona # 31833070747817644
     column: ID_PAIS
     data-type: NUMBER
     query-only: false
@@ -6088,7 +6088,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_SCORE_CEDENTE_RC =====================
-  id: 45998185230143923
+  id: 37821067114930033
   identification: 
     name: P51_SCORE_CEDENTE_RC
     type: Radio Group
@@ -6103,7 +6103,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -6138,7 +6138,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: SCORE_CEDENTE_RC
     data-type: VARCHAR2
     query-only: false
@@ -6154,7 +6154,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_SCORE_PAGADOR_RC =====================
-  id: 45998392393143925
+  id: 37821274277930035
   identification: 
     name: P51_SCORE_PAGADOR_RC
     type: Radio Group
@@ -6169,7 +6169,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -6204,7 +6204,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: SCORE_PAGADOR_RC
     data-type: VARCHAR2
     query-only: false
@@ -6220,7 +6220,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ID_ROL_PERSONA_CEDENTE ===============
-  id: 46905601375170510
+  id: 38728483259956620
   identification: 
     name: P51_ID_ROL_PERSONA_CEDENTE
     type: Hidden
@@ -6230,7 +6230,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Persona # 40010188863031534
+    region: Persona # 31833070747817644
     slot: BODY
 
   advanced: 
@@ -6250,7 +6250,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ID_ROL_PERSONA_PAGADOR ===============
-  id: 46905778840170511
+  id: 38728660724956621
   identification: 
     name: P51_ID_ROL_PERSONA_PAGADOR
     type: Hidden
@@ -6260,7 +6260,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Persona # 40010188863031534
+    region: Persona # 31833070747817644
     slot: BODY
 
   advanced: 
@@ -6280,7 +6280,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_SCORE_CEDENTE_HIST ===================
-  id: 46905995182170514
+  id: 38728877066956624
   identification: 
     name: P51_SCORE_CEDENTE_HIST
     type: Hidden
@@ -6290,7 +6290,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
 
   advanced: 
@@ -6310,7 +6310,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_SCORE_PAGADOR_HIST ===================
-  id: 46906286502170517
+  id: 38729168386956627
   identification: 
     name: P51_SCORE_PAGADOR_HIST
     type: Hidden
@@ -6320,7 +6320,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
 
   advanced: 
@@ -6340,7 +6340,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ID_LOGO ==============================
-  id: 47300594818024148
+  id: 39123476702810258
   identification: 
     name: P51_ID_LOGO
     type: Hidden
@@ -6350,7 +6350,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
 
   advanced: 
@@ -6370,7 +6370,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ARCHIVO_NOMBRE =======================
-  id: 47301178950024153
+  id: 39124060834810263
   identification: 
     name: P51_ARCHIVO_NOMBRE
     type: Hidden
@@ -6380,14 +6380,14 @@ page-items:
 
   layout: 
     sequence: 140
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: ARCHIVO_NOMBRE
     data-type: VARCHAR2
     query-only: false
@@ -6403,7 +6403,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ARCHIVO_TIPO_MIME ====================
-  id: 47301264166024154
+  id: 39124146050810264
   identification: 
     name: P51_ARCHIVO_TIPO_MIME
     type: Hidden
@@ -6413,14 +6413,14 @@ page-items:
 
   layout: 
     sequence: 130
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: ARCHIVO_TIPO_MIME
     data-type: VARCHAR2
     query-only: false
@@ -6436,7 +6436,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P51_ARCHIVO_CONTENIDO ====================
-  id: 47301322976024155
+  id: 39124204860810265
   identification: 
     name: P51_ARCHIVO_CONTENIDO
     type: Image Upload
@@ -6465,7 +6465,7 @@ page-items:
 
   layout: 
     sequence: 120
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -6490,7 +6490,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
     column: ARCHIVO_CONTENIDO
     data-type: BLOB
     query-only: false
@@ -6505,14 +6505,14 @@ page-items:
 
 buttons: 
 - # ====== Button: AGREGAR_CONTACTO ============================
-  id: 40723039934789336
+  id: 32545921819575446
   identification: 
     button-name: AGREGAR_CONTACTO
     label: Agregar
 
   layout: 
     sequence: 10
-    region: Contactos # 42473088152089853
+    region: Contactos # 34295970036875963
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -6538,14 +6538,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CARGAR_LOGO =================================
-  id: 41962861482012797
+  id: 33785743366798907
   identification: 
     button-name: CARGAR_LOGO
     label: Cambiar Imagen
 
   layout: 
     sequence: 150
-    region: Scoring # 46275446153803225
+    region: Scoring # 38098328038589335
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -6569,14 +6569,14 @@ buttons:
     static-id: BTN_CAMBIAR_LOGO
 
 - # ====== Button: AGREGAR_FACTURA =============================
-  id: 42540382116450935
+  id: 34363264001237045
   identification: 
     button-name: AGREGAR_FACTURA
     label: Agregar
 
   layout: 
     sequence: 10
-    region: Facturas # 44281346101289911
+    region: Facturas # 36104227986076021
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -6600,14 +6600,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CREAR_EMPRESA ===============================
-  id: 43666308979875356
+  id: 35489190864661466
   identification: 
     button-name: CREAR_EMPRESA
     label: Crear
 
   layout: 
     sequence: 10
-    region: Persona jurídica # 43663384303875327
+    region: Persona jurídica # 35486266188661437
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -6634,14 +6634,14 @@ buttons:
     item: P51_ID_PERSONA
 
 - # ====== Button: APLICAR_CAMBIOS =============================
-  id: 43851386308751253
+  id: 35674268193537363
   identification: 
     button-name: APLICAR_CAMBIOS
     label: Aplicar Cambios
 
   layout: 
     sequence: 20
-    region: Buttons # 44861116044364535
+    region: Buttons # 36683997929150645
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -6667,14 +6667,14 @@ buttons:
     item: P51_ID_PERSONA
 
 - # ====== Button: CREAR_DIRECCION =============================
-  id: 44138433481598326
+  id: 35961315366384436
   identification: 
     button-name: CREAR_DIRECCION
     label: Crear
 
   layout: 
     sequence: 10
-    region: Dirección # 43666259916875355
+    region: Dirección # 35489141801661465
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -6700,14 +6700,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CREAR =======================================
-  id: 44692144674749432
+  id: 36515026559535542
   identification: 
     button-name: CREAR
     label: Crear
 
   layout: 
     sequence: 40
-    region: Buttons # 44861116044364535
+    region: Buttons # 36683997929150645
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -6733,14 +6733,14 @@ buttons:
     item: P51_ID_PERSONA
 
 - # ====== Button: CANCELAR ====================================
-  id: 44863554780364559
+  id: 36686436665150669
   identification: 
     button-name: CANCELAR
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 44861116044364535
+    region: Buttons # 36683997929150645
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -6759,14 +6759,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: CANCELAR_DROPZONE ===========================
-  id: 47299510128024137
+  id: 39122392012810247
   identification: 
     button-name: CANCELAR_DROPZONE
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Subir Archivo # 47135889545656143
+    region: Subir Archivo # 38958771430442253
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -6786,7 +6786,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onDialogClosed - Agregar Contacto ===
-  id: 40723496717789340
+  id: 32546378602575450
   identification: 
     name: onDialogClosed - Agregar Contacto
 
@@ -6798,11 +6798,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Button
-    button: AGREGAR_CONTACTO # 40723039934789336
+    button: AGREGAR_CONTACTO # 32545921819575446
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 41315743728470191
+    id: 33138625613256301
     identification: 
       action: Refresh
 
@@ -6811,16 +6811,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Contactos # 42473088152089853
+      region: Contactos # 34295970036875963
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Agregar Contacto # 40723496717789340
+      event: onDialogClosed - Agregar Contacto # 32546378602575450
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onDialogClosed - Contactos ==========
-  id: 41315980516470193
+  id: 33138862401256303
   identification: 
     name: onDialogClosed - Contactos
 
@@ -6832,11 +6832,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Contactos # 42473088152089853
+    region: Contactos # 34295970036875963
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 41316087870470194
+    id: 33138969755256304
     identification: 
       action: Refresh
 
@@ -6845,16 +6845,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Contactos # 42473088152089853
+      region: Contactos # 34295970036875963
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Contactos # 41315980516470193
+      event: onDialogClosed - Contactos # 33138862401256303
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onDialogClosed - Direccion ==========
-  id: 41317830967470212
+  id: 33140712852256322
   identification: 
     name: onDialogClosed - Direccion
 
@@ -6866,11 +6866,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Dirección # 43666259916875355
+    region: Dirección # 35489141801661465
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 41317996978470213
+    id: 33140878863256323
     identification: 
       action: Refresh
 
@@ -6879,16 +6879,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Dirección # 43666259916875355
+      region: Dirección # 35489141801661465
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Direccion # 41317830967470212
+      event: onDialogClosed - Direccion # 33140712852256322
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: New_1 ===============================
-  id: 41962277987012791
+  id: 33785159871798901
   identification: 
     name: New_1
 
@@ -6909,7 +6909,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Show ========================================
-    id: 41962372258012792
+    id: 33785254142798902
     identification: 
       action: Show
 
@@ -6920,12 +6920,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: New_1 # 41962277987012791
+      event: New_1 # 33785159871798901
       fire-when-event-result-is: False
       fire-on-initialization: true
 
   - # ====== Action: Hide ========================================
-    id: 41962451104012793
+    id: 33785332988798903
     identification: 
       action: Hide
 
@@ -6936,12 +6936,12 @@ dynamic-actions:
 
     execution: 
       sequence: 40
-      event: New_1 # 41962277987012791
+      event: New_1 # 33785159871798901
       fire-when-event-result-is: True
       fire-on-initialization: true
 
   - # ====== Action: Show ========================================
-    id: 41962522513012794
+    id: 33785404397798904
     identification: 
       action: Show
 
@@ -6952,12 +6952,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: New_1 # 41962277987012791
+      event: New_1 # 33785159871798901
       fire-when-event-result-is: True
       fire-on-initialization: true
 
   - # ====== Action: Hide ========================================
-    id: 41962652397012795
+    id: 33785534281798905
     identification: 
       action: Hide
 
@@ -6968,12 +6968,12 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: New_1 # 41962277987012791
+      event: New_1 # 33785159871798901
       fire-when-event-result-is: False
       fire-on-initialization: true
 
 - # ====== Dynamic Action: New_2 ===============================
-  id: 41962923997012798
+  id: 33785805881798908
   identification: 
     name: New_2
 
@@ -6985,11 +6985,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CARGAR_LOGO # 41962861482012797
+    button: CARGAR_LOGO # 33785743366798907
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 41963018355012799
+    id: 33785900239798909
     identification: 
       action: Execute JavaScript Code
 
@@ -7001,12 +7001,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: New_2 # 41962923997012798
+      event: New_2 # 33785805881798908
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 41963136645012800
+    id: 33786018529798910
     identification: 
       action: Show
 
@@ -7017,12 +7017,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: New_2 # 41962923997012798
+      event: New_2 # 33785805881798908
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Hide ========================================
-    id: 41963248144012801
+    id: 33786130028798911
     identification: 
       action: Hide
 
@@ -7033,12 +7033,12 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: New_2 # 41962923997012798
+      event: New_2 # 33785805881798908
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onDialogClosed - Crear Direccion ====
-  id: 44283248474289930
+  id: 36106130359076040
   identification: 
     name: onDialogClosed - Crear Direccion
 
@@ -7050,11 +7050,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Button
-    button: CREAR_DIRECCION # 44138433481598326
+    button: CREAR_DIRECCION # 35961315366384436
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 44283381043289931
+    id: 36106262928076041
     identification: 
       action: Refresh
 
@@ -7063,16 +7063,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Dirección # 43666259916875355
+      region: Dirección # 35489141801661465
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Crear Direccion # 44283248474289930
+      event: onDialogClosed - Crear Direccion # 36106130359076040
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Ejecutar Validaciones ===============
-  id: 44694372515749454
+  id: 36517254400535564
   identification: 
     name: Ejecutar Validaciones
 
@@ -7085,7 +7085,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 44694437249749455
+    id: 36517319134535565
     identification: 
       action: Execute JavaScript Code
 
@@ -7216,12 +7216,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Ejecutar Validaciones # 44694372515749454
+      event: Ejecutar Validaciones # 36517254400535564
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Cancelar ==================
-  id: 44906553922529410
+  id: 36729435807315520
   identification: 
     name: onClick - Cancelar
 
@@ -7233,22 +7233,22 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCELAR # 44863554780364559
+    button: CANCELAR # 36686436665150669
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 44906642027529411
+    id: 36729523912315521
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: onClick - Cancelar # 44906553922529410
+      event: onClick - Cancelar # 36729435807315520
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Archivo subido ======================
-  id: 47136355404656147
+  id: 38959237289442257
   identification: 
     name: Archivo subido
 
@@ -7260,26 +7260,26 @@ dynamic-actions:
   when: 
     event: PLUGIN_DE.DANIELH.DROPZONE2|REGION TYPE|dropzone-upload-success
     selection-type: Region
-    region: Dropzone # 47136224321656146
+    region: Dropzone # 38959106206442256
 
   actions: 
   - # ====== Action: Close Region ================================
-    id: 47136404361656148
+    id: 38959286246442258
     identification: 
       action: Close Region
 
     affected-elements: 
       selection-type: Region
-      region: Subir Archivo # 47135889545656143
+      region: Subir Archivo # 38958771430442253
 
     execution: 
       sequence: 10
-      event: Archivo subido # 47136355404656147
+      event: Archivo subido # 38959237289442257
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: crear_archivo_evt ===================
-  id: 47299001855024132
+  id: 39121883739810242
   identification: 
     name: crear_archivo_evt
 
@@ -7296,22 +7296,22 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Open Region =================================
-    id: 47136113747656145
+    id: 38958995632442255
     identification: 
       action: Open Region
 
     affected-elements: 
       selection-type: Region
-      region: Subir Archivo # 47135889545656143
+      region: Subir Archivo # 38958771430442253
 
     execution: 
       sequence: 10
-      event: crear_archivo_evt # 47299001855024132
+      event: crear_archivo_evt # 39121883739810242
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Click Cancelar Dropzone =============
-  id: 47299582518024138
+  id: 39122464402810248
   identification: 
     name: Click Cancelar Dropzone
 
@@ -7323,27 +7323,27 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCELAR_DROPZONE # 47299510128024137
+    button: CANCELAR_DROPZONE # 39122392012810247
 
   actions: 
   - # ====== Action: Close Region ================================
-    id: 47299718355024139
+    id: 39122600239810249
     identification: 
       action: Close Region
 
     affected-elements: 
       selection-type: Region
-      region: Subir Archivo # 47135889545656143
+      region: Subir Archivo # 38958771430442253
 
     execution: 
       sequence: 10
-      event: Click Cancelar Dropzone # 47299582518024138
+      event: Click Cancelar Dropzone # 39122464402810248
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: Validar RUC =============================
-  id: 44694814568749459
+  id: 36517696453535569
   identification: 
     name: Validar RUC
 
@@ -7359,11 +7359,11 @@ validations:
   error: 
     error-message: RUC inválido
     display-location: Inline with Field and in Notification
-    associated-item: P51_NUMERO_DOC # 43663712788875330
+    associated-item: P51_NUMERO_DOC # 35486594673661440
 
 computations: 
 - # ====== Computation: P51_SCORE_CEDENTE_HIST =================
-  id: 46906109229170515
+  id: 38728991113956625
   identification: 
     item-name: P51_SCORE_CEDENTE_HIST
 
@@ -7380,7 +7380,7 @@ computations:
     item: P51_SCORE_CEDENTE_RC
 
 - # ====== Computation: P51_SCORE_PAGADOR_HIST =================
-  id: 46906231631170516
+  id: 38729113515956626
   identification: 
     item-name: P51_SCORE_PAGADOR_HIST
 
@@ -7398,12 +7398,12 @@ computations:
 
 processes: 
 - # ====== Process: Initialize form Persona ====================
-  id: 40010289390031535
+  id: 31833171274817645
   identification: 
     name: Initialize form Persona
     type: Form - Initialization
     execution-chain: None
-    form-region: Persona # 40010188863031534
+    form-region: Persona # 31833070747817644
 
   execution: 
     sequence: 10
@@ -7411,7 +7411,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process Direccion Collection ===============
-  id: 42539209289450923
+  id: 34362091174237033
   identification: 
     name: Process Direccion Collection
     type: Execute Code
@@ -7462,7 +7462,7 @@ processes:
            where collection_name = 'COL_DIRECCION'
 
 - # ====== Process: Initialize Collections =====================
-  id: 42539226756450924
+  id: 34362108641237034
   identification: 
     name: Initialize Collections
     type: Execute Code
@@ -7488,7 +7488,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process Contacto Collection ================
-  id: 42540311070450934
+  id: 34363192955237044
   identification: 
     name: Process Contacto Collection
     type: Execute Code
@@ -7596,12 +7596,12 @@ processes:
            where collection_name = 'COL_CONTACTO'
 
 - # ====== Process: Process Persona ============================
-  id: 43847404101751213
+  id: 35670285986537323
   identification: 
     name: Process Persona
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Persona # 40010188863031534
+    form-region: Persona # 31833070747817644
 
   settings: 
     target-type: Region Source
@@ -7618,12 +7618,12 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Initialize form Empresa ====================
-  id: 43849107404751230
+  id: 35671989289537340
   identification: 
     name: Initialize form Empresa
     type: Form - Initialization
     execution-chain: None
-    form-region: Información Registral # 43663906450875332
+    form-region: Información Registral # 35486788335661442
 
   execution: 
     sequence: 20
@@ -7631,7 +7631,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process Empresa ============================
-  id: 43851043208751249
+  id: 35673925093537359
   identification: 
     name: Process Empresa
     type: Execute Code
@@ -7712,12 +7712,12 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Datos Bancarios - Guardar Data =============
-  id: 44694555523749456
+  id: 36517437408535566
   identification: 
     name: Datos Bancarios - Guardar Data
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Datos Bancarios # 44859510670364519
+    editable-region: Datos Bancarios # 36682392555150629
 
   settings: 
     target-type: PL/SQL Code
@@ -7806,7 +7806,7 @@ processes:
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: Close Dialog ===============================
-  id: 45020499870032537
+  id: 36843381754818647
   identification: 
     name: Close Dialog
     type: Close Dialog
@@ -7827,7 +7827,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Process Rol Persona Cedente ================
-  id: 46905844624170512
+  id: 38728726508956622
   identification: 
     name: Process Rol Persona Cedente
     type: Execute Code
@@ -7865,7 +7865,7 @@ processes:
     pl/sql-expression: ":P51_ID_ROL_PERSONA_CEDENTE is null and :REQUEST in ('APLICAR_CAMBIOS','CREAR')"
 
 - # ====== Process: Process Rol Persona Pagador ================
-  id: 46905941106170513
+  id: 38728822990956623
   identification: 
     name: Process Rol Persona Pagador
     type: Execute Code
@@ -7903,7 +7903,7 @@ processes:
     pl/sql-expression: ":P51_ID_ROL_PERSONA_PAGADOR is null and :REQUEST in ('APLICAR_CAMBIOS','CREAR')"
 
 - # ====== Process: Process Scores =============================
-  id: 46906416041170518
+  id: 38729297925956628
   identification: 
     name: Process Scores
     type: Execute Code
@@ -7986,7 +7986,7 @@ processes:
     pl/sql-expression: ":REQUEST in ('APLICAR_CAMBIOS','CREAR')"
 
 - # ====== Process: Initialize ID_ROL_PERSONA ==================
-  id: 46907498012170529
+  id: 38730379896956639
   identification: 
     name: Initialize ID_ROL_PERSONA
     type: Execute Code

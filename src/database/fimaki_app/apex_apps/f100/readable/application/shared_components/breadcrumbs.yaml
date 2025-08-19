@@ -1,12 +1,12 @@
 ---
 - # ====== Breadcrumb: Breadcrumb ==============================
-  id: 23875775732324376
+  id: 15694463142102618
   identification: 
     name: Breadcrumb
 
   entries: 
   - # ====== Entry: Home =========================================
-    id: 23876024091324377
+    id: 15694711501102619
     identification: 
       name: Home
       page-number: 1
@@ -20,7 +20,7 @@
         page: 1 # Home
 
   - # ====== Entry: Cuentas Bancarias ============================
-    id: 27850694455948495
+    id: 19669381865726737
     identification: 
       name: Cuentas Bancarias
       page-number: 200
@@ -34,7 +34,7 @@
         page: 200 # Cuentas Bancarias
 
   - # ====== Entry: Oportunidades ================================
-    id: 29935119355713856
+    id: 21753806765492098
     identification: 
       name: Oportunidades
       page-number: 5
@@ -48,7 +48,7 @@
         page: 5 # Oportunidades
 
   - # ====== Entry: Transacciones Financieras ====================
-    id: 31569872638528344
+    id: 23388560048306586
     identification: 
       name: Transacciones Financieras
       page-number: 10
@@ -62,7 +62,7 @@
         page: 10 # Transacciones Financieras
 
   - # ====== Entry: Detalles Cuenta Bancaria =====================
-    id: 31999853047913997
+    id: 23818540457692239
     identification: 
       name: Detalles Cuenta Bancaria
       page-number: 201
@@ -74,4 +74,18 @@
       target: 
         url: 'f?p=&APP_ID.:201:&APP_SESSION.::&DEBUG.:::'
         page: 201 # Detalles Cuenta Bancaria
+
+  - # ====== Entry: Mis inversiones ==============================
+    id: 46579500173683013
+    identification: 
+      name: Mis inversiones
+      page-number: 203
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:203:&APP_SESSION.::&DEBUG.:::'
+        page: 203 # Mis inversiones
 

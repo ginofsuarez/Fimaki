@@ -1,0 +1,136 @@
+---
+- # ====== Authentication: Oracle APEX Accounts ================
+  id: 43376314571881302
+  identification: 
+    name: Oracle APEX Accounts
+
+  subscription: 
+    version-number: 41717277103332
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: IAM =================================
+  id: 51062717250610598
+  identification: 
+    name: IAM
+
+  subscription: 
+    version-number: 41719165007487
+
+  settings: 
+    type: Custom
+    sentry-function-name: fn_sentry_activar_cuenta
+    authentication-function-name: iam_authentication.login
+    enable-legacy-authentication-attributes: false
+
+  source: 
+    pl/sql-code: |
+      function fn_sentry_activar_cuenta
+        return boolean
+      is
+        l_token       varchar2(1000);
+        l_id_usuario  number;
+        l_exists      number;
+      begin
+        -- Páginas públicas → acceso directo
+        if v('APP_PAGE_ID') in ('101', '9999', '99980', '99982', '99981', '100', '99984') then
+          return true;
+        end if;
+      
+        -- Extraer token
+          l_token := regexp_substr(
+            owa_util.get_cgi_env('QUERY_STRING'),
+            'token=([^&]+)',
+            1, 1, null, 1
+          );
+        apex_debug.message('Token recibido: ' || l_token);
+      
+        if l_token is not null then
+          -- Verificar existencia del token (solo por tipo)
+          select count(*)
+            into l_exists
+            from inv_usuario_token
+           where token = l_token
+             and tipo_rc = 'ACTIVACION';
+      
+          apex_debug.message('Token existe (ACTIVACION)? ' || l_exists);
+      
+          if l_exists = 0 then
+            apex_debug.message('Token NO existe → redirigiendo a 101');
+            apex_util.redirect_url(apex_page.get_url(p_page => 101));
+            apex_application.stop_apex_engine;
+          end if;
+      
+          -- Token existe, ahora validar expiración/uso
+          begin
+            select id_usuario
+              into l_id_usuario
+              from inv_usuario_token
+             where token = l_token
+               and tipo_rc = 'ACTIVACION'
+               and (usado is null or usado != 'S')
+               and (expiracion is null or expiracion > systimestamp);
+      
+            apex_debug.message('Token válido, activando cuenta para usuario ID = ' || l_id_usuario);
+      
+            inv_registro_pkg.fn_sentry_activar_cuenta(
+              p_token      => l_token,
+              p_id_usuario => l_id_usuario
+            );
+      
+            return true;
+      
+          exception
+            when no_data_found then
+              apex_debug.message('Token expirado o usado → redirigiendo a 99984');
+              apex_util.redirect_url(apex_page.get_url(p_page => 99984));
+              apex_application.stop_apex_engine;
+          end;
+      
+        else
+          -- Sin token: si logueado → permitir, si no → redirigir a login
+          if v('APP_USER') != 'nobody' then
+            apex_debug.message('Usuario logueado sin token → permitir');
+            return true;
+          else
+            apex_debug.message('Usuario anónimo sin token → redirigir a 101');
+            apex_util.redirect_url(apex_page.get_url(p_page => 101));
+            apex_application.stop_apex_engine;
+          end if;
+        end if;
+      
+        return false;
+      
+      exception
+        when others then
+          if sqlcode != -20876 then
+            apex_debug.error('Excepción inesperada: ' || sqlerrm);
+            apex_util.redirect_url(apex_page.get_url(p_page => 99984));
+            apex_application.stop_apex_engine;
+          end if;
+          return false;
+      end;
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    post-authentication-procedure-name: app_post_auth
+    switch-in-session: false
+
+  post-logout-url: 
+    post-logout-url: 'f?p=&APP_ID.:101'
+
+  real-application-security: 
+    ras-mode: Disabled
+

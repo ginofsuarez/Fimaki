@@ -1,0 +1,1346 @@
+---
+# ====== Page: Register ======================================
+id: 9998
+identification: 
+  name: Register
+  alias: REGISTER
+  title: Register
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+  css-classes: 
+  - .form
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .form {
+        background-color: white;
+    }
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Disabled
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Form-1 ======================================
+  id: 38220055311758089
+  identification: 
+    name: Form-1
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Register # 43564350357115891
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - margin-top-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Form-2 ======================================
+  id: 38220496794758093
+  identification: 
+    name: Form-2
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: Register # 43564350357115891
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - margin-top-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Register ====================================
+  id: 43564350357115891
+  identification: 
+    name: Register
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center;">
+        <h1 style="font-size: 2.5em; font-weight: bold; letter-spacing: 0px;">
+          <img src="#APP_FILES#fimaki_logo/2.png" alt="FIMAKI Logo" style="max-width: 300px; ">
+        </h1>
+        <p style="font-size: 2.2em; font-weight: bold;">
+          Crear Cuenta
+        </p>
+      </div>
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - margin-top-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P9998_EMAIL ==============================
+  id: 38220000633758088
+  identification: 
+    name: P9998_EMAIL
+    type: Text Field
+
+  label: 
+    label: Correo electrónico
+    alignment: Left
+
+  settings: 
+    subtype: E-Mail
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Form-1 # 38220055311758089
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    width: 30
+    value-placeholder: Correo electrónico
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_PASSWORD ===========================
+  id: 38220224493758090
+  identification: 
+    name: P9998_PASSWORD
+    type: Password
+
+  label: 
+    label: Contraseña
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: true
+
+  layout: 
+    sequence: 30
+    region: Form-1 # 38220055311758089
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    width: 30
+    value-placeholder: Contraseña
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_PASSWORD_CONFIRM ===================
+  id: 38220262698758091
+  identification: 
+    name: P9998_PASSWORD_CONFIRM
+    type: Password
+
+  label: 
+    label: Confirmar Contraseña
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: true
+
+  layout: 
+    sequence: 40
+    region: Form-1 # 38220055311758089
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    width: 30
+    value-placeholder: Confirmar Contraseña
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_PHONE_NUMBER =======================
+  id: 38220434837758092
+  identification: 
+    name: P9998_PHONE_NUMBER
+    type: Text Field
+
+  label: 
+    label: Número de celular
+    alignment: Left
+
+  settings: 
+    subtype: Phone Number
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Form-1 # 38220055311758089
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    width: 30
+    value-placeholder: Número de celular
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_NAME ===============================
+  id: 38220642915758094
+  identification: 
+    name: P9998_NAME
+    type: Text Field
+
+  label: 
+    label: Nombres
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    css-classes: 
+    - natural
+    width: 30
+    value-placeholder: Nombres
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_DNI ================================
+  id: 38220847341758096
+  identification: 
+    name: P9998_DNI
+    type: Number Field
+
+  label: 
+    label: Documento Nacional de Identificación
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 60
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    width: 30
+    value-placeholder: DNI
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_BIRTH_DATE =========================
+  id: 38220918371758097
+  identification: 
+    name: P9998_BIRTH_DATE
+    type: Date Picker
+
+  label: 
+    label: Fecha de nacimiento
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 70
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    css-classes: 
+    - natural
+    width: 30
+    value-placeholder: dd/mmm/aaaa
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_CHECKBOXES =========================
+  id: 38222601439758114
+  identification: 
+    name: P9998_CHECKBOXES
+    type: Checkbox Group
+
+  label: 
+    label: Checkboxes
+    alignment: Left
+
+  settings: 
+    number-of-columns: 1
+
+  multiple-values: 
+    type: Delimited List
+    separator: ':'
+
+  layout: 
+    sequence: 110
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--large
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Términos y Condiciones;1,Contrato de Mandato;1,Uso de datos personales;1'
+    display-extra-values: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_PERSON_TYPE ========================
+  id: 38222701245758115
+  identification: 
+    name: P9998_PERSON_TYPE
+    type: Radio Group
+
+  label: 
+    label: Person Type
+    alignment: Left
+
+  settings: 
+    number-of-columns: 2
+    page-action-on-selection: None
+
+  layout: 
+    sequence: 60
+    region: Form-1 # 38220055311758089
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--large
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Juridica;J,Natural;N'
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: N
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_COMPANY_NAME =======================
+  id: 38222989749758118
+  identification: 
+    name: P9998_COMPANY_NAME
+    type: Text Field
+
+  label: 
+    label: Razón Social
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    css-classes: 
+    - legal
+    width: 30
+    value-placeholder: Razon Social
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_M_SECOND_NAME ======================
+  id: 38223131837758119
+  identification: 
+    name: P9998_M_SECOND_NAME
+    type: Text Field
+
+  label: 
+    label: Apellido paterno
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    css-classes: 
+    - natural
+    width: 30
+    value-placeholder: Apellido Paterno
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_F_SECOND_NAME ======================
+  id: 38223171471758120
+  identification: 
+    name: P9998_F_SECOND_NAME
+    type: Text Field
+
+  label: 
+    label: Apellido Materno
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    css-classes: 
+    - natural
+    width: 30
+    value-placeholder: Apellido Materno
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_COUNTRY ============================
+  id: 38223680978758125
+  identification: 
+    name: P9998_COUNTRY
+    type: Combobox
+
+  label: 
+    label: Pais
+    alignment: Left
+
+  settings: 
+    multi-selection: false
+    fetch-on-search: false
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 80
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    css-classes: 
+    - natural
+    width: 30
+    value-placeholder: País
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT NOMBRE
+      FROM PAIS
+      ORDER BY NOMBRE
+      
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_SUB_1 ==============================
+  id: 38223791323758126
+  identification: 
+    name: P9998_SUB_1
+    type: Combobox
+
+  label: 
+    label: Departamento
+    alignment: Left
+
+  settings: 
+    multi-selection: false
+    fetch-on-search: false
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 90
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    css-classes: 
+    - natural
+    width: 30
+    value-placeholder: Departamento
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT s.NOMBRE
+      FROM SUBDIVISION_GEOGRAFICA s
+      JOIN PAIS p
+      ON s.ID_PAIS = p.ID_PAIS
+      WHERE s.ID_SUBDIVISION_PADRE IS NULL AND :P9998_COUNTRY = p.NOMBRE
+      ORDER BY NOMBRE
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P9998_COUNTRY
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9998_SUB_2 ==============================
+  id: 38223850762758127
+  identification: 
+    name: P9998_SUB_2
+    type: Combobox
+
+  label: 
+    label: Provincia
+    alignment: Left
+
+  settings: 
+    multi-selection: false
+    fetch-on-search: false
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 100
+    region: Form-2 # 38220496794758093
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+    css-classes: 
+    - natural
+    width: 30
+    value-placeholder: Provincia
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      SELECT s.NOMBRE
+      FROM SUBDIVISION_GEOGRAFICA s
+      JOIN PAIS p
+      ON s.ID_PAIS = p.ID_PAIS
+      WHERE ID_SUBDIVISION_PADRE = :P9998_SUB_1 AND :P9998_COUNTRY = p.NOMBRE
+      ORDER BY NOMBRE
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P9998_SUB_1
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: next ========================================
+  id: 38219801846756730
+  identification: 
+    button-name: next
+    label: Siguiente
+
+  layout: 
+    sequence: 10
+    region: Form-1 # 38220055311758089
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+- # ====== Button: create_user =================================
+  id: 38220739522758095
+  identification: 
+    button-name: create_user
+    label: Crear Cuenta
+
+  layout: 
+    sequence: 20
+    region: Form-2 # 38220496794758093
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--large
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9998:&SESSION.::&DEBUG.:CR,::'
+      page: 9998 # Register
+      clear-cache: CR
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: back ========================================
+  id: 38222034028758108
+  identification: 
+    button-name: back
+    label: Atras
+
+  layout: 
+    sequence: 30
+    region: Form-2 # 38220496794758093
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+dynamic-actions: 
+- # ====== Dynamic Action: Load ================================
+  id: 38221387381758102
+  identification: 
+    name: Load
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+
+  when: 
+    event: Page Load
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 38221496128758103
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Form-2 # 38220496794758093
+
+    execution: 
+      sequence: 10
+      event: Load # 38221387381758102
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: Next ================================
+  id: 38221643657758104
+  identification: 
+    name: Next
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: next # 38219801846756730
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 38221732293758105
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Form-1 # 38220055311758089
+
+    execution: 
+      sequence: 10
+      event: Next # 38221643657758104
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 38221846417758106
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: Form-2 # 38220496794758093
+
+    execution: 
+      sequence: 20
+      event: Next # 38221643657758104
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Back ================================
+  id: 38222132113758109
+  identification: 
+    name: Back
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: back # 38222034028758108
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 38222215009758110
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Form-2 # 38220496794758093
+
+    execution: 
+      sequence: 10
+      event: Back # 38222132113758109
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 38222342068758111
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: Form-1 # 38220055311758089
+
+    execution: 
+      sequence: 20
+      event: Back # 38222132113758109
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Check_TP ============================
+  id: 38223514057758123
+  identification: 
+    name: Check_TP
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: next # 38219801846756730
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 38223583772758124
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var person_value = $v('P9998_PERSON_TYPE'); 
+        
+        if (person_value === 'N') {
+            $('.legal').hide(); 
+            $('.natural').show(); 
+        } else {
+            $('.natural').hide(); 
+            $('.legal').show();
+        }
+        
+
+    execution: 
+      sequence: 10
+      event: Check_TP # 38223514057758123
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

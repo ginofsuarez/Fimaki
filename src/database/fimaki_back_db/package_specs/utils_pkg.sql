@@ -4,7 +4,7 @@ create or replace package fimaki_back_db.utils_pkg as
     function get_variable (
         p_nombre_variable in varchar2
     ) return varchar2;
-
+  
   --|| Description:
   --|| Author: Gino Suarez
     function get_retorno_por_inversion (
@@ -12,7 +12,7 @@ create or replace package fimaki_back_db.utils_pkg as
         p_tasa_interes in number,
         p_plazo_dias   in number
     ) return number;
-
+  
   --|| Description:
   --|| Author: Gino Suarez
     function get_saldo_a_pago (

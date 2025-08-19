@@ -1,0 +1,44 @@
+---
+- # ====== Application Process: SET PERSONA ====================
+  id: 51626039088150914
+  identification: 
+    name: SET PERSONA
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |2
+          select u.id_persona
+               , rp.id_rol_persona
+            into :P_ID_PERSONA
+               , :P_ID_ROL_PERSONA 
+            from iam_usuario u
+            join bko_rol_persona rp on rp.id_persona = u.id_persona and rp.tipo_rol_rc = 'INVERSNSTA'
+           where upper(correo) = upper(:APP_USER);
+
+  execution: 
+    sequence: 1
+    point: After Authentication
+
+  subscription: 
+    version-number: 41718547322733
+
+- # ====== Application Process: SET_DECIMAL_CONFIG =============
+  id: 54623916183120032
+  identification: 
+    name: SET_DECIMAL_CONFIG
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: execute immediate 'alter session set nls_numeric_characters = ''.,''';
+
+  execution: 
+    sequence: 1
+    point: New Session
+
+  subscription: 
+    version-number: 41719162603876
+

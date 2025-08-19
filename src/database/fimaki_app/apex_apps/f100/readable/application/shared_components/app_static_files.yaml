@@ -1,6 +1,6 @@
 ---
 - # ====== Static Application File: icons/app-icon-32.png ======
-  id: 23878567915324438
+  id: 15697255325102680
   identification: 
     file-name: icons/app-icon-32.png
 
@@ -9,7 +9,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: icons/app-icon-144-rounded.p
-  id: 23878872153324441
+  id: 15697559563102683
   identification: 
     file-name: icons/app-icon-144-rounded.png
 
@@ -18,7 +18,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: icons/app-icon-192.png =====
-  id: 23879173534324442
+  id: 15697860944102684
   identification: 
     file-name: icons/app-icon-192.png
 
@@ -27,7 +27,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: icons/app-icon-256-rounded.p
-  id: 23879496871324443
+  id: 15698184281102685
   identification: 
     file-name: icons/app-icon-256-rounded.png
 
@@ -36,7 +36,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: icons/app-icon-512.png =====
-  id: 23879830922324453
+  id: 15698518332102695
   identification: 
     file-name: icons/app-icon-512.png
 
@@ -44,17 +44,8 @@
     mime-type: image/png
     file-character-set: Unicode UTF-8
 
-- # ====== Static Application File: fimaki_logo/2.png ==========
-  id: 24098365324225617
-  identification: 
-    file-name: fimaki_logo/2.png
-
-  attributes: 
-    mime-type: image/png
-    file-character-set: Unicode UTF-8
-
 - # ====== Static Application File: app-100-logo.png ===========
-  id: 24102144284297879
+  id: 15920831694076121
   identification: 
     file-name: app-100-logo.png
 
@@ -62,7 +53,7 @@
     mime-type: image/png
 
 - # ====== Static Application File: docs/Política_de_Privacidad_
-  id: 27531131510806003
+  id: 19349818920584245
   identification: 
     file-name: docs/Política_de_Privacidad_y_Protección_de_Datos_Personales.pdf
 
@@ -71,7 +62,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: docs/Términos_y_Condiciones.
-  id: 27531332223806005
+  id: 19350019633584247
   identification: 
     file-name: docs/Términos_y_Condiciones.pdf
 
@@ -80,7 +71,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: JS/utils.js ================
-  id: 42882122492487833
+  id: 34700809902266075
   identification: 
     file-name: JS/utils.js
 
@@ -89,7 +80,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: JS/utils.min.js ============
-  id: 42882706810488175
+  id: 34701394220266417
   identification: 
     file-name: JS/utils.min.js
 
@@ -98,7 +89,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: CSS/Styles.css =============
-  id: 44953694063985158
+  id: 36772381473763400
   identification: 
     file-name: CSS/Styles.css
 
@@ -107,7 +98,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: CSS/Styles.min.css =========
-  id: 44954632711985697
+  id: 36773320121763939
   identification: 
     file-name: CSS/Styles.min.css
 
@@ -116,7 +107,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: Logo-Waykitech powered-centr
-  id: 45123953490908473
+  id: 36942640900686715
   identification: 
     file-name: Logo-Waykitech powered-centro.png
 
@@ -125,7 +116,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: docs/CONTRATO_MARCO_DE_INVER
-  id: 45453651131175598
+  id: 37272338540953840
   identification: 
     file-name: docs/CONTRATO_MARCO_DE_INVERSIÓN_v1.1.pdf
 
@@ -134,7 +125,7 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: JS/utils2.js ===============
-  id: 47779239336061620
+  id: 39597926745839862
   identification: 
     file-name: JS/utils2.js
 
@@ -143,11 +134,20 @@
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: JS/utils2.min.js ===========
-  id: 47787258754220265
+  id: 39605946163998507
   identification: 
     file-name: JS/utils2.min.js
 
   attributes: 
     mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: fimaki_logo/2.png ==========
+  id: 44175897741127724
+  identification: 
+    file-name: fimaki_logo/2.png
+
+  attributes: 
+    mime-type: image/png
     file-character-set: Unicode UTF-8
 

@@ -1,0 +1,219 @@
+---
+- # ====== List: Navigation Menu ===============================
+  id: 43377166867881309
+  identification: 
+    name: Navigation Menu
+
+  subscription: 
+    version-number: 41718493378553
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Panel de Control =============================
+    id: 43388815296881428
+    label: 
+      label: Panel de Control
+
+    icon: 
+      image/icon-css-classes: fa-dial-gauge-chart
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&SESSION.::&DEBUG.::::'
+        page: 1 # Home
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Cuentas Bancarias ============================
+    id: 47346928445337824
+    label: 
+      label: Cuentas Bancarias
+
+    icon: 
+      image/icon-css-classes: fa-piggy-bank
+
+    layout: 
+      sequence: 30
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:200:&SESSION.::&DEBUG.::::'
+        page: 200 # Cuentas Bancarias
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Transacciones Financieras ====================
+    id: 47347224092362515
+    label: 
+      label: Transacciones Financieras
+
+    icon: 
+      image/icon-css-classes: fa-coins
+
+    layout: 
+      sequence: 40
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10:&SESSION.::&DEBUG.:10:::'
+        page: 10 # Transacciones Financieras
+        clear-cache: 10
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Oportunidades ================================
+    id: 47347866686388931
+    label: 
+      label: Oportunidades
+
+    icon: 
+      image/icon-css-classes: fa-store
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:5:&SESSION.::&DEBUG.:5:::'
+        page: 5 # Oportunidades
+        clear-cache: 5
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: Navigation Bar ================================
+  id: 43378345244881345
+  identification: 
+    name: Navigation Bar
+
+  subscription: 
+    version-number: 41720811396937
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Saldo disponible S/.1,500.00 | $550.80 =======
+    id: 30586512899611251
+    label: 
+      label: Saldo disponible S/.1,500.00 | $550.80
+
+    icon: 
+      image/icon-css-classes: fa-badge-dollar
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: &APP_USER. ===================================
+    id: 43390369550881447
+    label: 
+      label: '&APP_USER.'
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '#'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      2.: has-username
+
+  - # ====== Entry: --- ==========================================
+    id: 43390830728881449
+    label: 
+      label: '---'
+
+    layout: 
+      sequence: 30
+      parent-entry: '&APP_USER.' # 43390369550881447
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: separator
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+
+  - # ====== Entry: Sign Out =====================================
+    id: 43391183986881451
+    label: 
+      label: Sign Out
+
+    icon: 
+      image/icon-css-classes: fa-sign-out
+
+    layout: 
+      sequence: 40
+      parent-entry: '&APP_USER.' # 43390369550881447
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '&LOGOUT_URL.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+

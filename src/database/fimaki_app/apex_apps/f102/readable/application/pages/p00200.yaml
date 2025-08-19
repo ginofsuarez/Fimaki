@@ -1,0 +1,392 @@
+---
+# ====== Page: Cuentas Bancarias =============================
+id: 200
+identification: 
+  name: Cuentas Bancarias
+  alias: CUENTAS-BANCARIAS
+  title: Cuentas Bancarias
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  function-and-global-variable-declaration: |
+    function eliminarCuenta(id) {
+      if (confirm("¿Estás seguro que deseas eliminar esta cuenta bancaria? Esta acción no se puede deshacer.")) {
+        apex.server.process(
+          "ELIMINAR_CUENTA",
+          { x01: id },
+          {
+            success: function(pData) {
+              if (pData.success) {
+                apex.message.showPageSuccess(pData.success);
+                apex.region("cuentas-bancarias").refresh();
+              }
+            },
+            error: function() {
+              apex.message.alert("Ocurrió un error al eliminar la cuenta.");
+            }
+          }
+        );
+      }
+    }
+
+css: 
+  inline: |
+    /* .badge-principal {
+      background-color: #ab47bc;
+      color: white;
+    }
+    
+    .badge-secundaria {
+      background-color: #ccc;
+      color: #333;
+    } */
+    
+    .badge-principal {
+      background-color: #ab47bc;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: inline-block;
+    }
+    
+    .badge-secundaria {
+      background-color: #ccc;
+      color: #333;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: inline-block;
+    }
+    
+    
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Cuentas Bancarias ===========================
+  id: 47351694008505426
+  identification: 
+    name: Cuentas Bancarias
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select
+          cb.id_cuenta_bancaria as id,
+          cb.alias as alias,
+          cb.numero_cuenta as numero_cuenta,
+          substr(cb.numero_cuenta,-4) as numero_cuenta_last4,
+          cb.cci as cci,
+          substr(cb.cci, -4) as ultimos_digitos_cci,
+          m.descripcion as moneda,
+          m.atributo1 as moneda_simbolo,
+          case cb.es_principal_sn
+              when 'S' then 'Principal'
+              else 'Secundaria'
+          end as badge_text,
+          case cb.es_principal_sn
+              when 'S' then 'badge-principal'
+              else 'badge-secundaria'
+          end as badge_class,
+          i.nombre as institucion,
+          p.nombre as pais,
+          cb.creado as fecha_creacion,
+          -- Genera la URL de edición
+          apex_page.get_url (
+              p_page   => 201,
+              p_items  => 'P201_ID_CUENTA_BANCARIA',
+              p_values => cb.id_cuenta_bancaria
+          ) as url_editar,
+          -- Condición para mostrar botón eliminar
+          case
+              when not exists (
+                  select 1
+                    from bko_solicitud_deposito d
+                   where d.id_cuenta_bancaria = cb.id_cuenta_bancaria
+              ) then 'block'
+              else 'none'
+          end as mostrar_eliminar_display,
+          -- Última fecha de depósito (opcional)
+          to_char((
+              select max(d.fecha_transferencia)
+                from bko_solicitud_deposito d
+               where d.id_cuenta_bancaria = cb.id_cuenta_bancaria
+          ), 'DD/MM/YYYY') as ultima_fecha_deposito,
+          apex_page.get_url (
+              p_page   => 11,
+              p_items  => 'P11_ID_CUENTA_BANCARIA',
+              p_values => cb.id_cuenta_bancaria
+          ) as url_registrar_deposito,
+          '0.00' as saldo_disponible
+      from bko_cuenta_bancaria cb
+      left join fimaki_app.bko_institucion_financiera i on i.id_institucion = cb.id_institucion
+      left join bko_pais p on p.id_pais = cb.id_pais
+      left join codigo_referencia m on m.codigo = cb.moneda_rc and m.codigo_ref_tipo = 'TIPO_MON'
+      where cb.id_persona = :P_ID_PERSONA
+      order by case cb.es_principal_sn when 'S' then 0 else 1 end, cb.creado desc;
+      
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: cuentas-bancarias
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Request != Value
+    value: PRIMER_REGISTRO
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 51569554760484688
+    appearance: 
+      layout: Grid
+      grid-columns: Auto
+
+    card: 
+      primary-key-column-1: ID
+
+    title: 
+      advanced-formatting: true
+      html-expression: |
+        <!-- Título principal -->
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span class="fa fa-piggy-bank" aria-hidden="true" style="color: #5e3c8a;"></span>
+            <span style="color: #5e3c8a; font-weight: 600;">&ALIAS.</span>
+          </div>  
+        </div>
+
+    subtitle: 
+      advanced-formatting: false
+
+    body: 
+      advanced-formatting: true
+      html-expression: |
+        <!-- Monto destacado con color y espacio -->
+        <div style="font-size: 26px; font-weight: bold; color: #5e3c8a; margin-bottom: 8px;">
+          &MONEDA_SIMBOLO. &SALDO_DISPONIBLE.
+        </div>
+        <div style="font-size: 13px; color: #888; margin-top: 0; margin-bottom: 16px; padding-top: 0; line-height: 1.1;">
+          Saldo disponible
+        </div>
+        
+        <div style="position: relative; border: 1px solid #eee; border-radius: 8px; padding: 8px 40px 8px 12px; background-color: #fcfbfd; font-size: 14px; color: #333; margin-bottom: 8px;">
+        
+          <!-- Etiqueta general (opcional: alias) -->
+          <div style="font-size: 11px; color: #999; font-weight: 500; margin-bottom: 2px;">
+            &INSTITUCION.
+          </div>
+        
+          <!-- Cuentas con etiquetas -->
+          <div style="font-weight: 500; line-height: 1.5;">
+            <div><span style="font-weight: 600; color: #555;">N° Cuenta:</span> &NUMERO_CUENTA.</div>
+            <div><span style="font-weight: 600; color: #555;">CCI:</span> &CCI.</div>
+          </div>
+        
+          <!-- Botón compartir o copiar -->
+        <button type="button"
+                title="Compartir cuenta"
+                onclick="
+                  const texto = `Mi cuenta &INSTITUCION.:\nN° Cuenta: &NUMERO_CUENTA.\nCCI: &CCI.\nMoneda: &MONEDA.`;
+                  const esMovil = /iPhone|iPad|Android/i.test(navigator.userAgent);
+        
+                  if (navigator.share && esMovil) {
+                    navigator.share({
+                      title: 'Compartir cuenta',
+                      text: texto
+                    }).catch(() => {});
+                  } else {
+                    navigator.clipboard.writeText(texto).then(() => {
+                      apex.message.showPageSuccess('Información copiada al portapapeles');
+                    }).catch(() => {
+                      alert('No se pudo copiar al portapapeles');
+                    });
+                  }
+                "
+                class="t-Button t-Button--noUI t-Button--icon"
+                style="
+                  position: absolute;
+                  top: 0;
+                  bottom: 0;
+                  right: 0;
+                  width: 48px;
+                  min-height: 48px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  padding: 0;
+                  color: #6f2dbd;
+                  border-left: 1px solid #eee;
+                  border-top-right-radius: 8px;
+                  border-bottom-right-radius: 8px;
+                  background-color: transparent;
+                ">
+          <span class="fa fa-share-alt" style="font-size: 1.5em;"></span>
+        </button>
+        
+        </div>
+        
+
+    secondary-body: 
+      advanced-formatting: true
+      html-expression: |
+        <!-- Contenedor general con borde superior -->
+        <div style="border-top: 1px solid #e3e7ed; padding-top: 18px; margin-top: 20px; display: flex; justify-content: center; gap: 32px;">
+        
+          <!-- Botón Ver datos -->
+          <a href="&URL_EDITAR."
+             style="display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 600; font-size: 15px;">
+            <span class="fa fa-eye" style="font-size: 18px; color: #5e3c8a;"></span>
+            <span style="font-weight: 600; color: #5e3c8a;">Ver datos</span>
+          </a>
+        
+          <!-- Separador vertical -->
+          <div style="width: 1px; background-color: #e3e7ed; height: 24px;"></div>
+        
+          <!-- Botón Depositar -->
+          <a href="&URL_REGISTRAR_DEPOSITO."
+             style="display: flex; align-items: center; gap: 8px; color: #333; text-decoration: none; font-weight: 600; font-size: 15px;">
+            <span class="fa fa-coins" style="font-size: 18px; color: #5e3c8a;"></span>
+            <span style="font-weight: 600; color: #5e3c8a;">Depositar</span>    
+          </a>
+        
+        </div>
+        
+
+    icon-and-badge: 
+      icon-source: No Icon
+      badge-column: BADGE_TEXT
+      badge-label: '&BADGE_TEXT.'
+      badge-css-classes: 
+      - '&BADGE_CLASS.'
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+buttons: 
+- # ====== Button: CREAR =======================================
+  id: 47354996895532989
+  identification: 
+    button-name: CREAR
+    label: Añadir Cuenta Bancaria
+
+  layout: 
+    sequence: 10
+    region: Breadcrumb # 47354893015532988
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-plus
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:201:&SESSION.::&DEBUG.:201::'
+      page: 201 # Detalles Cuenta Bancaria
+      clear-cache: 201
+
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: ELIMINAR_CUENTA ============================
+  id: 51571141485484703
+  identification: 
+    name: ELIMINAR_CUENTA
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+        l_id number := apex_application.g_x01;
+      begin
+        delete from bko_cuenta_bancaria
+        where id_cuenta_bancaria = l_id;
+      
+        -- Retornar mensaje de éxito como JSON
+        apex_json.open_object;
+        apex_json.write('success', 'Cuenta eliminada correctamente.');
+        apex_json.close_object;
+      end;
+
+  execution: 
+    sequence: 10
+    point: Ajax Callback
+    run-process: Once Per Page Visit (default)
+

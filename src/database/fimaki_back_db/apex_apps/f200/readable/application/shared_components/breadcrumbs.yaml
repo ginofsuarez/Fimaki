@@ -1,12 +1,12 @@
 ---
 - # ====== Breadcrumb: Breadcrumb ==============================
-  id: 31838030456434555
+  id: 23660912341220665
   identification: 
     name: Breadcrumb
 
   entries: 
   - # ====== Entry: Home =========================================
-    id: 31838197554434555
+    id: 23661079439220665
     identification: 
       name: Home
       page-number: 1
@@ -20,7 +20,7 @@
         page: 1 # Home
 
   - # ====== Entry: Códigos de Referencia ========================
-    id: 31868925519715680
+    id: 23691807404501790
     identification: 
       name: Códigos de Referencia
       page-number: 505
@@ -29,7 +29,7 @@
       sequence: 10
 
     appearance: 
-      parent-entry: Administración # 31871428723828615
+      parent-entry: Administración # 23694310608614725
 
     link: 
       target: 
@@ -37,7 +37,7 @@
         page: 505 # Codigos de Referencia
 
   - # ====== Entry: Administración ===============================
-    id: 31871428723828615
+    id: 23694310608614725
     identification: 
       name: Administración
       page-number: 500
@@ -52,7 +52,7 @@
         clear-cache: 500
 
   - # ====== Entry: Variables de Sistema =========================
-    id: 35495994644333419
+    id: 27318876529119529
     identification: 
       name: Variables de Sistema
       page-number: 508
@@ -61,7 +61,7 @@
       sequence: 10
 
     appearance: 
-      parent-entry: Administración # 31871428723828615
+      parent-entry: Administración # 23694310608614725
 
     link: 
       target: 
@@ -69,7 +69,7 @@
         page: 508 # Variables de Sistema
 
   - # ====== Entry: Crear Variable de Sistema ====================
-    id: 35496403206333422
+    id: 27319285091119532
     identification: 
       name: Crear Variable de Sistema
       page-number: 509
@@ -78,7 +78,7 @@
       sequence: 10
 
     appearance: 
-      parent-entry: Variables de Sistema # 35495994644333419
+      parent-entry: Variables de Sistema # 27318876529119529
 
     link: 
       target: 
@@ -86,7 +86,7 @@
         page: 509 # Crear Variable de Sistema
 
   - # ====== Entry: &RAZON_SOCIAL. ===============================
-    id: 43733577590618118
+    id: 35556459475404228
     identification: 
       name: '&RAZON_SOCIAL.'
       page-number: 51
@@ -95,7 +95,7 @@
       sequence: 10
 
     appearance: 
-      parent-entry: Empresas # 43920709094341142
+      parent-entry: Empresas # 35743590979127252
 
     link: 
       target: 
@@ -104,7 +104,7 @@
         clear-cache: 51
 
   - # ====== Entry: Empresas =====================================
-    id: 43920709094341142
+    id: 35743590979127252
     identification: 
       name: Empresas
       page-number: 50
@@ -118,7 +118,7 @@
         page: 50 # Empresas
 
   - # ====== Entry: Facturas =====================================
-    id: 46329491058191870
+    id: 38152372942977980
     identification: 
       name: Facturas
       page-number: 60
@@ -132,7 +132,7 @@
         page: 60 # Facturas
 
   - # ====== Entry: Solicitudes de Aprobación ====================
-    id: 48760456960201833
+    id: 40583338844987943
     identification: 
       name: Solicitudes de Aprobación
       page-number: 90
@@ -141,7 +141,7 @@
       sequence: 10
 
     appearance: 
-      parent-entry: Administración # 31871428723828615
+      parent-entry: Administración # 23694310608614725
 
     link: 
       target: 
@@ -149,7 +149,7 @@
         page: 90 # Solicitudes de Aprobacion
 
   - # ====== Entry: Plantillas de Correo =========================
-    id: 50190735237969125
+    id: 42013617122755235
     identification: 
       name: Plantillas de Correo
       page-number: 95
@@ -158,7 +158,7 @@
       sequence: 10
 
     appearance: 
-      parent-entry: Administración # 31871428723828615
+      parent-entry: Administración # 23694310608614725
 
     link: 
       target: 

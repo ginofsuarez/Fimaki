@@ -39,14 +39,14 @@ server-cache:
 
 regions: 
 - # ====== Region: Register-form ===============================
-  id: 27323199987839655
+  id: 19141887397617897
   identification: 
     name: Register-form
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Register # 43246571318194931
+    parent-region: Register # 35065258727973173
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -79,7 +79,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Register ====================================
-  id: 43246571318194931
+  id: 35065258727973173
   identification: 
     name: Register
     type: Static Content
@@ -152,7 +152,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P99980_CORREO ============================
-  id: 27327173100839672
+  id: 19145860510617914
   identification: 
     name: P99980_CORREO
     type: Text Field
@@ -170,7 +170,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Register-form # 27323199987839655
+    region: Register-form # 19141887397617897
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -210,25 +210,22 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99980_CELULAR ===========================
-  id: 27327564314839673
+  id: 19146251724617915
   identification: 
     name: P99980_CELULAR
-    type: Text Field
+    type: Number Field
 
   label: 
     label: Número de celular
     alignment: Left
 
   settings: 
-    subtype: Text
-    trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
-    submit-when-enter-pressed: false
-    disabled: false
+    number-alignment: Start
+    virtual-keyboard: Decimal
 
   layout: 
     sequence: 20
-    region: Register-form # 27323199987839655
+    region: Register-form # 19141887397617897
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -247,7 +244,7 @@ page-items:
 
   validation: 
     value-required: true
-    maximum-length: 20
+    maximum-length: 12
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -268,7 +265,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99980_PASSWORD ==========================
-  id: 28352524891394760
+  id: 20171212301173002
   identification: 
     name: P99980_PASSWORD
     type: Password
@@ -282,7 +279,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Register-form # 27323199987839655
+    region: Register-form # 19141887397617897
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -318,7 +315,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99980_CONFIRMAR_PASSWORD ================
-  id: 28352630400394761
+  id: 20171317810173003
   identification: 
     name: P99980_CONFIRMAR_PASSWORD
     type: Password
@@ -332,7 +329,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Register-form # 27323199987839655
+    region: Register-form # 19141887397617897
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -369,14 +366,14 @@ page-items:
 
 buttons: 
 - # ====== Button: NEXT ========================================
-  id: 27344289598839736
+  id: 19162977008617978
   identification: 
     button-name: NEXT
     label: Siguiente
 
   layout: 
     sequence: 10
-    region: Register-form # 27323199987839655
+    region: Register-form # 19141887397617897
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -399,14 +396,14 @@ buttons:
     database-action: SQL INSERT action
 
 - # ====== Button: CANCEL ======================================
-  id: 42544927975458807
+  id: 34363615385237049
   identification: 
     button-name: CANCEL
     label: Cancelar
 
   layout: 
     sequence: 30
-    region: Register-form # 27323199987839655
+    region: Register-form # 19141887397617897
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -433,7 +430,7 @@ buttons:
 
 validations: 
 - # ====== Validation: Validar confirmar contraseña ============
-  id: 28352931671394764
+  id: 20171619081173006
   identification: 
     name: Validar confirmar contraseña
 
@@ -449,10 +446,10 @@ validations:
   error: 
     error-message: Las contraseñas ingresadas no concuerdan.
     display-location: Inline with Field
-    associated-item: P99980_CONFIRMAR_PASSWORD # 28352630400394761
+    associated-item: P99980_CONFIRMAR_PASSWORD # 20171317810173003
 
 - # ====== Validation: Validar contraseña ======================
-  id: 28353565490394770
+  id: 20172252900173012
   identification: 
     name: Validar contraseña
 
@@ -468,10 +465,10 @@ validations:
   error: 
     error-message: Las contraseñas ingresadas no concuerdan.
     display-location: Inline with Field
-    associated-item: P99980_PASSWORD # 28352524891394760
+    associated-item: P99980_PASSWORD # 20171212301173002
 
 - # ====== Validation: Validar formato =========================
-  id: 28353678030394771
+  id: 20172365440173013
   identification: 
     name: Validar formato
 
@@ -487,10 +484,10 @@ validations:
   error: 
     error-message: El formato del correo electrónico no es válido
     display-location: Inline with Field
-    associated-item: P99980_CORREO # 27327173100839672
+    associated-item: P99980_CORREO # 19145860510617914
 
 - # ====== Validation: Validar numero ==========================
-  id: 28353718813394772
+  id: 20172406223173014
   identification: 
     name: Validar numero
 
@@ -506,10 +503,10 @@ validations:
   error: 
     error-message: El número ingresado no es valido
     display-location: Inline with Field
-    associated-item: P99980_CELULAR # 27327564314839673
+    associated-item: P99980_CELULAR # 19146251724617915
 
 - # ====== Validation: Validar si el correo esta disponible ====
-  id: 28356403210394798
+  id: 20175090620173040
   identification: 
     name: Validar si el correo esta disponible
 
@@ -524,10 +521,10 @@ validations:
   error: 
     error-message: Ya existe una cuenta asociada a esta dirección de correo, intente iniciar sesión o recuperar su contraseña.
     display-location: Inline with Field
-    associated-item: P99980_CORREO # 27327173100839672
+    associated-item: P99980_CORREO # 19145860510617914
 
 - # ====== Validation: Validar si el correo esta pendiente de ac
-  id: 34529806127986059
+  id: 26348493537764301
   identification: 
     name: Validar si el correo esta pendiente de activacion
 
@@ -542,10 +539,10 @@ validations:
   error: 
     error-message: Ya tienes un registro pendiente de activación. Revisa tu correo.
     display-location: Inline with Field
-    associated-item: P99980_CORREO # 27327173100839672
+    associated-item: P99980_CORREO # 19145860510617914
 
 - # ====== Validation: La contraseña es valida =================
-  id: 48755506070103839
+  id: 40574193479882081
   identification: 
     name: La contraseña es valida
 
@@ -568,11 +565,11 @@ validations:
     display-location: Inline with Field and in Notification
 
   server-side-condition: 
-    when-button-pressed: NEXT # 27344289598839736
+    when-button-pressed: NEXT # 19162977008617978
 
 branches: 
 - # ====== Branch: Go to Page 99981 [Registro] =================
-  id: 28353059549394765
+  id: 20171746959173007
   identification: 
     name: Go to Page 99981 [Registro]
 

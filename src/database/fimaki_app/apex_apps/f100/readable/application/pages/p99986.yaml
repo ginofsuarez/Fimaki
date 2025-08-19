@@ -137,14 +137,14 @@ server-cache:
 
 regions: 
 - # ====== Region: Register-form ===============================
-  id: 104659746352207272
+  id: 96478433761985514
   identification: 
     name: Register-form
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Register # 120583117682562548
+    parent-region: Register # 112401805092340790
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -179,7 +179,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Register ====================================
-  id: 120583117682562548
+  id: 112401805092340790
   identification: 
     name: Register
     type: Static Content
@@ -234,7 +234,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P99986_CODE1 =============================
-  id: 46723809278785363
+  id: 38542496688563605
   identification: 
     name: P99986_CODE1
     type: Text Field
@@ -252,7 +252,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Register-form # 104659746352207272
+    region: Register-form # 96478433761985514
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -294,7 +294,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99986_CODE2 =============================
-  id: 46723907681785364
+  id: 38542595091563606
   identification: 
     name: P99986_CODE2
     type: Text Field
@@ -312,7 +312,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Register-form # 104659746352207272
+    region: Register-form # 96478433761985514
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -354,7 +354,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99986_CODE3 =============================
-  id: 46723982651785365
+  id: 38542670061563607
   identification: 
     name: P99986_CODE3
     type: Text Field
@@ -372,7 +372,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Register-form # 104659746352207272
+    region: Register-form # 96478433761985514
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -414,7 +414,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99986_CODE4 =============================
-  id: 46724074164785366
+  id: 38542761574563608
   identification: 
     name: P99986_CODE4
     type: Text Field
@@ -432,7 +432,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Register-form # 104659746352207272
+    region: Register-form # 96478433761985514
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -474,7 +474,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99986_TOKEN =============================
-  id: 46725146279785377
+  id: 38543833689563619
   identification: 
     name: P99986_TOKEN
     type: Hidden
@@ -504,7 +504,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99986_CORREO ============================
-  id: 104666867385207336
+  id: 96485554794985578
   identification: 
     name: P99986_CORREO
     type: Hidden
@@ -535,14 +535,14 @@ page-items:
 
 buttons: 
 - # ====== Button: RESEND ======================================
-  id: 46724578811785371
+  id: 38543266221563613
   identification: 
     button-name: RESEND
     label: Reenviar el código
 
   layout: 
     sequence: 20
-    region: Register-form # 104659746352207272
+    region: Register-form # 96478433761985514
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -563,14 +563,14 @@ buttons:
     database-action: SQL INSERT action
 
 - # ====== Button: CANCEL ======================================
-  id: 46957885541466070
+  id: 38776572951244312
   identification: 
     button-name: CANCEL
     label: Regresar al inicio de sesión
 
   layout: 
     sequence: 30
-    region: Register-form # 104659746352207272
+    region: Register-form # 96478433761985514
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -598,14 +598,14 @@ buttons:
     database-action: SQL INSERT action
 
 - # ====== Button: CONTINUAR ===================================
-  id: 46958298763466072
+  id: 38776986173244314
   identification: 
     button-name: CONTINUAR
     label: Continuar
 
   layout: 
     sequence: 10
-    region: Register-form # 104659746352207272
+    region: Register-form # 96478433761985514
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -631,7 +631,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onClick - Resend ====================
-  id: 46725555320785381
+  id: 38544242730563623
   identification: 
     name: onClick - Resend
 
@@ -643,11 +643,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: RESEND # 46724578811785371
+    button: RESEND # 38543266221563613
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 46725707787785382
+    id: 38544395197563624
     identification: 
       action: Clear
 
@@ -661,12 +661,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Resend # 46725555320785381
+      event: onClick - Resend # 38544242730563623
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Submit Page =================================
-    id: 46725797855785383
+    id: 38544485265563625
     identification: 
       action: Submit Page
 
@@ -676,12 +676,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onClick - Resend # 46725555320785381
+      event: onClick - Resend # 38544242730563623
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Nuevo_2 =============================
-  id: 47768405753718360
+  id: 39587093163496602
   identification: 
     name: Nuevo_2
 
@@ -701,7 +701,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 47768504033718361
+    id: 39587191443496603
     identification: 
       action: Execute JavaScript Code
 
@@ -778,13 +778,13 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Nuevo_2 # 47768405753718360
+      event: Nuevo_2 # 39587093163496602
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: Token es válido =========================
-  id: 25922940065912004
+  id: 17741627475690246
   identification: 
     name: Token es válido
 
@@ -808,11 +808,11 @@ validations:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: CONTINUAR # 46958298763466072
+    when-button-pressed: CONTINUAR # 38776986173244314
 
 processes: 
 - # ====== Process: Concatenar Token ===========================
-  id: 46725212855785378
+  id: 38543900265563620
   identification: 
     name: Concatenar Token
     type: Execute Code
@@ -832,7 +832,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Reenviar Código ============================
-  id: 47768883201718365
+  id: 39587570611496607
   identification: 
     name: Reenviar Código
     type: Execute Code
@@ -862,11 +862,11 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: RESEND # 46724578811785371
+    when-button-pressed: RESEND # 38543266221563613
 
 branches: 
 - # ====== Branch: Go To 99987 =================================
-  id: 46724801306785373
+  id: 38543488716563615
   identification: 
     name: Go To 99987
 
@@ -885,5 +885,5 @@ branches:
         p99987_token: '&P99986_TOKEN.'
 
   server-side-condition: 
-    when-button-pressed: CONTINUAR # 46958298763466072
+    when-button-pressed: CONTINUAR # 38776986173244314
 

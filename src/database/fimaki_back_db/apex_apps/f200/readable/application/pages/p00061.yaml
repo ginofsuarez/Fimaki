@@ -53,7 +53,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Auditoria ===================================
-  id: 45020822229032540
+  id: 36843704113818650
   identification: 
     name: Auditoria
     type: Static Content
@@ -101,7 +101,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Factura =====================================
-  id: 45895694411005010
+  id: 37718576295791120
   identification: 
     name: Factura
     type: Form
@@ -154,7 +154,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 45906810015005074
+  id: 37729691899791184
   identification: 
     name: Buttons
     type: Static Content
@@ -192,7 +192,7 @@ regions:
       show-line-breaks: true
 
 - # ====== Region: Inversiones =================================
-  id: 45997423667143915
+  id: 37820305551930025
   identification: 
     name: Inversiones
     type: Interactive Report
@@ -311,7 +311,7 @@ regions:
 
   layout: 
     sequence: 30
-    parent-region: Tab Container # 45998098698143922
+    parent-region: Tab Container # 37820980582930032
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -343,7 +343,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 45997562956143916
+    id: 37820444840930026
     link: 
       link-column: Exclude Link Column
 
@@ -403,14 +403,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 46012067060422943
+      id: 37834948945209053
       identification: 
         name: Primary Report
         alias: 298917
 
     columns: 
     - # ====== Column: FECHA =======================================
-      id: 45997642669143917
+      id: 37820524553930027
       identification: 
         column-name: FECHA
         type: Plain Text
@@ -451,7 +451,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INVERSIONISTA ===============================
-      id: 45997875467143919
+      id: 37820757351930029
       identification: 
         column-name: INVERSIONISTA
         type: Plain Text
@@ -492,7 +492,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONTO =======================================
-      id: 45997929341143920
+      id: 37820811225930030
       identification: 
         column-name: MONTO
         type: Plain Text
@@ -533,7 +533,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: PARTICIPACION ===============================
-      id: 45998031119143921
+      id: 37820913003930031
       identification: 
         column-name: PARTICIPACION
         type: Plain Text
@@ -616,7 +616,7 @@ regions:
         alignment: center
 
 - # ====== Region: Tab Container ===============================
-  id: 45998098698143922
+  id: 37820980582930032
   identification: 
     name: Tab Container
     type: Static Content
@@ -660,14 +660,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Información general =========================
-  id: 46001487516143956
+  id: 37824369400930066
   identification: 
     name: Información general
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Factura # 45895694411005010
+    parent-region: Factura # 37718576295791120
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -708,14 +708,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Detalles Financieros ========================
-  id: 46001582262143957
+  id: 37824464146930067
   identification: 
     name: Detalles Financieros
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: Factura # 45895694411005010
+    parent-region: Factura # 37718576295791120
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -756,14 +756,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Partes Involucradas =========================
-  id: 46001721923143958
+  id: 37824603807930068
   identification: 
     name: Partes Involucradas
     type: Static Content
 
   layout: 
     sequence: 30
-    parent-region: Factura # 45895694411005010
+    parent-region: Factura # 37718576295791120
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -804,14 +804,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Checklist ===================================
-  id: 46278589596803257
+  id: 38101471481589367
   identification: 
     name: Checklist
     type: Static Content
 
   layout: 
     sequence: 40
-    parent-region: Factura # 45895694411005010
+    parent-region: Factura # 37718576295791120
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -853,7 +853,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P61_CREADO ===============================
-  id: 39177414682142619
+  id: 31000296566928729
   identification: 
     name: P61_CREADO
     type: Display Only
@@ -870,7 +870,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Auditoria # 45020822229032540
+    region: Auditoria # 36843704113818650
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -890,7 +890,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -906,7 +906,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_CREADO_POR ===========================
-  id: 39177508856142620
+  id: 31000390740928730
   identification: 
     name: P61_CREADO_POR
     type: Display Only
@@ -923,7 +923,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 45020822229032540
+    region: Auditoria # 36843704113818650
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -942,7 +942,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -958,7 +958,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_MODIFICADO ===========================
-  id: 39177657417142622
+  id: 31000539301928732
   identification: 
     name: P61_MODIFICADO
     type: Display Only
@@ -975,7 +975,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Auditoria # 45020822229032540
+    region: Auditoria # 36843704113818650
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -995,7 +995,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -1011,7 +1011,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_MODIFICADO_POR =======================
-  id: 39177729881142623
+  id: 31000611765928733
   identification: 
     name: P61_MODIFICADO_POR
     type: Display Only
@@ -1028,7 +1028,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Auditoria # 45020822229032540
+    region: Auditoria # 36843704113818650
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1047,7 +1047,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -1063,7 +1063,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_OBSERVACION ==========================
-  id: 39178148529142627
+  id: 31001030413928737
   identification: 
     name: P61_OBSERVACION
     type: Hidden
@@ -1073,14 +1073,14 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Factura # 45895694411005010
+    region: Factura # 37718576295791120
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: OBSERVACION
     data-type: VARCHAR2
     query-only: false
@@ -1096,7 +1096,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ANEXO1_NOMBRE ========================
-  id: 39178227979142628
+  id: 31001109863928738
   identification: 
     name: P61_ANEXO1_NOMBRE
     type: Hidden
@@ -1106,14 +1106,14 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ANEXO1_NOMBRE
     data-type: VARCHAR2
     query-only: false
@@ -1129,7 +1129,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ANEXO1_TIPO_MIME =====================
-  id: 39178358233142629
+  id: 31001240117928739
   identification: 
     name: P61_ANEXO1_TIPO_MIME
     type: Hidden
@@ -1139,14 +1139,14 @@ page-items:
 
   layout: 
     sequence: 120
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ANEXO1_TIPO_MIME
     data-type: VARCHAR2
     query-only: false
@@ -1162,7 +1162,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ANEXO1_CONTENIDO =====================
-  id: 39178434711142630
+  id: 31001316595928740
   identification: 
     name: P61_ANEXO1_CONTENIDO
     type: File Upload
@@ -1186,7 +1186,7 @@ page-items:
 
   layout: 
     sequence: 130
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1203,13 +1203,13 @@ page-items:
     width: 30
 
   validation: 
-    value-required: true
+    value-required: false
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ANEXO1_CONTENIDO
     data-type: BLOB
     query-only: false
@@ -1223,7 +1223,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ANEXO2_NOMBRE ========================
-  id: 39178610855142631
+  id: 31001492739928741
   identification: 
     name: P61_ANEXO2_NOMBRE
     type: Hidden
@@ -1233,14 +1233,14 @@ page-items:
 
   layout: 
     sequence: 140
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ANEXO2_NOMBRE
     data-type: VARCHAR2
     query-only: false
@@ -1256,7 +1256,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ANEXO2_TIPO_MIME =====================
-  id: 39178688201142632
+  id: 31001570085928742
   identification: 
     name: P61_ANEXO2_TIPO_MIME
     type: Hidden
@@ -1266,14 +1266,14 @@ page-items:
 
   layout: 
     sequence: 150
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ANEXO2_TIPO_MIME
     data-type: VARCHAR2
     query-only: false
@@ -1289,7 +1289,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ANEXO2_CONTENIDO =====================
-  id: 39178817184142633
+  id: 31001699068928743
   identification: 
     name: P61_ANEXO2_CONTENIDO
     type: File Upload
@@ -1314,7 +1314,7 @@ page-items:
 
   layout: 
     sequence: 160
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1331,13 +1331,13 @@ page-items:
     width: 30
 
   validation: 
-    value-required: true
+    value-required: false
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ANEXO2_CONTENIDO
     data-type: BLOB
     query-only: false
@@ -1351,7 +1351,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FECHA_EMISION ========================
-  id: 39250698208434037
+  id: 31073580093220147
   identification: 
     name: P61_FECHA_EMISION
     type: Date Picker
@@ -1370,7 +1370,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1394,7 +1394,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: FECHA_EMISION
     data-type: DATE
     query-only: false
@@ -1412,7 +1412,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FECHA_PUBLICACION_MIN ================
-  id: 40719360839789299
+  id: 32542242724575409
   identification: 
     name: P61_FECHA_PUBLICACION_MIN
     type: Hidden
@@ -1422,7 +1422,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Factura # 45895694411005010
+    region: Factura # 37718576295791120
     slot: BODY
 
   appearance: 
@@ -1451,7 +1451,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FECHA_INGRESO_MIN ====================
-  id: 40719468401789300
+  id: 32542350286575410
   identification: 
     name: P61_FECHA_INGRESO_MIN
     type: Hidden
@@ -1461,7 +1461,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
 
   advanced: 
@@ -1487,7 +1487,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_SCORE_CEDENTE_RC =====================
-  id: 40721630664789322
+  id: 32544512549575432
   identification: 
     name: P61_SCORE_CEDENTE_RC
     type: Hidden
@@ -1497,14 +1497,14 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Partes Involucradas # 46001721923143958
+    region: Partes Involucradas # 37824603807930068
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: SCORE_CEDENTE_RC
     data-type: VARCHAR2
     query-only: false
@@ -1520,7 +1520,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_SCORE_PAGADOR_RC =====================
-  id: 40721789107789323
+  id: 32544670992575433
   identification: 
     name: P61_SCORE_PAGADOR_RC
     type: Hidden
@@ -1530,14 +1530,14 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Partes Involucradas # 46001721923143958
+    region: Partes Involucradas # 37824603807930068
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: SCORE_PAGADOR_RC
     data-type: VARCHAR2
     query-only: false
@@ -1553,7 +1553,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_VISIBLE_MARKETPLACE_SN ===============
-  id: 44283927320289937
+  id: 36106809205076047
   identification: 
     name: P61_VISIBLE_MARKETPLACE_SN
     type: Switch
@@ -1571,7 +1571,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Factura # 45895694411005010
+    region: Factura # 37718576295791120
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1596,7 +1596,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: VISIBLE_EN_OPORTUNIDADES_SN
     data-type: VARCHAR2
     query-only: false
@@ -1620,7 +1620,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FECHA_PUBLICACION ====================
-  id: 44284044573289938
+  id: 36106926458076048
   identification: 
     name: P61_FECHA_PUBLICACION
     type: Date Picker
@@ -1640,7 +1640,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Factura # 45895694411005010
+    region: Factura # 37718576295791120
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1665,7 +1665,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: FECHA_PUBLICACION
     data-type: DATE
     query-only: false
@@ -1688,7 +1688,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_TASA_INTERES =========================
-  id: 44286084631289959
+  id: 36108966516076069
   identification: 
     name: P61_TASA_INTERES
     type: Number Field
@@ -1705,7 +1705,7 @@ page-items:
 
   layout: 
     sequence: 140
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1732,7 +1732,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: TASA_INTERES
     data-type: NUMBER
     query-only: false
@@ -1750,7 +1750,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ID_EMPRESA_PAGADOR ===================
-  id: 45021130601032543
+  id: 36844012485818653
   identification: 
     name: P61_ID_EMPRESA_PAGADOR
     type: Popup LOV
@@ -1775,7 +1775,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Partes Involucradas # 46001721923143958
+    region: Partes Involucradas # 37824603807930068
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1808,7 +1808,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ID_EMPRESA_PAGADOR
     data-type: NUMBER
     query-only: false
@@ -1826,7 +1826,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ID_FACTURA ===========================
-  id: 45896164909005015
+  id: 37719046793791125
   identification: 
     name: P61_ID_FACTURA
     type: Hidden
@@ -1836,14 +1836,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Factura # 45895694411005010
+    region: Factura # 37718576295791120
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ID_FACTURA
     data-type: NUMBER
     query-only: true
@@ -1859,7 +1859,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FECHA_INGRESO ========================
-  id: 45896561070005021
+  id: 37719442954791131
   identification: 
     name: P61_FECHA_INGRESO
     type: Date Picker
@@ -1879,7 +1879,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1904,7 +1904,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: FECHA_INGRESO
     data-type: DATE
     query-only: false
@@ -1922,7 +1922,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_TIPO_COMPROBANTE_RC ==================
-  id: 45897260534005027
+  id: 37720142418791137
   identification: 
     name: P61_TIPO_COMPROBANTE_RC
     type: Select List
@@ -1939,7 +1939,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1972,7 +1972,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: TIPO_COMPROBANTE_RC
     data-type: VARCHAR2
     query-only: false
@@ -1990,7 +1990,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_SERIE ================================
-  id: 45897625612005028
+  id: 37720507496791138
   identification: 
     name: P61_SERIE
     type: Text Field
@@ -2008,7 +2008,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2032,7 +2032,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: SERIE
     data-type: VARCHAR2
     query-only: false
@@ -2050,7 +2050,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_NUMERO ===============================
-  id: 45898021886005030
+  id: 37720903770791140
   identification: 
     name: P61_NUMERO
     type: Text Field
@@ -2068,7 +2068,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2092,7 +2092,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: NUMERO
     data-type: VARCHAR2
     query-only: false
@@ -2110,7 +2110,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_MONEDA_RC ============================
-  id: 45898403542005031
+  id: 37721285426791141
   identification: 
     name: P61_MONEDA_RC
     type: Select List
@@ -2127,7 +2127,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2160,7 +2160,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: MONEDA_RC
     data-type: VARCHAR2
     query-only: false
@@ -2178,7 +2178,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_MONTO_TOTAL ==========================
-  id: 45898834543005033
+  id: 37721716427791143
   identification: 
     name: P61_MONTO_TOTAL
     type: Number Field
@@ -2194,7 +2194,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2213,7 +2213,7 @@ page-items:
 
   validation: 
     value-required: true
-    maximum-length: 255
+    maximum-length: 10
 
   advanced: 
     custom-attributes: 
@@ -2222,7 +2222,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: MONTO_TOTAL
     data-type: NUMBER
     query-only: false
@@ -2240,7 +2240,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_DETRACCION ===========================
-  id: 45899238620005034
+  id: 37722120504791144
   identification: 
     name: P61_DETRACCION
     type: Number Field
@@ -2256,7 +2256,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2275,7 +2275,7 @@ page-items:
 
   validation: 
     value-required: true
-    maximum-length: 255
+    maximum-length: 10
 
   advanced: 
     custom-attributes: 
@@ -2284,7 +2284,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: DETRACCION
     data-type: NUMBER
     query-only: false
@@ -2306,7 +2306,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_DESCUENTOS ===========================
-  id: 45899624554005036
+  id: 37722506438791146
   identification: 
     name: P61_DESCUENTOS
     type: Number Field
@@ -2322,7 +2322,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2350,7 +2350,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: DESCUENTOS
     data-type: NUMBER
     query-only: false
@@ -2372,7 +2372,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_SALDO_A_PAGO_DISP ====================
-  id: 45899983455005038
+  id: 37722865339791148
   identification: 
     name: P61_SALDO_A_PAGO_DISP
     type: Display Only
@@ -2389,7 +2389,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2427,7 +2427,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FECHA_VENCIMIENTO ====================
-  id: 45900460652005039
+  id: 37723342536791149
   identification: 
     name: P61_FECHA_VENCIMIENTO
     type: Date Picker
@@ -2446,7 +2446,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2471,7 +2471,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: FECHA_VENCIMIENTO
     data-type: DATE
     query-only: false
@@ -2489,7 +2489,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ID_EMPRESA_CEDENTE ===================
-  id: 45901207437005042
+  id: 37724089321791152
   identification: 
     name: P61_ID_EMPRESA_CEDENTE
     type: Popup LOV
@@ -2514,7 +2514,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Partes Involucradas # 46001721923143958
+    region: Partes Involucradas # 37824603807930068
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2547,7 +2547,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ID_EMPRESA_CEDENTE
     data-type: NUMBER
     query-only: false
@@ -2565,7 +2565,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_SCORE_PAGADOR_RC_DISP ================
-  id: 46001195390143953
+  id: 37824077274930063
   identification: 
     name: P61_SCORE_PAGADOR_RC_DISP
     type: Radio Group
@@ -2580,7 +2580,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Partes Involucradas # 46001721923143958
+    region: Partes Involucradas # 37824603807930068
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2632,7 +2632,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_SCORE_CEDENTE_RC_DISP ================
-  id: 46001361832143954
+  id: 37824243716930064
   identification: 
     name: P61_SCORE_CEDENTE_RC_DISP
     type: Radio Group
@@ -2647,7 +2647,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Partes Involucradas # 46001721923143958
+    region: Partes Involucradas # 37824603807930068
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2699,7 +2699,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_PORCENTAJE_FINANCIADO ================
-  id: 46001410345143955
+  id: 37824292229930065
   identification: 
     name: P61_PORCENTAJE_FINANCIADO
     type: Number Field
@@ -2716,7 +2716,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2735,6 +2735,7 @@ page-items:
 
   validation: 
     value-required: true
+    maximum-length: 5
 
   advanced: 
     custom-attributes: 
@@ -2743,7 +2744,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: FINANCIADO_PCT
     data-type: NUMBER
     query-only: false
@@ -2761,7 +2762,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_MONTO_FINANCIADO_DISP ================
-  id: 46001876432143959
+  id: 37824758316930069
   identification: 
     name: P61_MONTO_FINANCIADO_DISP
     type: Display Only
@@ -2778,7 +2779,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2815,7 +2816,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_SCORE_OPERACION ======================
-  id: 46084070095915228
+  id: 37906951980701338
   identification: 
     name: P61_SCORE_OPERACION
     type: Radio Group
@@ -2830,7 +2831,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Partes Involucradas # 46001721923143958
+    region: Partes Involucradas # 37824603807930068
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2865,7 +2866,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: SCORE_OPERACION_RC
     data-type: VARCHAR2
     query-only: false
@@ -2881,7 +2882,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FECHA_PAGO ===========================
-  id: 46273892833803210
+  id: 38096774718589320
   identification: 
     name: P61_FECHA_PAGO
     type: Display Only
@@ -2898,7 +2899,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Información general # 46001487516143956
+    region: Información general # 37824369400930066
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2918,7 +2919,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: FECHA_PAGO
     data-type: DATE
     query-only: false
@@ -2934,7 +2935,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_ESTADO_FACTURA_RC ====================
-  id: 46274045362803211
+  id: 38096927247589321
   identification: 
     name: P61_ESTADO_FACTURA_RC
     type: Display Only
@@ -2951,7 +2952,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Factura # 45895694411005010
+    region: Factura # 37718576295791120
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2981,7 +2982,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ESTADO_FACTURA_RC
     data-type: VARCHAR2
     query-only: false
@@ -3001,7 +3002,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FACTRACK_VALIDO_SN ===================
-  id: 46278686350803258
+  id: 38101568235589368
   identification: 
     name: P61_FACTRACK_VALIDO_SN
     type: Checkbox
@@ -3017,7 +3018,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Checklist # 46278589596803257
+    region: Checklist # 38101471481589367
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -3039,7 +3040,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: FACTRACK_SN
     data-type: VARCHAR2
     query-only: false
@@ -3058,7 +3059,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_CONF_SUNAT_VALIDO_SN =================
-  id: 46278800546803259
+  id: 38101682431589369
   identification: 
     name: P61_CONF_SUNAT_VALIDO_SN
     type: Radio Group
@@ -3073,7 +3074,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Checklist # 46278589596803257
+    region: Checklist # 38101471481589367
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -3101,7 +3102,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: CONFORMIDAD_SUNAT
     data-type: VARCHAR2
     query-only: false
@@ -3117,7 +3118,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FECHA_FACKTRACK ======================
-  id: 47117842010254210
+  id: 38940723895040320
   identification: 
     name: P61_FECHA_FACKTRACK
     type: Date Picker
@@ -3136,7 +3137,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Checklist # 46278589596803257
+    region: Checklist # 38101471481589367
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -3160,7 +3161,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: FECHA_CARGA_FACTRACK
     data-type: DATE
     query-only: false
@@ -3178,7 +3179,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_FECHA_SUNAT ==========================
-  id: 47117906937254211
+  id: 38940788822040321
   identification: 
     name: P61_FECHA_SUNAT
     type: Date Picker
@@ -3197,7 +3198,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Checklist # 46278589596803257
+    region: Checklist # 38101471481589367
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -3221,7 +3222,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: FECHA_CARGA_SUNAT
     data-type: DATE
     query-only: false
@@ -3239,7 +3240,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_POR_FINANCIAR_PCT_DISP ===============
-  id: 47117998322254212
+  id: 38940880207040322
   identification: 
     name: P61_POR_FINANCIAR_PCT_DISP
     type: Display Only
@@ -3256,7 +3257,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -3293,7 +3294,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_MONTO_POR_FINANCIAR_DISP =============
-  id: 47118170399254213
+  id: 38941052284040323
   identification: 
     name: P61_MONTO_POR_FINANCIAR_DISP
     type: Display Only
@@ -3310,7 +3311,7 @@ page-items:
 
   layout: 
     sequence: 120
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -3347,7 +3348,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_PLAZO_EN_DIAS_DISP ===================
-  id: 47118438802254216
+  id: 38941320687040326
   identification: 
     name: P61_PLAZO_EN_DIAS_DISP
     type: Display Only
@@ -3364,7 +3365,7 @@ page-items:
 
   layout: 
     sequence: 150
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -3399,7 +3400,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_RETORNO_X_INVERSION_DISP =============
-  id: 47189360375545610
+  id: 39012242260331720
   identification: 
     name: P61_RETORNO_X_INVERSION_DISP
     type: Display Only
@@ -3416,7 +3417,7 @@ page-items:
 
   layout: 
     sequence: 170
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -3454,7 +3455,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_SALDO_A_PAGO =========================
-  id: 47189652403545613
+  id: 39012534288331723
   identification: 
     name: P61_SALDO_A_PAGO
     type: Hidden
@@ -3464,14 +3465,14 @@ page-items:
 
   layout: 
     sequence: 180
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: SALDO_A_PAGO
     data-type: NUMBER
     query-only: false
@@ -3487,7 +3488,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_RETORNO_X_INVERSION ==================
-  id: 47189720091545614
+  id: 39012601976331724
   identification: 
     name: P61_RETORNO_X_INVERSION
     type: Hidden
@@ -3497,14 +3498,14 @@ page-items:
 
   layout: 
     sequence: 230
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: ROI
     data-type: NUMBER
     query-only: false
@@ -3520,7 +3521,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_PLAZO_EN_DIAS ========================
-  id: 47189925690545616
+  id: 39012807575331726
   identification: 
     name: P61_PLAZO_EN_DIAS
     type: Hidden
@@ -3530,14 +3531,14 @@ page-items:
 
   layout: 
     sequence: 220
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: PLAZO_EN_DIAS
     data-type: NUMBER
     query-only: false
@@ -3553,7 +3554,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_POR_FINANCIAR_PCT ====================
-  id: 47190038966545617
+  id: 39012920851331727
   identification: 
     name: P61_POR_FINANCIAR_PCT
     type: Hidden
@@ -3563,14 +3564,14 @@ page-items:
 
   layout: 
     sequence: 190
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: POR_FINANCIAR_PCT
     data-type: NUMBER
     query-only: false
@@ -3586,7 +3587,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_MONTO_FINANCIADO =====================
-  id: 47190104494545618
+  id: 39012986379331728
   identification: 
     name: P61_MONTO_FINANCIADO
     type: Hidden
@@ -3596,14 +3597,14 @@ page-items:
 
   layout: 
     sequence: 200
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: MONTO_FINANCIADO
     data-type: NUMBER
     query-only: false
@@ -3619,7 +3620,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P61_MONTO_POR_FINANCIAR ==================
-  id: 47190189535545619
+  id: 39013071420331729
   identification: 
     name: P61_MONTO_POR_FINANCIAR
     type: Hidden
@@ -3629,14 +3630,14 @@ page-items:
 
   layout: 
     sequence: 210
-    region: Detalles Financieros # 46001582262143957
+    region: Detalles Financieros # 37824464146930067
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
     column: MONTO_POR_FINANCIAR
     data-type: NUMBER
     query-only: false
@@ -3653,14 +3654,14 @@ page-items:
 
 buttons: 
 - # ====== Button: DETALLE_RETORNO =============================
-  id: 45123863355905131
+  id: 36946745240691241
   identification: 
     button-name: DETALLE_RETORNO
     label: Ver Distribución de Retorno
 
   layout: 
     sequence: 10
-    region: Buttons # 45906810015005074
+    region: Buttons # 37729691899791184
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -3693,14 +3694,14 @@ buttons:
     value: FACT_CANCELADA
 
 - # ====== Button: CANCEL ======================================
-  id: 45907197575005075
+  id: 37730079459791185
   identification: 
     button-name: CANCEL
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 45906810015005074
+    region: Buttons # 37729691899791184
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -3719,14 +3720,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 45908652664005081
+  id: 37731534548791191
   identification: 
     button-name: DELETE
     label: Eliminar
 
   layout: 
     sequence: 20
-    region: Buttons # 45906810015005074
+    region: Buttons # 37729691899791184
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -3758,14 +3759,14 @@ buttons:
     pl/sql-expression: ":P61_ESTADO_FACTURA_RC = 'FACT_INGRESADA' and :P61_ID_FACTURA is not null"
 
 - # ====== Button: SAVE ========================================
-  id: 45909060594005082
+  id: 37731942478791192
   identification: 
     button-name: SAVE
     label: Aplicar Cambios
 
   layout: 
     sequence: 40
-    region: Buttons # 45906810015005074
+    region: Buttons # 37729691899791184
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -3792,14 +3793,14 @@ buttons:
     pl/sql-expression: ":P61_ID_FACTURA is not null and :P61_ESTADO_FACTURA_RC != 'FACT_CANCELADA'"
 
 - # ====== Button: CREATE ======================================
-  id: 45909394976005083
+  id: 37732276860791193
   identification: 
     button-name: CREATE
     label: Crear
 
   layout: 
     sequence: 50
-    region: Buttons # 45906810015005074
+    region: Buttons # 37729691899791184
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -3825,14 +3826,14 @@ buttons:
     item: P61_ID_FACTURA
 
 - # ====== Button: REGISTRAR_PAGO ==============================
-  id: 46274154474803212
+  id: 38097036359589322
   identification: 
     button-name: REGISTRAR_PAGO
     label: Registrar Cancelacion
 
   layout: 
     sequence: 30
-    region: Buttons # 45906810015005074
+    region: Buttons # 37729691899791184
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -3865,7 +3866,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onChange - ID Empresa Cedente =======
-  id: 39249645620434027
+  id: 31072527505220137
   identification: 
     name: onChange - ID Empresa Cedente
 
@@ -3882,7 +3883,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 39249785294434028
+    id: 31072667179220138
     identification: 
       action: Execute Server-side Code
 
@@ -3904,14 +3905,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - ID Empresa Cedente # 39249645620434027
+      event: onChange - ID Empresa Cedente # 31072527505220137
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: onChange - ID Empresa Pagador =======
-  id: 39249856000434029
+  id: 31072737885220139
   identification: 
     name: onChange - ID Empresa Pagador
 
@@ -3928,7 +3929,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 39250012676434030
+    id: 31072894561220140
     identification: 
       action: Execute Server-side Code
 
@@ -3950,14 +3951,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - ID Empresa Pagador # 39249856000434029
+      event: onChange - ID Empresa Pagador # 31072737885220139
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: onDialogClosed - Registrar Pago =====
-  id: 43423000005134619
+  id: 35245881889920729
   identification: 
     name: onDialogClosed - Registrar Pago
 
@@ -3969,22 +3970,22 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Button
-    button: REGISTRAR_PAGO # 46274154474803212
+    button: REGISTRAR_PAGO # 38097036359589322
 
   actions: 
   - # ====== Action: Close Dialog ================================
-    id: 43423081524134620
+    id: 35245963408920730
     identification: 
       action: Close Dialog
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Registrar Pago # 43423000005134619
+      event: onDialogClosed - Registrar Pago # 35245881889920729
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onChange - Fecha Publicacion ========
-  id: 44284126684289939
+  id: 36107008569076049
   identification: 
     name: onChange - Fecha Publicacion
 
@@ -4005,7 +4006,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Set Value ===================================
-    id: 44284273333289940
+    id: 36107155218076050
     identification: 
       action: Set Value
 
@@ -4021,14 +4022,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - Fecha Publicacion # 44284126684289939
+      event: onChange - Fecha Publicacion # 36107008569076049
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: onChange - Visible en Marketplace ===
-  id: 44284451451289942
+  id: 36107333336076052
   identification: 
     name: onChange - Visible en Marketplace
 
@@ -4050,7 +4051,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 40721549993789321
+    id: 32544431878575431
     identification: 
       action: Clear
 
@@ -4061,12 +4062,12 @@ dynamic-actions:
 
     execution: 
       sequence: 40
-      event: onChange - Visible en Marketplace # 44284451451289942
+      event: onChange - Visible en Marketplace # 36107333336076052
       fire-when-event-result-is: True
       fire-on-initialization: true
 
   - # ====== Action: Hide ========================================
-    id: 44284576557289943
+    id: 36107458442076053
     identification: 
       action: Hide
 
@@ -4077,12 +4078,12 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: onChange - Visible en Marketplace # 44284451451289942
+      event: onChange - Visible en Marketplace # 36107333336076052
       fire-when-event-result-is: True
       fire-on-initialization: true
 
   - # ====== Action: Show ========================================
-    id: 44284651947289944
+    id: 36107533832076054
     identification: 
       action: Show
 
@@ -4093,12 +4094,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - Visible en Marketplace # 44284451451289942
+      event: onChange - Visible en Marketplace # 36107333336076052
       fire-when-event-result-is: False
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 45907288639005075
+  id: 37730170523791185
   identification: 
     name: Cancel Dialog
 
@@ -4110,22 +4111,22 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 45907197575005075
+    button: CANCEL # 37730079459791185
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 45908148360005079
+    id: 37731030244791189
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 45907288639005075
+      event: Cancel Dialog # 37730170523791185
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onChange - Porcentaje Financiado  ===
-  id: 47118244086254214
+  id: 38941125971040324
   identification: 
     name: 'onChange - Porcentaje Financiado '
 
@@ -4139,10 +4140,11 @@ dynamic-actions:
     selection-type: Item(s)
     item(s): 
     - P61_PORCENTAJE_FINANCIADO
+    - P61_SALDO_A_PAGO
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 47118305062254215
+    id: 38941186947040325
     identification: 
       action: Execute Server-side Code
 
@@ -4150,8 +4152,8 @@ dynamic-actions:
       language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
       pl/sql-code: |
         DECLARE
-            l_pct_financiado    number := :P61_PORCENTAJE_FINANCIADO;
-            l_saldo_a_pago      number := :P61_SALDO_A_PAGO;
+            l_pct_financiado    number := nvl(:P61_PORCENTAJE_FINANCIADO,0);
+            l_saldo_a_pago      number := nvl(:P61_SALDO_A_PAGO,0);
             l_por_financiar_mnt number;
             l_por_financiar_pct number;
             l_financiado_mnt    number;
@@ -4183,14 +4185,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: 'onChange - Porcentaje Financiado ' # 47118244086254214
+      event: 'onChange - Porcentaje Financiado ' # 38941125971040324
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: onChange - Fecha Ingreso | Vencimient
-  id: 47118494308254217
+  id: 38941376193040327
   identification: 
     name: onChange - Fecha Ingreso | Vencimiento
 
@@ -4204,14 +4206,13 @@ dynamic-actions:
     selection-type: Item(s)
     item(s): 
     - P61_FECHA_VENCIMIENTO
-    - P61_TASA_INTERES
-    - P61_MONTO_TOTAL
-    - P61_DETRACCION
     - P61_FECHA_INGRESO
+    - P61_TASA_INTERES
+    - P61_SALDO_A_PAGO
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 47118622938254218
+    id: 38941504823040328
     identification: 
       action: Execute Server-side Code
 
@@ -4223,12 +4224,6 @@ dynamic-actions:
         BEGIN
             IF :P61_FECHA_VENCIMIENTO is not null and :P61_FECHA_INGRESO is not null THEN
                 :P61_PLAZO_EN_DIAS := (TRUNC(TO_DATE(:P61_FECHA_VENCIMIENTO,'&DATE_FORMAT.')) - TRUNC(TO_DATE(:P61_FECHA_INGRESO,'&DATE_FORMAT.')));
-                
-                -- l_roi := utils_pkg.get_retorno_por_inversion(
-                --       p_saldo_a_pago => :P61_SALDO_A_PAGO
-                --     , p_tasa_interes => :P61_TASA_INTERES
-                --     , p_plazo_dias   => :P61_PLAZO_EN_DIAS
-                --     );
         
                 l_roi := bko_operaciones_pkg.calcular_roi(
                       p_tasa_anual      => :P61_TASA_INTERES
@@ -4260,14 +4255,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - Fecha Ingreso | Vencimiento # 47118494308254217
+      event: onChange - Fecha Ingreso | Vencimiento # 38941376193040327
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: onChange - Monto Total | Detraccion =
-  id: 47189407233545611
+  id: 39012289118331721
   identification: 
     name: onChange - Monto Total | Detraccion
 
@@ -4285,7 +4280,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 47189545632545612
+    id: 39012427517331722
     identification: 
       action: Execute Server-side Code
 
@@ -4296,8 +4291,8 @@ dynamic-actions:
             l_saldo_a_pago number;
         BEGIN
             l_saldo_a_pago := utils_pkg.get_saldo_a_pago(
-                  p_monto_total => TO_NUMBER(:P61_MONTO_TOTAL,'&NUMBER_FORMAT.')
-                , p_detraccion  => TO_NUMBER(:P61_DETRACCION,'&NUMBER_FORMAT.')
+                  p_monto_total => TO_NUMBER(nvl(:P61_MONTO_TOTAL,0),'&NUMBER_FORMAT.')
+                , p_detraccion  => TO_NUMBER(nvl(:P61_DETRACCION,0),'&NUMBER_FORMAT.')
             );
             :P61_SALDO_A_PAGO := l_saldo_a_pago;
             :P61_SALDO_A_PAGO_DISP := TO_CHAR(:P61_SALDO_A_PAGO,'&NUMBER_FORMAT.');
@@ -4312,7 +4307,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - Monto Total | Detraccion # 47189407233545611
+      event: onChange - Monto Total | Detraccion # 39012289118331721
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
@@ -4320,7 +4315,7 @@ dynamic-actions:
 
 validations: 
 - # ====== Validation: Cedente y Pagador son Diferentes ========
-  id: 39250066538434031
+  id: 31072948423220141
   identification: 
     name: Cedente y Pagador son Diferentes
 
@@ -4336,7 +4331,7 @@ validations:
   error: 
     error-message: 'La empresa Pagadora no puede ser la misma que la empresa Cedente. '
     display-location: Inline with Field and in Notification
-    associated-item: P61_ID_EMPRESA_PAGADOR # 45021130601032543
+    associated-item: P61_ID_EMPRESA_PAGADOR # 36844012485818653
 
   server-side-condition: 
     type: Expression
@@ -4346,7 +4341,7 @@ validations:
       :P61_ID_EMPRESA_PAGADOR is not null
 
 - # ====== Validation: Factrack SN es Requerido ================
-  id: 39250492431434035
+  id: 31073374316220145
   identification: 
     name: Factrack SN es Requerido
 
@@ -4362,7 +4357,7 @@ validations:
   error: 
     error-message: Para publicar esta factura, debes marcar que el XML es válido y fue cargado correctamente en Factrack (CAVALI).
     display-location: Inline with Field and in Notification
-    associated-item: P61_FACTRACK_VALIDO_SN # 46278686350803258
+    associated-item: P61_FACTRACK_VALIDO_SN # 38101568235589368
 
   server-side-condition: 
     type: Expression
@@ -4370,7 +4365,7 @@ validations:
     pl/sql-expression: ":P61_VISIBLE_MARKETPLACE_SN = 'S' or :P61_FECHA_PUBLICACION is not null"
 
 - # ====== Validation: Fecha Vencimiento Es Mayor que Fecha de E
-  id: 40719606704789301
+  id: 32542488589575411
   identification: 
     name: Fecha Vencimiento Es Mayor que Fecha de Emision
 
@@ -4386,10 +4381,10 @@ validations:
   error: 
     error-message: La fecha de Vencimiento no puede ser menor que la fecha de emision.
     display-location: Inline with Field and in Notification
-    associated-item: P61_FECHA_VENCIMIENTO # 45900460652005039
+    associated-item: P61_FECHA_VENCIMIENTO # 37723342536791149
 
 - # ====== Validation: Fecha Factrack es Requerido =============
-  id: 40720918734789315
+  id: 32543800619575425
   identification: 
     name: Fecha Factrack es Requerido
 
@@ -4404,7 +4399,7 @@ validations:
   error: 
     error-message: Para publicar esta factura, debes ingresar le fecha de carga en Factrack (CAVALI).
     display-location: Inline with Field and in Notification
-    associated-item: P61_FECHA_FACKTRACK # 47117842010254210
+    associated-item: P61_FECHA_FACKTRACK # 38940723895040320
 
   server-side-condition: 
     type: Expression
@@ -4412,7 +4407,7 @@ validations:
     pl/sql-expression: ":P61_VISIBLE_MARKETPLACE_SN = 'S' or :P61_FECHA_PUBLICACION is not null"
 
 - # ====== Validation: Conf Sunat es Requerido =================
-  id: 40721022853789316
+  id: 32543904738575426
   identification: 
     name: Conf Sunat es Requerido
 
@@ -4427,7 +4422,7 @@ validations:
   error: 
     error-message: Para publicar esta factura, debes seleccionar si la factura cuenta con conformidad SUNAT.
     display-location: Inline with Field and in Notification
-    associated-item: P61_CONF_SUNAT_VALIDO_SN # 46278800546803259
+    associated-item: P61_CONF_SUNAT_VALIDO_SN # 38101682431589369
 
   server-side-condition: 
     type: Expression
@@ -4435,7 +4430,7 @@ validations:
     pl/sql-expression: ":P61_VISIBLE_MARKETPLACE_SN = 'S' or :P61_FECHA_PUBLICACION is not null"
 
 - # ====== Validation: Fecha Sunat es Requerido ================
-  id: 40721149708789317
+  id: 32544031593575427
   identification: 
     name: Fecha Sunat es Requerido
 
@@ -4450,16 +4445,79 @@ validations:
   error: 
     error-message: Para publicar esta factura, debes ingresar la fecha en que la factura fue registrada en SUNAT.
     display-location: Inline with Field and in Notification
-    associated-item: P61_FECHA_SUNAT # 47117906937254211
+    associated-item: P61_FECHA_SUNAT # 38940788822040321
 
   server-side-condition: 
     type: Expression
     language: PL/SQL
     pl/sql-expression: ":P61_VISIBLE_MARKETPLACE_SN = 'S' or :P61_FECHA_PUBLICACION is not null"
 
+- # ====== Validation: Es un valor Positivo mayor a cero =======
+  id: 42065341020500308
+  identification: 
+    name: Es un valor Positivo mayor a cero
+
+  execution: 
+    sequence: 70
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ':P61_SALDO_A_PAGO > 0'
+    always-execute: false
+
+  error: 
+    error-message: El saldo a pago debe ser un valor mayor a cero.
+    display-location: Inline with Field and in Notification
+    associated-item: P61_SALDO_A_PAGO_DISP # 37722865339791148
+
+- # ====== Validation: El archivo fue cargado ==================
+  id: 42065493878500309
+  identification: 
+    name: El archivo fue cargado
+
+  execution: 
+    sequence: 80
+
+  validation: 
+    type: Item is NOT NULL
+    item: P61_ANEXO1_CONTENIDO
+    always-execute: false
+
+  error: 
+    error-message: Anexo XML debe tener algún valor.
+    display-location: Inline with Field and in Notification
+    associated-item: P61_ANEXO1_CONTENIDO # 31001316595928740
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P61_ID_FACTURA
+
+- # ====== Validation: El archivo fue cargado_1 ================
+  id: 42065554886500310
+  identification: 
+    name: El archivo fue cargado_1
+
+  execution: 
+    sequence: 90
+
+  validation: 
+    type: Item is NOT NULL
+    item: P61_ANEXO2_CONTENIDO
+    always-execute: false
+
+  error: 
+    error-message: Anexo PDF debe tener algún valor.
+    display-location: Inline with Field and in Notification
+    associated-item: P61_ANEXO2_CONTENIDO # 31001699068928743
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P61_ID_FACTURA
+
 computations: 
 - # ====== Computation: P61_VISIBLE_MARKETPLACE_SN =============
-  id: 47119085748254223
+  id: 38941967633040333
   identification: 
     item-name: P61_VISIBLE_MARKETPLACE_SN
 
@@ -4477,7 +4535,7 @@ computations:
 
 processes: 
 - # ====== Process: Process Estado Factura =====================
-  id: 40721313797789318
+  id: 32544195682575428
   identification: 
     name: Process Estado Factura
     type: Execute Code
@@ -4504,12 +4562,12 @@ processes:
     value: CREATE,SAVE
 
 - # ====== Process: Initialize form Factura ====================
-  id: 45909827734005085
+  id: 37732709618791195
   identification: 
     name: Initialize form Factura
     type: Form - Initialization
     execution-chain: None
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
 
   execution: 
     sequence: 20
@@ -4517,12 +4575,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Factura =======================
-  id: 45910214518005086
+  id: 37733096402791196
   identification: 
     name: Process form Factura
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Factura # 45895694411005010
+    form-region: Factura # 37718576295791120
 
   settings: 
     target-type: Region Source
@@ -4542,7 +4600,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 45910605721005088
+  id: 37733487605791198
   identification: 
     name: Close Dialog
     type: Close Dialog

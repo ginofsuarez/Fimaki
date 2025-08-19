@@ -19,6 +19,10 @@ navigation:
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: false
 
+javascript: 
+  file-urls: 
+  - '#APP_FILES#JS/utils2#MIN#.js'
+
 css: 
   inline: |
     .label_link  {
@@ -52,14 +56,14 @@ server-cache:
 
 regions: 
 - # ====== Region: Register-form ===============================
-  id: 47515822916108285
+  id: 39334510325886527
   identification: 
     name: Register-form
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Register # 63439194246463561
+    parent-region: Register # 55257881656241803
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -92,7 +96,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Register ====================================
-  id: 63439194246463561
+  id: 55257881656241803
   identification: 
     name: Register
     type: Static Content
@@ -142,7 +146,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P99981_TERMINOS_LINK =====================
-  id: 28356957335394804
+  id: 20175644745173046
   identification: 
     name: P99981_TERMINOS_LINK
     type: Hidden
@@ -152,7 +156,7 @@ page-items:
 
   layout: 
     sequence: 270
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -176,7 +180,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_CONTRATO_LINK =====================
-  id: 28357076923394805
+  id: 20175764333173047
   identification: 
     name: P99981_CONTRATO_LINK
     type: Hidden
@@ -186,7 +190,7 @@ page-items:
 
   layout: 
     sequence: 280
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -210,7 +214,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_DATOS_LINK ========================
-  id: 28357164545394806
+  id: 20175851955173048
   identification: 
     name: P99981_DATOS_LINK
     type: Hidden
@@ -220,7 +224,7 @@ page-items:
 
   layout: 
     sequence: 290
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -244,7 +248,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_ID_PAIS ===========================
-  id: 28736276083034371
+  id: 20554963492812613
   identification: 
     name: P99981_ID_PAIS
     type: Select List
@@ -261,7 +265,7 @@ page-items:
 
   layout: 
     sequence: 130
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -282,7 +286,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PAIS_ACTIVO # 29533080453665549
+    list-of-values: LOV_PAIS_ACTIVO # 21351767863443791
     display-extra-values: false
     display-null-value: false
 
@@ -305,7 +309,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_ID_DEPARTAMENTO ===================
-  id: 28736335973034372
+  id: 20555023382812614
   identification: 
     name: P99981_ID_DEPARTAMENTO
     type: Select List
@@ -322,7 +326,7 @@ page-items:
 
   layout: 
     sequence: 140
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -379,7 +383,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_ID_PROVINCIA ======================
-  id: 28736425221034373
+  id: 20555112630812615
   identification: 
     name: P99981_ID_PROVINCIA
     type: Select List
@@ -396,7 +400,7 @@ page-items:
 
   layout: 
     sequence: 150
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -453,7 +457,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_ID_USUARIO_TEMP ===================
-  id: 28736591226034374
+  id: 20555278635812616
   identification: 
     name: P99981_ID_USUARIO_TEMP
     type: Hidden
@@ -463,7 +467,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -483,7 +487,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_TIPO_PERSONA_RC ===================
-  id: 47518793284108316
+  id: 39337480693886558
   identification: 
     name: P99981_TIPO_PERSONA_RC
     type: Select List
@@ -500,7 +504,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -521,7 +525,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_TIPO_PER # 28413717713247503
+    list-of-values: LOV_TIPO_PER # 20232405123025745
     display-extra-values: false
     display-null-value: false
 
@@ -544,7 +548,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_TIPO_DOCUMENTO_RC =================
-  id: 47519213191108318
+  id: 39337900600886560
   identification: 
     name: P99981_TIPO_DOCUMENTO_RC
     type: Select List
@@ -561,7 +565,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -618,7 +622,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_NUMERO_DOCUMENTO ==================
-  id: 47519583707108319
+  id: 39338271116886561
   identification: 
     name: P99981_NUMERO_DOCUMENTO
     type: Number Field
@@ -629,11 +633,11 @@ page-items:
 
   settings: 
     number-alignment: Start
-    virtual-keyboard: Numeric
+    virtual-keyboard: Decimal
 
   layout: 
     sequence: 70
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -656,6 +660,9 @@ page-items:
     maximum-length: 20
 
   advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowOnlyNumbers(event);"
     warn-on-unsaved-changes: Page Default
 
   source: 
@@ -674,7 +681,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_RAZON_SOCIAL ======================
-  id: 47519986176108321
+  id: 39338673585886563
   identification: 
     name: P99981_RAZON_SOCIAL
     type: Text Field
@@ -692,7 +699,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -733,7 +740,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_NOMBRES ===========================
-  id: 47520363186108322
+  id: 39339050595886564
   identification: 
     name: P99981_NOMBRES
     type: Text Field
@@ -751,7 +758,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -792,7 +799,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_APELLIDO_PATERNO ==================
-  id: 47520784425108324
+  id: 39339471834886566
   identification: 
     name: P99981_APELLIDO_PATERNO
     type: Text Field
@@ -810,7 +817,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -851,7 +858,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_APELLIDO_MATERNO ==================
-  id: 47521191012108325
+  id: 39339878421886567
   identification: 
     name: P99981_APELLIDO_MATERNO
     type: Text Field
@@ -869,7 +876,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -910,7 +917,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_FECHA_NACIMIENTO ==================
-  id: 47521558687108327
+  id: 39340246096886569
   identification: 
     name: P99981_FECHA_NACIMIENTO
     type: Date Picker
@@ -930,7 +937,7 @@ page-items:
 
   layout: 
     sequence: 120
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -975,7 +982,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_CORREO ============================
-  id: 47521996736108329
+  id: 39340684145886571
   identification: 
     name: P99981_CORREO
     type: Hidden
@@ -985,7 +992,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1005,7 +1012,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_CELULAR ===========================
-  id: 47522387950108330
+  id: 39341075359886572
   identification: 
     name: P99981_CELULAR
     type: Hidden
@@ -1015,7 +1022,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1035,7 +1042,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_TIPO_ROL_RC =======================
-  id: 47522766345108332
+  id: 39341453754886574
   identification: 
     name: P99981_TIPO_ROL_RC
     type: Hidden
@@ -1045,7 +1052,7 @@ page-items:
 
   layout: 
     sequence: 160
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1069,7 +1076,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_TOKEN_VALIDACION ==================
-  id: 47523144944108333
+  id: 39341832353886575
   identification: 
     name: P99981_TOKEN_VALIDACION
     type: Hidden
@@ -1079,7 +1086,7 @@ page-items:
 
   layout: 
     sequence: 170
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1099,7 +1106,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_FECHA_REGISTRO ====================
-  id: 47523549167108335
+  id: 39342236576886577
   identification: 
     name: P99981_FECHA_REGISTRO
     type: Hidden
@@ -1109,7 +1116,7 @@ page-items:
 
   layout: 
     sequence: 180
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1134,7 +1141,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_FECHA_EXPIRACION ==================
-  id: 47524434095108338
+  id: 39343121504886580
   identification: 
     name: P99981_FECHA_EXPIRACION
     type: Hidden
@@ -1144,7 +1151,7 @@ page-items:
 
   layout: 
     sequence: 190
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1171,7 +1178,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_ESTADO_RC =========================
-  id: 47525186021108341
+  id: 39343873430886583
   identification: 
     name: P99981_ESTADO_RC
     type: Hidden
@@ -1181,7 +1188,7 @@ page-items:
 
   layout: 
     sequence: 200
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1205,7 +1212,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_IP_ORIGEN =========================
-  id: 47525603865108342
+  id: 39344291274886584
   identification: 
     name: P99981_IP_ORIGEN
     type: Hidden
@@ -1215,7 +1222,7 @@ page-items:
 
   layout: 
     sequence: 210
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1240,7 +1247,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_USER_AGENT ========================
-  id: 47525956394108344
+  id: 39344643803886586
   identification: 
     name: P99981_USER_AGENT
     type: Hidden
@@ -1250,7 +1257,7 @@ page-items:
 
   layout: 
     sequence: 220
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1277,7 +1284,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_VERSION_TERMINOS ==================
-  id: 47526832006108347
+  id: 39345519415886589
   identification: 
     name: P99981_VERSION_TERMINOS
     type: Checkbox
@@ -1293,7 +1300,7 @@ page-items:
 
   layout: 
     sequence: 230
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1328,7 +1335,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_VERSION_DATOS_PERSONALES ==========
-  id: 47527184365108348
+  id: 39345871774886590
   identification: 
     name: P99981_VERSION_DATOS_PERSONALES
     type: Checkbox
@@ -1344,7 +1351,7 @@ page-items:
 
   layout: 
     sequence: 260
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1382,7 +1389,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_VERSION_CONTRATO_MANDATO ==========
-  id: 47527578288108350
+  id: 39346265697886592
   identification: 
     name: P99981_VERSION_CONTRATO_MANDATO
     type: Checkbox
@@ -1398,7 +1405,7 @@ page-items:
 
   layout: 
     sequence: 250
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1436,7 +1443,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99981_PASSWORD ==========================
-  id: 48547348526663417
+  id: 40366035936441659
   identification: 
     name: P99981_PASSWORD
     type: Hidden
@@ -1446,7 +1453,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: BODY
 
   advanced: 
@@ -1467,14 +1474,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 28374974426490410
+  id: 20193661836268652
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 30
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1498,14 +1505,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CREATE ======================================
-  id: 28393581579490496
+  id: 20212268989268738
   identification: 
     button-name: CREATE
     label: Crear Cuenta
 
   layout: 
     sequence: 10
-    region: Register-form # 47515822916108285
+    region: Register-form # 39334510325886527
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1532,7 +1539,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onChange - Tipo Persona RC ==========
-  id: 28353840887394773
+  id: 20172528297173015
   identification: 
     name: onChange - Tipo Persona RC
 
@@ -1555,7 +1562,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 28354723331394782
+    id: 20173410741173024
     identification: 
       action: Hide
 
@@ -1569,12 +1576,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - Tipo Persona RC # 28353840887394773
+      event: onChange - Tipo Persona RC # 20172528297173015
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 28354845993394783
+    id: 20173533403173025
     identification: 
       action: Show
 
@@ -1585,12 +1592,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onChange - Tipo Persona RC # 28353840887394773
+      event: onChange - Tipo Persona RC # 20172528297173015
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Hide ========================================
-    id: 28355004254394784
+    id: 20173691664173026
     identification: 
       action: Hide
 
@@ -1601,12 +1608,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onChange - Tipo Persona RC # 28353840887394773
+      event: onChange - Tipo Persona RC # 20172528297173015
       fire-when-event-result-is: False
       fire-on-initialization: true
 
   - # ====== Action: Show ========================================
-    id: 28355048319394785
+    id: 20173735729173027
     identification: 
       action: Show
 
@@ -1620,12 +1627,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - Tipo Persona RC # 28353840887394773
+      event: onChange - Tipo Persona RC # 20172528297173015
       fire-when-event-result-is: False
       fire-on-initialization: true
 
   - # ====== Action: Set Focus ===================================
-    id: 28735405551034362
+    id: 20554092960812604
     identification: 
       action: Set Focus
 
@@ -1636,12 +1643,12 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: onChange - Tipo Persona RC # 28353840887394773
+      event: onChange - Tipo Persona RC # 20172528297173015
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Focus ===================================
-    id: 28736093337034369
+    id: 20554780746812611
     identification: 
       action: Set Focus
 
@@ -1652,12 +1659,12 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: onChange - Tipo Persona RC # 28353840887394773
+      event: onChange - Tipo Persona RC # 20172528297173015
       fire-when-event-result-is: False
       fire-on-initialization: true
 
 - # ====== Dynamic Action: Hide Items ==========================
-  id: 28355169144394786
+  id: 20173856554173028
   identification: 
     name: Hide Items
 
@@ -1670,7 +1677,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 28355244655394787
+    id: 20173932065173029
     identification: 
       action: Hide
 
@@ -1685,12 +1692,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Hide Items # 28355169144394786
+      event: Hide Items # 20173856554173028
       fire-when-event-result-is: True
       fire-on-initialization: true
 
 - # ====== Dynamic Action: Check_TP ============================
-  id: 28395292518490515
+  id: 20213979928268757
   identification: 
     name: Check_TP
 
@@ -1706,11 +1713,11 @@ dynamic-actions:
     - P99981_PERSON_TYPE
 
   configuration: 
-    build-option: Commented Out # 23875207405324371
+    build-option: Commented Out # 15693894815102613
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 28395773856490519
+    id: 20214461266268761
     identification: 
       action: Execute JavaScript Code
 
@@ -1729,12 +1736,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: Check_TP # 28395292518490515
+      event: Check_TP # 20213979928268757
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onChange - Version Terminos =========
-  id: 28735066573034359
+  id: 20553753982812601
   identification: 
     name: onChange - Version Terminos
 
@@ -1760,37 +1767,37 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Enable ======================================
-    id: 28735210821034360
+    id: 20553898230812602
     identification: 
       action: Enable
 
     affected-elements: 
       selection-type: Button
-      button: CREATE # 28393581579490496
+      button: CREATE # 20212268989268738
 
     execution: 
       sequence: 10
-      event: onChange - Version Terminos # 28735066573034359
+      event: onChange - Version Terminos # 20553753982812601
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Disable =====================================
-    id: 28735219914034361
+    id: 20553907323812603
     identification: 
       action: Disable
 
     affected-elements: 
       selection-type: Button
-      button: CREATE # 28393581579490496
+      button: CREATE # 20212268989268738
 
     execution: 
       sequence: 10
-      event: onChange - Version Terminos # 28735066573034359
+      event: onChange - Version Terminos # 20553753982812601
       fire-when-event-result-is: False
       fire-on-initialization: true
 
 - # ====== Dynamic Action: onPageLoad ==========================
-  id: 28735489172034363
+  id: 20554176581812605
   identification: 
     name: onPageLoad
 
@@ -1808,7 +1815,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 28735672226034365
+    id: 20554359635812607
     identification: 
       action: Execute JavaScript Code
 
@@ -1819,13 +1826,13 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onPageLoad # 28735489172034363
+      event: onPageLoad # 20554176581812605
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: Tipo persona no es nulo =================
-  id: 28354083229394775
+  id: 20172770639173017
   identification: 
     name: Tipo persona no es nulo
 
@@ -1840,10 +1847,10 @@ validations:
   error: 
     error-message: Por favor seleccione el tipo de persona
     display-location: Inline with Field
-    associated-item: P99981_TIPO_PERSONA_RC # 47518793284108316
+    associated-item: P99981_TIPO_PERSONA_RC # 39337480693886558
 
 - # ====== Validation: Validar numero de documento =============
-  id: 28355360137394788
+  id: 20174047547173030
   identification: 
     name: Validar numero de documento
 
@@ -1857,11 +1864,11 @@ validations:
       declare
           l_return boolean;
           l_tipo_doc varchar2(100);
-          l_nro_doc varchar2(1000);
+          l_nro_doc varchar2(8);
       begin
           l_tipo_doc := :P99981_TIPO_DOCUMENTO_RC;
-          l_nro_doc := :P99981_NUMERO_DOCUMENTO;
-          if  l_tipo_doc = 'DNI' and length(l_nro_doc) = 8 then
+          l_nro_doc := lpad(:P99981_NUMERO_DOCUMENTO,8,'0');
+          if  l_tipo_doc = 'DNI' and length(l_nro_doc) = 8 then --Always true when DNI
               l_return := true;
           elsif l_tipo_doc = 'RUC' and length(l_nro_doc) = 11 then
               l_return := true;
@@ -1877,10 +1884,10 @@ validations:
   error: 
     error-message: Por favor ingrese un documento válido.
     display-location: Inline with Field
-    associated-item: P99981_NUMERO_DOCUMENTO # 47519583707108319
+    associated-item: P99981_NUMERO_DOCUMENTO # 39338271116886561
 
 - # ====== Validation: Razon social no es nulo =================
-  id: 28355638071394791
+  id: 20174325481173033
   identification: 
     name: Razon social no es nulo
 
@@ -1895,7 +1902,7 @@ validations:
   error: 
     error-message: Por favor ingrese la razón social.
     display-location: Inline with Field
-    associated-item: P99981_RAZON_SOCIAL # 47519986176108321
+    associated-item: P99981_RAZON_SOCIAL # 39338673585886563
 
   server-side-condition: 
     type: Item = Value
@@ -1903,7 +1910,7 @@ validations:
     value: RUC
 
 - # ====== Validation: Nombres no es nulo ======================
-  id: 28355717523394792
+  id: 20174404933173034
   identification: 
     name: Nombres no es nulo
 
@@ -1918,7 +1925,7 @@ validations:
   error: 
     error-message: Por favor ingrese sus nombres.
     display-location: Inline with Field
-    associated-item: P99981_NOMBRES # 47520363186108322
+    associated-item: P99981_NOMBRES # 39339050595886564
 
   server-side-condition: 
     type: Item = Value
@@ -1926,7 +1933,7 @@ validations:
     value: NAT
 
 - # ====== Validation: Apellido paterno no es nulo =============
-  id: 28355890007394793
+  id: 20174577417173035
   identification: 
     name: Apellido paterno no es nulo
 
@@ -1941,7 +1948,7 @@ validations:
   error: 
     error-message: Por favor ingrese su apellido paterno.
     display-location: Inline with Field
-    associated-item: P99981_APELLIDO_PATERNO # 47520784425108324
+    associated-item: P99981_APELLIDO_PATERNO # 39339471834886566
 
   server-side-condition: 
     type: Item = Value
@@ -1949,7 +1956,7 @@ validations:
     value: NAT
 
 - # ====== Validation: Apellido materno no es nulo =============
-  id: 28355993809394794
+  id: 20174681219173036
   identification: 
     name: Apellido materno no es nulo
 
@@ -1964,7 +1971,7 @@ validations:
   error: 
     error-message: Por favor ingrese su apellido materno
     display-location: Inline with Field
-    associated-item: P99981_APELLIDO_MATERNO # 47521191012108325
+    associated-item: P99981_APELLIDO_MATERNO # 39339878421886567
 
   server-side-condition: 
     type: Item = Value
@@ -1972,7 +1979,7 @@ validations:
     value: NAT
 
 - # ====== Validation: Fecha de nacimiento no es nulo ==========
-  id: 28356044068394795
+  id: 20174731478173037
   identification: 
     name: Fecha de nacimiento no es nulo
 
@@ -1987,7 +1994,7 @@ validations:
   error: 
     error-message: Por favor ingrese su fecha de nacimiento.
     display-location: Inline with Field
-    associated-item: P99981_FECHA_NACIMIENTO # 47521558687108327
+    associated-item: P99981_FECHA_NACIMIENTO # 39340246096886569
 
   server-side-condition: 
     type: Item != Value
@@ -1995,7 +2002,7 @@ validations:
     value: RUC
 
 - # ====== Validation: Validar numero de documento unico =======
-  id: 28356419659394799
+  id: 20175107069173041
   identification: 
     name: Validar numero de documento unico
 
@@ -2004,16 +2011,16 @@ validations:
 
   validation: 
     type: No Rows returned
-    sql-query: 'select 1 from bko_persona where tipo_documento_rc = :P99981_TIPO_DOCUMENTO_RC and numero_doc = :P99981_NUMERO_DOCUMENTO'
+    sql-query: "select 1 from bko_persona where tipo_documento_rc = :P99981_TIPO_DOCUMENTO_RC and numero_doc = lpad(:P99981_NUMERO_DOCUMENTO,8,'0')"
     always-execute: false
 
   error: 
     error-message: El número de documento ingresado ya esta asociado a una cuenta activa.
     display-location: Inline with Field
-    associated-item: P99981_NUMERO_DOCUMENTO # 47519583707108319
+    associated-item: P99981_NUMERO_DOCUMENTO # 39338271116886561
 
 - # ====== Validation: Validar terminos y condiciones ==========
-  id: 28357300733394807
+  id: 20175988143173049
   identification: 
     name: Validar terminos y condiciones
 
@@ -2029,10 +2036,10 @@ validations:
   error: 
     error-message: Por favor acepte los términos y condiciones para continuar
     display-location: Inline with Field
-    associated-item: P99981_VERSION_TERMINOS # 47526832006108347
+    associated-item: P99981_VERSION_TERMINOS # 39345519415886589
 
 - # ====== Validation: Validar contrato ========================
-  id: 28357394743394808
+  id: 20176082153173050
   identification: 
     name: Validar contrato
 
@@ -2048,10 +2055,10 @@ validations:
   error: 
     error-message: Por favor acepte el contrato para continuar
     display-location: Inline with Field
-    associated-item: P99981_VERSION_CONTRATO_MANDATO # 47527578288108350
+    associated-item: P99981_VERSION_CONTRATO_MANDATO # 39346265697886592
 
 - # ====== Validation: P99981_FECHA_REGISTRO must be timestamp =
-  id: 28394246928490511
+  id: 20212934338268753
   identification: 
     name: P99981_FECHA_REGISTRO must be timestamp
 
@@ -2066,10 +2073,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P99981_FECHA_REGISTRO # 47523549167108335
+    associated-item: P99981_FECHA_REGISTRO # 39342236576886577
 
 - # ====== Validation: P99981_FECHA_EXPIRACION must be timestamp
-  id: 28394586920490513
+  id: 20213274330268755
   identification: 
     name: P99981_FECHA_EXPIRACION must be timestamp
 
@@ -2084,11 +2091,26 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P99981_FECHA_EXPIRACION # 47524434095108338
+    associated-item: P99981_FECHA_EXPIRACION # 39343121504886580
+
+computations: 
+- # ====== Computation: P99981_NUMERO_DOCUMENTO ================
+  id: 42065611457500311
+  identification: 
+    item-name: P99981_NUMERO_DOCUMENTO
+
+  execution: 
+    sequence: 10
+    point: After Submit
+
+  computation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "lpad(:P99981_NUMERO_DOCUMENTO,8,'0')"
 
 processes: 
 - # ====== Process: Enviar email de confirmacion ===============
-  id: 28564115800288359
+  id: 20382803210066601
   identification: 
     name: Enviar email de confirmacion
     type: Execute Code
@@ -2113,7 +2135,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Procesar Registro ==========================
-  id: 28736141048034370
+  id: 20554828457812612
   identification: 
     name: Procesar Registro
     type: Execute Code
@@ -2160,7 +2182,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Generar Token ==============================
-  id: 28736673804034375
+  id: 20555361213812617
   identification: 
     name: Generar Token
     type: Execute Code
@@ -2187,7 +2209,7 @@ processes:
 
 branches: 
 - # ====== Branch: Go To Page 99982 ============================
-  id: 28396260904490521
+  id: 20214948314268763
   identification: 
     name: Go To Page 99982
 

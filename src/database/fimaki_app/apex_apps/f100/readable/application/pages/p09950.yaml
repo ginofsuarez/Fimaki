@@ -47,7 +47,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Activación de Cuenta ========================
-  id: 53204322539524661
+  id: 45023009949302903
   identification: 
     name: Activación de Cuenta
     type: Static Content
@@ -101,14 +101,14 @@ regions:
 
 buttons: 
 - # ====== Button: NUEV0_ENLACE ================================
-  id: 37080458195928776
+  id: 28899145605707018
   identification: 
     button-name: NUEV0_ENLACE
     label: Solicitar nuevo enlace
 
   layout: 
     sequence: 10
-    region: Activación de Cuenta # 53204322539524661
+    region: Activación de Cuenta # 45023009949302903
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -130,14 +130,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: VOLVER_INICIO ===============================
-  id: 37080638940928778
+  id: 28899326350707020
   identification: 
     button-name: VOLVER_INICIO
     label: Volver al inicio
 
   layout: 
     sequence: 20
-    region: Activación de Cuenta # 53204322539524661
+    region: Activación de Cuenta # 45023009949302903
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -162,7 +162,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Load ================================
-  id: 37330748214187537
+  id: 29149435623965779
   identification: 
     name: Load
 
@@ -175,7 +175,7 @@ dynamic-actions:
 
 processes: 
 - # ====== Process: New ========================================
-  id: 37080974282928781
+  id: 28899661692707023
   identification: 
     name: New
     type: Execute Code

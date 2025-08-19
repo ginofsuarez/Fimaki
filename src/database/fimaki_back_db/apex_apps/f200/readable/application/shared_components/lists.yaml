@@ -1,6 +1,6 @@
 ---
 - # ====== List: Navigation Menu ===============================
-  id: 31838512181434556
+  id: 23661394066220666
   identification: 
     name: Navigation Menu
 
@@ -12,7 +12,7 @@
 
   entries: 
   - # ====== Entry: Panel de Control =============================
-    id: 31850213565434591
+    id: 23673095450220701
     label: 
       label: Panel de Control
 
@@ -37,7 +37,7 @@
       translatable: false
 
   - # ====== Entry: Administración ===============================
-    id: 31859420729678053
+    id: 23682302614464163
     label: 
       label: Administración
 
@@ -63,7 +63,7 @@
       translatable: false
 
   - # ====== Entry: Empresas =====================================
-    id: 42658412363899332
+    id: 34481294248685442
     label: 
       label: Empresas
 
@@ -89,7 +89,7 @@
       translatable: false
 
   - # ====== Entry: Facturas =====================================
-    id: 43799049461829370
+    id: 35621931346615480
     label: 
       label: Facturas
 
@@ -115,7 +115,7 @@
       translatable: false
 
 - # ====== List: Navigation Bar ================================
-  id: 31839740442434562
+  id: 23662622327220672
   identification: 
     name: Navigation Bar
 
@@ -127,7 +127,7 @@
 
   entries: 
   - # ====== Entry: &APP_USER. ===================================
-    id: 31851656810434599
+    id: 23674538695220709
     label: 
       label: '&APP_USER.'
 
@@ -151,13 +151,13 @@
       2.: has-username
 
   - # ====== Entry: --- ==========================================
-    id: 31852217646434600
+    id: 23675099531220710
     label: 
       label: '---'
 
     layout: 
       sequence: 20
-      parent-entry: '&APP_USER.' # 31851656810434599
+      parent-entry: '&APP_USER.' # 23674538695220709
 
     is-current: 
       type: Target Page
@@ -175,7 +175,7 @@
       type: User is Authenticated (not public)
 
   - # ====== Entry: Cerrar Sesión ================================
-    id: 31852570826434601
+    id: 23675452711220711
     label: 
       label: Cerrar Sesión
 
@@ -184,7 +184,7 @@
 
     layout: 
       sequence: 30
-      parent-entry: '&APP_USER.' # 31851656810434599
+      parent-entry: '&APP_USER.' # 23674538695220709
 
     is-current: 
       type: Target Page
@@ -202,7 +202,7 @@
       type: User is Authenticated (not public)
 
 - # ====== List: Sistema =======================================
-  id: 31867212860702977
+  id: 23690094745489087
   identification: 
     name: Sistema
 
@@ -214,7 +214,7 @@
 
   entries: 
   - # ====== Entry: Códigos de Referencia ========================
-    id: 31867377345702983
+    id: 23690259230489093
     label: 
       label: Códigos de Referencia
 
@@ -238,7 +238,7 @@
       1.: Ayuda a estandarizar sus datos. Limita los valores que los usuarios pueden seleccionar en un campo.
 
   - # ====== Entry: Variables de Entorno =========================
-    id: 31870893779804903
+    id: 23693775664591013
     label: 
       label: Variables de Entorno
 
@@ -262,7 +262,7 @@
       1.: Almacena las claves y los valores de los parámetros, que luego sirven como entrada para la aplicación.
 
   - # ====== Entry: Plantillas de correo =========================
-    id: 50191237650981371
+    id: 42014119535767481
     label: 
       label: Plantillas de correo
 
@@ -286,7 +286,7 @@
       1.: Permite crear y gestionar plantillas predefinidas para el envío automatizado de correos electrónicos. Define el contenido, formato y variables dinámicas que se utilizarán en las comunicaciones del sistema con los usuarios.
 
 - # ====== List: Aprobaciones ==================================
-  id: 48757583999179451
+  id: 40580465883965561
   identification: 
     name: Aprobaciones
 
@@ -298,7 +298,7 @@
 
   entries: 
   - # ====== Entry: Solicitudes de Depósito ======================
-    id: 48757791214179455
+    id: 40580673098965565
     label: 
       label: Solicitudes de Depósito
 

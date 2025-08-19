@@ -62,7 +62,7 @@ files:
 
 styles: 
 - # ====== Style: Vita (FIMAKI) ================================
-  id: 21319155818102431
+  id: 13137843227880673
   identification: 
     name: Vita (FIMAKI)
 
@@ -77,7 +77,7 @@ styles:
     json-configuration: '{"classes":[],"vars":{"@g_Accent-BG":"#283b3f","@g_Accent-OG":"#e9e1de","@g_Container-BorderRadius":"8px","@Head-Height":"72px","@g_Button-BG":"#d9d7ef","@g_Button-Text":"#383838","@l_Button-Hot-BG":"#8b4eb0","@l_Button-Hot-Text":"#ffffff","@g_Link-Base":"#283b3f"},"customCSS":"","useCustomLess":"N"}'
 
 - # ====== Style: Fimaki =======================================
-  id: 24101158095293905
+  id: 15919845505072147
   identification: 
     name: Fimaki
 
@@ -92,7 +92,7 @@ styles:
     json-configuration: '{"classes":[],"vars":{"@g_Accent-BG":"#283b3f","@g_Accent-OG":"#e9e1de","@g_Focus":"#54e8d4","@g_Nav-BG":"#54e8d4","@g_Nav-FG":"#000000","@g_Nav-Active-BG":"#8b4eb0","@g_Nav-Active-FG":"#ffffff","@g_Link-Base":"#8b4eb0","@g_Nav-Icon":"#54e8d4","@g_Nav-Icon-Active":"#ffffff","@g_Nav-Accent-BG":"#c1beed","@g_Nav-Accent-FG":"#000000","@g_Nav-Badge-BG":"#c1beed","@g_Nav-Badge-FG":"#000000","@g_NavBarMenu-BG":"#c1beed","@g_NavBarMenu-FG":"#262626","@g_NavBarMenu-Active-BG":"#c1beed","@g_NavBarMenu-Active-FG":"#000000","@g_Region-Header-BG":"#8b4eb0","@g_Region-Header-FG":"#ffffff","@g_Region-BG":"#c1beed","@g_Region-FG":"#262626","@g_Disabled-BG":"#e9e1de","@g_Disabled-FG":"#000000","@g_Form-Item-BG":"#b7b4ea","@g_Form-Item-FG":"#000000","@g_Color-Palette-1":"#54e8d4","@g_Color-Palette-1-FG":"#8b4eb0","@g_Color-Palette-2":"#e9e1de","@g_Color-Palette-2-FG":"#283b3f","@g_Color-Palette-3":"#8b4eb0","@g_Color-Palette-3-FG":"#e9e1de","@g_Color-Palette-4":"#54e8d4","@g_Color-Palette-4-FG":"#e9e1de","@g_Color-Palette-5":"#283b3f","@g_Color-Palette-5-FG":"#54e8d4","@g_Color-Palette-6":"#c1beed","@g_Color-Palette-6-FG":"#8b4eb0","@g_Color-Palette-7":"#ffffff","@g_Color-Palette-7-FG":"#ffffff","@g_Color-Palette-8":"#ffffff","@g_Color-Palette-8-FG":"#ffffff","@g_Color-Palette-9":"#ffffff","@g_Color-Palette-9-FG":"#ffffff","@g_Color-Palette-10":"#ffffff","@g_Color-Palette-10-FG":"#ffffff","@g_Color-Palette-11":"#ffffff","@g_Color-Palette-11-FG":"#ffffff","@g_Color-Palette-12":"#ffffff","@g_Color-Palette-12-FG":"#ffffff","@g_Color-Palette-13":"#ffffff","@g_Color-Palette-13-FG":"#ffffff","@g_Color-Palette-14":"#ffffff","@g_Color-Palette-14-FG":"#ffffff","@g_Color-Palette-15":"#ffffff","@g_Color-Palette-15-FG":"#ffffff","@Head-Height":"72px"},"customCSS":"","useCustomLess":"N"}'
 
 - # ====== Style: Vita (FIMAKI)  ===============================
-  id: 27823881600563207
+  id: 19642569010341449
   identification: 
     name: 'Vita (FIMAKI) '
 
@@ -108,7 +108,7 @@ styles:
 
 files: 
 - # ====== File: 13137843227880673.css =========================
-  id: 21319603522102436
+  id: 13138290931880678
   identification: 
     file-name: 13137843227880673.css
 
@@ -117,7 +117,7 @@ files:
     file-character-set: Unicode UTF-8
 
 - # ====== File: 7978916237963448.css ==========================
-  id: 24101585110293910
+  id: 15920272520072152
   identification: 
     file-name: 7978916237963448.css
 
@@ -126,7 +126,7 @@ files:
     file-character-set: Unicode UTF-8
 
 - # ====== File: 19642569010341449.css =========================
-  id: 27824231236563212
+  id: 19642918646341454
   identification: 
     file-name: 19642569010341449.css
 

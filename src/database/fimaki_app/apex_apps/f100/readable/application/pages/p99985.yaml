@@ -39,14 +39,14 @@ server-cache:
 
 regions: 
 - # ====== Region: Register-form ===============================
-  id: 65884078077962997
+  id: 57702765487741239
   identification: 
     name: Register-form
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Register # 81807449408318273
+    parent-region: Register # 73626136818096515
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -79,7 +79,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Register ====================================
-  id: 81807449408318273
+  id: 73626136818096515
   identification: 
     name: Register
     type: Static Content
@@ -135,7 +135,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P99985_CORREO ============================
-  id: 65889498378963021
+  id: 57708185788741263
   identification: 
     name: P99985_CORREO
     type: Text Field
@@ -153,7 +153,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Register-form # 65884078077962997
+    region: Register-form # 57702765487741239
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -194,14 +194,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 46742836771345104
+  id: 38561524181123346
   identification: 
     button-name: CANCEL
     label: Regresar al inicio de sesión
 
   layout: 
     sequence: 30
-    region: Register-form # 65884078077962997
+    region: Register-form # 57702765487741239
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -229,14 +229,14 @@ buttons:
     database-action: SQL INSERT action
 
 - # ====== Button: RESET =======================================
-  id: 46743297821345106
+  id: 38561985231123348
   identification: 
     button-name: RESET
     label: Restablecer Contraseña
 
   layout: 
     sequence: 10
-    region: Register-form # 65884078077962997
+    region: Register-form # 57702765487741239
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -260,7 +260,7 @@ buttons:
 
 validations: 
 - # ====== Validation: Email es válido =========================
-  id: 46725872429785384
+  id: 38544559839563626
   identification: 
     name: Email es válido
 
@@ -276,10 +276,10 @@ validations:
   error: 
     error-message: El correo no es válido.
     display-location: Inline with Field
-    associated-item: P99985_CORREO # 65889498378963021
+    associated-item: P99985_CORREO # 57708185788741263
 
 - # ====== Validation: Limite de intentos ======================
-  id: 46726002082785385
+  id: 38544689492563627
   identification: 
     name: Limite de intentos
 
@@ -306,7 +306,7 @@ validations:
 
 processes: 
 - # ====== Process: Reset Password =============================
-  id: 46723657399785362
+  id: 38542344809563604
   identification: 
     name: Reset Password
     type: Execute Code
@@ -340,11 +340,11 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: RESET # 46743297821345106
+    when-button-pressed: RESET # 38561985231123348
 
 branches: 
 - # ====== Branch: Go To 99986 =================================
-  id: 46724417671785370
+  id: 38543105081563612
   identification: 
     name: Go To 99986
 

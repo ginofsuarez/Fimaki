@@ -1,6 +1,6 @@
 ---
 - # ====== Install Script: cr_amb_op_tipo_dml ==================
-  id: 35506432345708014
+  id: 27329314230494124
   identification: 
     name: cr_amb_op_tipo_dml
 
@@ -8,7 +8,7 @@
     sequence: 20
 
 - # ====== Install Script: cr_cargo_tipo_dml ===================
-  id: 35666251179043496
+  id: 27489133063829606
   identification: 
     name: cr_cargo_tipo_dml
 
@@ -16,7 +16,7 @@
     sequence: 30
 
 - # ====== Install Script: pais_dml ============================
-  id: 35765003259754526
+  id: 27587885144540636
   identification: 
     name: pais_dml
 
@@ -27,7 +27,7 @@
     type: Never
 
 - # ====== Install Script: subdivision_geografica_departamentos_
-  id: 35765934443143141
+  id: 27588816327929251
   identification: 
     name: subdivision_geografica_departamentos_dml
 
@@ -38,7 +38,7 @@
     type: Never
 
 - # ====== Install Script: subdivision_geografica_provincias_dml
-  id: 35767218147767683
+  id: 27590100032553793
   identification: 
     name: subdivision_geografica_provincias_dml
 
@@ -49,7 +49,7 @@
     type: Never
 
 - # ====== Install Script: cr_ciiu_tipo_dml ====================
-  id: 39460222594267976
+  id: 31283104479054086
   identification: 
     name: cr_ciiu_tipo_dml
 
@@ -57,7 +57,7 @@
     sequence: 60
 
 - # ====== Install Script: cr_act_eco_tipo_dml =================
-  id: 39460949774447315
+  id: 31283831659233425
   identification: 
     name: cr_act_eco_tipo_dml
 
@@ -65,7 +65,7 @@
     sequence: 10
 
 - # ====== Install Script: cr_tam_emp_tipo_dml =================
-  id: 41724674223594428
+  id: 33547556108380538
   identification: 
     name: cr_tam_emp_tipo_dml
 
@@ -73,7 +73,7 @@
     sequence: 150
 
 - # ====== Install Script: cr_tip_comp_tipo_dml ================
-  id: 41724761380599115
+  id: 33547643265385225
   identification: 
     name: cr_tip_comp_tipo_dml
 
@@ -81,7 +81,7 @@
     sequence: 160
 
 - # ====== Install Script: cr_tip_cont_tipo_dml ================
-  id: 41724916449601211
+  id: 33547798334387321
   identification: 
     name: cr_tip_cont_tipo_dml
 
@@ -89,7 +89,7 @@
     sequence: 170
 
 - # ====== Install Script: cr_tip_cta_tipo_dml =================
-  id: 41725000171609232
+  id: 33547882056395342
   identification: 
     name: cr_tip_cta_tipo_dml
 
@@ -97,7 +97,7 @@
     sequence: 180
 
 - # ====== Install Script: cr_tip_score_tipo_dml ===============
-  id: 41725063527615748
+  id: 33547945412401858
   identification: 
     name: cr_tip_score_tipo_dml
 
@@ -105,7 +105,7 @@
     sequence: 190
 
 - # ====== Install Script: cr_tip_soc_tipo_dml =================
-  id: 41725187341620190
+  id: 33548069226406300
   identification: 
     name: cr_tip_soc_tipo_dml
 
@@ -113,7 +113,7 @@
     sequence: 200
 
 - # ====== Install Script: cr_tipo_doc_tipo_dml ================
-  id: 41725274290623141
+  id: 33548156175409251
   identification: 
     name: cr_tipo_doc_tipo_dml
 
@@ -121,7 +121,7 @@
     sequence: 210
 
 - # ====== Install Script: cr_tipo_mon_tipo_dml ================
-  id: 41725399914625924
+  id: 33548281799412034
   identification: 
     name: cr_tipo_mon_tipo_dml
 
@@ -129,7 +129,7 @@
     sequence: 220
 
 - # ====== Install Script: cr_tipo_per_tipo_dml ================
-  id: 41725446920628300
+  id: 33548328805414410
   identification: 
     name: cr_tipo_per_tipo_dml
 
@@ -137,7 +137,7 @@
     sequence: 230
 
 - # ====== Install Script: cr_tipo_rol_tipo_dml ================
-  id: 41725536509630881
+  id: 33548418394416991
   identification: 
     name: cr_tipo_rol_tipo_dml
 
@@ -145,7 +145,7 @@
     sequence: 240
 
 - # ====== Install Script: cr_tip_contac_tipo_dml ==============
-  id: 41725787133659250
+  id: 33548669018445360
   identification: 
     name: cr_tip_contac_tipo_dml
 
@@ -153,7 +153,7 @@
     sequence: 250
 
 - # ====== Install Script: cr_entidad_financiera_tipo_dml ======
-  id: 42700209125923998
+  id: 34523091010710108
   identification: 
     name: cr_entidad_financiera_tipo_dml
 
@@ -161,7 +161,7 @@
     sequence: 80
 
 - # ====== Install Script: cr_est_fact_tipo_dml ================
-  id: 42701027379025906
+  id: 34523909263812016
   identification: 
     name: cr_est_fact_tipo_dml
 
@@ -169,7 +169,7 @@
     sequence: 90
 
 - # ====== Install Script: cr_est_usu_tipo_dml =================
-  id: 42701226723043667
+  id: 34524108607829777
   identification: 
     name: cr_est_usu_tipo_dml
 
@@ -177,7 +177,7 @@
     sequence: 100
 
 - # ====== Install Script: cr_estado_empresa_tipo_dml ==========
-  id: 42710563051138307
+  id: 34533444935924417
   identification: 
     name: cr_estado_empresa_tipo_dml
 
@@ -185,7 +185,7 @@
     sequence: 110
 
 - # ====== Install Script: cr_org_fon_tipo_dml =================
-  id: 42710694724155861
+  id: 34533576608941971
   identification: 
     name: cr_org_fon_tipo_dml
 
@@ -193,7 +193,7 @@
     sequence: 120
 
 - # ====== Install Script: cr_reg_trib_tipo_dml ================
-  id: 42710959483166105
+  id: 34533841367952215
   identification: 
     name: cr_reg_trib_tipo_dml
 
@@ -201,7 +201,7 @@
     sequence: 130
 
 - # ====== Install Script: cr_solctdept_tipo_dml ===============
-  id: 42711711463215083
+  id: 34534593348001193
   identification: 
     name: cr_solctdept_tipo_dml
 
@@ -209,7 +209,7 @@
     sequence: 140
 
 - # ====== Install Script: subdivision_geografica_distritos_dml 
-  id: 46125122886067990
+  id: 37948004770854100
   identification: 
     name: subdivision_geografica_distritos_dml
 
