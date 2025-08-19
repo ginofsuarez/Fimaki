@@ -1,0 +1,1391 @@
+---
+# ====== Page: Direccion =====================================
+id: 70
+identification: 
+  name: Direccion
+  alias: DIRECCION
+  title: Direccion
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  chained: false
+  resizable: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .t-Region-headerItems--controls {
+        padding-inline-start: var(--ut-region-header-item-spacing, .0rem);
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Auditoria ===================================
+  id: 44138505965598327
+  identification: 
+    name: Auditoria
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Collapsible
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - is-collapsed
+    - t-Region--noUI
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P70_ID_DIRECCION_PERSONA
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Direccion ===================================
+  id: 44154296496852250
+  identification: 
+    name: Direccion
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: BKO_DIRECCION_PERSONA
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Buttons =====================================
+  id: 44164527437852302
+  identification: 
+    name: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: Text (escape special characters)
+      show-line-breaks: true
+
+page-items: 
+- # ====== Page Item: P70_ID_SUBDIVISION_N3 ====================
+  id: 41317778065470211
+  identification: 
+    name: P70_ID_SUBDIVISION_N3
+    type: Popup LOV
+
+  label: 
+    label: Subdivision N3 - (Distrito)
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: true
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 100
+    region: Direccion # 44154296496852250
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select s.nombre
+               , id_subdivision
+            from bko_subdivision_geografica s
+            join bko_pais p
+              on s.id_pais = p.id_pais
+           where id_subdivision_padre = :P70_ID_SUBDIVISION_N2
+        order by nombre
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P70_ID_SUBDIVISION_N2
+    items-to-submit: 
+    - P70_ID_SUBDIVISION_N2
+    - P70_ID_PAIS
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: ID_SUBDIVISION_N3
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_PRINCIPAL_SN =========================
+  id: 44138631561598328
+  identification: 
+    name: P70_PRINCIPAL_SN
+    type: Switch
+
+  label: 
+    label: Principal
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    on-value: S
+    on-label: Si
+    off-value: N
+    off-label: No
+
+  layout: 
+    sequence: 110
+    region: Direccion # 44154296496852250
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: 0
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    post-text-: '&nbsp;Direccion Principal'
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: PRINCIPAL_SN
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_ID_DIRECCION_PERSONA =================
+  id: 44154639493852256
+  identification: 
+    name: P70_ID_DIRECCION_PERSONA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Direccion # 44154296496852250
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: ID_DIRECCION_PERSONA
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_DIRECCION ============================
+  id: 44155050726852262
+  identification: 
+    name: P70_DIRECCION
+    type: Textarea
+
+  label: 
+    label: Direccion
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: false
+    character-counter: false
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 30
+    region: Direccion # 44154296496852250
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+    height: 2
+
+  validation: 
+    value-required: true
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: DIRECCION
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_TELEFONO_PRINCIPAL ===================
+  id: 44155383787852264
+  identification: 
+    name: P70_TELEFONO_PRINCIPAL
+    type: Text Field
+
+  label: 
+    label: Telefono Principal
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Direccion # 44154296496852250
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-phone
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 20
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: TELEFONO_PRINCIPAL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_TELEFONO_SECUNDARIO ==================
+  id: 44155881560852265
+  identification: 
+    name: P70_TELEFONO_SECUNDARIO
+    type: Text Field
+
+  label: 
+    label: Telefono Secundario
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Direccion # 44154296496852250
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-phone
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 20
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: TELEFONO_SECUNDARIO
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_ID_PERSONA ===========================
+  id: 44156238427852267
+  identification: 
+    name: P70_ID_PERSONA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Direccion # 44154296496852250
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: ID_PERSONA
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_ACTIVO_SN ============================
+  id: 44156678988852271
+  identification: 
+    name: P70_ACTIVO_SN
+    type: Switch
+
+  label: 
+    label: Activo Sn
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    on-value: S
+    on-label: Si
+    off-value: N
+    off-label: No
+
+  layout: 
+    sequence: 120
+    region: Direccion # 44154296496852250
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: 0
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    post-text-: '&nbsp;Activo'
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: ACTIVO_SN
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: S
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_ID_PAIS ==============================
+  id: 44157012318852272
+  identification: 
+    name: P70_ID_PAIS
+    type: Popup LOV
+
+  label: 
+    label: Pais
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: true
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 70
+    region: Direccion # 44154296496852250
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_PAIS_ACTIVO # 37471767139739905
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: ID_PAIS
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_ID_SUBDIVISION_N1 ====================
+  id: 44157448728852274
+  identification: 
+    name: P70_ID_SUBDIVISION_N1
+    type: Popup LOV
+
+  label: 
+    label: Subdivision N1 - (Departamento)
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: true
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 80
+    region: Direccion # 44154296496852250
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select s.nombre
+               , id_subdivision
+            from bko_subdivision_geografica s
+            join bko_pais p
+              on s.id_pais = p.id_pais
+           where s.id_subdivision_padre is null and :P70_ID_PAIS = p.id_pais
+        order by nombre
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P70_ID_PAIS
+    items-to-submit: 
+    - P70_ID_PAIS
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: ID_SUBDIVISION_N1
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_ID_SUBDIVISION_N2 ====================
+  id: 44157813870852276
+  identification: 
+    name: P70_ID_SUBDIVISION_N2
+    type: Popup LOV
+
+  label: 
+    label: Subdivision N2 - (Provincia)
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: true
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 90
+    region: Direccion # 44154296496852250
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select s.nombre
+               , id_subdivision
+            from bko_subdivision_geografica s
+            join bko_pais p
+              on s.id_pais = p.id_pais
+           where id_subdivision_padre = :P70_ID_SUBDIVISION_N1
+        order by nombre
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P70_ID_SUBDIVISION_N1
+    items-to-submit: 
+    - P70_ID_SUBDIVISION_N1
+    - P70_ID_PAIS
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: ID_SUBDIVISION_N2
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_CREADO_POR ===========================
+  id: 44158186269852277
+  identification: 
+    name: P70_CREADO_POR
+    type: Display Only
+
+  label: 
+    label: Creado Por
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Auditoria # 44138505965598327
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: CREADO_POR
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_CREADO ===============================
+  id: 44158645543852279
+  identification: 
+    name: P70_CREADO
+    type: Display Only
+
+  label: 
+    label: Creado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Auditoria # 44138505965598327
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: CREADO
+    data-type: TIMESTAMP WITH LOCAL TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_MODIFICADO_POR =======================
+  id: 44159411651852282
+  identification: 
+    name: P70_MODIFICADO_POR
+    type: Display Only
+
+  label: 
+    label: Modificado Por
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Auditoria # 44138505965598327
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: MODIFICADO_POR
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P70_MODIFICADO ===========================
+  id: 44159866921852284
+  identification: 
+    name: P70_MODIFICADO
+    type: Display Only
+
+  label: 
+    label: Modificado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Auditoria # 44138505965598327
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Direccion # 44154296496852250
+    column: MODIFICADO
+    data-type: TIMESTAMP WITH LOCAL TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 44164905680852303
+  identification: 
+    button-name: CANCEL
+    label: Cancelar
+
+  layout: 
+    sequence: 10
+    region: Buttons # 44164527437852302
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 44166305558852309
+  identification: 
+    button-name: DELETE
+    label: Eliminar
+
+  layout: 
+    sequence: 20
+    region: Buttons # 44164527437852302
+    slot: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--danger
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P70_ID_DIRECCION_PERSONA
+
+- # ====== Button: SAVE ========================================
+  id: 44166710414852310
+  identification: 
+    button-name: SAVE
+    label: Aplicar Cambios
+
+  layout: 
+    sequence: 30
+    region: Buttons # 44164527437852302
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P70_ID_DIRECCION_PERSONA
+
+- # ====== Button: CREATE ======================================
+  id: 44167127221852311
+  identification: 
+    button-name: CREATE
+    label: Crear
+
+  layout: 
+    sequence: 40
+    region: Buttons # 44164527437852302
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P70_ID_DIRECCION_PERSONA
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 44164994326852303
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCEL # 44164905680852303
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 44165791147852307
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 44164994326852303
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+validations: 
+- # ====== Validation: P70_CREADO must be timestamp ============
+  id: 44159145399852281
+  identification: 
+    name: P70_CREADO must be timestamp
+
+  execution: 
+    sequence: 100
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P70_CREADO
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P70_CREADO # 44158645543852279
+
+- # ====== Validation: P70_MODIFICADO must be timestamp ========
+  id: 44160356138852285
+  identification: 
+    name: P70_MODIFICADO must be timestamp
+
+  execution: 
+    sequence: 120
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P70_MODIFICADO
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P70_MODIFICADO # 44159866921852284
+
+processes: 
+- # ====== Process: Process form Direccion Collection ==========
+  id: 42539048798450922
+  identification: 
+    name: Process form Direccion Collection
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_col_name apex_collections.collection_name%type := 'COL_DIRECCION';
+      BEGIN
+          IF NOT APEX_COLLECTION.COLLECTION_EXISTS('COL_DIRECCION')
+          THEN
+             APEX_COLLECTION.CREATE_COLLECTION('COL_DIRECCION');
+          END IF;
+      
+          apex_collection.add_member(
+                p_collection_name => l_col_name
+              , p_c001 => :P70_DIRECCION
+              , p_c002 => :P70_TELEFONO_PRINCIPAL
+              , p_c003 => :P70_TELEFONO_SECUNDARIO
+              , p_n001 => :P70_ID_PAIS
+              , p_n002 => :P70_ID_SUBDIVISION_N1
+              , p_n003 => :P70_ID_SUBDIVISION_N2
+              , p_n004 => :P70_ID_SUBDIVISION_N3
+              , p_c004 => :P70_PRINCIPAL_SN
+              , p_c005 => :P70_ACTIVO_SN
+          );
+      END;
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P70_ID_PERSONA
+
+- # ====== Process: Initialize form Direccion ==================
+  id: 44167546821852313
+  identification: 
+    name: Initialize form Direccion
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Direccion # 44154296496852250
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Direccion =====================
+  id: 44167960911852314
+  identification: 
+    name: Process form Direccion
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Direccion # 44154296496852250
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P70_ID_PERSONA
+
+- # ====== Process: Close Dialog ===============================
+  id: 44168359881852316
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

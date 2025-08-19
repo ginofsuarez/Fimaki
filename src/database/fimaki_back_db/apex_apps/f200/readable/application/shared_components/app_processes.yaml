@@ -1,0 +1,71 @@
+---
+- # ====== Application Process: DESCARGAR_ARCHIVO ==============
+  id: 47140736668662518
+  identification: 
+    name: DESCARGAR_ARCHIVO
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_mime     varchar2(255);
+          l_nombre   varchar2(255);
+          l_blob     blob;
+          l_length   number;
+      begin
+          select archivo_contenido,
+                 archivo_tipo_mime,
+                 archivo_nombre
+            into l_blob, l_mime, l_nombre
+            from bko_archivo
+           where id_archivo = :G_ID_ARCHIVO;
+      
+          l_length := dbms_lob.getlength(l_blob);
+      
+          owa_util.mime_header(l_mime, false);
+          htp.p('Content-length: ' || l_length);
+          htp.p('Content-Disposition: inline; filename="' || l_nombre || '"');
+          owa_util.http_header_close;
+      
+          wpg_docload.download_file(l_blob);
+          apex_application.stop_apex_engine;
+      
+      exception
+          when no_data_found then
+              htp.p('Archivo no encontrado');
+              apex_application.stop_apex_engine;
+      end;
+
+  execution: 
+    sequence: 1
+    point: Ajax Callback
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    version-number: 41720839898791
+
+- # ====== Application Process: SET_DECIMAL_CONFIG =============
+  id: 48478538640103442
+  identification: 
+    name: SET_DECIMAL_CONFIG
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: execute immediate 'alter session set nls_numeric_characters = ''.,''';
+
+  execution: 
+    sequence: 1
+    point: New Session
+
+  subscription: 
+    master: 
+      referenced-id: 26941767673341345
+
+    version-number: 41719162603876
+

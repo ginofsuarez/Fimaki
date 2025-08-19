@@ -1,0 +1,2605 @@
+---
+- # ====== Plugin: APEX Items with APEX Button =================
+  id: 43337665615755339
+  identification: 
+    name: APEX Items with APEX Button
+    internal-name: APEX.ITEMS.WITH.BUTTONS
+    type: Dynamic Action
+
+  advanced: 
+    category: Style
+    quick-pick: false
+
+  subscription: 
+    version-number: 41721797150885
+
+  source: 
+    pl/sql-code: |
+      FUNCTION F_RENDER (
+          P_DYNAMIC_ACTION   IN APEX_PLUGIN.T_DYNAMIC_ACTION,
+          P_PLUGIN           IN APEX_PLUGIN.T_PLUGIN
+      ) RETURN APEX_PLUGIN.T_DYNAMIC_ACTION_RENDER_RESULT AS
+          VR_RESULT         APEX_PLUGIN.T_DYNAMIC_ACTION_RENDER_RESULT;
+      BEGIN
+          VR_RESULT.JAVASCRIPT_FUNCTION   := 'function () { 
+              var btn = $("#" + $(this)[0].action.affectedButtonId);
+              var divCon = $("#' || APEX_ESCAPE.HTML_ATTRIBUTE( P_DYNAMIC_ACTION.ATTRIBUTE_01 ) || '").closest(".t-Form-itemWrapper");
+              btn.appendTo(divCon);
+              btn.addClass("a-Button a-Button--calendar");
+              btn.css("min-width", "unset");
+              btn.css("margin-inline-start", "unset");
+          }';
+      
+          RETURN VR_RESULT;
+      END;
+
+  callbacks: 
+    api-interface: Procedure with Legacy Attributes [deprecated]
+    render-procedure/function-name: F_RENDER
+
+  standard-attributes: 
+    attributes: 
+    - For Button
+
+  custom-attributes: 
+    substitute-attribute-values: true
+
+  information: 
+    version: 1.2.4
+    about-url: 'https://github.com/RonnyWeiss/APEX-Items-with-APEX-Buttons'
+    help-text: This plug-in is used to move one or more APEX Button behind a Page Item. This is like the Plug-in "Textfield with Buttons" but you can use APEX Buttons, so you have full APEX Button and Theme Support. E.g. you got an Dialog Close Event when Close Dialog on Button Click.
+
+  custom-attributes: 
+  - # ====== Custom Attribute: Item where the button is added ====
+    id: 43337991687755352
+    identification: 
+      attribute: 1
+      name: Item where the button is added
+      scope: Component
+
+    layout: 
+      sequence: 10
+
+    settings: 
+      type: Page Item
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+  files: 
+  - # ====== File: LICENSE =======================================
+    id: 43338354346755366
+    identification: 
+      file-name: LICENSE
+
+    attributes: 
+      mime-type: application/octet-stream
+      file-character-set: Unicode UTF-8
+
+- # ====== Plugin: Dropzone 2 ==================================
+  id: 43338716629755371
+  identification: 
+    name: Dropzone 2
+    internal-name: DE.DANIELH.DROPZONE2
+    type: Region
+
+  advanced: 
+    quick-pick: false
+
+  subscription: 
+    master: 
+      referenced-id: 175397260751616766
+
+    subscribe-component-settings: true
+    version-number: 41720890894207
+
+  source: 
+    pl/sql-code: |
+      /*-------------------------------------
+       * Dropzone APEX Plugin
+       * Version: 2.4.1 (01.08.2018)
+       * Author:  Daniel Hochleitner
+       *-------------------------------------
+      */
+      FUNCTION render_dropzone(p_region              IN apex_plugin.t_region,
+                               p_plugin              IN apex_plugin.t_plugin,
+                               p_is_printer_friendly IN BOOLEAN)
+        RETURN apex_plugin.t_region_render_result IS
+        --
+        l_result apex_plugin.t_region_render_result;
+        -- region attributes
+        l_dz_style              p_region.attribute_07%TYPE := p_region.attribute_07;
+        l_width                 p_region.attribute_08%TYPE := p_region.attribute_08;
+        l_height                p_region.attribute_09%TYPE := p_region.attribute_09;
+        l_max_filesize          NUMBER := p_region.attribute_10;
+        l_max_files             NUMBER := p_region.attribute_11;
+        l_accepted_files        p_region.attribute_13%TYPE := p_region.attribute_13;
+        l_upload_mechanism      p_region.attribute_15%TYPE := p_region.attribute_15;
+        l_dz_clickable          p_region.attribute_16%TYPE := p_region.attribute_16;
+        l_show_file_preview     p_region.attribute_17%TYPE := p_region.attribute_17;
+        l_copy_paste_support    p_region.attribute_18%TYPE := p_region.attribute_18;
+        l_remove_uploaded_files p_region.attribute_19%TYPE := p_region.attribute_19;
+        l_delete_files          p_region.attribute_20%TYPE := p_region.attribute_20;
+        l_resize_images         p_region.attribute_22%TYPE := p_region.attribute_22;
+        l_resize_width          p_region.attribute_23%TYPE := p_region.attribute_23;
+        l_resize_height         p_region.attribute_24%TYPE := p_region.attribute_24;
+        -- plugin attributes
+        l_display_message            p_plugin.attribute_01%TYPE := p_plugin.attribute_01;
+        l_fallback_message           p_plugin.attribute_02%TYPE := p_plugin.attribute_02;
+        l_filetoobig_message         p_plugin.attribute_03%TYPE := p_plugin.attribute_03;
+        l_maxfiles_message           p_plugin.attribute_04%TYPE := p_plugin.attribute_04;
+        l_remove_file_message        p_plugin.attribute_05%TYPE := p_plugin.attribute_05;
+        l_cancel_upload_message      p_plugin.attribute_06%TYPE := p_plugin.attribute_06;
+        l_cancel_upl_confirm_message p_plugin.attribute_07%TYPE := p_plugin.attribute_07;
+        l_invalid_filetype_message   p_plugin.attribute_08%TYPE := p_plugin.attribute_08;
+        l_chunk_size                 p_plugin.attribute_09%TYPE := p_plugin.attribute_09;
+        -- other variables
+        l_region_id VARCHAR2(200);
+        l_dz_class  VARCHAR2(50);
+        -- js/css file vars
+        l_filereader_js VARCHAR2(50);
+        --
+      BEGIN
+        -- Debug
+        IF apex_application.g_debug THEN
+          apex_plugin_util.debug_region(p_plugin => p_plugin,
+                                        p_region => p_region);
+          -- set js/css filenames
+          l_filereader_js := 'filereader';
+        ELSE
+          l_filereader_js := 'filereader.min';
+        END IF;
+        -- set variables and defaults
+        l_region_id  := apex_escape.html_attribute(p_region.static_id ||
+                                                   '_dropzone');
+        l_max_files  := nvl(l_max_files,
+                            256);
+        l_chunk_size := nvl(l_chunk_size,
+                            1048576);
+        -- escape input
+        l_width                      := apex_escape.html(l_width);
+        l_height                     := apex_escape.html(l_height);
+        l_display_message            := apex_escape.html(l_display_message);
+        l_fallback_message           := apex_escape.html(l_fallback_message);
+        l_filetoobig_message         := apex_escape.html(l_filetoobig_message);
+        l_maxfiles_message           := apex_escape.html(l_maxfiles_message);
+        l_remove_file_message        := apex_escape.html(l_remove_file_message);
+        l_cancel_upload_message      := apex_escape.html(l_cancel_upload_message);
+        l_cancel_upl_confirm_message := apex_escape.html(l_cancel_upl_confirm_message);
+        l_invalid_filetype_message   := apex_escape.html(l_invalid_filetype_message);
+        --
+        -- add div for dropzone
+        -- style 1 (grey border)
+        -- style 2 (blue dashed border)
+        -- style 3 (red dashed border)
+        -- style 4 (grey background and grey dashed border)
+        l_dz_class := 'dz-' || lower(l_dz_style);
+        --
+        htp.p('<div id="' || l_region_id || '" class="dropzone ' || l_dz_class ||
+              '" style="width:' || l_width || ';height:' || l_height ||
+              ';"></div>');
+        --
+        -- filereader lib for Copy&Paste support
+        IF l_copy_paste_support = 'true' THEN
+          apex_javascript.add_library(p_name           => l_filereader_js,
+                                      p_directory      => p_plugin.file_prefix ||
+                                                          'js/',
+                                      p_version        => NULL,
+                                      p_skip_extension => FALSE);
+        END IF;
+        --
+        -- onload code
+        apex_javascript.add_onload_code(p_code => 'apexDropzone.pluginHandler(' ||
+                                                  apex_javascript.add_value(p_region.static_id) || '{' ||
+                                                  apex_javascript.add_attribute('ajaxIdentifier',
+                                                                                apex_plugin.get_ajax_identifier) ||
+                                                  apex_javascript.add_attribute('maxFilesize',
+                                                                                l_max_filesize) ||
+                                                  apex_javascript.add_attribute('maxFiles',
+                                                                                l_max_files) ||
+                                                  apex_javascript.add_attribute('acceptedFiles',
+                                                                                l_accepted_files) ||
+                                                  apex_javascript.add_attribute('uploadMechanism',
+                                                                                l_upload_mechanism) ||
+                                                  apex_javascript.add_attribute('clickable',
+                                                                                l_dz_clickable) ||
+                                                  apex_javascript.add_attribute('showFilePreview',
+                                                                                l_show_file_preview) ||
+                                                  apex_javascript.add_attribute('supportCopyPaste',
+                                                                                l_copy_paste_support) ||
+                                                  apex_javascript.add_attribute('removeAfterUpload',
+                                                                                l_remove_uploaded_files) ||
+                                                  apex_javascript.add_attribute('deleteFiles',
+                                                                                l_delete_files) ||
+                                                  apex_javascript.add_attribute('resizeImages',
+                                                                                l_resize_images) ||
+                                                  apex_javascript.add_attribute('resizeWidth',
+                                                                                l_resize_width) ||
+                                                  apex_javascript.add_attribute('resizeHeight',
+                                                                                l_resize_height) ||
+                                                  apex_javascript.add_attribute('pluginPrefix',
+                                                                                p_plugin.file_prefix) ||
+                                                  apex_javascript.add_attribute('chunkSize',
+                                                                                l_chunk_size) ||
+                                                  apex_javascript.add_attribute('displayMessage',
+                                                                                l_display_message) ||
+                                                  apex_javascript.add_attribute('fallbackMessage',
+                                                                                l_fallback_message) ||
+                                                  apex_javascript.add_attribute('fileTooBigMessage',
+                                                                                l_filetoobig_message) ||
+                                                  apex_javascript.add_attribute('maxFilesMessage',
+                                                                                l_maxfiles_message) ||
+                                                  apex_javascript.add_attribute('removeFileMessage',
+                                                                                l_remove_file_message) ||
+                                                  apex_javascript.add_attribute('cancelUploadMessage',
+                                                                                l_cancel_upload_message) ||
+                                                  apex_javascript.add_attribute('cancelUploadConfirmMessage',
+                                                                                l_cancel_upl_confirm_message) ||
+                                                  apex_javascript.add_attribute('invalidFileTypeMessage',
+                                                                                l_invalid_filetype_message,
+                                                                                FALSE,
+                                                                                FALSE) ||
+                                                  '});');
+        --
+        RETURN l_result;
+        --
+      END render_dropzone;
+      --
+      --
+      -- AJAX function
+      --
+      --
+      FUNCTION ajax_dropzone(p_region IN apex_plugin.t_region,
+                             p_plugin IN apex_plugin.t_plugin)
+        RETURN apex_plugin.t_region_ajax_result IS
+        --
+        l_result apex_plugin.t_region_ajax_result;
+        -- region attributes
+        l_storage_type     p_region.attribute_01%TYPE := p_region.attribute_01;
+        l_table_coll_name  p_region.attribute_02%TYPE := p_region.attribute_02;
+        l_filename_column  p_region.attribute_03%TYPE := p_region.attribute_03;
+        l_mimetype_column  p_region.attribute_04%TYPE := p_region.attribute_04;
+        l_blob_column      p_region.attribute_05%TYPE := p_region.attribute_05;
+        l_date_column      p_region.attribute_06%TYPE := p_region.attribute_06;
+        l_pk_column        p_region.attribute_21%TYPE := p_region.attribute_21;
+        l_upload_mechanism p_region.attribute_15%TYPE := p_region.attribute_15;
+        l_delete_files     p_region.attribute_20%TYPE := p_region.attribute_20;
+        -- other variables
+        l_type                VARCHAR2(50);
+        l_chunked_temp_coll   VARCHAR2(100);
+        l_blob                BLOB := empty_blob();
+        l_filename            VARCHAR2(200);
+        l_mime_type           VARCHAR2(100);
+        l_delete_id           NUMBER;
+        l_current_chunk_count NUMBER;
+        l_total_chunk_count   NUMBER;
+        --
+        -- Helper Functions
+        --
+      
+        --
+        -- Write Error JSON
+        PROCEDURE write_htp_error(p_message IN VARCHAR2,
+                                  p_id      IN VARCHAR2 := NULL) IS
+        BEGIN
+          htp.init;
+          htp.p('{ "status": "error", "message": "' ||
+                apex_escape.json(p_message) || '", "code": "' ||
+                apex_escape.json(SQLERRM) || '", "id": "' ||
+                apex_escape.json(p_id) || '" }');
+        END write_htp_error;
+        --
+        -- Write Success JSON
+        PROCEDURE write_htp_success(p_message IN VARCHAR2,
+                                    p_id      IN VARCHAR2 := NULL) IS
+        BEGIN
+          htp.init;
+          htp.p('{ "status": "success", "message": "' ||
+                apex_escape.json(p_message) || '", "code": "", "id": "' ||
+                apex_escape.json(p_id) || '" }');
+        END write_htp_success;
+        --
+        -- Sleep/Pause for given seconds
+        PROCEDURE sleep(p_seconds IN NUMBER) AS
+          l_now      TIMESTAMP := systimestamp;
+          l_end_time TIMESTAMP;
+        BEGIN
+          l_end_time := l_now + numtodsinterval(p_seconds,
+                                                'second');
+        
+          WHILE (l_end_time > l_now) LOOP
+            l_now := systimestamp;
+          END LOOP;
+        END sleep;
+        --
+        -- base64 array (f01 30k) to blob
+        FUNCTION base64array_to_blob(p_f01_array IN apex_application.g_f01%TYPE)
+          RETURN BLOB IS
+          l_token VARCHAR2(32000);
+          l_blob  BLOB := empty_blob();
+        BEGIN
+          -- build BLOB from f01 30k Array (base64 encoded)
+          dbms_lob.createtemporary(l_blob,
+                                   FALSE,
+                                   dbms_lob.session);
+          FOR i IN 1 .. p_f01_array.count LOOP
+            l_token := p_f01_array(i);
+            IF length(l_token) > 0 THEN
+              dbms_lob.append(l_blob,
+                              to_blob(utl_encode.base64_decode(utl_raw.cast_to_raw(l_token))));
+            END IF;
+          END LOOP;
+          --
+          RETURN l_blob;
+          --
+        END;
+        --
+        -- Chunked File Processing
+        FUNCTION process_chunked_file(p_table_coll_name     IN VARCHAR2,
+                                      p_filename            IN VARCHAR2,
+                                      p_mime_type           IN VARCHAR2,
+                                      p_current_chunk_count IN NUMBER,
+                                      p_total_chunk_count   IN NUMBER,
+                                      p_chunk_f01_array     IN apex_application.g_f01%TYPE)
+          RETURN BLOB IS
+          --
+          l_chunked_temp_coll VARCHAR2(100);
+          l_chunk_blob        BLOB := empty_blob();
+          l_blob              BLOB := empty_blob();
+          l_chunk_length      NUMBER := 0;
+          -- cursor for file chunks
+          CURSOR l_cur_chunk_files IS
+            SELECT apex_collections.blob001 AS chunk_blob,
+                   apex_collections.n003    AS blob_size
+              FROM apex_collections
+             WHERE apex_collections.collection_name = l_chunked_temp_coll
+               AND apex_collections.c001 = p_filename
+               AND apex_collections.n002 = p_total_chunk_count
+             ORDER BY apex_collections.n001;
+          --
+        BEGIN
+          l_chunked_temp_coll := upper(p_table_coll_name) || '_TEMP';
+          -- create chunk collection
+          IF NOT
+              apex_collection.collection_exists(p_collection_name => l_chunked_temp_coll) THEN
+            apex_collection.create_collection(p_collection_name => l_chunked_temp_coll);
+          END IF;
+          -- build BLOB from f01 30k Array (base64 encoded chunk)
+          l_chunk_blob   := base64array_to_blob(p_f01_array => p_chunk_f01_array);
+          l_chunk_length := dbms_lob.getlength(l_chunk_blob);
+          --
+          IF p_total_chunk_count > 1 THEN
+            --
+            apex_collection.add_member(p_collection_name => l_chunked_temp_coll,
+                                       p_c001            => p_filename, -- filename
+                                       p_c002            => p_mime_type, -- mime_type
+                                       p_n001            => p_current_chunk_count, -- current count from JS loop
+                                       p_n002            => p_total_chunk_count, -- total count of all chunks
+                                       p_n003            => l_chunk_length, -- size of base64 BLOB file chunk
+                                       p_blob001         => l_chunk_blob); -- BLOB base64 file chunk content
+          ELSE
+            l_blob := l_chunk_blob;
+          END IF;
+          -- last file chunk peace + chunk count > 1
+          IF p_current_chunk_count = p_total_chunk_count AND
+             p_total_chunk_count > 1 THEN
+            --
+            dbms_lob.createtemporary(l_blob,
+                                     FALSE,
+                                     dbms_lob.session);
+            -- loop over all file chunks and build final file
+            FOR l_rec_chunk_files IN l_cur_chunk_files LOOP
+              IF l_rec_chunk_files.blob_size IS NOT NULL THEN
+                dbms_lob.append(l_blob,
+                                l_rec_chunk_files.chunk_blob);
+              END IF;
+            END LOOP;
+            -- delete all chunks for specific file from collection
+            FOR l_rec_del_coll IN (SELECT seq_id
+                                     FROM apex_collections
+                                    WHERE apex_collections.collection_name =
+                                          l_chunked_temp_coll
+                                      AND apex_collections.c001 = p_filename
+                                      AND apex_collections.n002 =
+                                          p_total_chunk_count) LOOP
+              apex_collection.delete_member(p_collection_name => l_chunked_temp_coll,
+                                            p_seq             => l_rec_del_coll.seq_id);
+            END LOOP;
+            --
+          END IF;
+          -- status return json
+          write_htp_success('File Chunk ' || p_current_chunk_count || ' of ' ||
+                            p_total_chunk_count || ' for ' || p_filename ||
+                            ' successfully saved to Temp. APEX Collection ' ||
+                            l_chunked_temp_coll);
+          --
+          RETURN l_blob;
+          --
+        EXCEPTION
+          WHEN OTHERS THEN
+            -- status return json
+            write_htp_error('File Chunk ' || p_current_chunk_count || ' of ' ||
+                            p_total_chunk_count || ' for ' || p_filename ||
+                            ' NOT saved to Temp. APEX Collection ' ||
+                            l_chunked_temp_coll);
+            RAISE;
+        END process_chunked_file;
+        --
+        -- FormData File Processing
+        FUNCTION process_normal_file(p_filename       IN VARCHAR2,
+                                     p_apex_file_name IN VARCHAR2) RETURN BLOB IS
+          l_blob BLOB := empty_blob();
+          CURSOR l_cur_file IS
+            SELECT aaf.blob_content
+              FROM apex_application_files aaf
+             WHERE aaf.name = p_apex_file_name;
+        BEGIN
+          OPEN l_cur_file;
+          FETCH l_cur_file
+            INTO l_blob;
+          CLOSE l_cur_file;
+          --
+          DELETE FROM apex_application_files aaf
+           WHERE aaf.name = p_apex_file_name;
+          --
+          RETURN l_blob;
+        EXCEPTION
+          WHEN OTHERS THEN
+            -- status return json
+            write_htp_error('File Upload could not be processed for ' ||
+                            p_filename);
+            RAISE;
+        END process_normal_file;
+        --
+        -- Save File to Collection / Table
+        PROCEDURE save_file(p_storage_type    IN VARCHAR2,
+                            p_table_coll_name IN VARCHAR2,
+                            p_filename        IN VARCHAR2,
+                            p_mime_type       IN VARCHAR2,
+                            p_blob            IN OUT NOCOPY BLOB,
+                            p_pk_column       IN VARCHAR2 := NULL,
+                            p_filename_column IN VARCHAR2 := NULL,
+                            p_mimetype_column IN VARCHAR2 := NULL,
+                            p_blob_column     IN VARCHAR2 := NULL,
+                            p_date_column     IN VARCHAR2 := NULL) IS
+          --
+          l_random_file_id NUMBER;
+          l_insert_sql     VARCHAR2(32767);
+          l_insert_id      NUMBER;
+          l_blob_length    NUMBER := 0;
+          --
+        BEGIN
+          --
+          l_blob_length := nvl(dbms_lob.getlength(p_blob),
+                               0);
+          -- only process if BLOB has data
+          IF l_blob_length > 0 THEN
+            -- Save to APEX Collection
+            IF p_storage_type = 'COLLECTION' THEN
+              BEGIN
+                -- random file id
+                l_random_file_id := round(dbms_random.value(100000,
+                                                            99999999));
+                -- check if collection exist
+                IF NOT
+                    apex_collection.collection_exists(p_collection_name => p_table_coll_name) THEN
+                  apex_collection.create_collection(p_table_coll_name);
+                END IF;
+                -- add collection member
+                l_insert_id := apex_collection.add_member(p_collection_name => p_table_coll_name,
+                                                          p_c001            => p_filename, -- filename
+                                                          p_c002            => p_mime_type, -- mime_type
+                                                          p_d001            => SYSDATE, -- date created
+                                                          p_n001            => l_random_file_id, -- random file id
+                                                          p_blob001         => p_blob); -- BLOB file content
+                -- status return json
+                write_htp_success(p_message => 'File ' || p_filename ||
+                                               ' successfully saved to APEX Collection ' ||
+                                               p_table_coll_name,
+                                  p_id      => l_insert_id);
+                --
+              EXCEPTION
+                WHEN OTHERS THEN
+                  -- status return json
+                  write_htp_error('File ' || p_filename ||
+                                  ' NOT saved to APEX Collection ' ||
+                                  p_table_coll_name);
+                  RAISE;
+              END;
+              --
+              -- Save to custom Table
+            ELSIF p_storage_type = 'TABLE' THEN
+              BEGIN
+                -- dynamic insert statement
+                -- without optional date column
+                IF p_date_column IS NULL THEN
+                  l_insert_sql := 'INSERT INTO ' ||
+                                  dbms_assert.sql_object_name(p_table_coll_name) || '( ' ||
+                                  dbms_assert.simple_sql_name(p_filename_column) || ', ' ||
+                                  dbms_assert.simple_sql_name(p_mimetype_column) || ', ' ||
+                                  dbms_assert.simple_sql_name(p_blob_column) ||
+                                  ') VALUES (:filename_value,:mimetype_value,:blob_value) RETURNING ' ||
+                                  dbms_assert.simple_sql_name(p_pk_column) ||
+                                  ' INTO :pk_value';
+                  -- execute insert
+                  EXECUTE IMMEDIATE l_insert_sql
+                    USING p_filename, p_mime_type, p_blob
+                    RETURNING INTO l_insert_id;
+                  -- with optional date column
+                ELSE
+                  l_insert_sql := 'INSERT INTO ' ||
+                                  dbms_assert.sql_object_name(p_table_coll_name) || '( ' ||
+                                  dbms_assert.simple_sql_name(p_filename_column) || ', ' ||
+                                  dbms_assert.simple_sql_name(p_mimetype_column) || ', ' ||
+                                  dbms_assert.simple_sql_name(p_blob_column) || ', ' ||
+                                  dbms_assert.simple_sql_name(p_date_column) ||
+                                  ') VALUES (:filename_value,:mimetype_value,:blob_value,:date_value) RETURNING ' ||
+                                  dbms_assert.simple_sql_name(p_pk_column) ||
+                                  ' INTO :pk_value';
+                  -- execute insert
+                  EXECUTE IMMEDIATE l_insert_sql
+                    USING p_filename, p_mime_type, p_blob, SYSDATE
+                    RETURNING INTO l_insert_id;
+                END IF;
+                -- status return json
+                write_htp_success(p_message => 'File ' || p_filename ||
+                                               ' successfully saved to Custom Table ' ||
+                                               p_table_coll_name,
+                                  p_id      => l_insert_id);
+                --
+              EXCEPTION
+                WHEN OTHERS THEN
+                  -- status return json
+                  write_htp_error('File ' || p_filename ||
+                                  ' NOT saved to Custom Table ' ||
+                                  p_table_coll_name);
+                  RAISE;
+              END;
+              --
+            END IF;
+            -- sleep 0.75 sec
+            sleep(p_seconds => 75 / 100);
+            --
+          END IF;
+          --
+        EXCEPTION
+          WHEN OTHERS THEN
+            -- sleep 0.75 sec
+            sleep(p_seconds => 75 / 100);
+            RAISE;
+        END save_file;
+        --
+        -- Delete File from Collection / Table
+        PROCEDURE delete_file(p_storage_type    IN VARCHAR2,
+                              p_table_coll_name IN VARCHAR2,
+                              p_delete_id       IN NUMBER,
+                              p_filename        IN VARCHAR2,
+                              p_pk_column       IN VARCHAR2 := NULL) IS
+          --
+          l_delete_sql VARCHAR2(32767);
+          --
+        BEGIN
+          -- Delete from APEX Collection
+          IF p_storage_type = 'COLLECTION' THEN
+            --
+            BEGIN
+              -- check if collection exist
+              IF apex_collection.collection_exists(p_collection_name => p_table_coll_name) THEN
+                -- delete collection member (only if Seq-ID not null)
+                IF p_delete_id IS NOT NULL THEN
+                  apex_collection.delete_member(p_collection_name => p_table_coll_name,
+                                                p_seq             => p_delete_id);
+                  -- status return json
+                  write_htp_success('File ' || p_filename ||
+                                    ' successfully deleted from APEX Collection ' ||
+                                    p_table_coll_name);
+                ELSE
+                  -- status return json
+                  write_htp_error('File-ID missing for File ' || p_filename ||
+                                  '. NOT deleted from APEX Collection ' ||
+                                  p_table_coll_name);
+                END IF;
+              ELSE
+                -- status return json
+                write_htp_error('APEX Collection ' || p_table_coll_name ||
+                                ' missing for File ' || p_filename);
+              END IF;
+              --
+            EXCEPTION
+              WHEN OTHERS THEN
+                -- status return json
+                write_htp_error('File ' || p_filename ||
+                                ' NOT deleted from APEX Collection ' ||
+                                p_table_coll_name);
+                RAISE;
+            END;
+            --
+            -- Delete from custom Table
+          ELSIF p_storage_type = 'TABLE' THEN
+            BEGIN
+              -- dynamic delete statement
+              IF p_delete_id IS NOT NULL THEN
+                l_delete_sql := 'DELETE FROM ' ||
+                                dbms_assert.sql_object_name(p_table_coll_name) ||
+                                ' WHERE ' ||
+                                dbms_assert.simple_sql_name(p_pk_column) ||
+                                ' = :pk_value';
+                -- execute delete
+                EXECUTE IMMEDIATE l_delete_sql
+                  USING p_delete_id;
+                -- status return json
+                write_htp_success('File ' || p_filename ||
+                                  ' successfully deleted from Custom Table ' ||
+                                  p_table_coll_name);
+              ELSE
+                -- status return json
+                write_htp_error('File-ID missing for File ' || p_filename ||
+                                '. NOT deleted from Custom Table ' ||
+                                p_table_coll_name);
+              END IF;
+              --
+            EXCEPTION
+              WHEN OTHERS THEN
+                -- status return json
+                write_htp_error('File ' || p_filename ||
+                                ' NOT deleted from Custom Table ' ||
+                                p_table_coll_name);
+                RAISE;
+            END;
+          END IF;
+        END delete_file;
+        --
+      BEGIN
+        --
+        -- Debug Info
+        apex_debug.info('Dropzone AJAX Parameter x01: ' ||
+                        apex_application.g_x01);
+        apex_debug.info('Dropzone AJAX Parameter x02: ' ||
+                        apex_application.g_x02);
+        apex_debug.info('Dropzone AJAX Parameter x03: ' ||
+                        apex_application.g_x03);
+        apex_debug.info('Dropzone AJAX Parameter x04: ' ||
+                        apex_application.g_x04);
+        apex_debug.info('Dropzone AJAX Parameter x05: ' ||
+                        apex_application.g_x05);
+        --
+        -- replace substitution strings
+        l_table_coll_name := apex_plugin_util.replace_substitutions(p_value => l_table_coll_name);
+        l_filename_column := apex_plugin_util.replace_substitutions(p_value => l_filename_column);
+        l_mimetype_column := apex_plugin_util.replace_substitutions(p_value => l_mimetype_column);
+        l_blob_column     := apex_plugin_util.replace_substitutions(p_value => l_blob_column);
+        l_date_column     := apex_plugin_util.replace_substitutions(p_value => l_date_column);
+        l_pk_column       := apex_plugin_util.replace_substitutions(p_value => l_pk_column);
+        -- set general vars
+        l_type            := nvl(apex_application.g_x01,
+                                 'UPLOAD');
+        l_table_coll_name := upper(l_table_coll_name);
+        --
+        --
+        -- Upload
+        --
+        IF l_type = 'UPLOAD' THEN
+          -- get defaults from AJAX Process
+          l_filename  := apex_application.g_x02;
+          l_mime_type := nvl(apex_application.g_x03,
+                             'application/octet-stream');
+          --
+          -- Chunked 1MB file upload / chunks in temp collection (multiple server requests (per file chunk))
+          IF l_upload_mechanism = 'CHUNKED' THEN
+            BEGIN
+              -- get defaults from AJAX Process
+              l_current_chunk_count := to_number(apex_application.g_x04);
+              l_total_chunk_count   := to_number(apex_application.g_x05);
+              --
+              l_blob := process_chunked_file(p_table_coll_name     => l_table_coll_name,
+                                             p_filename            => l_filename,
+                                             p_mime_type           => l_mime_type,
+                                             p_current_chunk_count => l_current_chunk_count,
+                                             p_total_chunk_count   => l_total_chunk_count,
+                                             p_chunk_f01_array     => apex_application.g_f01);
+            EXCEPTION
+              WHEN OTHERS THEN
+                RETURN NULL;
+            END;
+            --
+            -- formdata file upload
+          ELSIF l_upload_mechanism = 'NORMAL' THEN
+            BEGIN
+              l_blob := process_normal_file(p_filename       => l_filename,
+                                            p_apex_file_name => apex_application.g_f01(1));
+            EXCEPTION
+              WHEN OTHERS THEN
+                RETURN NULL;
+            END;
+          END IF;
+          --
+          -- Save final File
+          BEGIN
+            save_file(p_storage_type    => l_storage_type,
+                      p_table_coll_name => l_table_coll_name,
+                      p_filename        => l_filename,
+                      p_mime_type       => l_mime_type,
+                      p_blob            => l_blob,
+                      p_pk_column       => l_pk_column,
+                      p_filename_column => l_filename_column,
+                      p_mimetype_column => l_mimetype_column,
+                      p_blob_column     => l_blob_column,
+                      p_date_column     => l_date_column);
+          EXCEPTION
+            WHEN OTHERS THEN
+              RETURN NULL;
+          END;
+        END IF;
+        --
+        -- Delete File
+        --
+        IF l_type = 'DELETE' AND l_delete_files = 'true' THEN
+          l_filename  := apex_application.g_x02;
+          l_delete_id := to_number(apex_application.g_x03);
+          --
+          BEGIN
+            delete_file(p_storage_type    => l_storage_type,
+                        p_table_coll_name => l_table_coll_name,
+                        p_delete_id       => l_delete_id,
+                        p_filename        => l_filename,
+                        p_pk_column       => l_pk_column);
+          EXCEPTION
+            WHEN OTHERS THEN
+              RETURN NULL;
+          END;
+        END IF;
+        --
+        RETURN l_result;
+        --
+      EXCEPTION
+        WHEN OTHERS THEN
+          -- status return json
+          write_htp_error('General Error occured in Dropzone AJAX Function');
+          RETURN NULL;
+      END ajax_dropzone;
+
+  callbacks: 
+    api-interface: Function
+    render-procedure/function-name: render_dropzone
+    ajax-procedure/function-name: ajax_dropzone
+
+  custom-attributes: 
+    substitute-attribute-values: true
+
+  css: 
+    file-urls: 
+    - '#PLUGIN_FILES#css/dropzone#MIN#.css'
+    - '#PLUGIN_FILES#css/apexdropzone#MIN#.css'
+
+  javascript: 
+    file-urls: 
+    - '#PLUGIN_FILES#js/dropzone#MIN#.js'
+    - '#PLUGIN_FILES#js/apexdropzone#MIN#.js'
+
+  information: 
+    version: 2.4.1
+    about-url: 'https://github.com/Dani3lSun/apex-plugin-dropzone'
+    help-text: Dropzone is a region type plugin that allows you to provide nice looking drag’n’drop file uploads. It is based on JS Framework dropzone.js.
+
+  custom-attributes: 
+  - # ====== Custom Attribute: Display Message ===================
+    id: 43339078881755374
+    identification: 
+      static-id: attribute_01
+      attribute: 1
+      name: Display Message
+      scope: Application
+
+    layout: 
+      sequence: 10
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: true
+
+    default: 
+      value: Drop files here or click to upload.
+
+    help: 
+      help-text: Message that is displayed inside of the Dropzone Region
+
+  - # ====== Custom Attribute: Fallback Message ==================
+    id: 43339460732755375
+    identification: 
+      static-id: attribute_02
+      attribute: 2
+      name: Fallback Message
+      scope: Application
+
+    layout: 
+      sequence: 20
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: true
+
+    default: 
+      value: Your browser does not support drag'n'drop file uploads.
+
+    help: 
+      help-text: Message that is displayed when your Browser doesn´t support HTML5 Drag & Drop File Uploads
+
+  - # ====== Custom Attribute: File too Big Message ==============
+    id: 43339845187755377
+    identification: 
+      static-id: attribute_03
+      attribute: 3
+      name: File too Big Message
+      scope: Application
+
+    layout: 
+      sequence: 30
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: true
+
+    default: 
+      value: 'File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.'
+
+    help: 
+      help-text: |
+        Message that is displayed per File, if the File is bigger than you allowed in the settings.<br>
+        You can use Placeholders like:<br>
+        {{filesize}} for the Filesize<br>
+        {{maxFilesize}} for the max. allowed Filesize
+
+  - # ====== Custom Attribute: max. Files Message ================
+    id: 43340308584755378
+    identification: 
+      static-id: attribute_04
+      attribute: 4
+      name: max. Files Message
+      scope: Application
+
+    layout: 
+      sequence: 40
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: true
+
+    default: 
+      value: You can not upload more than {{maxFiles}} files.
+
+    help: 
+      help-text: |
+        Message that is displayed per File, if the uploaded Files exceed the max. Files settings.<br>
+        You can use Placeholders like:<br>
+        {{maxFiles}} for the max. allowed Files
+
+  - # ====== Custom Attribute: Remove File Message ===============
+    id: 43340673908755379
+    identification: 
+      static-id: attribute_05
+      attribute: 5
+      name: Remove File Message
+      scope: Application
+
+    layout: 
+      sequence: 50
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: true
+
+    default: 
+      value: Remove file
+
+    help: 
+      help-text: |
+        Message that is displayed below a single File to remove the File.<br>
+        Only possible if "Delete Files" is set.
+
+  - # ====== Custom Attribute: Cancel Upload Message =============
+    id: 43341084555755381
+    identification: 
+      static-id: attribute_06
+      attribute: 6
+      name: Cancel Upload Message
+      scope: Application
+
+    layout: 
+      sequence: 60
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: true
+
+    default: 
+      value: Cancel upload
+
+    help: 
+      help-text: |
+        Message that is displayed below a single File to Cancel Uploading during the actual Upload Process.<br>
+        Only possible if "Delete Files" is set.
+
+  - # ====== Custom Attribute: Cancel Upload Confirm Message =====
+    id: 43341489541755382
+    identification: 
+      static-id: attribute_07
+      attribute: 7
+      name: Cancel Upload Confirm Message
+      scope: Application
+
+    layout: 
+      sequence: 70
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: true
+
+    default: 
+      value: Are you sure you want to cancel this upload?
+
+    help: 
+      help-text: |
+        Message that is displayed in the Confirm Dialog if you clicked the Upload Cancel Link.<br>
+        Only possible if "Delete Files" is set.
+
+  - # ====== Custom Attribute: Invalid File Type Message =========
+    id: 43341825544755383
+    identification: 
+      static-id: attribute_08
+      attribute: 8
+      name: Invalid File Type Message
+      scope: Application
+
+    layout: 
+      sequence: 80
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: true
+
+    default: 
+      value: You can not upload files of this type.
+
+    help: 
+      help-text: Message that is displayed per File, if the File´s Mime-Type is in the Exclude List.
+
+  - # ====== Custom Attribute: Chunk Size (in KB) ================
+    id: 43342265463755384
+    identification: 
+      static-id: attribute_09
+      attribute: 9
+      name: Chunk Size (in KB)
+      scope: Application
+
+    layout: 
+      sequence: 90
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: 1048576
+
+    help: 
+      help-text: |
+        This is the default chunk size if you choose the Chunked upload mechanism. The file is split into pieces of that size. Each piece is sent to the server separately.<br>
+        Thus the files are base64 encoded, there is a little overhead in the file size, so please consider a plus of about 10-15% in file size.<br>
+        Default is 1MB = 1048576 KB.
+
+  - # ====== Custom Attribute: Storage Type ======================
+    id: 43342704051755386
+    identification: 
+      static-id: attribute_01
+      attribute: 1
+      name: Storage Type
+      scope: Component
+
+    layout: 
+      sequence: 10
+
+    settings: 
+      type: Select List
+      lov-type: Static
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: COLLECTION
+
+    help: 
+      help-text: |
+        Choose where the uploaded files are saved.<br>
+        You can either save your files to a APEX Collection or to a Custom Table.<br><br>
+        <strong>APEX Collection</strong><br>
+        The APEX collection way should be the easiest. You only have to enter a Collection Name. After that you can Select the files from APEX_COLLECTIONS View.<br><br>
+        Default Collection "DROPZONE_UPLOAD".<br>
+        Column c001 => filename<br>
+        Column c002 => mime_type<br>
+        Column d001 => date created<br>
+        Column n001 => random file id<br>
+        Column blob001 => BLOB of file<br><br>
+        <strong>Custom Table</strong><br>
+        A Table must have Columns for Filename, Mime Type and the File Content (BLOB). The Primary Key (PK) must be processed with a Before Insert Trigger. Optionally the table can have a date column to save the upload date.<br>
+        If your table has other required columns you have to insert these values via Database Trigger or something like that.
+
+    examples: 
+      examples: |
+        <pre>
+        SELECT c001    AS filename,
+               c002    AS mime_type,
+               d001    AS date_created,
+               n001    AS file_id,
+               blob001 AS file_content
+          FROM apex_collections
+         WHERE collection_name = 'DROPZONE_UPLOAD';
+        </pre>
+
+    entries: 
+    - # ====== Entry: APEX Collection ==============================
+      id: 43343014625755387
+      entry: 
+        sequence: 10
+        display: APEX Collection
+        return: COLLECTION
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: Custom Table =================================
+      id: 43343532851755389
+      entry: 
+        sequence: 20
+        display: Custom Table
+        return: TABLE
+
+      advanced: 
+        quick-pick: false
+
+  - # ====== Custom Attribute: Collection / Table Name ===========
+    id: 43344052350755391
+    identification: 
+      static-id: attribute_02
+      attribute: 2
+      name: Collection / Table Name
+      scope: Component
+
+    layout: 
+      sequence: 20
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: DROPZONE_UPLOAD
+
+    condition: 
+      depending-on-custom-attribute: Storage Type # 43342704051755386
+      depending-on-condition-type: in list
+      expression: COLLECTION,TABLE
+      always-evaluate: true
+
+    help: 
+      help-text: Name of the APEX Collection or of your Custom Table
+
+  - # ====== Custom Attribute: Filename Column ===================
+    id: 43344453685755392
+    identification: 
+      static-id: attribute_03
+      attribute: 3
+      name: Filename Column
+      scope: Component
+
+    layout: 
+      sequence: 30
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Storage Type # 43342704051755386
+      depending-on-condition-type: equal to
+      expression: TABLE
+      always-evaluate: true
+
+    help: 
+      help-text: Column of your custom Table which holds the information for the Filename
+
+  - # ====== Custom Attribute: Mime Type Column ==================
+    id: 43344820272755393
+    identification: 
+      static-id: attribute_04
+      attribute: 4
+      name: Mime Type Column
+      scope: Component
+
+    layout: 
+      sequence: 40
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Storage Type # 43342704051755386
+      depending-on-condition-type: equal to
+      expression: TABLE
+      always-evaluate: true
+
+    help: 
+      help-text: Column of your custom Table which holds the information for the File Mime-Type
+
+  - # ====== Custom Attribute: BLOB Column =======================
+    id: 43345277877755395
+    identification: 
+      static-id: attribute_05
+      attribute: 5
+      name: BLOB Column
+      scope: Component
+
+    layout: 
+      sequence: 50
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Storage Type # 43342704051755386
+      depending-on-condition-type: equal to
+      expression: TABLE
+      always-evaluate: true
+
+    help: 
+      help-text: Column of your custom Table which holds the information for the File Content (BLOB)
+
+  - # ====== Custom Attribute: Date Column =======================
+    id: 43345691507755396
+    identification: 
+      static-id: attribute_06
+      attribute: 6
+      name: Date Column
+      scope: Component
+
+    layout: 
+      sequence: 60
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Storage Type # 43342704051755386
+      depending-on-condition-type: equal to
+      expression: TABLE
+      always-evaluate: true
+
+    help: 
+      help-text: Column of your custom Table which holds the information for the File Upload Date
+
+  - # ====== Custom Attribute: Dropzone Style ====================
+    id: 43346096638755397
+    identification: 
+      static-id: attribute_07
+      attribute: 7
+      name: Dropzone Style
+      scope: Component
+
+    layout: 
+      sequence: 70
+
+    settings: 
+      type: Select List
+      lov-type: Static
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: STYLE1
+
+    help: 
+      help-text: |
+        UI Style of your Dropzone Region<br>
+        - Grey Border<br>
+        - Blue Dashed Border<br>
+        - Red Dashed Border<br>
+        - Grey Dashed Border/Background
+
+    entries: 
+    - # ====== Entry: Grey Border ==================================
+      id: 43346465590755398
+      entry: 
+        sequence: 10
+        display: Grey Border
+        return: STYLE1
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: Blue Dashed Border ===========================
+      id: 43346933030755399
+      entry: 
+        sequence: 20
+        display: Blue Dashed Border
+        return: STYLE2
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: Red Dashed Border ============================
+      id: 43347453242755401
+      entry: 
+        sequence: 30
+        display: Red Dashed Border
+        return: STYLE3
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: Grey Dashed Border/Background ================
+      id: 43347986789755402
+      entry: 
+        sequence: 40
+        display: Grey Dashed Border/Background
+        return: STYLE4
+
+      advanced: 
+        quick-pick: false
+
+  - # ====== Custom Attribute: Width =============================
+    id: 43348414680755404
+    identification: 
+      static-id: attribute_08
+      attribute: 8
+      name: Width
+      scope: Component
+
+    layout: 
+      sequence: 80
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: 700px
+
+    help: 
+      help-text: Enter the default width of your Dropzone Region. Valid values are px and % data.
+
+    examples: 
+      examples: |
+        700px<br>
+        100%
+
+  - # ====== Custom Attribute: Height ============================
+    id: 43348848258755405
+    identification: 
+      static-id: attribute_09
+      attribute: 9
+      name: Height
+      scope: Component
+
+    layout: 
+      sequence: 90
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: 400px
+
+    help: 
+      help-text: Enter the default height of Dropzone Region. Valid values in px.
+
+    examples: 
+      examples: |
+        400px<br>
+        500px
+
+  - # ====== Custom Attribute: max. Filesize in MB ===============
+    id: 43349274561755406
+    identification: 
+      static-id: attribute_10
+      attribute: 10
+      name: max. Filesize in MB
+      scope: Component
+
+    layout: 
+      sequence: 100
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: 2
+
+    help: 
+      help-text: max. File Size (Float Number) that is allowed per file. If a file is larger, it will be removed.
+
+    examples: 
+      examples: |
+        1<br>
+        2<br>
+        3.5
+
+  - # ====== Custom Attribute: max. Files ========================
+    id: 43349689409755407
+    identification: 
+      static-id: attribute_11
+      attribute: 11
+      name: max. Files
+      scope: Component
+
+    layout: 
+      sequence: 110
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    help: 
+      help-text: Maximum number of allowed files that can be uploaded at once.
+
+  - # ====== Custom Attribute: Parallel Uploads [NOT USED] =======
+    id: 43350045294755409
+    identification: 
+      static-id: attribute_12
+      attribute: 12
+      name: Parallel Uploads [NOT USED]
+      scope: Component
+
+    layout: 
+      sequence: 120
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+      maximum-length: 1
+
+    default: 
+      value: 1
+
+    condition: 
+      depending-on-custom-attribute: Storage Type # 43342704051755386
+      depending-on-condition-type: equal to
+      expression: NEVER
+      always-evaluate: true
+
+    help: 
+      help-text: |
+        Number of parallel Upload Streams to the server.<br>
+        Choose a value between 1 and 2. 1 works most reliable!
+
+  - # ====== Custom Attribute: Accepted File Types ===============
+    id: 43350424704755410
+    identification: 
+      static-id: attribute_13
+      attribute: 13
+      name: Accepted File Types
+      scope: Component
+
+    layout: 
+      sequence: 130
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    help: 
+      help-text: |
+        If you only want that users can upload Files of declared types.<br>
+        Default: all file types are allowed<br>
+        Valid values: comma separated list of Mime-Types (with Wildcard support) or File endings: image/*,application/pdf,.psd
+
+    examples: 
+      examples: image/*,application/pdf,.psd
+
+  - # ====== Custom Attribute: Wait Time (ms) [NOT USED] =========
+    id: 43350911482755411
+    identification: 
+      static-id: attribute_14
+      attribute: 14
+      name: Wait Time (ms) [NOT USED]
+      scope: Component
+
+    layout: 
+      sequence: 140
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: 700
+
+    condition: 
+      depending-on-custom-attribute: Storage Type # 43342704051755386
+      depending-on-condition-type: equal to
+      expression: NEVER
+      always-evaluate: true
+
+    help: 
+      help-text: |
+        Wait time between several uploaded files in milliseconds.<br>
+        In some environments Dropzone is faster than storing files in Database.<br>
+        Default: 700ms
+
+  - # ====== Custom Attribute: Upload Mechanism ==================
+    id: 43351294994755413
+    identification: 
+      static-id: attribute_15
+      attribute: 15
+      name: Upload Mechanism
+      scope: Component
+
+    layout: 
+      sequence: 65
+
+    settings: 
+      type: Select List
+      lov-type: Static
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: NORMAL
+
+    help: 
+      help-text: |
+        <p><strong>Normal:</strong> Files are directly uploaded to the DB using a multipart/form-data POST (FormData) request. This method needs no conversion (decode, encode) of strings, thus the final BLOB is already there and can be used.</p>
+        <p><strong>Chunked:</strong> Files are split into chunks (default: 1MB), then each chunk is encoded into base64. This encoded string is then uploaded to the DB, the DB decodes the encoded chunks and builds a final BLOB out of it.</p>
+        <p>Both methods should work with all web server combinations. Thus no conversion is needed for "normal" uploads, this method is 2x as fast as "chunked". If, somehow, your web server configuration allows no large multipart/form-data requests, go with the "chunked" method.<p>
+
+    entries: 
+    - # ====== Entry: Normal =======================================
+      id: 43351704764755414
+      entry: 
+        sequence: 10
+        display: Normal
+        return: NORMAL
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: Chunked ======================================
+      id: 43352201097755415
+      entry: 
+        sequence: 20
+        display: Chunked
+        return: CHUNKED
+
+      advanced: 
+        quick-pick: false
+
+  - # ====== Custom Attribute: Clickable =========================
+    id: 43352645449755417
+    identification: 
+      static-id: attribute_16
+      attribute: 16
+      name: Clickable
+      scope: Component
+
+    layout: 
+      sequence: 160
+
+    settings: 
+      type: Select List
+      lov-type: Static
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: true
+
+    help: 
+      help-text: If true, the Dropzone Region will be clickable, if false nothing will be clickable and only Drag & Drop is possible.
+
+    entries: 
+    - # ====== Entry: True =========================================
+      id: 43353090361755418
+      entry: 
+        sequence: 10
+        display: True
+        return: true
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: False ========================================
+      id: 43353599041755419
+      entry: 
+        sequence: 20
+        display: False
+        return: false
+
+      advanced: 
+        quick-pick: false
+
+  - # ====== Custom Attribute: Show File Previews ================
+    id: 43354028416755420
+    identification: 
+      static-id: attribute_17
+      attribute: 17
+      name: Show File Previews
+      scope: Component
+
+    layout: 
+      sequence: 170
+
+    settings: 
+      type: Select List
+      lov-type: Static
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: true
+
+    help: 
+      help-text: |
+        Show Preview Images for common File types when adding files.<br>
+        Images got displayed with real content.<br>
+        If you want to add more images or others just Copy/Upload the PNG Files to "img" directory. Naming: <file-extension>.png
+
+    entries: 
+    - # ====== Entry: True =========================================
+      id: 43354467499755422
+      entry: 
+        sequence: 10
+        display: True
+        return: true
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: False ========================================
+      id: 43354990143755423
+      entry: 
+        sequence: 20
+        display: False
+        return: false
+
+      advanced: 
+        quick-pick: false
+
+  - # ====== Custom Attribute: Copy & Paste Support ==============
+    id: 43355472505755424
+    identification: 
+      static-id: attribute_18
+      attribute: 18
+      name: Copy & Paste Support
+      scope: Component
+
+    layout: 
+      sequence: 180
+
+    settings: 
+      type: Select List
+      lov-type: Static
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: false
+
+    help: 
+      help-text: Adds support for Copy & Paste of Images in modern Browsers (like Chrome or Firefox > 50).<br>
+
+    examples: 
+      examples: |
+        1) Open Image File<br>
+        2) Copy File (Strg+C or Cmd+C)<br>
+        3) Paste it to the page which contains the Dropzone Region in your Browser (Strg+V or Cmd+V)
+
+    entries: 
+    - # ====== Entry: True =========================================
+      id: 43355892261755425
+      entry: 
+        sequence: 10
+        display: True
+        return: true
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: False ========================================
+      id: 43356363484755427
+      entry: 
+        sequence: 20
+        display: False
+        return: false
+
+      advanced: 
+        quick-pick: false
+
+  - # ====== Custom Attribute: Remove Files after Upload =========
+    id: 43356828832755428
+    identification: 
+      static-id: attribute_19
+      attribute: 19
+      name: Remove Files after Upload
+      scope: Component
+
+    layout: 
+      sequence: 190
+
+    settings: 
+      type: Select List
+      lov-type: Static
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: false
+
+    help: 
+      help-text: If true, clears all Files from Dropzone Region after uploading has finished.
+
+    entries: 
+    - # ====== Entry: True =========================================
+      id: 43357294547755429
+      entry: 
+        sequence: 10
+        display: True
+        return: true
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: False ========================================
+      id: 43357760221755431
+      entry: 
+        sequence: 20
+        display: False
+        return: false
+
+      advanced: 
+        quick-pick: false
+
+  - # ====== Custom Attribute: Delete Files ======================
+    id: 43358268192755432
+    identification: 
+      static-id: attribute_20
+      attribute: 20
+      name: Delete Files
+      scope: Component
+
+    layout: 
+      sequence: 67
+
+    settings: 
+      type: Select List
+      lov-type: Static
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: false
+
+    help: 
+      help-text: |
+        Possibility for end users to delete each file that was uploaded to the server.<br>
+        Only if no Page Refresh has occurred.
+
+    entries: 
+    - # ====== Entry: True =========================================
+      id: 43358673223755433
+      entry: 
+        sequence: 10
+        display: True
+        return: true
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: False ========================================
+      id: 43359134579755434
+      entry: 
+        sequence: 20
+        display: False
+        return: false
+
+      advanced: 
+        quick-pick: false
+
+  - # ====== Custom Attribute: PK Column =========================
+    id: 43359681612755436
+    identification: 
+      static-id: attribute_21
+      attribute: 21
+      name: PK Column
+      scope: Component
+
+    layout: 
+      sequence: 55
+
+    settings: 
+      type: Text
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Storage Type # 43342704051755386
+      depending-on-condition-type: equal to
+      expression: TABLE
+      always-evaluate: true
+
+    help: 
+      help-text: Primary Key (PK) Column of your custom file Table
+
+  - # ====== Custom Attribute: Image Resizing ====================
+    id: 43360012692755437
+    identification: 
+      static-id: attribute_22
+      attribute: 22
+      name: Image Resizing
+      scope: Component
+
+    layout: 
+      sequence: 200
+
+    settings: 
+      type: Select List
+      lov-type: Static
+      common: true
+      show-in-wizard: true
+      required: true
+      translatable: false
+
+    default: 
+      value: false
+
+    help: 
+      help-text: |
+        If true, images are resized to a specified size. This happens on client side before uploading the file to server. Saving upload bandwidth and reducing upload time.<br>
+        Please set at least one resize attribute, e.g. Resize Width or Resize Height.
+
+    entries: 
+    - # ====== Entry: True =========================================
+      id: 43360462155755438
+      entry: 
+        sequence: 10
+        display: True
+        return: true
+
+      advanced: 
+        quick-pick: false
+
+    - # ====== Entry: False ========================================
+      id: 43360934210755440
+      entry: 
+        sequence: 20
+        display: False
+        return: false
+
+      advanced: 
+        quick-pick: false
+
+  - # ====== Custom Attribute: Resize Width ======================
+    id: 43361492251755441
+    identification: 
+      static-id: attribute_23
+      attribute: 23
+      name: Resize Width
+      scope: Component
+
+    layout: 
+      sequence: 230
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Image Resizing # 43360012692755437
+      depending-on-condition-type: equal to
+      expression: true
+      always-evaluate: true
+
+    help: 
+      help-text: |
+        If set, images will be resized to these dimensions before being uploaded. If only one, resize Width or resize Height is provided, the original aspect ratio of the file will be preserved.<br>
+        Please provide a width in pixels.
+
+  - # ====== Custom Attribute: Resize Height =====================
+    id: 43361900126755442
+    identification: 
+      static-id: attribute_24
+      attribute: 24
+      name: Resize Height
+      scope: Component
+
+    layout: 
+      sequence: 240
+
+    settings: 
+      type: Number
+      common: true
+      show-in-wizard: true
+      required: false
+      translatable: false
+
+    condition: 
+      depending-on-custom-attribute: Image Resizing # 43360012692755437
+      depending-on-condition-type: equal to
+      expression: true
+      always-evaluate: true
+
+    help: 
+      help-text: |
+        If set, images will be resized to these dimensions before being uploaded. If only one, resize Width or resize Height is provided, the original aspect ratio of the file will be preserved.<br>
+        Please provide a height in pixels.
+
+  events: 
+  - # ====== Event: dropzone-added-file ==========================
+    id: 43365762936755460
+    identification: 
+      name: Dropzone File added
+      internal-name: dropzone-added-file
+
+  - # ====== Event: dropzone-delete-error ========================
+    id: 43366161779755461
+    identification: 
+      name: Dropzone File Delete Error (AJAX)
+      internal-name: dropzone-delete-error
+
+  - # ====== Event: dropzone-delete-success ======================
+    id: 43366517251755462
+    identification: 
+      name: Dropzone File Delete Success (AJAX)
+      internal-name: dropzone-delete-success
+
+  - # ====== Event: dropzone-deleted-file ========================
+    id: 43366924711755463
+    identification: 
+      name: Dropzone File deleted
+      internal-name: dropzone-deleted-file
+
+  - # ====== Event: dropzone-drag-over ===========================
+    id: 43367366796755464
+    identification: 
+      name: Dropzone Dragging File over Region
+      internal-name: dropzone-drag-over
+
+  - # ====== Event: dropzone-file-error ==========================
+    id: 43367726869755465
+    identification: 
+      name: Dropzone File Error
+      internal-name: dropzone-file-error
+
+  - # ====== Event: dropzone-maxfiles-exceeded ===================
+    id: 43368159333755466
+    identification: 
+      name: Dropzone max Files exceeded
+      internal-name: dropzone-maxfiles-exceeded
+
+  - # ====== Event: dropzone-totalupload-progress ================
+    id: 43368574182755467
+    identification: 
+      name: Dropzone Total Upload Progress
+      internal-name: dropzone-totalupload-progress
+
+  - # ====== Event: dropzone-upload-chunk-error ==================
+    id: 43368944925755468
+    identification: 
+      name: Dropzone Chunked File Upload Error (AJAX)
+      internal-name: dropzone-upload-chunk-error
+
+  - # ====== Event: dropzone-upload-chunk-success ================
+    id: 43369386410755469
+    identification: 
+      name: Dropzone Chunked File Upload Success (AJAX)
+      internal-name: dropzone-upload-chunk-success
+
+  - # ====== Event: dropzone-upload-complete =====================
+    id: 43369635544755470
+    identification: 
+      name: Dropzone Upload completed
+      internal-name: dropzone-upload-complete
+
+  - # ====== Event: dropzone-upload-error ========================
+    id: 43370020845755471
+    identification: 
+      name: Dropzone File Upload Error (AJAX)
+      internal-name: dropzone-upload-error
+
+  - # ====== Event: dropzone-upload-success ======================
+    id: 43370475482755472
+    identification: 
+      name: Dropzone File Upload Success (AJAX)
+      internal-name: dropzone-upload-success
+
+  files: 
+  - # ====== File: css/apexdropzone.css ==========================
+    id: 43370846110755473
+    identification: 
+      file-name: css/apexdropzone.css
+
+    attributes: 
+      mime-type: text/css
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: css/apexdropzone.min.css ======================
+    id: 43371288058755474
+    identification: 
+      file-name: css/apexdropzone.min.css
+
+    attributes: 
+      mime-type: text/css
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: css/dropzone.css ==============================
+    id: 43371681080755475
+    identification: 
+      file-name: css/dropzone.css
+
+    attributes: 
+      mime-type: text/css
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: css/dropzone.min.css ==========================
+    id: 43372016505755476
+    identification: 
+      file-name: css/dropzone.min.css
+
+    attributes: 
+      mime-type: text/css
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/3gp.png ===================================
+    id: 43372433840755478
+    identification: 
+      file-name: img/3gp.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/7z.png ====================================
+    id: 43372835862755479
+    identification: 
+      file-name: img/7z.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/ae.png ====================================
+    id: 43373308408755480
+    identification: 
+      file-name: img/ae.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/ai.png ====================================
+    id: 43373677983755481
+    identification: 
+      file-name: img/ai.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/apk.png ===================================
+    id: 43374107073755482
+    identification: 
+      file-name: img/apk.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/asf.png ===================================
+    id: 43374463546755483
+    identification: 
+      file-name: img/asf.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/avi.png ===================================
+    id: 43374877145755484
+    identification: 
+      file-name: img/avi.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/bak.png ===================================
+    id: 43375268711755485
+    identification: 
+      file-name: img/bak.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/bmp.png ===================================
+    id: 43375645581755486
+    identification: 
+      file-name: img/bmp.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/cdr.png ===================================
+    id: 43376112113755487
+    identification: 
+      file-name: img/cdr.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/css.png ===================================
+    id: 43376488723755488
+    identification: 
+      file-name: img/css.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/csv.png ===================================
+    id: 43376897903755489
+    identification: 
+      file-name: img/csv.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/divx.png ==================================
+    id: 43377288654755490
+    identification: 
+      file-name: img/divx.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/dll.png ===================================
+    id: 43377646038755491
+    identification: 
+      file-name: img/dll.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/doc.png ===================================
+    id: 43378079319755492
+    identification: 
+      file-name: img/doc.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/docx.png ==================================
+    id: 43378467030755493
+    identification: 
+      file-name: img/docx.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/dw.png ====================================
+    id: 43378907593755494
+    identification: 
+      file-name: img/dw.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/dwg.png ===================================
+    id: 43379263574755495
+    identification: 
+      file-name: img/dwg.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/eps.png ===================================
+    id: 43379624380755497
+    identification: 
+      file-name: img/eps.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/exe.png ===================================
+    id: 43380089176755498
+    identification: 
+      file-name: img/exe.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/flv.png ===================================
+    id: 43380434018755499
+    identification: 
+      file-name: img/flv.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/fw.png ====================================
+    id: 43380905028755500
+    identification: 
+      file-name: img/fw.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/gif.png ===================================
+    id: 43381290855755501
+    identification: 
+      file-name: img/gif.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/gz.png ====================================
+    id: 43381661106755502
+    identification: 
+      file-name: img/gz.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/gz2.png ===================================
+    id: 43382066080755503
+    identification: 
+      file-name: img/gz2.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/html.png ==================================
+    id: 43382423465755504
+    identification: 
+      file-name: img/html.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/ico.png ===================================
+    id: 43382895097755505
+    identification: 
+      file-name: img/ico.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/iso.png ===================================
+    id: 43383303516755506
+    identification: 
+      file-name: img/iso.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/jar.png ===================================
+    id: 43383673514755507
+    identification: 
+      file-name: img/jar.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/jpg.png ===================================
+    id: 43384022427755508
+    identification: 
+      file-name: img/jpg.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/js.png ====================================
+    id: 43384498651755509
+    identification: 
+      file-name: img/js.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/mov.png ===================================
+    id: 43384861655755510
+    identification: 
+      file-name: img/mov.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/mp3.png ===================================
+    id: 43385224242755511
+    identification: 
+      file-name: img/mp3.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/mp4.png ===================================
+    id: 43385674153755512
+    identification: 
+      file-name: img/mp4.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/mpeg.png ==================================
+    id: 43386039354755513
+    identification: 
+      file-name: img/mpeg.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/odp.png ===================================
+    id: 43386468346755514
+    identification: 
+      file-name: img/odp.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/ods.png ===================================
+    id: 43386822189755515
+    identification: 
+      file-name: img/ods.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/odt.png ===================================
+    id: 43387282197755516
+    identification: 
+      file-name: img/odt.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/other.png =================================
+    id: 43387683537755517
+    identification: 
+      file-name: img/other.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/pdf.png ===================================
+    id: 43388053172755518
+    identification: 
+      file-name: img/pdf.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/php.png ===================================
+    id: 43388439713755520
+    identification: 
+      file-name: img/php.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/png.png ===================================
+    id: 43388831375755521
+    identification: 
+      file-name: img/png.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/ppt.png ===================================
+    id: 43389224586755522
+    identification: 
+      file-name: img/ppt.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/pptx.png ==================================
+    id: 43389706796755523
+    identification: 
+      file-name: img/pptx.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/ps.png ====================================
+    id: 43390042017755524
+    identification: 
+      file-name: img/ps.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/psd.png ===================================
+    id: 43390500021755525
+    identification: 
+      file-name: img/psd.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/rar.png ===================================
+    id: 43390895655755526
+    identification: 
+      file-name: img/rar.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/svg.png ===================================
+    id: 43391275864755527
+    identification: 
+      file-name: img/svg.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/swf.png ===================================
+    id: 43391665455755528
+    identification: 
+      file-name: img/swf.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/sys.png ===================================
+    id: 43392089296755529
+    identification: 
+      file-name: img/sys.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/tar.png ===================================
+    id: 43392499365755530
+    identification: 
+      file-name: img/tar.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/tiff.png ==================================
+    id: 43392873919755531
+    identification: 
+      file-name: img/tiff.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/txt.png ===================================
+    id: 43393307616755532
+    identification: 
+      file-name: img/txt.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/wav.png ===================================
+    id: 43393633472755533
+    identification: 
+      file-name: img/wav.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/xls.png ===================================
+    id: 43394065302755534
+    identification: 
+      file-name: img/xls.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/xlsx.png ==================================
+    id: 43394433466755535
+    identification: 
+      file-name: img/xlsx.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: img/zip.png ===================================
+    id: 43394847129755536
+    identification: 
+      file-name: img/zip.png
+
+    attributes: 
+      mime-type: image/png
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: js/apexdropzone.js ============================
+    id: 43395223656755537
+    identification: 
+      file-name: js/apexdropzone.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: js/apexdropzone.min.js ========================
+    id: 43395628047755538
+    identification: 
+      file-name: js/apexdropzone.min.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: js/dropzone.js ================================
+    id: 43396043977755539
+    identification: 
+      file-name: js/dropzone.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: js/dropzone.min.js ============================
+    id: 43396479766755541
+    identification: 
+      file-name: js/dropzone.min.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: js/filereader.js ==============================
+    id: 43396878980755542
+    identification: 
+      file-name: js/filereader.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+
+  - # ====== File: js/filereader.min.js ==========================
+    id: 43397311069755543
+    identification: 
+      file-name: js/filereader.min.js
+
+    attributes: 
+      mime-type: application/javascript
+      file-character-set: Unicode UTF-8
+

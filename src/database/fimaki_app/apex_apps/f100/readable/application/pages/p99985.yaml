@@ -1,0 +1,363 @@
+---
+# ====== Page: Forgot Password ===============================
+id: 99985
+identification: 
+  name: Forgot Password
+  alias: FORGOT-PASSWORD
+  title: Forgot Password
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Unrestricted
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Register-form ===============================
+  id: 65884078077962997
+  identification: 
+    name: Register-form
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Register # 81807449408318273
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Register ====================================
+  id: 81807449408318273
+  identification: 
+    name: Register
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center;">
+        <h1 style="font-size: 2.5em; font-weight: bold; letter-spacing: 0px;">
+          <img src="#APP_FILES#fimaki_logo/2.png" alt="FIMAKI Logo" style="max-width: 300px; ">
+        </h1>
+        <p style="font-size: 1.2em; font-weight: bold;">
+          Has olvidado tu contraseña?
+        </p>
+        <p style="font-size: 0.8em; font-weight: normal;">
+          No te preocupes, te enviaremos instrucciones para recuperarla.
+        </p>
+      </div>
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - margin-top-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P99985_CORREO ============================
+  id: 65889498378963021
+  identification: 
+    name: P99985_CORREO
+    type: Text Field
+
+  label: 
+    label: Correo electrónico
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Register-form # 65884078077962997
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-envelope-o
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 46742836771345104
+  identification: 
+    button-name: CANCEL
+    label: Regresar al inicio de sesión
+
+  layout: 
+    sequence: 30
+    region: Register-form # 65884078077962997
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--link
+    - t-Button--iconLeft
+    icon: fa-arrow-left
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999::'
+      page: 9999 # Login Page
+      clear-cache: 9999
+
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+- # ====== Button: RESET =======================================
+  id: 46743297821345106
+  identification: 
+    button-name: RESET
+    label: Restablecer Contraseña
+
+  layout: 
+    sequence: 10
+    region: Register-form # 65884078077962997
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padTop
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+validations: 
+- # ====== Validation: Email es válido =========================
+  id: 46725872429785384
+  identification: 
+    name: Email es válido
+
+  execution: 
+    sequence: 10
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "REGEXP_LIKE(:P99985_CORREO, '^[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?@[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\\.[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?)*\\.[a-zA-Z]{2,}$', 'i')"
+    always-execute: false
+
+  error: 
+    error-message: El correo no es válido.
+    display-location: Inline with Field
+    associated-item: P99985_CORREO # 65889498378963021
+
+- # ====== Validation: Limite de intentos ======================
+  id: 46726002082785385
+  identification: 
+    name: Limite de intentos
+
+  execution: 
+    sequence: 20
+
+  validation: 
+    type: Function Body (returning Boolean)
+    language: PL/SQL
+    pl/sql-function-body: |
+      BEGIN
+          return inv_utils_pkg.check_rate_limit(
+      			  p_ip           => owa_util.get_cgi_env('REMOTE_ADDR')
+                  , p_user_agent   => owa_util.get_cgi_env('HTTP_USER_AGENT')
+      			, p_correo 		 => :P99985_CORREO
+      			, p_max_attempts => 3
+                  );
+      END;
+    always-execute: false
+
+  error: 
+    error-message: Límite de intentos excedido. Por favor, inténtalo más tarde.
+    display-location: Inline with Field and in Notification
+
+processes: 
+- # ====== Process: Reset Password =============================
+  id: 46723657399785362
+  identification: 
+    name: Reset Password
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          INV_UTILS_PKG.reset_user_password( 
+                p_nombre_usuario => :P99985_CORREO
+              , p_ip             => owa_util.get_cgi_env('REMOTE_ADDR')
+              , p_user_agent     => owa_util.get_cgi_env('HTTP_USER_AGENT')
+              );
+      END;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: |
+      <span style="font-size:0.8rem">
+      Enviamos instrucciones de recuperación a tu correo.<br>
+      Revisa tu bandeja de entrada y correo no deseado.
+      </span>
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: RESET # 46743297821345106
+
+branches: 
+- # ====== Branch: Go To 99986 =================================
+  id: 46724417671785370
+  identification: 
+    name: Go To 99986
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:99986:&SESSION.::&DEBUG.:99986:P99986_CORREO:&P99985_CORREO.&success_msg=#SUCCESS_MSG#'
+      page: 99986 # Password Reset
+      clear-cache: 99986
+      values: 
+        p99986_correo: '&P99985_CORREO.'
+

@@ -1,0 +1,352 @@
+---
+# ====== Application: FIMAKI-BACK-OFFICE =====================
+id: 200
+identification: 
+  name: FIMAKI-BACK-OFFICE
+  alias: FIMAKI-BACK
+  version: Release 1.01.000
+
+row-search: 
+  tokenize: true
+  text-query-function: None
+
+availability: 
+  status: Available with Developer Toolbar
+  build-status: Run and Build Application
+
+error-handling: 
+  default-display-location: Inline with Field and in Notification
+
+report-printing: 
+  type: Native Printing
+
+advanced: 
+  friendly-urls: true
+  allow-feedback: true
+  logging: true
+  debugging: true
+  compatibility-mode: 24.2
+  accessible-read-only-items: true
+  pass-ecid: Y
+
+authentication: 
+  public-user: APEX_PUBLIC_USER
+  authentication-scheme: Oracle APEX Accounts # 31837722897434554
+
+authorization: 
+  source-for-role-or-group-schemes: Access Control User Role Assignments
+
+session-management: 
+  rejoin-sessions: Disabled
+
+session-state-protection: 
+  enabled: true
+
+security: 
+  deep-linking: Disabled
+  browser-cache: Disabled
+  embed-in-frames: Deny
+  referrer-policy: strict-origin
+  html-escaping-mode: Extended
+
+database-session: 
+  parsing-schema: FIMAKI_BACK_DB
+
+globalization: 
+  primary-language: Spanish (United States) (es-us)
+  document-direction: Language Default
+  language-derived-from: Application Primary Language
+  automatic-time-zone: false
+  automatic-csv-encoding: true
+
+application-format-masks: 
+  date: DD-MM-YYYY
+  date-time: 'DD-MM-YYYY HH:MIPM'
+  timestamp: 'DD-MM-YYYY HH:MIPM'
+  timestamp-time-zone: 'DD-MM-YYYY HH24:MI TZR'
+
+character-value-comparison: 
+  behavior: Database session NLS setting (default)
+
+logo: 
+  type: Image
+  image-url: '#APP_FILES#app-200-logo.png'
+
+progressive-web-app: 
+  enable: true
+  installable: false
+  display: Standalone
+  screen-orientation: Any
+  ios-status-bar-style: Default
+  enable-push-notifications: false
+
+navigation: 
+  home-url: 
+    url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+    page: 1 # Home
+
+  login-url: 
+    url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
+    page: LOGIN
+
+navigation-menu: 
+  list-template: Side Navigation Menu
+  template-options: 
+  - js-defaultCollapsed
+  - js-navCollapsed--default
+  - t-TreeNav--styleA
+  list-position: Side
+  list: Navigation Menu # 31838512181434556
+
+navigation-bar: 
+  implementation: List
+  list: Navigation Bar # 31839740442434562
+  list-template: Navigation Bar
+  template-options: 
+  - '#DEFAULT#'
+
+javascript: 
+  include-jquery-migrate: false
+
+css: 
+  file-urls: 
+  - '#APP_FILES#CSS/style#MIN#.css'
+
+attributes: 
+  theme: Universal Theme # 42
+  global-page: 0
+  enable-end-users-to-choose-theme-style: false
+  add-"built-with-apex"-to-footer: false
+  auto-dismiss-success-messages: true
+
+subscription: 
+  version-number: 45174242940221
+
+substitutions: 
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  value: 
+    static-value: FIMAKI_BACK
+
+- # ====== Substitution: ORG_NAME ==============================
+  id: 2
+  identification: 
+    name: ORG_NAME
+
+  value: 
+    static-value: FIMAKI
+
+- # ====== Substitution: BASE_URL ==============================
+  id: 3
+  identification: 
+    name: BASE_URL
+
+  value: 
+    static-value: ords/r/fimaki_ws/fimaki-back/home
+
+- # ====== Substitution: DATE_FORMAT ===========================
+  id: 4
+  identification: 
+    name: DATE_FORMAT
+
+  value: 
+    static-value: DD-MM-YYYY
+
+- # ====== Substitution: DATE_12H_FORMAT =======================
+  id: 5
+  identification: 
+    name: DATE_12H_FORMAT
+
+  value: 
+    static-value: 'DD-MM-YYYY HH:MIPM'
+
+- # ====== Substitution: DATE_24H_TZ_FORMAT ====================
+  id: 6
+  identification: 
+    name: DATE_24H_TZ_FORMAT
+
+  value: 
+    static-value: 'DD-MM-YYYY HH24:MI TZR'
+
+- # ====== Substitution: YEAR_FORMAT ===========================
+  id: 7
+  identification: 
+    name: YEAR_FORMAT
+
+  value: 
+    static-value: YYYY
+
+- # ====== Substitution: CURRENCY_FORMAT =======================
+  id: 8
+  identification: 
+    name: CURRENCY_FORMAT
+
+  value: 
+    static-value: FM999G999D00
+
+- # ====== Substitution: CURRENCY_SYMBOL =======================
+  id: 9
+  identification: 
+    name: CURRENCY_SYMBOL
+
+  value: 
+    static-value: S/
+
+- # ====== Substitution: DATE_TIME_FORMAT ======================
+  id: 10
+  identification: 
+    name: DATE_TIME_FORMAT
+
+  value: 
+    static-value: 'DD-MM-YYYY HH24:MI'
+
+- # ====== Substitution: NUMBER_FORMAT =========================
+  id: 11
+  identification: 
+    name: NUMBER_FORMAT
+
+  value: 
+    static-value: FM999G999G990D00
+
+component-settings: 
+- # ====== Component Setting: NATIVE_DISPLAY_SELECTOR ==========
+  id: 31833169026434542
+  identification: 
+    name: NATIVE_DISPLAY_SELECTOR
+    type: Region
+
+  subscription: 
+    version-number: 41717224406130
+
+- # ====== Component Setting: NATIVE_ADFBC =====================
+  id: 31833464649434543
+  identification: 
+    name: NATIVE_ADFBC
+    type: REST Data Source
+
+  subscription: 
+    version-number: 41717224406130
+
+- # ====== Component Setting: NATIVE_SELECT_MANY ===============
+  id: 31833765570434544
+  identification: 
+    name: NATIVE_SELECT_MANY
+    type: Item
+
+  subscription: 
+    version-number: 41717224406133
+
+- # ====== Component Setting: NATIVE_DATE_PICKER_APEX ==========
+  id: 31834130441434545
+  identification: 
+    name: NATIVE_DATE_PICKER_APEX
+    type: Item
+
+  subscription: 
+    version-number: 41717224406140
+
+- # ====== Component Setting: NATIVE_MAP_REGION ================
+  id: 31834427664434545
+  identification: 
+    name: NATIVE_MAP_REGION
+    type: Region
+
+  subscription: 
+    version-number: 41717224406144
+
+- # ====== Component Setting: NATIVE_GEOCODING =================
+  id: 31834670323434546
+  identification: 
+    name: NATIVE_GEOCODING
+    type: Process
+
+  settings: 
+    attribute-1: RELAX_HOUSE_NUMBER
+
+  subscription: 
+    version-number: 41717224406150
+
+- # ====== Component Setting: NATIVE_SINGLE_CHECKBOX ===========
+  id: 31834957186434547
+  identification: 
+    name: NATIVE_SINGLE_CHECKBOX
+    type: Item
+
+  subscription: 
+    version-number: 41717224406150
+
+- # ====== Component Setting: NATIVE_COLOR_PICKER ==============
+  id: 31835248864434548
+  identification: 
+    name: NATIVE_COLOR_PICKER
+    type: Item
+
+  subscription: 
+    version-number: 41717224406150
+
+- # ====== Component Setting: NATIVE_STAR_RATING ===============
+  id: 31835589277434549
+  identification: 
+    name: NATIVE_STAR_RATING
+    type: Item
+
+  subscription: 
+    version-number: 41717224406150
+
+- # ====== Component Setting: NATIVE_GEOCODED_ADDRESS ==========
+  id: 31835866027434549
+  identification: 
+    name: NATIVE_GEOCODED_ADDRESS
+    type: Item
+
+  subscription: 
+    version-number: 41717224406151
+
+- # ====== Component Setting: NATIVE_IR ========================
+  id: 31836220817434550
+  identification: 
+    name: NATIVE_IR
+    type: Region
+
+  subscription: 
+    version-number: 41717224406158
+
+- # ====== Component Setting: NATIVE_OPEN_AI_ASSISTANT =========
+  id: 31836507837434551
+  identification: 
+    name: NATIVE_OPEN_AI_ASSISTANT
+    type: Dynamic Action
+
+  subscription: 
+    version-number: 41717224406158
+
+- # ====== Component Setting: NATIVE_BOSS ======================
+  id: 31836793806434551
+  identification: 
+    name: NATIVE_BOSS
+    type: REST Data Source
+
+  subscription: 
+    version-number: 41717224406158
+
+- # ====== Component Setting: NATIVE_YES_NO ====================
+  id: 31837076272434552
+  identification: 
+    name: NATIVE_YES_NO
+    type: Item
+
+  subscription: 
+    version-number: 41717224406158
+
+- # ====== Component Setting: PLUGIN_DE.DANIELH.DROPZONE2 ======
+  id: 47263591525971203
+  identification: 
+    name: PLUGIN_DE.DANIELH.DROPZONE2
+    type: Region
+
+  subscription: 
+    version-number: 41720891002827
+

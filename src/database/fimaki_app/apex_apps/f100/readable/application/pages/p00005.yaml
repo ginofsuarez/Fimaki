@@ -1,0 +1,1650 @@
+---
+# ====== Page: Oportunidades =================================
+id: 5
+identification: 
+  name: Oportunidades
+  alias: OPORTUNIDADES
+  title: Oportunidades
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .factura-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    
+    .factura-header-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .empresa-nombre {
+      font-size: 15px;
+      font-weight: 600;
+      color: #5e3c8a;
+    }
+    
+    .empresa-score {
+      font-size: 13px;
+      color: #666;
+      margin-top: 2px;
+    }
+    
+    .empresa-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .financiamiento-card {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    
+    .financiamiento-label {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    
+    .financiamiento-montos {
+      font-size: 20px;
+      font-weight: bold;
+      color: #000;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    
+    .financiamiento-montos .monto-financiado {
+      font-weight: 400;
+      color: #5e3c8a;
+    }
+    
+    .financiamiento-montos .monto-total {
+      font-size: 18px;
+      color: #999;
+      font-weight: normal;
+    }
+    
+    .financiamiento-vence {
+      font-size: 12px;
+      color: #888;
+      margin-top: 4px;
+    }
+    
+    .financiamiento-barra-container {
+      margin-top: 10px;
+    }
+    /* Row holds bar and percent side-by-side */
+    .financiamiento-barra-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;            /* space between bar and % */
+      margin-top: 4px;     /* matches existing spacing */
+    }
+    .financiamiento-barra {
+      flex: 1;             /* takes all available width */
+      background-color: #e0e0e0;
+      height: 10px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .financiamiento-barra-progreso {
+      background-color: #5a2d82;
+      height: 10px;
+      width: 70%;
+      border-radius: 6px 0 0 6px;
+      transition: width 0.3s ease;
+    }
+    
+    .financiamiento-fechas {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+    
+    .riesgo-chip-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+      align-items: stretch;
+    }
+    
+    /* Parte izquierda: Tasa y ROI */
+    .simple-chip {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; /* ← centrado vertical y horizontal */
+      padding: 6px 0;
+      background-color: #f9f9ff;
+      border: 1px solid #d0d0ff;
+      border-radius: 999px;
+      box-sizing: border-box;
+    }
+    
+    .chip-titulo {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 2px;
+      line-height: 1;
+    }
+    
+    .chip-valor {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      line-height: 1;
+    }
+    
+    /* Parte derecha: Riesgos */
+    .riesgo-chip {
+      width: 70%;
+      border: 1px solid #d0d0ff;
+      border-radius: 999px;
+      background-color: #f9f9ff;
+      padding: 6px 12px 6px 14px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+    }
+    
+    .riesgo-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .riesgo-label-wrap {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    
+    .riesgo-titulo {
+      font-size: 11px;
+      color: #888;
+      margin: 0;
+      line-height: 1;
+    }
+    
+    .riesgo-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      line-height: 1.2;
+    }
+    
+    /* Círculo con letra */
+    .riesgo-badge-mini {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-left: 8px; /* más pegado al borde */
+    }
+    
+    .riesgo-bajo { background-color: #6fcf97; }
+    .riesgo-medio { background-color: #f2994a; }
+    .riesgo-alto { background-color: #eb5757; }
+    
+    
+    
+    .boton-invertir-minimal {
+      display: inline-block;
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .boton-invertir-minimal:hover {
+      border-color: #aaa;
+      background-color: #f9f9f9;
+    }
+    
+    
+    .factura-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 0px;
+    }
+    
+    .factura-header-left {
+      flex-shrink: 0;
+    }
+    
+    .empresa-ticker {
+      background-color: #5e3c8a;
+      color: white;
+      font-weight: bold;
+      font-size: 13px;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+    }
+    
+    .empresa-logo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .factura-header-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .empresa-nombre {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #5e3c8a;
+    }
+    
+    .empresa-score {
+      font-size: 13px;
+      color: #666;
+      margin-top: 2px;
+    }
+    
+    .a-CardView {
+      background-color: var(--a-cv-state-background-color, var(--a-cv-type-background-color, var(--a-cv-background-color, transparent)));
+      border-color: var(--a-cv-state-border-color, var(--a-cv-type-border-color, var(--a-cv-border-color)));
+      border-radius: 20px;
+    }
+    .financiamiento-montos {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      font-weight: 500;
+    }
+    
+    .monto-financiado {
+      font-size: 25px;
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+    
+    .monto-total {
+      font-size: 5px;
+      color: #999;
+      font-weight: 400;
+    }
+    /* Lux minimalist “Invertir” button */
+    .boton-invertir-luxe {
+      display: inline-block;
+      padding: 10px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      color: #5a2d82;                                 /* texto morado FIMAKI */
+      background-image:
+        linear-gradient(#fff, #fff),                  /* capa interior blanca  */
+        linear-gradient(90deg, #7d4bb7, #5a2d82);     /* borde degradado       */
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      transition: all .25s ease;
+    }
+    
+    .boton-invertir-luxe:hover,
+    .boton-invertir-luxe:focus {
+      color: #fff;
+      background-image: linear-gradient(90deg, #7d4bb7, #5a2d82);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.14);
+    }
+    
+    .boton-invertir-luxe:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+    .boton-invertir-wrapper {
+      margin-top: 20px;          /* tu separación vertical actual           */
+      display: flex;
+      justify-content: flex-end; /* ⬅️ alinea todo a la derecha              */
+    }
+    /* Percentage label */
+    .financiamiento-percent {
+      font-size: 12px;
+      font-weight: 700;    /* small • bold */
+      color: #5a2d82;      /* matches FIMAKI purple */
+      white-space: nowrap; /* never wraps */
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Facturas [Cards] ============================
+  id: 8186594465234482
+  identification: 
+    name: Facturas [Cards]
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          SELECT f.id_factura
+               , empresa_pagador
+               , actividad_economica
+               , score_pagador_rc
+               , score_operacion_rc
+               , to_char(tasa_interes,'&NUMBER_FORMAT.') as tasa_interes
+               , to_char(saldo_a_pago, '&NUMBER_FORMAT.') as saldo_a_pago
+               , vence_en
+               , plazo_en_dias
+               , fecha_vencimiento
+               , apex_page.get_url (
+                    p_page   => 6
+                  , p_items  => 'P6_ID_FACTURA'
+                  , p_values => f.id_factura
+                 ) as url_invertir
+               , prefijo_moneda
+               , porcentaje_financiado
+               , to_char(monto_restante, '&NUMBER_FORMAT.') as monto_restante
+               , f.fecha_emision
+               , f.clasificacion_operacion
+               , f.clasificacion_pagador
+               , clasificacion_operacion_color
+               , clasificacion_pagador_color
+               , f.archivo_contenido
+            FROM factura_v f
+           WHERE visible_en_oportunidades_sn = 'S'
+             AND estado_factura_rc = 'FACT_VIGENTE' 
+             AND (id_empresa_pagador = :P5_ID_EMPRESA_PAGADOR or :P5_ID_EMPRESA_PAGADOR is null)
+             AND (score_pagador_rc = :P5_SCORE_PAGADOR_RC or :P5_SCORE_PAGADOR_RC is null)
+             AND (score_operacion_rc = :P5_SCORE_OPERACION_RC or :P5_SCORE_OPERACION_RC is null)
+             AND (moneda_rc = :P5_MONEDA_RC or :P5_MONEDA_RC is null)
+             AND (monto_restante >= to_number(:P5_MONTO_DISPONIBLE_MINIMO,'&NUMBER_FORMAT.') or :P5_MONTO_DISPONIBLE_MINIMO is null)
+             AND (monto_restante <= to_number(:P5_MONTO_DISPONIBLE_MAXIMO,'&NUMBER_FORMAT.') or :P5_MONTO_DISPONIBLE_MAXIMO is null)
+    page-items-to-submit: 
+    - P5_ID_EMPRESA_PAGADOR
+    - P5_SCORE_PAGADOR_RC
+    - P5_SCORE_OPERACION_RC
+    - P5_MONTO_DISPONIBLE_MINIMO
+    - P5_MONTO_DISPONIBLE_MAXIMO
+    - P5_MONEDA_RC
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 80
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 8187554433234491
+    appearance: 
+      layout: Grid
+      grid-columns: Auto
+
+    card: 
+      primary-key-column-1: ID_FACTURA
+
+    title: 
+      advanced-formatting: true
+      html-expression: |
+        <div class="factura-header">
+          <!-- <div class="factura-header-left">
+            <div class="empresa-ticker">
+              <img src="#APP_FILES#BCP.jpg" alt="Logo empresa" class="empresa-logo">
+            </div>
+          </div> -->
+        
+          <div class="factura-header-right">
+            <div class="empresa-nombre">
+              <span class="nombre">&EMPRESA_PAGADOR.</span>
+            </div>
+            <div class="empresa-score">
+              &ACTIVIDAD_ECONOMICA.
+            </div>
+          </div>
+        </div>
+        
+
+    subtitle: 
+      advanced-formatting: false
+
+    body: 
+      advanced-formatting: true
+      html-expression: |
+        <div class="factura-card-body" style="padding: 4px 16px; font-size: 14px; color: #333;">
+        
+          <!-- Monto y vencimiento -->
+          <div class="financiamiento-card">
+            <div class="financiamiento-label">Monto disponible</div>
+        
+            <div class="financiamiento-montos">
+              <span class="monto-financiado">&PREFIJO_MONEDA.&MONTO_RESTANTE.</span>
+              <span class="monto-total">/ &PREFIJO_MONEDA.&SALDO_A_PAGO.</span>
+            </div>
+        
+            <div class="financiamiento-vence">Vence en &VENCE_EN.</div>
+        
+            <div class="financiamiento-barra-container">
+        
+              <div class="financiamiento-barra-row">
+            <div class="financiamiento-barra">
+              <div class="financiamiento-barra-progreso"
+                   style="width:&PORCENTAJE_FINANCIADO.;"></div>
+            </div>
+            <span class="financiamiento-percent">&PORCENTAJE_FINANCIADO.</span>
+          </div>
+        
+              <div class="financiamiento-fechas">
+                <span>&FECHA_EMISION.</span>
+                <span>&FECHA_VENCIMIENTO.</span>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Riesgos -->
+        <div class="riesgo-chips">
+          <!-- Fila 1: Tasa + Riesgo de Operación -->
+          <div class="riesgo-chip-row">
+            <!-- Tasa -->
+            <div class="simple-chip">
+              <div class="chip-titulo">TEA %</div>
+              <div class="chip-valor">&TASA_INTERES.</div>
+            </div>
+        
+            <!-- Clasificación de Operación -->
+            <div class="riesgo-chip">
+              <div class="riesgo-body">
+                <div class="riesgo-label-wrap">
+                  <div class="riesgo-titulo">Riesgo de Operación</div>
+                  <div class="riesgo-label">&CLASIFICACION_OPERACION.</div>
+                </div>
+                <span class="riesgo-badge-mini" style="background-color:&CLASIFICACION_OPERACION_COLOR.">&SCORE_OPERACION_RC.</span>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Fila 2: ROI + Riesgo de Pagador -->
+          <div class="riesgo-chip-row">
+            <!-- ROI -->
+            <div class="simple-chip">
+              <div class="chip-titulo">Plazo</div>
+              <div class="chip-valor">&PLAZO_EN_DIAS. d</div>
+            </div>
+        
+            <!-- Clasificación de Pagador -->
+            <div class="riesgo-chip">
+              <div class="riesgo-body">
+                <div class="riesgo-label-wrap">
+                  <div class="riesgo-titulo">Riesgo de Pagador</div>
+                  <div class="riesgo-label">&CLASIFICACION_PAGADOR.</div>
+                </div>
+                <span class="riesgo-badge-mini" style="background-color:&CLASIFICACION_PAGADOR_COLOR.">&SCORE_PAGADOR_RC.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+          <!-- Botón Invertir alineado a la derecha -->
+          <div class="boton-invertir-wrapper">
+            <a href="&URL_INVERTIR." class="boton-invertir-luxe">Invertir</a>
+          </div>
+        
+        </div>
+        
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: Image BLOB Column
+      image-column: ARCHIVO_CONTENIDO
+      icon-position: Start
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+- # ====== Region: Facturas [Grid] =============================
+  id: 8317203194450595
+  identification: 
+    name: Facturas [Grid]
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select 'Gloria S.R.L.' as "Pagador"
+               , 15 as "Score De Riesgo"
+               , 35 as "Tasa Rendimiento"
+               , 15000 as "Monto Total"
+               , 15000 as "Monto Restante"
+               , 12 as "Plazo Estimado"
+               , '30%' as "Financiado"
+            from dual;
+
+  layout: 
+    sequence: 70
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    css-classes: 
+    - u-hidden
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Never
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 8185573132234472
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 8193693069266348
+      identification: 
+        name: Primary Report
+        alias: 276946
+
+    columns: 
+    - # ====== Column: Pagador =====================================
+      id: 8185674179234473
+      identification: 
+        column-name: Pagador
+        type: Plain Text
+
+      heading: 
+        heading: Pagador
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Score De Riesgo =============================
+      id: 8185772372234474
+      identification: 
+        column-name: Score De Riesgo
+        type: Plain Text
+
+      heading: 
+        heading: Score De Riesgo
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Tasa Rendimiento ============================
+      id: 8185901177234475
+      identification: 
+        column-name: Tasa Rendimiento
+        type: Plain Text
+
+      heading: 
+        heading: Tasa Rendimiento
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Monto Total =================================
+      id: 8186059968234476
+      identification: 
+        column-name: Monto Total
+        type: Plain Text
+
+      heading: 
+        heading: Monto Total
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Monto Restante ==============================
+      id: 8186135913234477
+      identification: 
+        column-name: Monto Restante
+        type: Plain Text
+
+      heading: 
+        heading: Monto Restante
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Plazo Estimado ==============================
+      id: 8186256402234478
+      identification: 
+        column-name: Plazo Estimado
+        type: Plain Text
+
+      heading: 
+        heading: Plazo Estimado
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: Financiado ==================================
+      id: 8186333867234479
+      identification: 
+        column-name: Financiado
+        type: Plain Text
+
+      heading: 
+        heading: Financiado
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+page-items: 
+- # ====== Page Item: P5_ID_EMPRESA_PAGADOR ====================
+  id: 41968916309020684
+  identification: 
+    name: P5_ID_EMPRESA_PAGADOR
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_SCORE_PAGADOR_RC ======================
+  id: 43425202503142467
+  identification: 
+    name: P5_SCORE_PAGADOR_RC
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_SCORE_OPERACION_RC ====================
+  id: 43425307613142468
+  identification: 
+    name: P5_SCORE_OPERACION_RC
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_MONTO_DISPONIBLE_MINIMO ===============
+  id: 43425362983142469
+  identification: 
+    name: P5_MONTO_DISPONIBLE_MINIMO
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_MONTO_DISPONIBLE_MAXIMO ===============
+  id: 43425476846142470
+  identification: 
+    name: P5_MONTO_DISPONIBLE_MAXIMO
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 50
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_MONEDA_RC =============================
+  id: 45409664844386190
+  identification: 
+    name: P5_MONEDA_RC
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 60
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: GRILLA ======================================
+  id: 8186382574234480
+  identification: 
+    button-name: GRILLA
+    label: Grilla
+
+  layout: 
+    sequence: 30
+    region: Breadcrumb # 27854057095976059
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-list
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Button: CARDS =======================================
+  id: 8186558934234481
+  identification: 
+    button-name: CARDS
+    label: Cards
+
+  layout: 
+    sequence: 40
+    region: Breadcrumb # 27854057095976059
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-tiles-2x2
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Button: FILTROS =====================================
+  id: 10653922015920784
+  identification: 
+    button-name: FILTROS
+    label: Filtros
+
+  layout: 
+    sequence: 20
+    region: Breadcrumb # 27854057095976059
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-filter
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:8:&SESSION.::&DEBUG.:8::'
+      page: 8 # Filtros Marketplace
+      clear-cache: 8
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: LIMPIAR_FILTROS =============================
+  id: 43424406303142459
+  identification: 
+    button-name: LIMPIAR_FILTROS
+    label: Quitar Filtros
+
+  layout: 
+    sequence: 10
+    region: Breadcrumb # 27854057095976059
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--primary
+    - t-Button--iconLeft
+    icon: fa-remove
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    custom-attributes: 
+    - hidden
+
+dynamic-actions: 
+- # ====== Dynamic Action: onDialogClosed - Filtros ============
+  id: 41969259591020687
+  identification: 
+    name: onDialogClosed - Filtros
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Button
+    button: FILTROS # 10653922015920784
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 41969349281020688
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Dialog Return Item
+      return-item: P8_ID_EMPRESA_PAGADOR
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P5_ID_EMPRESA_PAGADOR
+
+    execution: 
+      sequence: 10
+      event: onDialogClosed - Filtros # 41969259591020687
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Refresh =====================================
+    id: 41969415572020689
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Facturas [Cards] # 8186594465234482
+
+    execution: 
+      sequence: 70
+      event: onDialogClosed - Filtros # 41969259591020687
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 43425050990142466
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_FILTROS # 43424406303142459
+
+    execution: 
+      sequence: 80
+      event: onDialogClosed - Filtros # 41969259591020687
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Value ===================================
+    id: 43425610401142471
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Dialog Return Item
+      return-item: P8_SCORE_OPERACION_RC
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P5_SCORE_OPERACION_RC
+
+    execution: 
+      sequence: 20
+      event: onDialogClosed - Filtros # 41969259591020687
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Set Value ===================================
+    id: 43425629255142472
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Dialog Return Item
+      return-item: P8_MONTO_DISPONIBLE_MINIMO
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P5_MONTO_DISPONIBLE_MINIMO
+
+    execution: 
+      sequence: 40
+      event: onDialogClosed - Filtros # 41969259591020687
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Set Value ===================================
+    id: 43425768339142473
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Dialog Return Item
+      return-item: P8_MONTO_DISPONIBLE_MAXIMO
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P5_MONTO_DISPONIBLE_MAXIMO
+
+    execution: 
+      sequence: 50
+      event: onDialogClosed - Filtros # 41969259591020687
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Set Value ===================================
+    id: 43425956047142475
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Dialog Return Item
+      return-item: P8_SCORE_PAGADOR_RC
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P5_SCORE_PAGADOR_RC
+
+    execution: 
+      sequence: 30
+      event: onDialogClosed - Filtros # 41969259591020687
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Set Value ===================================
+    id: 45409756537386191
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Dialog Return Item
+      return-item: P8_MONEDA_RC
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P5_MONEDA_RC
+
+    execution: 
+      sequence: 60
+      event: onDialogClosed - Filtros # 41969259591020687
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: onClick - Limpiar Filtros ===========
+  id: 43424440261142460
+  identification: 
+    name: onClick - Limpiar Filtros
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: LIMPIAR_FILTROS # 43424406303142459
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 43424561846142461
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P5_ID_EMPRESA_PAGADOR
+      - P5_SCORE_OPERACION_RC
+      - P5_SCORE_PAGADOR_RC
+      - P5_MONTO_DISPONIBLE_MINIMO
+      - P5_MONTO_DISPONIBLE_MAXIMO
+      - P5_MONEDA_RC
+
+    execution: 
+      sequence: 10
+      event: onClick - Limpiar Filtros # 43424440261142460
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Refresh =====================================
+    id: 43424693679142462
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Facturas [Cards] # 8186594465234482
+
+    execution: 
+      sequence: 20
+      event: onClick - Limpiar Filtros # 43424440261142460
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Hide ========================================
+    id: 43424787787142463
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_FILTROS # 43424406303142459
+
+    execution: 
+      sequence: 30
+      event: onClick - Limpiar Filtros # 43424440261142460
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onPageLoad ==========================
+  id: 43424851279142464
+  identification: 
+    name: onPageLoad
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+
+  when: 
+    event: Page Load
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 43424989721142465
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_FILTROS # 43424406303142459
+
+    execution: 
+      sequence: 10
+      event: onPageLoad # 43424851279142464
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

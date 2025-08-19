@@ -1,0 +1,366 @@
+---
+# ====== Page: Transacciones Financieras =====================
+id: 10
+identification: 
+  name: Transacciones Financieras
+  alias: TRANSACCIONES-FINANCIERAS
+  title: Transacciones Financieras
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .badge-principal {
+      background-color: #ab47bc;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: inline-block;
+    }
+    
+    .badge-secundaria {
+      background-color: #6FCF97;
+      color: #333;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: inline-block;
+    }
+    
+    .badge-pendiente {
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: inline-block;
+      font-weight: 500;
+    }
+    .badge-accion-requerida {
+      background-color: #F97316;
+      color: #FFFFFF;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: inline-block;
+      font-weight: 500;
+    }
+    .badge-pendiente-revision {
+      background-color: #8B5CF6;
+      color: #FFFFFF;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: inline-block;
+      font-weight: 500;
+    }
+    .badge-rechazado {
+      background-color: #DC2626;
+      color: #FEF2F2;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      display: inline-block;
+      font-weight: 500;
+    }
+    
+    .boton-invertir-wrapper.N-boton {
+      display: none;
+    }
+    .boton-invertir-wrapper.S-boton {
+      display: block;
+    }
+    
+    /* Lux minimalist “Invertir” button */
+    .boton-invertir-luxe {
+      display: inline-block;
+      padding: 10px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      color: #5a2d82;                                 /* texto morado FIMAKI */
+      background-image:
+        linear-gradient(#fff, #fff),                  /* capa interior blanca  */
+        linear-gradient(90deg, #7d4bb7, #5a2d82);     /* borde degradado       */
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+      transition: all .25s ease;
+    }
+    
+    .boton-invertir-luxe:hover,
+    .boton-invertir-luxe:focus {
+      color: #fff;
+      background-image: linear-gradient(90deg, #7d4bb7, #5a2d82);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.14);
+    }
+    
+    .boton-invertir-luxe:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+    .boton-invertir-wrapper {
+      margin-top: 20px;          /* tu separación vertical actual           */
+      display: flex;
+      justify-content: flex-end; /* ⬅️ alinea todo a la derecha              */
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Transacciones Financieras ===================
+  id: 51796972279374190
+  identification: 
+    name: Transacciones Financieras
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select s.id_deposito as id,
+                 'OP-'||lpad(s.id_deposito,7,'0') as nro_operacion,
+                 cb.alias as alias,
+                 cb.numero_cuenta as numero_cuenta,
+                 substr(cb.numero_cuenta,-4) as numero_cuenta_last4,
+                 cb.cci as cci,
+                 m.descripcion as moneda,
+                 m.atributo1 as simbolo_moneda,
+              --    s.monto,
+              --   TO_CHAR(s.monto, 'FM999G999G999D00', 'NLS_NUMERIC_CHARACTERS = '',.''') 
+                  TO_CHAR(s.monto, 'FM999G999G999D00') as monto,
+      
+                 et.descripcion as badge_text,
+                 case s.estado_rc
+                   when 'PENDIENTE' then 'badge-pendiente'
+                   when 'ACCION_REQUERIDA' then 'badge-accion-requerida'
+                   when 'PENDIENTE_REVISION' then 'badge-pendiente-revision'
+                   when 'RECHAZADO' then 'badge-rechazado'
+                   else 'badge-secundaria'
+                 end as badge_class,
+                 i.nombre as institucion,
+                 p.nombre as pais,
+              --    s.fecha_transferencia as fecha_solicitud,
+                 TO_CHAR(s.fecha_transferencia, 'DD-MM-YYYY HH:MIAM') as fecha_solicitud,
+                 apex_page.get_url (
+                    p_page => 201,
+                    p_items => 'P201_ID_CUENTA_BANCARIA',
+                    p_values => cb.id_cuenta_bancaria
+                 ) as url_editar,
+                 nvl(to_char(fecha_validacion, 'DD-MM-YYYY HH:MIAM'), 'En proceso…') as fecha_validacion
+               , apex_page.get_url (
+                    p_page   => 11
+                  , p_items  => 'P11_ID_DEPOSITO'
+                  , p_values => s.id_deposito
+                 ) as url_deposito
+               , CASE
+                  WHEN s.estado_rc IN ('ACCION_REQUERIDA') THEN 'S'
+                  ELSE 'N'
+                  END AS mostrar_boton
+            from bko_solicitud_deposito s
+            join bko_cuenta_bancaria    cb               on cb.id_cuenta_bancaria = s.id_cuenta_bancaria
+            join fimaki_app.bko_institucion_financiera i on i.id_institucion = cb.id_institucion
+            join bko_pais p                              on p.id_pais = cb.id_pais
+            join codigo_referencia      m                on m.codigo = cb.moneda_rc and m.codigo_ref_tipo = 'TIPO_MON'
+            join codigo_referencia      et               on et.codigo = s.estado_rc and et.codigo_ref_tipo = 'SOLCTDEPT'
+           where cb.id_persona = :P_ID_PERSONA
+        order by s.fecha_transferencia desc
+               , s.fecha_validacion desc nulls first
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 32127715571647463
+    appearance: 
+      layout: Grid
+      grid-columns: Auto
+
+    card: 
+      primary-key-column-1: ID
+
+    title: 
+      advanced-formatting: true
+      html-expression: |
+        <!-- Título principal -->
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span class="fa fa-piggy-bank" aria-hidden="true" style="color: #5e3c8a;"></span>
+            <span style="color: #5e3c8a; font-weight: 600;">&ALIAS.</span>
+          </div>
+          <span class="&BADGE_CLASS.">&BADGE_TEXT.</span>
+        </div>
+
+    subtitle: 
+      advanced-formatting: false
+
+    body: 
+      advanced-formatting: true
+      html-expression: |
+        <!-- Monto destacado con color y espacio -->
+        <div style="font-size: 26px; font-weight: bold; color: #5e3c8a; margin-bottom: 8px;">
+          &SIMBOLO_MONEDA. &MONTO.
+        </div>
+        <div style="font-size: 13px; color: #888; margin-top: 0; margin-bottom: 16px; padding-top: 0; line-height: 1.1;">
+          Solicitud de depósito
+        </div>
+        
+        
+        <!-- Datos en dos columnas con interlineado compacto -->
+        <div style="display: grid; grid-template-columns: 130px auto; row-gap: 4px; column-gap: 4px; font-size: 14px; line-height: 1.2; align-items: center;">
+        
+            <!-- N° Cuenta -->
+            <span style="font-weight: bold;">N° Operación</span>
+            <span>&NRO_OPERACION.</span>
+            <!-- N° Cuenta -->
+            <span style="font-weight: bold;">N° Cuenta</span>
+            <div style="display: flex; align-items: center; gap: 4px;">
+                <span id="cuenta-&ID.">********&NUMERO_CUENTA_LAST4.</span>
+                <button type="button"
+                        title="Mostrar número completo"
+                        onclick="
+                        const el = document.getElementById('cuenta-&ID.');
+                        const isHidden = el.textContent.includes('*');
+                        el.textContent = isHidden 
+                            ? '&NUMERO_CUENTA.' 
+                            : '********&NUMERO_CUENTA_LAST4.';
+                        this.innerHTML = isHidden 
+                            ? '<span class=\'fa fa-eye\'></span>' 
+                            : '<span class=\'fa fa-eye-slash\'></span>';
+                        "
+                        class="t-Button t-Button--noUI t-Button--icon"
+                        style="padding: 2px;">
+                <span class="fa fa-eye-slash"></span>
+                </button>
+          </div>
+        
+          <!-- Moneda -->
+          <span style="font-weight: bold;">Moneda</span>
+          <span>&MONEDA.</span>
+        
+          <!-- Institución -->
+          <span style="font-weight: bold;">Institución</span>
+          <span>&INSTITUCION.</span>
+        </div>
+        
+
+    secondary-body: 
+      advanced-formatting: true
+      html-expression: |
+        <div style="display: grid; grid-template-columns: 130px auto; row-gap: 4px; column-gap: 4px; font-size: 12px; color: #666; margin-bottom: 12px;">
+          <span style="font-weight: bold;">Fecha de solicitud</span>
+          <span>&FECHA_SOLICITUD.</span>
+        
+          <span style="font-weight: bold;">Fecha de validación</span>
+          <span>&FECHA_VALIDACION.</span>
+        </div>
+          <!-- Botón Invertir alineado a la derecha -->
+        <div class="boton-invertir-minimal boton-invertir-wrapper &MOSTRAR_BOTON.-boton">
+          <a href="&URL_DEPOSITO." class="boton-invertir-luxe">Cambiar imagen</a>
+        </div>
+
+    icon-and-badge: 
+      icon-source: No Icon
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+buttons: 
+- # ====== Button: CREAR =======================================
+  id: 28738596832034394
+  identification: 
+    button-name: CREAR
+    label: Nuevo Depósito
+
+  layout: 
+    sequence: 10
+    region: Breadcrumb # 27854057095976059
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-plus
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:11:&SESSION.::&DEBUG.:11::'
+      page: 11 # Solicitud Deposito
+      clear-cache: 11
+
+    warn-on-unsaved-changes: Do Not Check
+

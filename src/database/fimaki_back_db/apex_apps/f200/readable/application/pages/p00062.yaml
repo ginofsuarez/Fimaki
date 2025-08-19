@@ -1,0 +1,1301 @@
+---
+# ====== Page: Distribucion de Retorno =======================
+id: 62
+identification: 
+  name: Distribucion de Retorno
+  alias: DISTRIBUCION-DE-RETORNO
+  title: Distribucion del retorno de inversion
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  width: 1100
+  chained: false
+  resizable: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    /* Cambiar background y color del tab activo */
+    .t-Tabs-item.a-Tabs-selected.is-active {
+      background-color: #5e3c8a; /* Púrpura FIMAKI */
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    
+    .t-Tabs-item.a-Tabs-selected.is-active .t-Tabs-link {
+      color: white; /* texto blanco en tab activo */
+    }
+    .t-Tabs-item.a-Tabs-selected.is-active .t-Tabs-link,
+    .t-Tabs-item.a-Tabs-selected.is-active .t-Tabs-link:hover,
+    .t-Tabs-item.a-Tabs-selected.is-active .t-Tabs-link:focus {
+      text-decoration: none !important;
+    }
+    .t-Tabs-item.is-active {
+        --ut-tabs-item-text-color: var(--ut-tabs-item-active-text-color);
+        --ut-tabs-item-background-color: var(--ut-tabs-item-active-background-color);
+        --ut-tabs-item-highlight-color: #5e3c8a;
+        --ut-tabs-item-font-weight: var(--ut-tabs-item-active-font-weight);
+    }
+    .t-Tabs-item.a-Tabs-selected.is-active {
+        border-radius: 0px;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Buttons =====================================
+  id: 45123986391905132
+  identification: 
+    name: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Consolidado =================================
+  id: 45124456733905137
+  identification: 
+    name: Consolidado
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          SELECT 
+          m.ID_FACTURA,
+          m.INVERSIONISTA,
+          SUM(CASE WHEN m.TIPO_MOVIMIENTO_RC = 'DEVOLUCION_CAPITAL' THEN m.MONTO ELSE 0 END) AS MONTO_CAPITAL,
+          SUM(CASE WHEN m.TIPO_MOVIMIENTO_RC = 'PAGO_INTERES' THEN m.MONTO ELSE 0 END) AS INTERES_ORDINARIO,
+          SUM(CASE WHEN m.TIPO_MOVIMIENTO_RC = 'PAGO_INTERES_MORA' THEN m.MONTO ELSE 0 END) AS INTERES_MORATORIO,
+          SUM(CASE 
+                  WHEN m.TIPO_MOVIMIENTO_RC IN ('DEVOLUCION_CAPITAL', 'PAGO_INTERES', 'PAGO_INTERES_MORA') THEN m.MONTO 
+                  ELSE 0 
+              END) AS TOTAL_POR_INVERSIONISTA
+          FROM 
+              bko_movimiento_financiero_v m
+          WHERE 
+              m.ID_FACTURA = :P62_ID_FACTURA
+              AND m.ESTADO_RC = 'ACTIVO'
+          GROUP BY 
+              m.ID_FACTURA, m.INVERSIONISTA
+          ORDER BY 
+              m.INVERSIONISTA;
+    page-items-to-submit: 
+    - P62_ID_FACTURA
+
+  layout: 
+    sequence: 10
+    parent-region: Tabs # 45404446653378312
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 45124541586905138
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: false
+      group-by: false
+      pivot: false
+      flashback: false
+      save-report: true
+      save-public-report: false
+      reset: false
+      help: false
+      download: true
+      subscription: false
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 45410763657383786
+      identification: 
+        name: Primary Report
+        alias: 372337
+
+    columns: 
+    - # ====== Column: ID_FACTURA ==================================
+      id: 45124669871905139
+      identification: 
+        column-name: ID_FACTURA
+        type: Hidden
+
+      heading: 
+        heading: Id Factura
+
+      layout: 
+        sequence: 10
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: INVERSIONISTA ===============================
+      id: 45124734399905140
+      identification: 
+        column-name: INVERSIONISTA
+        type: Plain Text
+
+      heading: 
+        heading: Inversionista
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONTO_CAPITAL ===============================
+      id: 45402413854378291
+      identification: 
+        column-name: MONTO_CAPITAL
+        type: Plain Text
+
+      heading: 
+        heading: Monto Capital
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: INTERES_MORATORIO ===========================
+      id: 45402525089378293
+      identification: 
+        column-name: INTERES_MORATORIO
+        type: Plain Text
+
+      heading: 
+        heading: Interes Moratorio
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TOTAL_POR_INVERSIONISTA =====================
+      id: 45402656498378294
+      identification: 
+        column-name: TOTAL_POR_INVERSIONISTA
+        type: Plain Text
+
+      heading: 
+        heading: Monto Total
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: INTERES_ORDINARIO ===========================
+      id: 45404528359378313
+      identification: 
+        column-name: INTERES_ORDINARIO
+        type: Plain Text
+
+      heading: 
+        heading: Interes Ordinario
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Distribucion Detallada ======================
+  id: 45402864087378296
+  identification: 
+    name: Distribucion Detallada
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT
+          lpad(m.id_inversion_factura,6,0) as nro_operacion,
+          m.ID_FACTURA,
+          m.INVERSIONISTA,
+          m.ID_ROL_PERSONA,
+          m.TIPO_MOVIMIENTO_RC,
+          m.TIPO_MOVIMIENTO,
+          m.FECHA_MOVIMIENTO,
+          m.MONTO,
+          m.MONEDA_RC,
+          m.TASA_INTERES,
+          m.SIGNO,
+          SUM(CASE 
+                  WHEN m.TIPO_MOVIMIENTO_RC = 'DEVOLUCION_CAPITAL' THEN m.MONTO
+                  WHEN m.TIPO_MOVIMIENTO_RC = 'PAGO_INTERES' THEN m.MONTO
+                  WHEN m.TIPO_MOVIMIENTO_RC = 'PAGO_INTERES_MORA' THEN m.MONTO
+                  ELSE 0 
+              END) OVER (PARTITION BY m.ID_ROL_PERSONA, m.ID_FACTURA) AS TOTAL_POR_INVERSIONISTA,
+          CASE 
+              WHEN m.SIGNO = 1 THEN 'Crédito'
+              WHEN m.SIGNO = -1 THEN 'Débito'
+              ELSE 'Desconocido'
+          END AS Asiento
+      FROM 
+          bko_movimiento_financiero_v m
+      WHERE 
+          m.ID_FACTURA = :P62_ID_FACTURA
+          AND m.ESTADO_RC = 'ACTIVO'
+      ORDER BY 
+          m.INVERSIONISTA, m.FECHA_MOVIMIENTO, m.TIPO_MOVIMIENTO_RC;
+    page-items-to-submit: 
+    - P62_ID_FACTURA
+
+  layout: 
+    sequence: 20
+    parent-region: Tabs # 45404446653378312
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 45402999911378297
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: false
+      group-by: true
+      pivot: false
+      flashback: false
+      save-report: true
+      save-public-report: false
+      reset: false
+      help: false
+      download: true
+      subscription: false
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 45417770324397714
+      identification: 
+        name: Primary Report
+        alias: 372407
+
+    columns: 
+    - # ====== Column: NRO_OPERACION ===============================
+      id: 44942990607955203
+      identification: 
+        column-name: NRO_OPERACION
+        type: Plain Text
+
+      heading: 
+        heading: Nro Operacion
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_FACTURA ==================================
+      id: 45403111961378298
+      identification: 
+        column-name: ID_FACTURA
+        type: Hidden
+
+      heading: 
+        heading: Id Factura
+
+      layout: 
+        sequence: 10
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: INVERSIONISTA ===============================
+      id: 45403210078378299
+      identification: 
+        column-name: INVERSIONISTA
+        type: Plain Text
+
+      heading: 
+        heading: Inversionista
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TOTAL_POR_INVERSIONISTA =====================
+      id: 45403612726378303
+      identification: 
+        column-name: TOTAL_POR_INVERSIONISTA
+        type: Plain Text
+
+      heading: 
+        heading: Monto Total
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_ROL_PERSONA ==============================
+      id: 45403624824378304
+      identification: 
+        column-name: ID_ROL_PERSONA
+        type: Hidden
+
+      heading: 
+        heading: Id Rol Persona
+
+      layout: 
+        sequence: 50
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TIPO_MOVIMIENTO_RC ==========================
+      id: 45403809025378305
+      identification: 
+        column-name: TIPO_MOVIMIENTO_RC
+        type: Hidden
+
+      heading: 
+        heading: Tipo Movimiento Rc
+
+      layout: 
+        sequence: 60
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TIPO_MOVIMIENTO =============================
+      id: 45403881261378306
+      identification: 
+        column-name: TIPO_MOVIMIENTO
+        type: Plain Text
+
+      heading: 
+        heading: Tipo Movimiento
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FECHA_MOVIMIENTO ============================
+      id: 45404001026378307
+      identification: 
+        column-name: FECHA_MOVIMIENTO
+        type: Plain Text
+
+      heading: 
+        heading: Fecha Movimiento
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&DATE_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONTO =======================================
+      id: 45404029148378308
+      identification: 
+        column-name: MONTO
+        type: Plain Text
+
+      heading: 
+        heading: Monto Movimiento
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 90
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONEDA_RC ===================================
+      id: 45404194027378309
+      identification: 
+        column-name: MONEDA_RC
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_MONEDA # 44239467711699799
+
+      heading: 
+        heading: Moneda
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 100
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: TASA_INTERES ================================
+      id: 45404250759378310
+      identification: 
+        column-name: TASA_INTERES
+        type: Plain Text
+
+      heading: 
+        heading: TEA %
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SIGNO =======================================
+      id: 45404351319378311
+      identification: 
+        column-name: SIGNO
+        type: Plain Text
+
+      heading: 
+        heading: Signo
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ASIENTO =====================================
+      id: 45404664702378314
+      identification: 
+        column-name: ASIENTO
+        type: Plain Text
+
+      heading: 
+        heading: Asiento
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 130
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Tabs ========================================
+  id: 45404446653378312
+  identification: 
+    name: Tabs
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--pill
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P62_ID_FACTURA ===========================
+  id: 45402789536378295
+  identification: 
+    name: P62_ID_FACTURA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: OK ==========================================
+  id: 45124050950905133
+  identification: 
+    button-name: OK
+    label: Ok
+
+  layout: 
+    sequence: 10
+    region: Buttons # 45123986391905132
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - mnw100
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: onClick - OK ========================
+  id: 45124287159905135
+  identification: 
+    name: onClick - OK
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: OK # 45124050950905133
+
+  actions: 
+  - # ====== Action: Close Dialog ================================
+    id: 45124330729905136
+    identification: 
+      action: Close Dialog
+
+    execution: 
+      sequence: 10
+      event: onClick - OK # 45124287159905135
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

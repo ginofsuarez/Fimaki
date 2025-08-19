@@ -1,0 +1,3 @@
+.a-Switch input[type=checkbox]:checked+.a-Switch-toggle {
+    --a-switch-background-color: #8b4eb0;
+}

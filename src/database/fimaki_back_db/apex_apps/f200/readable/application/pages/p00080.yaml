@@ -1,0 +1,2035 @@
+---
+# ====== Page: Registrar Cancelacion =========================
+id: 80
+identification: 
+  name: Registrar Cancelacion
+  alias: REGISTRAR-CANCELACION
+  title: Registrar Cancelación
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  width: 812
+  chained: false
+  resizable: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Registro de Cancelacion =====================
+  id: 41318174092470215
+  identification: 
+    name: Registro de Cancelacion
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Botonera ====================================
+  id: 41318220813470216
+  identification: 
+    name: Botonera
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Vista previa de retorno por Inversionista ===
+  id: 45120407955905096
+  identification: 
+    name: Vista previa de retorno por Inversionista
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select id_movimiento_financiero
+               , id_rol_persona
+               , tipo_movimiento
+               , signo
+               , moneda_rc
+               , estado_rc
+               , id_cuenta_bancaria
+               , monto
+               , id_factura
+               , id_inversion_factura
+               , inversionista
+               , numero_cuenta
+               , cci
+               , id_deposito
+               , fecha_movimiento
+               , round(monto / to_number(:P80_MONTO_PAGO,'&NUMBER_FORMAT.'), 4) AS ratio
+               , ROUND(bko_operaciones_pkg.calcular_roi(
+                          p_tasa_anual      => tasa_interes,
+                          p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO, '&DATE_FORMAT.')),
+                          p_fecha_inversion => TRUNC(TO_DATE(fecha_movimiento, '&DATE_FORMAT.')),
+                          p_monto_invertido => monto
+                      ) * (monto / to_number(:P80_MONTO_PAGO,'&NUMBER_FORMAT.')), 2) AS interes_ordinario
+               , CASE 
+                  WHEN :P80_DIAS_ATRASO > 0 
+                  THEN ROUND((to_number(:P80_MONTO_PAGO,'&NUMBER_FORMAT.') * (tasa_interes / 100) * (:P80_DIAS_ATRASO / 360)) * (monto / to_number(:P80_MONTO_PAGO,'&NUMBER_FORMAT.')), 2)
+                  ELSE 0
+                 END AS interes_mora
+            from bko_movimiento_financiero_v
+           where id_factura = :P80_ID_FACTURA
+             and tipo_movimiento_rc = 'INVERSION'
+             and estado_rc          = 'ACTIVO'
+    page-items-to-submit: 
+    - P80_ID_FACTURA
+    - P80_MONTO_PAGO
+    - P80_FECHA_PAGO
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--scrollBody
+    - margin-top-sm
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 45120996024905102
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: false
+      group-by: true
+      pivot: false
+      flashback: false
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: false
+      download: true
+      subscription: false
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 45368372498307741
+      identification: 
+        name: Primary Report
+        alias: 371913
+
+    columns: 
+    - # ====== Column: ID_MOVIMIENTO_FINANCIERO ====================
+      id: 45121089673905103
+      identification: 
+        column-name: ID_MOVIMIENTO_FINANCIERO
+        type: Hidden
+
+      heading: 
+        heading: Id Movimiento Financiero
+
+      layout: 
+        sequence: 10
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_ROL_PERSONA ==============================
+      id: 45121217475905104
+      identification: 
+        column-name: ID_ROL_PERSONA
+        type: Hidden
+
+      heading: 
+        heading: Id Rol Persona
+
+      layout: 
+        sequence: 20
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SIGNO =======================================
+      id: 45121320065905106
+      identification: 
+        column-name: SIGNO
+        type: Plain Text
+
+      heading: 
+        heading: Signo
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONEDA_RC ===================================
+      id: 45121444764905107
+      identification: 
+        column-name: MONEDA_RC
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_MONEDA # 44239467711699799
+
+      heading: 
+        heading: Moneda
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: ESTADO_RC ===================================
+      id: 45121519362905108
+      identification: 
+        column-name: ESTADO_RC
+        type: Plain Text
+
+      heading: 
+        heading: Estado Rc
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_CUENTA_BANCARIA ==========================
+      id: 45121623027905109
+      identification: 
+        column-name: ID_CUENTA_BANCARIA
+        type: Hidden
+
+      heading: 
+        heading: Id Cuenta Bancaria
+
+      layout: 
+        sequence: 70
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONTO =======================================
+      id: 45121764380905110
+      identification: 
+        column-name: MONTO
+        type: Plain Text
+
+      heading: 
+        heading: Monto Capital
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_FACTURA ==================================
+      id: 45121869817905111
+      identification: 
+        column-name: ID_FACTURA
+        type: Hidden
+
+      heading: 
+        heading: Id Factura
+
+      layout: 
+        sequence: 90
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_INVERSION_FACTURA ========================
+      id: 45121922890905112
+      identification: 
+        column-name: ID_INVERSION_FACTURA
+        type: Hidden
+
+      heading: 
+        heading: Id Inversion Factura
+
+      layout: 
+        sequence: 100
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: INVERSIONISTA ===============================
+      id: 45122096516905113
+      identification: 
+        column-name: INVERSIONISTA
+        type: Plain Text
+
+      heading: 
+        heading: Inversionista
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: NUMERO_CUENTA ===============================
+      id: 45122118127905114
+      identification: 
+        column-name: NUMERO_CUENTA
+        type: Plain Text
+
+      heading: 
+        heading: Numero Cuenta
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CCI =========================================
+      id: 45122272172905115
+      identification: 
+        column-name: CCI
+        type: Plain Text
+
+      heading: 
+        heading: CCI
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 130
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_DEPOSITO =================================
+      id: 45122408642905116
+      identification: 
+        column-name: ID_DEPOSITO
+        type: Plain Text
+
+      heading: 
+        heading: Id Deposito
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 140
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FECHA_MOVIMIENTO ============================
+      id: 45122494910905117
+      identification: 
+        column-name: FECHA_MOVIMIENTO
+        type: Plain Text
+
+      heading: 
+        heading: Fecha Movimiento
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 150
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&DATE_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TIPO_MOVIMIENTO =============================
+      id: 45122528877905118
+      identification: 
+        column-name: TIPO_MOVIMIENTO
+        type: Plain Text
+
+      heading: 
+        heading: Tipo Movimiento
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 160
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: RATIO =======================================
+      id: 45123012749905122
+      identification: 
+        column-name: RATIO
+        type: Plain Text
+
+      heading: 
+        heading: Ratio
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 190
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: INTERES_ORDINARIO ===========================
+      id: 45123033998905123
+      identification: 
+        column-name: INTERES_ORDINARIO
+        type: Plain Text
+
+      heading: 
+        heading: Interes Ordinario
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 200
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: INTERES_MORA ================================
+      id: 45123169097905124
+      identification: 
+        column-name: INTERES_MORA
+        type: Plain Text
+
+      heading: 
+        heading: Interes Mora
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 210
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+page-items: 
+- # ====== Page Item: P80_ID_FACTURA ===========================
+  id: 41318096547470214
+  identification: 
+    name: P80_ID_FACTURA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P80_FECHA_PAGO ===========================
+  id: 41318571031470219
+  identification: 
+    name: P80_FECHA_PAGO
+    type: Date Picker
+
+  label: 
+    label: Fecha de Cancelación
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: Item
+    minimum-item: P80_FECHA_PAGO_MINIMO
+    maximum-date: Static
+    maximum-static: +0d
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 70
+    region: Registro de Cancelacion # 41318174092470215
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P80_MONTO_PAGO ===========================
+  id: 41318708681470220
+  identification: 
+    name: P80_MONTO_PAGO
+    type: Display Only
+
+  label: 
+    label: Monto de Cancelación
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 30
+    region: Registro de Cancelacion # 41318174092470215
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P80_MONEDA_RC ============================
+  id: 41318801819470221
+  identification: 
+    name: P80_MONEDA_RC
+    type: Select List
+
+  label: 
+    label: Moneda
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 40
+    region: Registro de Cancelacion # 41318174092470215
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_MONEDA # 44239467711699799
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P80_FECHA_VENCIMIENTO ====================
+  id: 41318835467470222
+  identification: 
+    name: P80_FECHA_VENCIMIENTO
+    type: Date Picker
+
+  label: 
+    label: Fecha de Vencimiento
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 60
+    region: Registro de Cancelacion # 41318174092470215
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P80_DIAS_ATRASO ==========================
+  id: 41318956492470223
+  identification: 
+    name: P80_DIAS_ATRASO
+    type: Display Only
+
+  label: 
+    label: Dias de Atraso
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 80
+    region: Registro de Cancelacion # 41318174092470215
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P80_INTERES_MORA =========================
+  id: 41319047304470224
+  identification: 
+    name: P80_INTERES_MORA
+    type: Display Only
+
+  label: 
+    label: Interes Moratorio
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 110
+    region: Registro de Cancelacion # 41318174092470215
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P80_FECHA_PAGO_MINIMO ====================
+  id: 41319159969470225
+  identification: 
+    name: P80_FECHA_PAGO_MINIMO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Registro de Cancelacion # 41318174092470215
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P80_INTERES_ORDINARIO ====================
+  id: 45120244180905095
+  identification: 
+    name: P80_INTERES_ORDINARIO
+    type: Display Only
+
+  label: 
+    label: Interes Ordinario
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 100
+    region: Registro de Cancelacion # 41318174092470215
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P80_TEA ==================================
+  id: 45123311202905125
+  identification: 
+    name: P80_TEA
+    type: Display Only
+
+  label: 
+    label: TEA %
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 90
+    region: Registro de Cancelacion # 41318174092470215
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CONFIRMAR_CANCELACION =======================
+  id: 41318384474470217
+  identification: 
+    button-name: CONFIRMAR_CANCELACION
+    label: Confirmar
+
+  layout: 
+    sequence: 20
+    region: Botonera # 41318220813470216
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+  confirmation: 
+    message: |
+      <b>¿Confirmar la Cancelación de la Factura?</b>
+      <p>Se distribuirá el retorno de la Inversión a los Inversionistas. <b>Esta acción no se puede deshacer.</b></p>
+    style: Default
+
+- # ====== Button: CANCELAR ====================================
+  id: 41318470132470218
+  identification: 
+    button-name: CANCELAR
+    label: Cancelar
+
+  layout: 
+    sequence: 10
+    region: Botonera # 41318220813470216
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: PREVISUALIZAR ===============================
+  id: 45120641772905099
+  identification: 
+    button-name: PREVISUALIZAR
+    label: Vista Previa
+
+  layout: 
+    sequence: 10
+    region: Botonera # 41318220813470216
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-ai-sparkle-zoom-in
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: RECALCULAR ==================================
+  id: 45122900714905121
+  identification: 
+    button-name: RECALCULAR
+    label: Recalcular
+
+  layout: 
+    sequence: 10
+    region: Vista previa de retorno por Inversionista # 45120407955905096
+    slot: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-gears
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: onClick - Cancelar ==================
+  id: 43422320567134613
+  identification: 
+    name: onClick - Cancelar
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCELAR # 41318470132470218
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 43422421046134614
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: onClick - Cancelar # 43422320567134613
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onChange - Fecha Pago ===============
+  id: 43422681058134616
+  identification: 
+    name: onChange - Fecha Pago
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P80_FECHA_PAGO
+
+  client-side-condition: 
+    type: Item is not null
+    item: P80_FECHA_PAGO
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 43422782836134617
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        DECLARE
+            l_roi NUMBER;
+            l_interes_mora NUMBER;
+        BEGIN
+            :P80_DIAS_ATRASO := GREATEST(0, trunc(to_date(:P80_FECHA_PAGO,'&DATE_FORMAT.'))-trunc(to_date(:P80_FECHA_VENCIMIENTO,'&DATE_FORMAT.')));
+        
+            select bko_operaciones_pkg.calcular_roi(
+                        p_tasa_anual      => tasa_interes
+                      , p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO,'&DATE_FORMAT.'))
+                      , p_fecha_inversion => TRUNC(TO_DATE(fecha_ingreso,'&DATE_FORMAT.'))
+                      , p_monto_invertido => saldo_a_pago
+                      ) as roi
+                 --, (((saldo_a_pago * tasa_interes)/100)/30)*
+                      , saldo_a_pago * (tasa_interes / 100) * (to_number(:P80_DIAS_ATRASO) / 360)
+              into l_roi
+                 , l_interes_mora
+              from factura_v
+             where id_factura = :P80_ID_FACTURA;
+        
+            :P80_INTERES_ORDINARIO := to_char(round(l_roi,2),'&NUMBER_FORMAT.');
+            :P80_INTERES_MORA := to_char(round(l_interes_mora,2),'&NUMBER_FORMAT.');
+        END;
+      items-to-submit: 
+      - P80_FECHA_VENCIMIENTO
+      - P80_FECHA_PAGO
+      items-to-return: 
+      - P80_DIAS_ATRASO
+      - P80_INTERES_ORDINARIO
+      - P80_INTERES_MORA
+      suppress-change-event: false
+
+    execution: 
+      sequence: 20
+      event: onChange - Fecha Pago # 43422681058134616
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Refresh =====================================
+    id: 45123390494905126
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Vista previa de retorno por Inversionista # 45120407955905096
+
+    execution: 
+      sequence: 30
+      event: onChange - Fecha Pago # 43422681058134616
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Disable =====================================
+    id: 45123800014905130
+    identification: 
+      action: Disable
+
+    affected-elements: 
+      selection-type: Button
+      button: PREVISUALIZAR # 45120641772905099
+
+    execution: 
+      sequence: 10
+      event: onChange - Fecha Pago # 43422681058134616
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onPageLoad ==========================
+  id: 45120508231905097
+  identification: 
+    name: onPageLoad
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+
+  when: 
+    event: Page Load
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 45120527387905098
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Vista previa de retorno por Inversionista # 45120407955905096
+
+    execution: 
+      sequence: 10
+      event: onPageLoad # 45120508231905097
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Disable =====================================
+    id: 45123462899905127
+    identification: 
+      action: Disable
+
+    affected-elements: 
+      selection-type: Button
+      button: PREVISUALIZAR # 45120641772905099
+
+    execution: 
+      sequence: 20
+      event: onPageLoad # 45120508231905097
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: onClick - Previsualizar =============
+  id: 45120751207905100
+  identification: 
+    name: onClick - Previsualizar
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: PREVISUALIZAR # 45120641772905099
+
+  actions: 
+  - # ====== Action: Show ========================================
+    id: 45120880737905101
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: Vista previa de retorno por Inversionista # 45120407955905096
+
+    execution: 
+      sequence: 10
+      event: onClick - Previsualizar # 45120751207905100
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: afterRefresh - Retorno Por Inversioni
+  id: 45123592722905128
+  identification: 
+    name: afterRefresh - Retorno Por Inversionista
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: After Refresh
+    selection-type: Region
+    region: Vista previa de retorno por Inversionista # 45120407955905096
+
+  actions: 
+  - # ====== Action: Enable ======================================
+    id: 45123677940905129
+    identification: 
+      action: Enable
+
+    affected-elements: 
+      selection-type: Button
+      button: PREVISUALIZAR # 45120641772905099
+
+    execution: 
+      sequence: 10
+      event: afterRefresh - Retorno Por Inversionista # 45123592722905128
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Recalcular ================
+  id: 45404810102378315
+  identification: 
+    name: onClick - Recalcular
+
+  execution: 
+    sequence: 60
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: RECALCULAR # 45122900714905121
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 45404902067378316
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Vista previa de retorno por Inversionista # 45120407955905096
+
+    execution: 
+      sequence: 10
+      event: onClick - Recalcular # 45404810102378315
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Initialize =================================
+  id: 41319244366470226
+  identification: 
+    name: Initialize
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |2
+          select to_char(fecha_emision,'&DATE_FORMAT.')
+               , to_char(fecha_vencimiento,'&DATE_FORMAT.')
+               , moneda_rc
+               , to_char(saldo_a_pago,'&NUMBER_FORMAT.')
+               , to_char(tasa_interes,'&NUMBER_FORMAT.')
+            into :P80_FECHA_PAGO_MINIMO
+               , :P80_FECHA_VENCIMIENTO
+               , :P80_MONEDA_RC
+               , :P80_MONTO_PAGO
+               , :P80_TEA
+            from bko_factura
+           where id_factura = :P80_ID_FACTURA;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process Cancelacion ========================
+  id: 43422530184134615
+  identification: 
+    name: Process Cancelacion
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      /* ============================================================================
+         Liquidación de factura: devolución de capital + intereses (ordinario y mora)
+         Ajustes aplicados:
+         1.  Cálculos de interés.
+         2.  Proporción de cada inversión = inv.monto / l_saldo_a_pago (variable v_ratio).
+         3.  Verificación de l_saldo_a_pago = 0 para evitar división por cero.
+         4.  Cursor filtrado SOLO por movimientos de tipo INVERSION y estado ACTIVO.
+         5.  Redondeo únicamente al final (dos decimales) para minimizar diferencias.
+         6.  Interés de mora incluido en el mismo bloque, solo si l_interes_mora > 0.
+         7.  Hora real preservada con SYSDATE; trunca la fecha solo si así lo exige
+             la lógica contable.
+         =========================================================================== */
+      DECLARE
+         l_saldo_a_pago      NUMBER;          -- Saldo total a pagar de la factura
+         l_interes_ordinario NUMBER;          -- Interés ordinario total de la factura
+         l_interes_mora      NUMBER;          -- Interés de mora total de la factura
+         l_plazo_en_dias     NUMBER;
+         l_tasa_interes      NUMBER;
+         l_id_movimiento_financiero bko_movimiento_financiero.id_movimiento_financiero%TYPE;
+      BEGIN
+         /* Obtener valores globales de la factura -------------------------------- */
+          --Obtener el Interes Total a Devolver de la Factura
+          select saldo_a_pago
+              --  , bko_operaciones_pkg.calcular_roi(
+              --         p_tasa_anual      => tasa_interes
+              --       , p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO,'&DATE_FORMAT.')) --Fecha de Cancelacion
+              --       , p_fecha_inversion => TRUNC(TO_DATE(fecha_ingreso,'&DATE_FORMAT.'))   --Fecha de Ingreso de Factura
+              --       , p_monto_invertido => saldo_a_pago
+              --       ) as interes_ordinario
+              --  , (((saldo_a_pago * tasa_interes)/100)/30)*dias_atraso
+               , saldo_a_pago * (tasa_interes / 100) * (to_number(:P80_DIAS_ATRASO) / 360) as interes_moratorio
+               , tasa_interes
+            into l_saldo_a_pago
+              --  , l_interes_ordinario
+               , l_interes_mora
+               , l_tasa_interes
+            from factura_v
+           where id_factura = :P80_ID_FACTURA;
+      
+          /* Si no hay saldo a pagar (ya se liquidó) salimos sin hacer nada --------- */
+          IF l_saldo_a_pago = 0 THEN
+              RETURN;
+          END IF;
+         
+          /* Procesar cada inversión activa en la factura -------------------------- */
+          FOR inv IN ( SELECT id_rol_persona
+                            , id_factura
+                            , id_inversion_factura
+                            , monto  --Monto Capital
+                            , moneda_rc
+                            , id_cuenta_bancaria
+                            , fecha_movimiento
+                         FROM bko_movimiento_financiero_v 
+                        WHERE id_factura = :P80_ID_FACTURA
+                          AND tipo_movimiento_rc  = 'INVERSION'
+                          AND estado_rc           = 'ACTIVO'
+          )LOOP
+          /* Proporción de esta inversión respecto al saldo total de la factura */
+              DECLARE
+                  v_ratio             NUMBER := inv.monto / l_saldo_a_pago;
+                  v_interes_ordinario NUMBER;
+              BEGIN
+                  /* ---------- DEVOLUCIÓN DE CAPITAL -------------------------------- */
+                  l_id_movimiento_financiero := null;
+                  bko_transacciones_pkg.registrar_movimiento_financiero(
+                      p_id_movimiento_financiero => l_id_movimiento_financiero,
+                      p_id_rol_persona           => inv.id_rol_persona,
+                      p_id_factura               => inv.id_factura,
+                      p_id_inversion_factura     => inv.id_inversion_factura,
+                      p_tipo_movimiento_rc       => 'DEVOLUCION_CAPITAL',
+                      p_monto                    => inv.monto,
+                      p_moneda_rc                => inv.moneda_rc,
+                      p_estado_rc                => 'ACTIVO',
+                      p_referencia_externa       => NULL,
+                      p_fecha_movimiento         => TRUNC(CURRENT_TIMESTAMP),
+                      p_observaciones            => 'Cancelacion de factura',
+                      p_id_cuenta_bancaria       => inv.id_cuenta_bancaria
+                   );
+      
+                  /* ---------- PAGO DE INTERÉS ORDINARIO ---------------------------- */
+                  -- Calcular interés individual por inversión
+                  v_interes_ordinario := bko_operaciones_pkg.calcular_roi(
+                      p_tasa_anual      => l_tasa_interes,  -- Debería venir de inv.tasa_interes si varía
+                      p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO, '&DATE_FORMAT.')),
+                      p_fecha_inversion => TRUNC(TO_DATE(inv.fecha_movimiento, '&DATE_FORMAT.')),
+                      p_monto_invertido => inv.monto
+                  );
+      
+                  l_id_movimiento_financiero := null;
+                  bko_transacciones_pkg.registrar_movimiento_financiero(
+                      p_id_movimiento_financiero => l_id_movimiento_financiero,
+                      p_id_rol_persona           => inv.id_rol_persona,
+                      p_id_factura               => inv.id_factura,
+                      p_id_inversion_factura     => inv.id_inversion_factura,
+                      p_tipo_movimiento_rc       => 'PAGO_INTERES',
+                      p_monto                    => ROUND(v_interes_ordinario, 2),
+                      p_moneda_rc                => inv.moneda_rc,
+                      p_estado_rc                => 'ACTIVO',
+                      p_referencia_externa       => NULL,
+                      p_fecha_movimiento         => TRUNC(CURRENT_TIMESTAMP),
+                      p_observaciones            => 'Cancelacion de factura',
+                      p_id_cuenta_bancaria       => inv.id_cuenta_bancaria
+                   );
+      
+               /* ---------- PAGO DE INTERÉS DE MORA (si aplica) ------------------- */
+               IF l_interes_mora > 0 THEN
+                  l_id_movimiento_financiero := null;
+                  bko_transacciones_pkg.registrar_movimiento_financiero(
+                       p_id_movimiento_financiero => l_id_movimiento_financiero,
+                       p_id_rol_persona           => inv.id_rol_persona,
+                       p_id_factura               => inv.id_factura,
+                       p_id_inversion_factura     => inv.id_inversion_factura,
+                       p_tipo_movimiento_rc       => 'PAGO_INTERES_MORA',
+                       p_monto                    => ROUND(l_interes_mora * v_ratio, 2),
+                       p_moneda_rc                => inv.moneda_rc,
+                       p_estado_rc                => 'ACTIVO',
+                       p_referencia_externa       => NULL,
+                       p_fecha_movimiento         => TRUNC(CURRENT_TIMESTAMP),
+                       p_observaciones            => 'Cancelacion de factura',
+                       p_id_cuenta_bancaria       => inv.id_cuenta_bancaria
+                  );
+               END IF;
+               
+              END;
+          END LOOP;
+          
+          update bko_factura 
+             set fecha_pago = trunc(to_date(:P80_FECHA_PAGO,'&DATE_FORMAT.'))
+               , estado_factura_rc = 'FACT_CANCELADA' 
+           where id_factura = :P80_ID_FACTURA; 
+      
+      END;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Close Dialog ===============================
+  id: 43422907701134618
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

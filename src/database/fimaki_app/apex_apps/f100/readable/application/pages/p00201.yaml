@@ -1,0 +1,1259 @@
+---
+# ====== Page: Detalles Cuenta Bancaria ======================
+id: 201
+identification: 
+  name: Detalles Cuenta Bancaria
+  alias: DETALLES-CUENTA-BANCARIA
+  title: Detalles Cuenta Bancaria
+
+appearance: 
+  page-mode: Normal
+  page-template: Standard
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+javascript: 
+  file-urls: 
+  - '#APP_FILES#JS/utils#MIN#.js'
+
+css: 
+  inline: |
+    .alert-success {
+      background-color: #e6f8ec;
+      color: #2f6b3b;
+      border: 1px solid #b8e1c0;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 4px rgba(0, 128, 0, 0.05);
+    }
+    .hidden{
+        display: none;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Cuenta Bancaria =============================
+  id: 32000085529914040
+  identification: 
+    name: Cuenta Bancaria
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: FIMAKI_BACK_DB
+    table-name: BKO_CUENTA_BANCARIA
+    include-rowid-column: false
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerTitle js-removeLandmark
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  header-and-footer: 
+    header-text: <span class="&P201_ALERT_CLASS.">¡Tu registro fue exitoso! Ahora vincula una cuenta bancaria para empezar a invertir.</span>
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+page-items: 
+- # ====== Page Item: P201_ID_CUENTA_BANCARIA ==================
+  id: 32000435358914043
+  identification: 
+    name: P201_ID_CUENTA_BANCARIA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: ID_CUENTA_BANCARIA
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_NUMERO_CUENTA =======================
+  id: 32000870670914049
+  identification: 
+    name: P201_NUMERO_CUENTA
+    type: Text Field
+
+  label: 
+    label: Número Cuenta
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 20
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: NUMERO_CUENTA
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P201_ID_CUENTA_BANCARIA
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_CCI =================================
+  id: 32001242898914051
+  identification: 
+    name: P201_CCI
+    type: Text Field
+
+  label: 
+    label: CCI
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 20
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: CCI
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P201_ID_CUENTA_BANCARIA
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_MONEDA_RC ===========================
+  id: 32001613360914053
+  identification: 
+    name: P201_MONEDA_RC
+    type: Select List
+
+  label: 
+    label: Moneda
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 60
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_MONEDA_ACTIVO # 32019300127930460
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: MONEDA_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P201_ID_CUENTA_BANCARIA
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_ALIAS ===============================
+  id: 32002088766914054
+  identification: 
+    name: P201_ALIAS
+    type: Text Field
+
+  label: 
+    label: Alias
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 70
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 20
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: ALIAS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  help: 
+    help-text: Nombre personalizado para identificar esta cuenta (ej. "BCP Soles", “Cuenta principal en soles”).
+
+- # ====== Page Item: P201_ES_PRINCIPAL_SN =====================
+  id: 32002496645914056
+  identification: 
+    name: P201_ES_PRINCIPAL_SN
+    type: Switch
+
+  label: 
+    label: Cuenta Principal
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    on-value: S
+    on-label: Si
+    off-value: N
+    off-label: No
+
+  layout: 
+    sequence: 90
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - margin-bottom-none
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    post-text-: '&nbsp;Establecer como cuenta principal'
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: ES_PRINCIPAL_SN
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_ID_PERSONA ==========================
+  id: 32002813685914057
+  identification: 
+    name: P201_ID_PERSONA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 110
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: ID_PERSONA
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Item
+    item: P_ID_PERSONA
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_ID_INSTITUCION ======================
+  id: 32003294744914060
+  identification: 
+    name: P201_ID_INSTITUCION
+    type: Select One
+
+  label: 
+    label: Banco
+    alignment: Left
+
+  settings: 
+    fetch-on-search: false
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  layout: 
+    sequence: 30
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_INSTITUCION_FINANCIERA # 32027293905104718
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: ID_INSTITUCION
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P201_ID_CUENTA_BANCARIA
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_ID_PAIS =============================
+  id: 32003655924914062
+  identification: 
+    name: P201_ID_PAIS
+    type: Select List
+
+  label: 
+    label: País
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 80
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_PAIS_ACTIVO # 29533080453665549
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: ID_PAIS
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P201_ID_CUENTA_BANCARIA
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_ALERT_CLASS =========================
+  id: 34530316428986065
+  identification: 
+    name: P201_ALERT_CLASS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: alert-success
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_ACTIVA_SN ===========================
+  id: 44945997778963059
+  identification: 
+    name: P201_ACTIVA_SN
+    type: Switch
+
+  label: 
+    label: Activo
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    on-value: S
+    on-label: Si
+    off-value: N
+    off-label: No
+
+  layout: 
+    sequence: 100
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - margin-top-none
+    - margin-bottom-md
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    post-text-: '&nbsp;Activo'
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Cuenta Bancaria # 32000085529914040
+    column: ACTIVO_SN
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: S
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P201_CODIGO_REGULADOR ====================
+  id: 44946544593963065
+  identification: 
+    name: P201_CODIGO_REGULADOR
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 20
+    region: Cuenta Bancaria # 32000085529914040
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 32010241763914089
+  identification: 
+    button-name: CANCEL
+    label: Cancelar
+
+  layout: 
+    sequence: 50
+    region: Cuenta Bancaria # 32000085529914040
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:200:&APP_SESSION.::&DEBUG.:::'
+      page: 200 # Cuentas Bancarias
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: DELETE ======================================
+  id: 32010869322914091
+  identification: 
+    button-name: DELETE
+    label: Delete
+
+  layout: 
+    sequence: 10
+    region: Cuenta Bancaria # 32000085529914040
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Button: SAVE ========================================
+  id: 32011220109914092
+  identification: 
+    button-name: SAVE
+    label: Guardar Cambios
+
+  layout: 
+    sequence: 30
+    region: Cuenta Bancaria # 32000085529914040
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P201_ID_CUENTA_BANCARIA
+
+- # ====== Button: CREATE ======================================
+  id: 32011711707914094
+  identification: 
+    button-name: CREATE
+    label: Crear Cuenta
+
+  layout: 
+    sequence: 40
+    region: Cuenta Bancaria # 32000085529914040
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P201_ID_CUENTA_BANCARIA
+
+dynamic-actions: 
+- # ====== Dynamic Action: onChange - ID Institucion ===========
+  id: 44946324623963063
+  identification: 
+    name: onChange - ID Institucion
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P201_ID_INSTITUCION
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 44946427627963064
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        BEGIN
+            select codigo_regulador
+              into :P201_CCI
+              from bko_institucion_financiera 
+             where id_institucion = :P201_ID_INSTITUCION;
+        
+            :P201_CODIGO_REGULADOR := :P201_CCI;
+        END;
+      items-to-submit: 
+      - P201_ID_INSTITUCION
+      items-to-return: 
+      - P201_CCI
+      - P201_CODIGO_REGULADOR
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: onChange - ID Institucion # 44946324623963063
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+validations: 
+- # ====== Validation: Cuenta Bancaria no tiene Solicitud de Dep
+  id: 44946050740963060
+  identification: 
+    name: Cuenta Bancaria no tiene Solicitud de Depositos activa
+
+  execution: 
+    sequence: 10
+
+  validation: 
+    type: No Rows returned
+    sql-query: "select * from bko_solicitud_deposito where id_cuenta_bancaria = :P201_ID_CUENTA_BANCARIA and estado_rc = 'PENDIENTE';"
+    always-execute: false
+
+  error: 
+    error-message: Existe una solicitud de depósito en en progreso. La cuenta no se puede desactivar.
+    display-location: Inline with Field and in Notification
+
+  server-side-condition: 
+    type: Item = Value
+    item: P201_ACTIVA_SN
+    value: N
+
+- # ====== Validation: Cuenta Bancaria no tiene Saldo Disponible
+  id: 44946194041963061
+  identification: 
+    name: Cuenta Bancaria no tiene Saldo Disponible
+
+  execution: 
+    sequence: 20
+
+  validation: 
+    type: Function Body (returning Boolean)
+    language: PL/SQL
+    pl/sql-function-body: |
+      DECLARE
+          l_saldo number;
+      BEGIN
+          l_saldo := bko_operaciones_pkg.get_cuenta_saldo_disponible(:P201_ID_CUENTA_BANCARIA);
+      
+          return l_saldo = 0;
+      END;
+    always-execute: false
+
+  error: 
+    error-message: La cuenta tiene saldo disponible. No se puede desactivar.
+    display-location: Inline with Field and in Notification
+
+  server-side-condition: 
+    type: Item = Value
+    item: P201_ACTIVA_SN
+    value: N
+
+- # ====== Validation: El numero de Cuenta es valido ===========
+  id: 44946240777963062
+  identification: 
+    name: El numero de Cuenta es valido
+
+  execution: 
+    sequence: 30
+
+  validation: 
+    type: Function Body (returning Boolean)
+    language: PL/SQL
+    pl/sql-function-body: |
+      DECLARE
+          l_is_valid boolean;
+      BEGIN
+          l_is_valid := inv_utils_pkg.validar_cuenta_bancaria_pe(
+                            p_cuenta       => :P201_NUMERO_CUENTA
+                          , p_tipo_cuenta  => 'CC'
+                          , p_codigo_banco => :P201_CODIGO_REGULADOR
+                          );
+      
+          return l_is_valid;
+      END;
+    always-execute: false
+
+  error: 
+    error-message: El número de cuenta es inválido.
+    display-location: Inline with Field and in Notification
+    associated-item: P201_NUMERO_CUENTA # 32000870670914049
+
+- # ====== Validation: El numero de Cuenta Interbancario es vali
+  id: 44946626581963066
+  identification: 
+    name: El numero de Cuenta Interbancario es valido
+
+  execution: 
+    sequence: 40
+
+  validation: 
+    type: Function Body (returning Boolean)
+    language: PL/SQL
+    pl/sql-function-body: |
+      DECLARE
+          l_is_valid boolean;
+      BEGIN
+          l_is_valid := inv_utils_pkg.validar_cuenta_bancaria_pe(
+                            p_cuenta       => :P201_CCI
+                          , p_tipo_cuenta  => 'CCI'
+                          , p_codigo_banco => :P201_CODIGO_REGULADOR
+                          );
+      
+          return l_is_valid;
+      END;
+    always-execute: false
+
+  error: 
+    error-message: El número de codigo de cuenta interbancario es inválido.
+    display-location: Inline with Field and in Notification
+    associated-item: P201_CCI # 32001242898914051
+
+- # ====== Validation: El CC es unico ==========================
+  id: 44946745300963067
+  identification: 
+    name: El CC es unico
+
+  execution: 
+    sequence: 50
+
+  validation: 
+    type: No Rows returned
+    sql-query: |2
+          select 1 
+            from bko_cuenta_bancaria 
+           where id_institucion = :P201_ID_INSTITUCION 
+             and numero_cuenta = :P201_NUMERO_CUENTA
+    always-execute: false
+
+  error: 
+    error-message: El número de cuenta ya se encuentra registrado.
+    display-location: Inline with Field and in Notification
+    associated-item: P201_NUMERO_CUENTA # 32000870670914049
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P201_ID_CUENTA_BANCARIA
+
+- # ====== Validation: El CCI es unico =========================
+  id: 44946860548963068
+  identification: 
+    name: El CCI es unico
+
+  execution: 
+    sequence: 60
+
+  validation: 
+    type: No Rows returned
+    sql-query: |2
+          select 1 
+            from bko_cuenta_bancaria 
+           where id_institucion = :P201_ID_INSTITUCION 
+             and cci = :P201_CCI
+    always-execute: false
+
+  error: 
+    error-message: El número de codigo de cuenta interbancario ya se encuentra registrado.
+    display-location: Inline with Field and in Notification
+    associated-item: P201_CCI # 32001242898914051
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P201_ID_CUENTA_BANCARIA
+
+computations: 
+- # ====== Computation: P201_ALERT_CLASS =======================
+  id: 34530518938986067
+  identification: 
+    item-name: P201_ALERT_CLASS
+
+  execution: 
+    sequence: 10
+    point: Before Regions
+
+  computation: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: |
+      BEGIN
+          IF nvl(apex_util.get_preference('CUENTA_RECIEN_ACTIVADA'),'Y') = 'Y'
+          THEN
+              apex_util.set_preference(p_preference => 'CUENTA_RECIEN_ACTIVADA', p_value => 'N');
+              RETURN 'alert-success';
+          ELSE
+              RETURN 'hidden';
+          END IF;
+      END;
+
+processes: 
+- # ====== Process: Initialize form Detalles Cuenta Bancaria ===
+  id: 32012438480914097
+  identification: 
+    name: Initialize form Detalles Cuenta Bancaria
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Cuenta Bancaria # 32000085529914040
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Detalles Cuenta Bancaria ======
+  id: 32012841400914099
+  identification: 
+    name: Process form Detalles Cuenta Bancaria
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Cuenta Bancaria # 32000085529914040
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Cambios Guardados
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Modificar Cuenta Primaria ==================
+  id: 32070150381927773
+  identification: 
+    name: Modificar Cuenta Primaria
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      begin
+        if :P201_ES_PRINCIPAL_SN = 'S' then
+          -- Si esta cuenta se está marcando como principal,
+          -- desmarcamos todas las demás del mismo usuario
+          update bko_cuenta_bancaria
+             set es_principal_sn = 'N'
+           where id_persona = :P_ID_PERSONA
+             and id_cuenta_bancaria != :P201_ID_CUENTA_BANCARIA;
+        end if;
+      end;
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE
+
+branches: 
+- # ====== Branch: Go To Page 200 ==============================
+  id: 32011961883914094
+  identification: 
+    name: Go To Page 200
+
+  execution: 
+    sequence: 20
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:200:&APP_SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 200 # Cuentas Bancarias
+
+- # ====== Branch: Go To Page 202 ==============================
+  id: 32069133184927763
+  identification: 
+    name: Go To Page 202
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:202:&SESSION.::&DEBUG.::P202_ID_CUENTA_BANCARIA:&P201_ID_CUENTA_BANCARIA.&success_msg=#SUCCESS_MSG#'
+      page: 202 # Validación Bancaria
+      values: 
+        p202_id_cuenta_bancaria: '&P201_ID_CUENTA_BANCARIA.'
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |
+      select 1
+        from dual
+       where not exists (
+             select 1
+               from bko_solicitud_deposito d
+               join bko_cuenta_bancaria c
+                 on c.id_cuenta_bancaria = d.id_cuenta_bancaria
+              where c.id_persona = :P_ID_PERSONA
+          )
+         and nvl(apex_util.get_preference('OCULTAR_PRIMER_DEPOSITO'),'N') = 'N'
+         and :REQUEST = 'CREATE'
+

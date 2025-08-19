@@ -1,0 +1,1646 @@
+---
+# ====== Page: Empresas ======================================
+id: 50
+identification: 
+  name: Empresas
+  alias: EMPRESAS
+  title: Empresas
+
+appearance: 
+  page-mode: Normal
+  page-template: Left Side Column
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Empresas ====================================
+  id: 43920908155341146
+  identification: 
+    name: Empresas
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select e.id_empresa
+           , e.actividad_economica_rc
+           , e.fecha_constitucion
+           , e.pagina_web
+           , e.empresa_estado_rc
+           , e.id_persona
+           , e.nombre_comercial
+           , e.tipo_sociedad_rc
+           , e.tamano_rc
+           , cr.nombre ciiu_rc
+           , e.ambito_operacional_rc
+           , e.regimen_tributario_rc
+           , e.tipo_contribuyente_rc
+           , e.tipo_persona_rc
+           , e.tipo_documento_rc
+           , e.numero_doc
+           , e.razon_social
+           , e.persona_estado_rc
+           , e.id_pais
+           , e.id_subdivision_n1
+           , e.id_subdivision_n2
+           , e.creado_por
+           , e.creado
+           , e.modificado_por
+           , e.modificado
+        from bko_empresa_v e
+        left join codigo_referencia cr on e.ciiu_rc = cr.codigo 
+                                      and codigo_ref_tipo = 'CIIU'
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--hideHeader js-addHiddenHeadingRoleDesc
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 50
+
+    appearance: 
+      template-type: Theme
+      template: Standard
+      template-options: 
+      - '#DEFAULT#'
+      - t-Report--stretch
+      - t-Report--staticRowColors
+      - t-Report--rowHighlight
+      - t-Report--inline
+      - t-Report--hideNoPagination
+
+    pagination: 
+      type: Row Ranges X to Y (with next and previous links)
+      display-position: Bottom - Right
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 100000
+
+    messages: 
+      when-no-data-found: no data found
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: ID_EMPRESA ==================================
+    id: 43925203628341285
+    identification: 
+      column-name: ID_EMPRESA
+      type: Hidden
+
+    layout: 
+      sequence: 20
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ACTIVIDAD_ECONOMICA_RC ======================
+    id: 43925616575341287
+    identification: 
+      column-name: ACTIVIDAD_ECONOMICA_RC
+      type: Plain Text (based on List of Values)
+
+    heading: 
+      heading: Actividad Económica
+      alignment: start
+
+    layout: 
+      sequence: 50
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO # 44099756873121584
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: FECHA_CONSTITUCION ==========================
+    id: 43926071574341288
+    identification: 
+      column-name: FECHA_CONSTITUCION
+      type: Plain Text
+
+    heading: 
+      heading: Fecha Constitucion
+      alignment: start
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    server-side-condition: 
+      type: Never
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: PAGINA_WEB ==================================
+    id: 43926456665341289
+    identification: 
+      column-name: PAGINA_WEB
+      type: Plain Text
+
+    heading: 
+      heading: Pagina Web
+      alignment: start
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    server-side-condition: 
+      type: Never
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: EMPRESA_ESTADO_RC ===========================
+    id: 43926855298341290
+    identification: 
+      column-name: EMPRESA_ESTADO_RC
+      type: Plain Text (based on List of Values)
+
+    heading: 
+      heading: Estado
+      alignment: start
+
+    layout: 
+      sequence: 130
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_ESTADO_EMPRESA_ACTIVO # 44125861706239448
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ID_PERSONA ==================================
+    id: 43927228692341292
+    identification: 
+      column-name: ID_PERSONA
+      type: Link
+
+    heading: 
+      heading: '&nbsp;'
+      alignment: center
+
+    layout: 
+      sequence: 10
+      column-alignment: center
+
+    accessibility: 
+      value-identifies-row: false
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:51:&SESSION.::&DEBUG.:51:P51_ID_PERSONA,P51_ID_EMPRESA:#ID_PERSONA#,#ID_EMPRESA#'
+        page: 51 # Empresa
+        clear-cache: 51
+        values: 
+          p51_id_persona: '#ID_PERSONA#'
+          p51_id_empresa: '#ID_EMPRESA#'
+
+      link-text: <span class="fa fa-edit"></span>
+
+    sorting: 
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: NOMBRE_COMERCIAL ============================
+    id: 43927649605341293
+    identification: 
+      column-name: NOMBRE_COMERCIAL
+      type: Hidden
+
+    layout: 
+      sequence: 40
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TIPO_SOCIEDAD_RC ============================
+    id: 43928017757341294
+    identification: 
+      column-name: TIPO_SOCIEDAD_RC
+      type: Plain Text (based on List of Values)
+
+    heading: 
+      heading: Tipo Sociedad
+      alignment: start
+
+    layout: 
+      sequence: 100
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_TIPO_SOCIEDAD_ACTIVO # 44100165451134095
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TAMANO_RC ===================================
+    id: 43928400989341295
+    identification: 
+      column-name: TAMANO_RC
+      type: Plain Text (based on List of Values)
+
+    heading: 
+      heading: Tamaño
+      alignment: start
+
+    layout: 
+      sequence: 120
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_TAMANO_ACTIVO # 44102485436497962
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CIIU_RC =====================================
+    id: 43928847871341297
+    identification: 
+      column-name: CIIU_RC
+      type: Plain Text
+
+    heading: 
+      heading: CIIU
+      alignment: start
+
+    layout: 
+      sequence: 140
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    server-side-condition: 
+      type: Never
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: AMBITO_OPERACIONAL_RC =======================
+    id: 43929181798341298
+    identification: 
+      column-name: AMBITO_OPERACIONAL_RC
+      type: Hidden
+
+    layout: 
+      sequence: 150
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: REGIMEN_TRIBUTARIO_RC =======================
+    id: 43929623724341299
+    identification: 
+      column-name: REGIMEN_TRIBUTARIO_RC
+      type: Plain Text (based on List of Values)
+
+    heading: 
+      heading: Régimen Tributario
+      alignment: start
+
+    layout: 
+      sequence: 110
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_REGIMEN_TRIBUTARIO_ACTIVO # 44100681882170234
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TIPO_CONTRIBUYENTE_RC =======================
+    id: 43930080658341300
+    identification: 
+      column-name: TIPO_CONTRIBUYENTE_RC
+      type: Hidden
+
+    layout: 
+      sequence: 160
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TIPO_PERSONA_RC =============================
+    id: 43930467397341302
+    identification: 
+      column-name: TIPO_PERSONA_RC
+      type: Hidden
+
+    layout: 
+      sequence: 170
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: TIPO_DOCUMENTO_RC ===========================
+    id: 43930787218341303
+    identification: 
+      column-name: TIPO_DOCUMENTO_RC
+      type: Hidden
+
+    layout: 
+      sequence: 180
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: NUMERO_DOC ==================================
+    id: 43931216427341304
+    identification: 
+      column-name: NUMERO_DOC
+      type: Hidden
+
+    layout: 
+      sequence: 190
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: RAZON_SOCIAL ================================
+    id: 43932786843341309
+    identification: 
+      column-name: RAZON_SOCIAL
+      type: Plain Text
+
+    heading: 
+      heading: Razon Social
+      alignment: start
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+      sortable: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: PERSONA_ESTADO_RC ===========================
+    id: 43933584290341312
+    identification: 
+      column-name: PERSONA_ESTADO_RC
+      type: Hidden
+
+    layout: 
+      sequence: 200
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ID_PAIS =====================================
+    id: 43934074981341313
+    identification: 
+      column-name: ID_PAIS
+      type: Hidden
+
+    layout: 
+      sequence: 210
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ID_SUBDIVISION_N1 ===========================
+    id: 43934418108341314
+    identification: 
+      column-name: ID_SUBDIVISION_N1
+      type: Hidden
+
+    layout: 
+      sequence: 220
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ID_SUBDIVISION_N2 ===========================
+    id: 43934871252341316
+    identification: 
+      column-name: ID_SUBDIVISION_N2
+      type: Hidden
+
+    layout: 
+      sequence: 230
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CREADO_POR ==================================
+    id: 43935267307341317
+    identification: 
+      column-name: CREADO_POR
+      type: Hidden
+
+    layout: 
+      sequence: 240
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CREADO ======================================
+    id: 43935671080341318
+    identification: 
+      column-name: CREADO
+      type: Hidden
+
+    layout: 
+      sequence: 250
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: MODIFICADO_POR ==============================
+    id: 43936058356341320
+    identification: 
+      column-name: MODIFICADO_POR
+      type: Hidden
+
+    layout: 
+      sequence: 260
+
+    sorting: 
+      default-sequence: 1
+      direction: Ascending
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: MODIFICADO ==================================
+    id: 43936292119341321
+    identification: 
+      column-name: MODIFICADO
+      type: Hidden
+
+    layout: 
+      sequence: 270
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+- # ====== Region: Search ======================================
+  id: 43921035535341146
+  identification: 
+    name: Search
+    type: Faceted Search
+
+  source: 
+    filtered-region: Empresas # 43920908155341146
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_02
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 4
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--hideHeader js-addHiddenHeadingRoleDesc
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+    landmark-label: Filters
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      batch-facet-changes: false
+      compact-numbers-threshold: 10000
+      show-current-facets: Selector
+      current-facets-selector: '#active_facets'
+      show-total-row-count: Yes
+      show-charts: Dialog
+      display-chart-for-top-n-values: 10
+
+  facets: 
+  - # ====== Facet: P50_SEARCH ===================================
+    id: 43921526188341155
+    identification: 
+      name: P50_SEARCH
+      type: Search
+
+    label: 
+      label: Search
+
+    settings: 
+      search-type: Row Search
+      input-field: Top of Faceted Search Region
+
+    layout: 
+      sequence: 10
+
+    source: 
+      database-column(s): ACTIVIDAD_ECONOMICA_RC,PAGINA_WEB,EMPRESA_ESTADO_RC,NOMBRE_COMERCIAL,TIPO_SOCIEDAD_RC,TAMANO_RC,CIIU_RC,AMBITO_OPERACIONAL_RC,REGIMEN_TRIBUTARIO_RC,TIPO_CONTRIBUYENTE_RC,TIPO_PERSONA_RC,TIPO_DOCUMENTO_RC,NUMERO_DOC,NOMBRES,APELLIDO_PATERNO,APELLIDO_MATERNO,RAZON_SOCIAL,PERSONA_ESTADO_RC,CREADO_POR,MODIFICADO_POR
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+  - # ====== Facet: P50_ACTIVIDAD_ECONOMICA_RC ===================
+    id: 43921966683341159
+    identification: 
+      name: P50_ACTIVIDAD_ECONOMICA_RC
+      type: Checkbox Group
+
+    label: 
+      label: Actividad Económica
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 20
+
+    appearance: 
+      display: Inline
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO # 44099756873121584
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      maximum-displayed-entries: 7
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: true
+
+    advanced: 
+      show-chart-initially: false
+      collapsible: false
+
+    source: 
+      database-column: ACTIVIDAD_ECONOMICA_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P50_EMPRESA_ESTADO_RC ========================
+    id: 43922322210341160
+    identification: 
+      name: P50_EMPRESA_ESTADO_RC
+      type: Checkbox Group
+
+    label: 
+      label: Estado Empresa
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 30
+
+    appearance: 
+      display: Inline
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_ESTADO_EMPRESA_ACTIVO # 44125861706239448
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      maximum-displayed-entries: 7
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: true
+
+    advanced: 
+      show-chart-initially: false
+      collapsible: false
+
+    source: 
+      database-column: EMPRESA_ESTADO_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P50_TIPO_SOCIEDAD_RC =========================
+    id: 43922721160341162
+    identification: 
+      name: P50_TIPO_SOCIEDAD_RC
+      type: Checkbox Group
+
+    label: 
+      label: Tipo Sociedad
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 40
+
+    appearance: 
+      display: Add Filter Dialog
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_TIPO_SOCIEDAD_ACTIVO # 44100165451134095
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      maximum-displayed-entries: 7
+      display-filter-initially: false
+
+    actions-menu: 
+      chart: true
+
+    source: 
+      database-column: TIPO_SOCIEDAD_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P50_TAMANO_RC ================================
+    id: 43923151326341163
+    identification: 
+      name: P50_TAMANO_RC
+      type: Checkbox Group
+
+    label: 
+      label: Tamaño
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 50
+
+    appearance: 
+      display: Inline
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_TAMANO_ACTIVO # 44102485436497962
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      maximum-displayed-entries: 7
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: true
+
+    advanced: 
+      show-chart-initially: false
+      collapsible: false
+
+    source: 
+      database-column: TAMANO_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P50_AMBITO_OPERACIONAL_RC ====================
+    id: 43923530679341165
+    identification: 
+      name: P50_AMBITO_OPERACIONAL_RC
+      type: Checkbox Group
+
+    label: 
+      label: Ámbito Operacional
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 60
+
+    appearance: 
+      display: Inline
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_AMBITO_OPERACIONA_ACTIVO # 44100339868147651
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      maximum-displayed-entries: 7
+      display-filter-initially: false
+
+    actions-menu: 
+      filter: true
+      chart: true
+
+    advanced: 
+      show-chart-initially: false
+      collapsible: false
+
+    source: 
+      database-column: AMBITO_OPERACIONAL_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Facet: P50_REGIMEN_TRIBUTARIO_RC ====================
+    id: 43923902149341166
+    identification: 
+      name: P50_REGIMEN_TRIBUTARIO_RC
+      type: Checkbox Group
+
+    label: 
+      label: Régimen Tributario
+      show-label-for-current-facet: true
+
+    layout: 
+      sequence: 70
+
+    appearance: 
+      display: Add Filter Dialog
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_REGIMEN_TRIBUTARIO_ACTIVO # 44100681882170234
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      maximum-displayed-entries: 7
+      display-filter-initially: false
+
+    actions-menu: 
+      chart: true
+
+    source: 
+      database-column: REGIMEN_TRIBUTARIO_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  filters: 
+  - # ====== Filter: P50_SEARCH ==================================
+    id: 43921526188341155
+    identification: 
+      name: P50_SEARCH
+      type: Search
+
+    label: 
+      label: Search
+
+    settings: 
+      search-type: Row Search
+      collapsed-search-field: false
+
+    layout: 
+      sequence: 10
+
+    source: 
+      database-column(s): ACTIVIDAD_ECONOMICA_RC,PAGINA_WEB,EMPRESA_ESTADO_RC,NOMBRE_COMERCIAL,TIPO_SOCIEDAD_RC,TAMANO_RC,CIIU_RC,AMBITO_OPERACIONAL_RC,REGIMEN_TRIBUTARIO_RC,TIPO_CONTRIBUYENTE_RC,TIPO_PERSONA_RC,TIPO_DOCUMENTO_RC,NUMERO_DOC,NOMBRES,APELLIDO_PATERNO,APELLIDO_MATERNO,RAZON_SOCIAL,PERSONA_ESTADO_RC,CREADO_POR,MODIFICADO_POR
+
+    security: 
+      store-value-encrypted-in-session-state: true
+
+  - # ====== Filter: P50_ACTIVIDAD_ECONOMICA_RC ==================
+    id: 43921966683341159
+    identification: 
+      name: P50_ACTIVIDAD_ECONOMICA_RC
+      type: Checkbox Group
+
+    label: 
+      label: Actividad Económica
+
+    layout: 
+      sequence: 20
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO # 44099756873121584
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: None
+
+    source: 
+      database-column: ACTIVIDAD_ECONOMICA_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P50_EMPRESA_ESTADO_RC =======================
+    id: 43922322210341160
+    identification: 
+      name: P50_EMPRESA_ESTADO_RC
+      type: Checkbox Group
+
+    label: 
+      label: Estado Empresa
+
+    layout: 
+      sequence: 30
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_ESTADO_EMPRESA_ACTIVO # 44125861706239448
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: None
+
+    source: 
+      database-column: EMPRESA_ESTADO_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P50_TIPO_SOCIEDAD_RC ========================
+    id: 43922721160341162
+    identification: 
+      name: P50_TIPO_SOCIEDAD_RC
+      type: Checkbox Group
+
+    label: 
+      label: Tipo Sociedad
+
+    layout: 
+      sequence: 40
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_TIPO_SOCIEDAD_ACTIVO # 44100165451134095
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: None
+
+    source: 
+      database-column: TIPO_SOCIEDAD_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P50_TAMANO_RC ===============================
+    id: 43923151326341163
+    identification: 
+      name: P50_TAMANO_RC
+      type: Checkbox Group
+
+    label: 
+      label: Tamaño
+
+    layout: 
+      sequence: 50
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_TAMANO_ACTIVO # 44102485436497962
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: None
+
+    source: 
+      database-column: TAMANO_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P50_AMBITO_OPERACIONAL_RC ===================
+    id: 43923530679341165
+    identification: 
+      name: P50_AMBITO_OPERACIONAL_RC
+      type: Checkbox Group
+
+    label: 
+      label: Ámbito Operacional
+
+    layout: 
+      sequence: 60
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_AMBITO_OPERACIONA_ACTIVO # 44100339868147651
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: None
+
+    source: 
+      database-column: AMBITO_OPERACIONAL_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+  - # ====== Filter: P50_REGIMEN_TRIBUTARIO_RC ===================
+    id: 43923902149341166
+    identification: 
+      name: P50_REGIMEN_TRIBUTARIO_RC
+      type: Checkbox Group
+
+    label: 
+      label: Régimen Tributario
+
+    layout: 
+      sequence: 70
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_REGIMEN_TRIBUTARIO_ACTIVO # 44100681882170234
+      include-null-option: false
+
+    list-entries: 
+      compute-counts: true
+      show-counts: true
+      zero-count-entries: Hide
+      sort-by-top-counts: true
+      show-selected-first: false
+      client-side-filtering: false
+
+    suggestions: 
+      type: None
+
+    source: 
+      database-column: REGIMEN_TRIBUTARIO_RC
+      data-type: VARCHAR2
+
+    multiple-values: 
+      type: No
+
+    security: 
+      store-value-encrypted-in-session-state: true
+      escape-special-characters: true
+
+- # ====== Region: Button Bar ==================================
+  id: 43924263256341167
+  identification: 
+    name: Button Bar
+    type: Static Content
+
+  source: 
+    html-code: <div id="active_facets"></div>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-ButtonRegion--noPadding
+    - t-ButtonRegion--noUI
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+buttons: 
+- # ====== Button: RESET =======================================
+  id: 43924702785341171
+  identification: 
+    button-name: RESET
+    label: Reset
+
+  layout: 
+    sequence: 10
+    region: Button Bar # 43924263256341167
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--noUI
+    - t-Button--iconLeft
+    icon: fa-undo
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:50:&APP_SESSION.::&DEBUG.:RR,50::'
+      page: 50 # Empresas
+      clear-cache: RR,50
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CREAR =======================================
+  id: 44140619679598348
+  identification: 
+    button-name: CREAR
+    label: Crear
+
+  layout: 
+    sequence: 20
+    region: Breadcrumb # 31860555998690030
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:51:&SESSION.::&DEBUG.:51::'
+      page: 51 # Empresa
+      clear-cache: 51
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: REFRESCAR ===================================
+  id: 45020244060032534
+  identification: 
+    button-name: REFRESCAR
+    label: Refrescar
+
+  layout: 
+    sequence: 10
+    region: Breadcrumb # 31860555998690030
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: onClick - Refrescar =================
+  id: 45020374449032535
+  identification: 
+    name: onClick - Refrescar
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: REFRESCAR # 45020244060032534
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 45020403132032536
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Search # 43921035535341146
+
+    execution: 
+      sequence: 10
+      event: onClick - Refrescar # 45020374449032535
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onDialogClose - Empresas ============
+  id: 45020660483032538
+  identification: 
+    name: onDialogClose - Empresas
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Region
+    region: Empresas # 43920908155341146
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 45020736832032539
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Empresas # 43920908155341146
+
+    execution: 
+      sequence: 10
+      event: onDialogClose - Empresas # 45020660483032538
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onDialogClosed - Crear ==============
+  id: 45997235863143913
+  identification: 
+    name: onDialogClosed - Crear
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Button
+    button: CREAR # 44140619679598348
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 45997379157143914
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Empresas # 43920908155341146
+
+    execution: 
+      sequence: 10
+      event: onDialogClosed - Crear # 45997235863143913
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

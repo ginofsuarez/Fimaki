@@ -1,0 +1,8035 @@
+---
+# ====== Page: Empresa =======================================
+id: 51
+identification: 
+  name: Empresa
+  alias: EMPRESA
+  title: Empresa
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  width: 1100
+  chained: false
+  resizable: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+javascript: 
+  function-and-global-variable-declaration: |
+    function hasTipoYDocEnFilaActiva(regionId) {
+      try {
+        const grid = apex.region(regionId).widget().interactiveGrid("getViews").grid;
+        const model = grid.model;
+        const row = grid.getActiveRecord?.();
+        if (!row) return false;
+    
+        const tipo = model.getValue(row, "TIPO_DOCUMENTO_RC");
+        const doc  = model.getValue(row, "NUMERO_DOC");
+    
+        console.log("TIPO_DOCUMENTO_RC:", tipo);
+        console.log("NUMERO_DOC:", doc);
+    
+        return !!tipo && !!doc;
+      } catch (e) {
+        console.warn("Error en hasTipoYDocEnFilaActiva:", e);
+        return false;
+      }
+    }
+  execute-when-page-loads: |
+    apex.actions.add({
+      name: "custom-add-file",
+      action: function () {
+        apex.event.trigger(document, "crear_archivo_evt"); // Lanza evento custom
+        return true;
+      }
+    });
+
+css: 
+  inline: |
+    td[headers=image_width] img{
+        width: 75px !important;
+        height: 75px !important;
+        -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    }
+    
+    .Excelente{
+        background-color:#00b050;
+        color: #fff;
+    }
+    .Bueno{
+        background-color:#00b050;
+        color: #fff;
+    }
+    .Malo{
+        background-color:#ffff00;
+        color: #000;
+    }
+    
+    /* Cambiar background y color del tab activo */
+    .t-Tabs-item.a-Tabs-selected.is-active {
+      background-color: #5e3c8a; /* Púrpura FIMAKI */
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    
+    .t-Tabs-item.a-Tabs-selected.is-active .t-Tabs-link {
+      color: white; /* texto blanco en tab activo */
+    }
+    .t-Tabs-item.a-Tabs-selected.is-active .t-Tabs-link,
+    .t-Tabs-item.a-Tabs-selected.is-active .t-Tabs-link:hover,
+    .t-Tabs-item.a-Tabs-selected.is-active .t-Tabs-link:focus {
+      text-decoration: none !important;
+    }
+    .t-Tabs-item.is-active {
+        --ut-tabs-item-text-color: var(--ut-tabs-item-active-text-color);
+        --ut-tabs-item-background-color: var(--ut-tabs-item-active-background-color);
+        --ut-tabs-item-highlight-color: #5e3c8a;
+        --ut-tabs-item-font-weight: var(--ut-tabs-item-active-font-weight);
+    }
+    .t-Tabs-item.a-Tabs-selected.is-active {
+        border-radius: 0px;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Persona =====================================
+  id: 40010188863031534
+  identification: 
+    name: Persona
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: BKO_PERSONA
+    include-rowid-column: false
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: false
+
+- # ====== Region: Contactos ===================================
+  id: 42473088152089853
+  identification: 
+    name: Contactos
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select p.tipo_documento_rc
+               , p.numero_doc
+               , c.id_contacto
+               , p.nombres
+               , p.apellido_paterno
+               , p.apellido_materno
+               , c.cargo_rc
+               , c.correo
+               , c.telefono_1
+               , c.telefono_2
+               , c.tipo_contacto_rc
+               , c.id_persona
+               , c.notas
+               , c.activo_sn
+            from bko_contacto_persona cp
+            join bko_contacto c on c.id_contacto = cp.id_contacto
+            join bko_persona  p on p.id_persona = c.id_persona
+           where 1=1
+             and cp.id_persona = :P51_ID_PERSONA
+           union all
+          select c011
+               , c012
+               , seq_id
+               , coalesce(c008,p.nombres)
+               , coalesce(c009,p.apellido_paterno)
+               , coalesce(c010,p.apellido_materno)
+               , c002
+               , c004
+               , c006
+               , c007
+               , c001
+               , n001
+               , c003
+               , c005
+            from apex_collections c
+       left join bko_persona      p on p.numero_doc = c012 and p.tipo_documento_rc = c011
+           where collection_name = 'COL_CONTACTO'
+    page-items-to-submit: 
+    - P51_ID_PERSONA
+
+  layout: 
+    sequence: 80
+    parent-region: Tabs # 44282979478289927
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: IG_CONTACTOS
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 40721965177789325
+    link: 
+      link-column: Link to Custom Target
+      target: 
+        url: 'f?p=&APP_ID.:52:&SESSION.::&DEBUG.:52:P52_ID_CONTACTO,P52_ID_PERSONA_EMPRESA:#ID_CONTACTO#,#ID_PERSONA#'
+        page: 52 # Contacto
+        clear-cache: 52
+        values: 
+          p52_id_contacto: '#ID_CONTACTO#'
+          p52_id_persona_empresa: '#ID_PERSONA#'
+
+      link-icon: <span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: false
+      aggregate: false
+      chart: false
+      group-by: false
+      pivot: false
+      flashback: false
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: false
+      download: true
+      subscription: false
+
+    download: 
+      formats: 
+      - CSV
+      - Excel
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 41177354288360077
+      identification: 
+        name: Primary Report
+        alias: 330003
+
+    columns: 
+    - # ====== Column: TIPO_DOCUMENTO_RC ===========================
+      id: 40722032925789326
+      identification: 
+        column-name: TIPO_DOCUMENTO_RC
+        type: Plain Text
+
+      heading: 
+        heading: Tipo Doc.
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: NUMERO_DOC ==================================
+      id: 40722186065789327
+      identification: 
+        column-name: NUMERO_DOC
+        type: Plain Text
+
+      heading: 
+        heading: Numero Doc.
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_CONTACTO =================================
+      id: 40722222515789328
+      identification: 
+        column-name: ID_CONTACTO
+        type: Hidden
+
+      heading: 
+        heading: Id Contacto
+
+      layout: 
+        sequence: 100
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: NOMBRES =====================================
+      id: 40722401559789329
+      identification: 
+        column-name: NOMBRES
+        type: Plain Text
+
+      heading: 
+        heading: Nombres
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: APELLIDO_PATERNO ============================
+      id: 40722437445789330
+      identification: 
+        column-name: APELLIDO_PATERNO
+        type: Plain Text
+
+      heading: 
+        heading: Ap. Paterno
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: APELLIDO_MATERNO ============================
+      id: 40722549496789331
+      identification: 
+        column-name: APELLIDO_MATERNO
+        type: Plain Text
+
+      heading: 
+        heading: Ap. Materno
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CARGO_RC ====================================
+      id: 40722672182789332
+      identification: 
+        column-name: CARGO_RC
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_CARGO # 45068286632490694
+
+      heading: 
+        heading: Cargo
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: CORREO ======================================
+      id: 40722787042789333
+      identification: 
+        column-name: CORREO
+        type: Plain Text
+
+      heading: 
+        heading: Correo
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TELEFONO_1 ==================================
+      id: 40722839611789334
+      identification: 
+        column-name: TELEFONO_1
+        type: Plain Text
+
+      heading: 
+        heading: Telefono 1
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 90
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_PERSONA ==================================
+      id: 40722923801789335
+      identification: 
+        column-name: ID_PERSONA
+        type: Hidden
+
+      heading: 
+        heading: Id Persona
+
+      layout: 
+        sequence: 110
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TIPO_CONTACTO_RC ============================
+      id: 42539783424450929
+      identification: 
+        column-name: TIPO_CONTACTO_RC
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_TIPO_CONTACTO # 44144806342328305
+
+      heading: 
+        heading: Tipo Contacto
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: TELEFONO_2 ==================================
+      id: 42539893498450930
+      identification: 
+        column-name: TELEFONO_2
+        type: Plain Text
+
+      heading: 
+        heading: Telefono 2
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 130
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: NOTAS =======================================
+      id: 42539990174450931
+      identification: 
+        column-name: NOTAS
+        type: Plain Text
+
+      heading: 
+        heading: Notas
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 140
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ACTIVO_SN ===================================
+      id: 42540080472450932
+      identification: 
+        column-name: ACTIVO_SN
+        type: Plain Text
+
+      heading: 
+        heading: Activo Sn
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 150
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Persona jurídica ============================
+  id: 43663384303875327
+  identification: 
+    name: Persona jurídica
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: Persona # 40010188863031534
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Información Registral =======================
+  id: 43663906450875332
+  identification: 
+    name: Información Registral
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: BKO_EMPRESA
+    include-rowid-column: false
+
+  layout: 
+    sequence: 40
+    parent-region: Persona jurídica # 43663384303875327
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--stacked
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: false
+
+- # ====== Region: Dirección ===================================
+  id: 43666259916875355
+  identification: 
+    name: Dirección
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select id_direccion_persona
+               , direccion as direccion
+               , telefono_principal
+               , telefono_secundario
+               , id_persona
+               , id_pais
+               , id_subdivision_n1
+               , id_subdivision_n2
+               , id_subdivision_n3
+               , principal_sn
+               , activo_sn
+               , creado_por
+               , creado
+               , modificado_por
+               , modificado
+            from bko_direccion_persona
+           where id_persona = :P51_ID_PERSONA
+           union all
+          select seq_id
+               , c001
+               , c002
+               , c003
+               , null
+               , n001
+               , n002
+               , n003
+               , n004
+               , c004
+               , c005
+               , null
+               , null
+               , null
+               , null
+            from apex_collections
+           where collection_name = 'COL_DIRECCION'
+    page-items-to-submit: 
+    - P51_ID_PERSONA
+
+  layout: 
+    sequence: 60
+    parent-region: Tabs # 44282979478289927
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: IG_DIRECCIONES
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 41316218314470196
+    link: 
+      link-column: Link to Custom Target
+      target: 
+        url: 'f?p=&APP_ID.:70:&SESSION.::&DEBUG.:70:P70_ID_DIRECCION_PERSONA:#ID_DIRECCION_PERSONA#'
+        page: 70 # Direccion
+        clear-cache: 70
+        values: 
+          p70_id_direccion_persona: '#ID_DIRECCION_PERSONA#'
+
+      link-icon: <span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 41348862518699786
+      identification: 
+        name: Primary Report
+        alias: 331718
+
+    columns: 
+    - # ====== Column: ID_DIRECCION_PERSONA ========================
+      id: 41316347380470197
+      identification: 
+        column-name: ID_DIRECCION_PERSONA
+        type: Hidden
+
+      heading: 
+        heading: Id Direccion Persona
+
+      layout: 
+        sequence: 10
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TELEFONO_PRINCIPAL ==========================
+      id: 41316531088470199
+      identification: 
+        column-name: TELEFONO_PRINCIPAL
+        type: Plain Text
+
+      heading: 
+        heading: Telefono Principal
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TELEFONO_SECUNDARIO =========================
+      id: 41316706777470200
+      identification: 
+        column-name: TELEFONO_SECUNDARIO
+        type: Plain Text
+
+      heading: 
+        heading: Telefono Secundario
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_PERSONA ==================================
+      id: 41316797257470201
+      identification: 
+        column-name: ID_PERSONA
+        type: Hidden
+
+      heading: 
+        heading: Id Persona
+
+      layout: 
+        sequence: 50
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ACTIVO_SN ===================================
+      id: 41316822717470202
+      identification: 
+        column-name: ACTIVO_SN
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SI_NO # 38066481741234781
+
+      heading: 
+        heading: Activo
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: ID_PAIS =====================================
+      id: 41316944575470203
+      identification: 
+        column-name: ID_PAIS
+        type: Hidden
+
+      heading: 
+        heading: Id Pais
+
+      layout: 
+        sequence: 70
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_SUBDIVISION_N1 ===========================
+      id: 41317111051470204
+      identification: 
+        column-name: ID_SUBDIVISION_N1
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SUBDIVISON_N1 # 44136788162019460
+
+      heading: 
+        heading: Departamento
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: ID_SUBDIVISION_N2 ===========================
+      id: 41317210365470205
+      identification: 
+        column-name: ID_SUBDIVISION_N2
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SUBDIVISION_N2 # 44137773572031308
+
+      heading: 
+        heading: Provincia
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 90
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: CREADO_POR ==================================
+      id: 41317242495470206
+      identification: 
+        column-name: CREADO_POR
+        type: Plain Text
+
+      heading: 
+        heading: Creado Por
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CREADO ======================================
+      id: 41317404934470207
+      identification: 
+        column-name: CREADO
+        type: Plain Text
+
+      heading: 
+        heading: Creado
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO_POR ==============================
+      id: 41317481978470208
+      identification: 
+        column-name: MODIFICADO_POR
+        type: Plain Text
+
+      heading: 
+        heading: Modificado Por
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 130
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO ==================================
+      id: 41317537187470209
+      identification: 
+        column-name: MODIFICADO
+        type: Plain Text
+
+      heading: 
+        heading: Modificado
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 140
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PRINCIPAL_SN ================================
+      id: 41317671965470210
+      identification: 
+        column-name: PRINCIPAL_SN
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SI_NO # 38066481741234781
+
+      heading: 
+        heading: Principal
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 150
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: DIRECCION ===================================
+      id: 42539457189450926
+      identification: 
+        column-name: DIRECCION
+        type: Plain Text
+
+      heading: 
+        heading: Direccion
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 160
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_SUBDIVISION_N3 ===========================
+      id: 42539520031450927
+      identification: 
+        column-name: ID_SUBDIVISION_N3
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SUBDIVISION_N3 # 44138048778034477
+
+      heading: 
+        heading: Distrito
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 100
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Facturas ====================================
+  id: 44281346101289911
+  identification: 
+    name: Facturas
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select id_factura
+               , fecha_ingreso
+               , fecha_emision
+               , fecha_pago
+               , tipo_comprobante_rc
+               , tipo_comprobante
+               , serie
+               , numero
+               , moneda_rc
+               , moneda
+               , monto_total
+               , detraccion
+               , descuentos
+               , saldo_a_pago
+               , fecha_vencimiento
+               , observacion
+               , id_empresa_cedente
+               , id_empresa_pagador
+               , estado_factura_rc
+               , estado_factura
+               , empresa_cedente
+               , empresa_pagador
+               , score_operacion_rc
+               , score_cedente_rc
+               , score_pagador_rc
+            from factura_v
+            where id_empresa_cedente = :P51_ID_EMPRESA
+               or id_empresa_pagador = :P51_ID_EMPRESA
+    page-items-to-submit: 
+    - P51_ID_EMPRESA
+
+  layout: 
+    sequence: 120
+    parent-region: Tabs # 44282979478289927
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - js-showMaximizeButton
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 44281459118289912
+    link: 
+      link-column: Link to Custom Target
+      target: 
+        url: 'f?p=&APP_ID.:61:&SESSION.::&DEBUG.:61:P61_ID_FACTURA:#ID_FACTURA#'
+        page: 61 # Factura
+        clear-cache: 61
+        values: 
+          p61_id_factura: '#ID_FACTURA#'
+
+      link-icon: <span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: false
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 44297247706318866
+      identification: 
+        name: Primary Report
+        alias: 281769
+
+    columns: 
+    - # ====== Column: SCORE_OPERACION_RC ==========================
+      id: 39177882137142624
+      identification: 
+        column-name: SCORE_OPERACION_RC
+        type: Plain Text
+
+      heading: 
+        heading: Score Operacion Rc
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 230
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SCORE_CEDENTE_RC ============================
+      id: 39178013939142625
+      identification: 
+        column-name: SCORE_CEDENTE_RC
+        type: Plain Text
+
+      heading: 
+        heading: Score Cedente Rc
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 240
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SCORE_PAGADOR_RC ============================
+      id: 39178078257142626
+      identification: 
+        column-name: SCORE_PAGADOR_RC
+        type: Plain Text
+
+      heading: 
+        heading: Score Pagador Rc
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 250
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_FACTURA ==================================
+      id: 46275624819803227
+      identification: 
+        column-name: ID_FACTURA
+        type: Plain Text
+
+      heading: 
+        heading: Id Factura
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FECHA_INGRESO ===============================
+      id: 46275755913803228
+      identification: 
+        column-name: FECHA_INGRESO
+        type: Plain Text
+
+      heading: 
+        heading: Fecha Ingreso
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FECHA_EMISION ===============================
+      id: 46275835434803229
+      identification: 
+        column-name: FECHA_EMISION
+        type: Plain Text
+
+      heading: 
+        heading: Fec. Emisión
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&DATE_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FECHA_PAGO ==================================
+      id: 46275894188803230
+      identification: 
+        column-name: FECHA_PAGO
+        type: Plain Text
+
+      heading: 
+        heading: Fecha Pago
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TIPO_COMPROBANTE_RC =========================
+      id: 46276057659803231
+      identification: 
+        column-name: TIPO_COMPROBANTE_RC
+        type: Plain Text
+
+      heading: 
+        heading: Tipo Comprobante Rc
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: TIPO_COMPROBANTE ============================
+      id: 46276088248803232
+      identification: 
+        column-name: TIPO_COMPROBANTE
+        type: Plain Text
+
+      heading: 
+        heading: Tipo Comprobante
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SERIE =======================================
+      id: 46276217157803233
+      identification: 
+        column-name: SERIE
+        type: Plain Text
+
+      heading: 
+        heading: Serie
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: NUMERO ======================================
+      id: 46276317590803234
+      identification: 
+        column-name: NUMERO
+        type: Plain Text
+
+      heading: 
+        heading: Número
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONEDA_RC ===================================
+      id: 46276388773803235
+      identification: 
+        column-name: MONEDA_RC
+        type: Plain Text
+
+      heading: 
+        heading: Moneda Rc
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 90
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONEDA ======================================
+      id: 46276521282803236
+      identification: 
+        column-name: MONEDA
+        type: Plain Text
+
+      heading: 
+        heading: Moneda
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 100
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONTO_TOTAL =================================
+      id: 46276639481803237
+      identification: 
+        column-name: MONTO_TOTAL
+        type: Plain Text
+
+      heading: 
+        heading: Monto Total
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&CURRENCY_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DETRACCION ==================================
+      id: 46276740010803238
+      identification: 
+        column-name: DETRACCION
+        type: Plain Text
+
+      heading: 
+        heading: Detraccion
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DESCUENTOS ==================================
+      id: 46276849487803239
+      identification: 
+        column-name: DESCUENTOS
+        type: Plain Text
+
+      heading: 
+        heading: Descuentos
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 130
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SALDO_A_PAGO ================================
+      id: 46276886130803240
+      identification: 
+        column-name: SALDO_A_PAGO
+        type: Plain Text
+
+      heading: 
+        heading: Saldo A Pago
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 140
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&NUMBER_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FECHA_VENCIMIENTO ===========================
+      id: 46277069399803241
+      identification: 
+        column-name: FECHA_VENCIMIENTO
+        type: Plain Text
+
+      heading: 
+        heading: Fec. Vencimiento
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 150
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&DATE_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: OBSERVACION =================================
+      id: 46277142092803242
+      identification: 
+        column-name: OBSERVACION
+        type: Plain Text
+
+      heading: 
+        heading: Observacion
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 160
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_EMPRESA_CEDENTE ==========================
+      id: 46277225616803243
+      identification: 
+        column-name: ID_EMPRESA_CEDENTE
+        type: Plain Text
+
+      heading: 
+        heading: Id Empresa Cedente
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 170
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_EMPRESA_PAGADOR ==========================
+      id: 46277306983803244
+      identification: 
+        column-name: ID_EMPRESA_PAGADOR
+        type: Plain Text
+
+      heading: 
+        heading: Id Empresa Pagador
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 180
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ESTADO_FACTURA_RC ===========================
+      id: 46277453019803245
+      identification: 
+        column-name: ESTADO_FACTURA_RC
+        type: Plain Text
+
+      heading: 
+        heading: Estado Factura Rc
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 190
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ESTADO_FACTURA ==============================
+      id: 46277495193803246
+      identification: 
+        column-name: ESTADO_FACTURA
+        type: Plain Text
+
+      heading: 
+        heading: Estado Factura
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 200
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: EMPRESA_CEDENTE =============================
+      id: 46277590851803247
+      identification: 
+        column-name: EMPRESA_CEDENTE
+        type: Plain Text
+
+      heading: 
+        heading: Empresa Cedente
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 210
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: EMPRESA_PAGADOR =============================
+      id: 46277772081803248
+      identification: 
+        column-name: EMPRESA_PAGADOR
+        type: Plain Text
+
+      heading: 
+        heading: Empresa Pagador
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 220
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Tabs ========================================
+  id: 44282979478289927
+  identification: 
+    name: Tabs
+    type: Static Content
+
+  layout: 
+    sequence: 50
+    parent-region: Persona # 40010188863031534
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: false
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--pill
+    - margin-top-sm
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Datos Bancarios =============================
+  id: 44859510670364519
+  identification: 
+    name: Datos Bancarios
+    type: Interactive Grid
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select id_cuenta_bancaria
+           , numero_cuenta
+           , cci
+           , alias
+           , es_principal_sn
+           , id_persona
+           , id_institucion
+           , id_pais
+           , creado_por
+           , creado
+           , modificado_por
+           , modificado
+           , moneda_rc
+           , tipo_cuenta_rc
+        from bko_cuenta_bancaria
+       where id_persona = :P51_ID_PERSONA
+    page-items-to-submit: 
+    - P51_ID_PERSONA
+
+  layout: 
+    sequence: 90
+    parent-region: Tabs # 44282979478289927
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: IG_DATOS_BANCARIOS
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 44906742022529412
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+      add-row-if-empty: true
+
+    performance: 
+      lazy-loading: false
+
+    appearance: 
+      select-first-row: true
+      fixed-row-height: true
+
+    pagination: 
+      type: Scroll
+      show-total-count: true
+
+    toolbar: 
+      show: true
+      controls: 
+      - Search Column Selection
+      - Search Field
+      - Actions Menu
+
+    enable-users-to: 
+      save-public-report: false
+      flashback: false
+      define-chart-view: false
+      download: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: false
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    advanced: 
+      initialization-javascript-function: |
+        function(config) {
+          let $ = apex.jQuery,
+              toolbarData = $.apex.interactiveGrid.copyDefaultToolbar(),
+              toolbarGroup = toolbarData.toolbarFind("actions3");
+        
+          // añadir botón eliminar
+          toolbarGroup.controls.push({
+            type:  "BUTTON",
+            action:"selection-delete",
+            icon: null,
+            label: "Eliminar"
+          });
+        
+          // eliminar botón editar
+          toolbarData.forEach(group => {
+            if (Array.isArray(group.controls)) {
+              group.controls = group.controls.filter(control => control.action !== "edit");
+            }
+          });
+        
+          config.toolbarData = toolbarData;
+          return config;
+        }
+        
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 44914864330566220
+      identification: 
+        name: Primary Report
+        alias: 287945
+
+  columns: 
+  - # ====== Column: ID_PERSONA ==================================
+    id: 44907184564529417
+    identification: 
+      column-name: ID_PERSONA
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 40
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ID_PERSONA
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: ID_PAIS =====================================
+    id: 44907473103529419
+    identification: 
+      column-name: ID_PAIS
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 110
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ID_PAIS
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: CREADO_POR ==================================
+    id: 44907743196529422
+    identification: 
+      column-name: CREADO_POR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 130
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: CREADO_POR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: CREADO ======================================
+    id: 44907807420529423
+    identification: 
+      column-name: CREADO
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 140
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: CREADO
+      data-type: TIMESTAMP WITH LOCAL TIME ZONE
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: MODIFICADO_POR ==============================
+    id: 44907950121529424
+    identification: 
+      column-name: MODIFICADO_POR
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 150
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: MODIFICADO_POR
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: MODIFICADO ==================================
+    id: 44908077534529425
+    identification: 
+      column-name: MODIFICADO
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 160
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: MODIFICADO
+      data-type: TIMESTAMP WITH LOCAL TIME ZONE
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: ID_CUENTA_BANCARIA ==========================
+    id: 44908232305529427
+    identification: 
+      column-name: ID_CUENTA_BANCARIA
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 30
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ID_CUENTA_BANCARIA
+      data-type: NUMBER
+      query-only: true
+      primary-key: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: NUMERO_CUENTA ===============================
+    id: 44908319229529428
+    identification: 
+      column-name: NUMERO_CUENTA
+      type: Text Field
+
+    heading: 
+      heading: Numero Cuenta
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+      maximum-length: 20
+
+    source: 
+      type: Database Column
+      database-column: NUMERO_CUENTA
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: CCI =========================================
+    id: 44908459542529429
+    identification: 
+      column-name: CCI
+      type: Text Field
+
+    heading: 
+      heading: CCI
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 80
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+      maximum-length: 20
+
+    source: 
+      type: Database Column
+      database-column: CCI
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: ALIAS =======================================
+    id: 44908485368529430
+    identification: 
+      column-name: ALIAS
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 170
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ALIAS
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: ES_PRINCIPAL_SN =============================
+    id: 44908656752529431
+    identification: 
+      column-name: ES_PRINCIPAL_SN
+      type: Select List
+
+    heading: 
+      heading: Principal
+      alignment: center
+
+    layout: 
+      sequence: 120
+      column-alignment: center
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_SI_NO # 38066481741234781
+      display-extra-values: false
+      display-null-value: false
+
+    source: 
+      type: Database Column
+      database-column: ES_PRINCIPAL_SN
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      type: Static
+      static-value: N
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Use List of Values
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: ID_INSTITUCION ==============================
+    id: 44908766514529432
+    identification: 
+      column-name: ID_INSTITUCION
+      type: Select List
+
+    heading: 
+      heading: Institución
+      alignment: start
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+
+    list-of-values: 
+      type: SQL Query
+      sql-query: |2
+            select nombre
+                 , id_institucion 
+             from bko_institucion_financiera
+            where (activo_sn = 'S' or id_institucion = :ID_INSTITUCION)
+      display-extra-values: false
+      display-null-value: true
+
+    source: 
+      type: Database Column
+      database-column: ID_INSTITUCION
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Use List of Values
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: MONEDA_RC ===================================
+    id: 44908804498529433
+    identification: 
+      column-name: MONEDA_RC
+      type: Select List
+
+    heading: 
+      heading: Moneda
+      alignment: start
+
+    layout: 
+      sequence: 90
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+
+    list-of-values: 
+      type: SQL Query
+      sql-query: |2
+            select nombre
+                 , codigo
+              from codigo_referencia
+             where codigo_ref_tipo = 'TIPO_MON'
+               and (activo_sn = 'S' or codigo = :MONEDA_RC)
+      display-extra-values: false
+      display-null-value: true
+
+    source: 
+      type: Database Column
+      database-column: MONEDA_RC
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Use List of Values
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: TIPO_CUENTA_RC ==============================
+    id: 44908965113529434
+    identification: 
+      column-name: TIPO_CUENTA_RC
+      type: Select List
+
+    heading: 
+      heading: Tipo Cuenta
+      alignment: start
+
+    layout: 
+      sequence: 100
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    list-of-values: 
+      type: SQL Query
+      sql-query: |2
+            select nombre
+                 , codigo
+              from codigo_referencia
+             where codigo_ref_tipo = 'TIP_CTA'
+               and (activo_sn = 'S' or codigo = :TIPO_CUENTA_RC)
+      display-extra-values: true
+      display-null-value: true
+
+    source: 
+      type: Database Column
+      database-column: TIPO_CUENTA_RC
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Use List of Values
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: APEX$ROW_ACTION =============================
+    id: 44909038155529435
+    identification: 
+      column-name: APEX$ROW_ACTION
+      type: Actions Menu
+
+    layout: 
+      sequence: 20
+
+  - # ====== Column: APEX$ROW_SELECTOR ===========================
+    id: 44909127459529436
+    identification: 
+      column-name: APEX$ROW_SELECTOR
+      type: Row Selector
+
+    settings: 
+      enable-multi-select: true
+      show-select-all: true
+      hide-control: false
+
+    layout: 
+      sequence: 10
+
+  printing: 
+    page: 
+      size: A4
+      orientation: Landscape
+      units: Millimeters
+      width: 297
+      height: 210
+      border-width: 0.5
+      border-color: '#666666'
+
+    page-header: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 12
+      font-color: '#000000'
+      alignment: center
+
+    column-headings: 
+      font: Helvetica
+      font-weight: Bold
+      font-size: 10
+      font-color: '#000000'
+      background-color: '#EEEEEE'
+
+    columns: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 10
+      font-color: '#000000'
+      background-color: '#FFFFFF'
+
+    page-footer: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 12
+      font-color: '#000000'
+      alignment: center
+
+- # ====== Region: Buttons =====================================
+  id: 44861116044364535
+  identification: 
+    name: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Score Cedente ===============================
+  id: 45998652865143927
+  identification: 
+    name: Score Cedente
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select ID_SCORE,
+             ID_ROL_PERSONA,
+             SCORE_RC,
+             SCORE_RC as codigo,
+             FECHA_REEVALUACION,
+             ACTIVO_SN,
+             CREADO_POR,
+             CREADO,
+             MODIFICADO_POR,
+             MODIFICADO
+        from BKO_SCORE_EMPRESA
+       where ID_ROL_PERSONA = :P51_ID_ROL_PERSONA_CEDENTE
+
+  layout: 
+    sequence: 100
+    parent-region: Tabs # 44282979478289927
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 46000115571143942
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: false
+      group-by: true
+      pivot: false
+      flashback: false
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: false
+      download: true
+      subscription: false
+
+    download: 
+      formats: 
+      - CSV
+      - Excel
+      send-as-email: true
+
+    heading: 
+      fixed-to: Region
+      maximum-report-height: 300
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 46081449466850507
+      identification: 
+        name: Primary Report
+        alias: 299611
+
+    columns: 
+    - # ====== Column: CODIGO ======================================
+      id: 44285986566289958
+      identification: 
+        column-name: CODIGO
+        type: Plain Text
+
+      heading: 
+        heading: Score
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-formatting: 
+        html-expression: '<span class="t-Button #SCORE_RC#" disabled>#CODIGO#</span>'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_SCORE ====================================
+      id: 46000187579143943
+      identification: 
+        column-name: ID_SCORE
+        type: Hidden
+
+      heading: 
+        heading: Id Score
+
+      layout: 
+        sequence: 10
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_ROL_PERSONA ==============================
+      id: 46000337786143944
+      identification: 
+        column-name: ID_ROL_PERSONA
+        type: Hidden
+
+      heading: 
+        heading: Id Rol Persona
+
+      layout: 
+        sequence: 20
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SCORE_RC ====================================
+      id: 46000467662143945
+      identification: 
+        column-name: SCORE_RC
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SCORE_ACTIVO # 47089999243687220
+
+      heading: 
+        heading: Descripción
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: FECHA_REEVALUACION ==========================
+      id: 46000500420143946
+      identification: 
+        column-name: FECHA_REEVALUACION
+        type: Plain Text
+
+      heading: 
+        heading: Fecha Reevaluacion
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ACTIVO_SN ===================================
+      id: 46000645219143947
+      identification: 
+        column-name: ACTIVO_SN
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SI_NO # 38066481741234781
+
+      heading: 
+        heading: Activo
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: CREADO_POR ==================================
+      id: 46000768789143948
+      identification: 
+        column-name: CREADO_POR
+        type: Hidden
+
+      heading: 
+        heading: Creado Por
+
+      layout: 
+        sequence: 80
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CREADO ======================================
+      id: 46000850712143949
+      identification: 
+        column-name: CREADO
+        type: Plain Text
+
+      heading: 
+        heading: Fecha Registro
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&DATE_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO_POR ==============================
+      id: 46000929623143950
+      identification: 
+        column-name: MODIFICADO_POR
+        type: Hidden
+
+      heading: 
+        heading: Modificado Por
+
+      layout: 
+        sequence: 90
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO ==================================
+      id: 46001006387143951
+      identification: 
+        column-name: MODIFICADO
+        type: Hidden
+
+      heading: 
+        heading: Modificado
+
+      layout: 
+        sequence: 100
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Info ========================================
+  id: 46275299598803224
+  identification: 
+    name: Info
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: Datos Generales # 46275545132803226
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Scoring =====================================
+  id: 46275446153803225
+  identification: 
+    name: Scoring
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: Datos Generales # 46275545132803226
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: false
+    column: 10
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Datos Generales =============================
+  id: 46275545132803226
+  identification: 
+    name: Datos Generales
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Persona jurídica # 43663384303875327
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--stacked
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Subir Archivo ===============================
+  id: 47135889545656143
+  identification: 
+    name: Subir Archivo
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Inline Dialog
+    template-options: 
+    - js-modal
+    - js-draggable
+    - js-resizable
+    - js-dialog-size720x480
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Dropzone ====================================
+  id: 47136224321656146
+  identification: 
+    name: Dropzone
+    type: Dropzone 2
+
+  layout: 
+    sequence: 10
+    parent-region: Subir Archivo # 47135889545656143
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    - t-Form--stretchInputs
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      storage-type: APEX Collection
+      collection-/-table-name: EMP_ARCHIVOS_TMP
+      upload-mechanism: Normal
+      delete-files: False
+      dropzone-style: Grey Border
+      width: 530px
+      height: 210px
+      max.-filesize-in-mb: 2
+      max.-files: 1
+      accepted-file-types: image/*, .pdf, .doc, .docx, .xls, .xlsx, .ppt, .pptx, .zip
+      clickable: True
+      show-file-previews: True
+      copy-&-paste-support: False
+      remove-files-after-upload: True
+      image-resizing: False
+
+- # ====== Region: Score Pagador ===============================
+  id: 47704099590723615
+  identification: 
+    name: Score Pagador
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select ID_SCORE,
+             ID_ROL_PERSONA,
+             SCORE_RC,
+             SCORE_RC as codigo,
+             FECHA_REEVALUACION,
+             ACTIVO_SN,
+             CREADO_POR,
+             CREADO,
+             MODIFICADO_POR,
+             MODIFICADO
+        from BKO_SCORE_EMPRESA
+       where ID_ROL_PERSONA = :P51_ID_ROL_PERSONA_PAGADOR
+
+  layout: 
+    sequence: 110
+    parent-region: Tabs # 44282979478289927
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 47704192490723616
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: false
+      group-by: true
+      pivot: false
+      flashback: false
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: false
+      download: true
+      subscription: false
+
+    download: 
+      formats: 
+      - CSV
+      - Excel
+      send-as-email: true
+
+    heading: 
+      fixed-to: Region
+      maximum-report-height: 300
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 47732802177019067
+      identification: 
+        name: Primary Report
+        alias: 316125
+
+    columns: 
+    - # ====== Column: ID_SCORE ====================================
+      id: 47704331958723617
+      identification: 
+        column-name: ID_SCORE
+        type: Hidden
+
+      heading: 
+        heading: Id Score
+
+      layout: 
+        sequence: 10
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ID_ROL_PERSONA ==============================
+      id: 47704410779723618
+      identification: 
+        column-name: ID_ROL_PERSONA
+        type: Hidden
+
+      heading: 
+        heading: Id Rol Persona
+
+      layout: 
+        sequence: 20
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SCORE_RC ====================================
+      id: 47704572743723619
+      identification: 
+        column-name: SCORE_RC
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SCORE_ACTIVO # 47089999243687220
+
+      heading: 
+        heading: Descripción
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: CODIGO ======================================
+      id: 47704605180723620
+      identification: 
+        column-name: CODIGO
+        type: Plain Text
+
+      heading: 
+        heading: Score
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      column-formatting: 
+        html-expression: '<span class="t-Button #SCORE_RC#" disabled>#CODIGO#</span>'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CREADO ======================================
+      id: 47704778712723621
+      identification: 
+        column-name: CREADO
+        type: Plain Text
+
+      heading: 
+        heading: Fecha Registro
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      appearance: 
+        format-mask: '&DATE_FORMAT.'
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: FECHA_REEVALUACION ==========================
+      id: 47704870477723622
+      identification: 
+        column-name: FECHA_REEVALUACION
+        type: Plain Text
+
+      heading: 
+        heading: Fecha Reevaluación
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ACTIVO_SN ===================================
+      id: 47704940263723623
+      identification: 
+        column-name: ACTIVO_SN
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SI_NO # 38066481741234781
+
+      heading: 
+        heading: Activo
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: CREADO_POR ==================================
+      id: 47704988875723624
+      identification: 
+        column-name: CREADO_POR
+        type: Hidden
+
+      heading: 
+        heading: Creado Por
+
+      layout: 
+        sequence: 80
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO_POR ==============================
+      id: 47705172184723625
+      identification: 
+        column-name: MODIFICADO_POR
+        type: Hidden
+
+      heading: 
+        heading: Modificado Por
+
+      layout: 
+        sequence: 90
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO ==================================
+      id: 47705259467723626
+      identification: 
+        column-name: MODIFICADO
+        type: Hidden
+
+      heading: 
+        heading: Modificado
+
+      layout: 
+        sequence: 100
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+page-items: 
+- # ====== Page Item: P51_LOGO_PREVIEW =========================
+  id: 39178872988142634
+  identification: 
+    name: P51_LOGO_PREVIEW
+    type: Display Image
+
+  label: 
+    label: Logo
+    alignment: Left
+
+  settings: 
+    based-on: BLOB Column returned by SQL statement
+    sql-statement: |
+      select archivo_contenido as product_image    
+           , archivo_nombre    as alt_text
+           , archivo_nombre    as filename
+           , archivo_tipo_mime as mimetype
+        from bko_empresa 
+       where id_empresa = :P51_ID_EMPRESA;
+
+  layout: 
+    sequence: 110
+    region: Scoring # 46275446153803225
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    custom-attributes: 
+    - 'style="width:'
+    - '48px;height:48px;"'
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ESTADO_RC ============================
+  id: 40010903899031541
+  identification: 
+    name: P51_ESTADO_RC
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 100
+    region: Información Registral # 43663906450875332
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: ESTADO_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: ACTIVO
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ID_PERSONA ===========================
+  id: 40011078094031542
+  identification: 
+    name: P51_ID_PERSONA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Persona # 40010188863031534
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Persona # 40010188863031534
+    column: ID_PERSONA
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_TIPO_DOCUMENTO_RC ====================
+  id: 43663630282875329
+  identification: 
+    name: P51_TIPO_DOCUMENTO_RC
+    type: Select List
+
+  label: 
+    label: Tipo de Documento
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Info # 46275299598803224
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_TIPO_DOC # 39963535521186116
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Persona # 40010188863031534
+    column: TIPO_DOCUMENTO_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: RUC
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_NUMERO_DOC ===========================
+  id: 43663712788875330
+  identification: 
+    name: P51_NUMERO_DOC
+    type: Text Field
+
+  label: 
+    label: Número Documento
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Info # 46275299598803224
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 11
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Persona # 40010188863031534
+    column: NUMERO_DOC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P51_ID_EMPRESA
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_CIIU_RC ==============================
+  id: 43664661109875339
+  identification: 
+    name: P51_CIIU_RC
+    type: Popup LOV
+
+  label: 
+    label: Detalle CIIU
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: true
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 90
+    region: Información Registral # 43663906450875332
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 20
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select 'CIUU '|| codigo ||' - '||nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'CIIU'
+             and (activo_sn = 'S' or codigo = :P51_CIIU_RC)
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: CIIU_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_TIPO_PERSONA_RC ======================
+  id: 43847482264751214
+  identification: 
+    name: P51_TIPO_PERSONA_RC
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Persona # 40010188863031534
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Persona # 40010188863031534
+    column: TIPO_PERSONA_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_RAZON_SOCIAL =========================
+  id: 43848110802751220
+  identification: 
+    name: P51_RAZON_SOCIAL
+    type: Text Field
+
+  label: 
+    label: Razon Social
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Info # 46275299598803224
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Persona # 40010188863031534
+    column: RAZON_SOCIAL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_NOMBRE_COMERCIAL =====================
+  id: 43849017251751229
+  identification: 
+    name: P51_NOMBRE_COMERCIAL
+    type: Text Field
+
+  label: 
+    label: Nombre Comercial
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Info # 46275299598803224
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: NOMBRE_COMERCIAL
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ID_EMPRESA ===========================
+  id: 43849212589751231
+  identification: 
+    name: P51_ID_EMPRESA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: ID_EMPRESA
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ACTIVIDAD_ECONOMICA_RC ===============
+  id: 43849288118751232
+  identification: 
+    name: P51_ACTIVIDAD_ECONOMICA_RC
+    type: Select List
+
+  label: 
+    label: Actividad Economica
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: Información Registral # 43663906450875332
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'ACT_ECO'
+             and (activo_sn = 'S' or codigo = :P51_ACTIVIDAD_ECONOMICA_RC)
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: ACTIVIDAD_ECONOMICA_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_FECHA_CONSTITUCION ===================
+  id: 43849567975751234
+  identification: 
+    name: P51_FECHA_CONSTITUCION
+    type: Date Picker
+
+  label: 
+    label: Fecha Constitución
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: Static
+    maximum-static: +0d
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 10
+    region: Info # 46275299598803224
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    custom-attributes: 
+    - year-selection-range="20"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: FECHA_CONSTITUCION
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_PAGINA_WEB ===========================
+  id: 43849651068751235
+  identification: 
+    name: P51_PAGINA_WEB
+    type: Text Field
+
+  label: 
+    label: Pagina Web
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Info # 46275299598803224
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: PAGINA_WEB
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_TIPO_SOCIEDAD_RC =====================
+  id: 43850045598751239
+  identification: 
+    name: P51_TIPO_SOCIEDAD_RC
+    type: Select List
+
+  label: 
+    label: Tipo Sociedad
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 30
+    region: Información Registral # 43663906450875332
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIP_SOC'
+             and (activo_sn = 'S' or codigo = :P51_TIPO_SOCIEDAD_RC)
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: TIPO_SOCIEDAD_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_TAMANO_RC ============================
+  id: 43850156955751240
+  identification: 
+    name: P51_TAMANO_RC
+    type: Select List
+
+  label: 
+    label: Tamano
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 80
+    region: Información Registral # 43663906450875332
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'TAM_EMP'
+             and (activo_sn = 'S' or codigo = :P51_TAMANO_RC)
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: TAMANO_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_AMBITO_OPERACIONAL_RC ================
+  id: 43850297832751242
+  identification: 
+    name: P51_AMBITO_OPERACIONAL_RC
+    type: Select List
+
+  label: 
+    label: Ambito Operacional
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 50
+    region: Información Registral # 43663906450875332
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'AMB_OP'
+             and (activo_sn = 'S' or codigo = :P51_AMBITO_OPERACIONAL_RC)
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: AMBITO_OPERACIONAL_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_REGIMEN_TRIBUTARIO_RC ================
+  id: 43850436628751243
+  identification: 
+    name: P51_REGIMEN_TRIBUTARIO_RC
+    type: Select List
+
+  label: 
+    label: Regimen Tributario
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 60
+    region: Información Registral # 43663906450875332
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'REG_TRIB'
+             and (activo_sn = 'S' or codigo = :P51_REGIMEN_TRIBUTARIO_RC)
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: REGIMEN_TRIBUTARIO_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_TIPO_CONTRIBUYENTE_RC ================
+  id: 43850572182751244
+  identification: 
+    name: P51_TIPO_CONTRIBUYENTE_RC
+    type: Select List
+
+  label: 
+    label: Tipo Contribuyente
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 70
+    region: Información Registral # 43663906450875332
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIP_CONT'
+             and (activo_sn = 'S' or codigo = :P51_TIPO_CONTRIBUYENTE_RC)
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: TIPO_CONTRIBUYENTE_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ID_PAIS ==============================
+  id: 43851102996751250
+  identification: 
+    name: P51_ID_PAIS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Persona # 40010188863031534
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Persona # 40010188863031534
+    column: ID_PAIS
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: SQL Query (return single value)
+    sql-query-(return-single-value): select id_pais from bko_pais where codigo_iso = 'PER';
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_SCORE_CEDENTE_RC =====================
+  id: 45998185230143923
+  identification: 
+    name: P51_SCORE_CEDENTE_RC
+    type: Radio Group
+
+  label: 
+    label: Score Cedente
+    alignment: Left
+
+  settings: 
+    number-of-columns: 5
+    page-action-on-selection: None
+
+  layout: 
+    sequence: 10
+    region: Scoring # 46275446153803225
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--radioButtonGroup
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select codigo D
+               , codigo R
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIP_SCORE'
+             and (activo_sn = 'S' or codigo = :P51_SCORE_CEDENTE_RC)
+           order by secuencia
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: SCORE_CEDENTE_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_SCORE_PAGADOR_RC =====================
+  id: 45998392393143925
+  identification: 
+    name: P51_SCORE_PAGADOR_RC
+    type: Radio Group
+
+  label: 
+    label: Score Pagador
+    alignment: Left
+
+  settings: 
+    number-of-columns: 5
+    page-action-on-selection: None
+
+  layout: 
+    sequence: 50
+    region: Scoring # 46275446153803225
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--radioButtonGroup
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select codigo D
+               , codigo R
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIP_SCORE'
+             and (activo_sn = 'S' or codigo = :P51_SCORE_PAGADOR_RC)
+           order by secuencia
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: SCORE_PAGADOR_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ID_ROL_PERSONA_CEDENTE ===============
+  id: 46905601375170510
+  identification: 
+    name: P51_ID_ROL_PERSONA_CEDENTE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: Persona # 40010188863031534
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ID_ROL_PERSONA_PAGADOR ===============
+  id: 46905778840170511
+  identification: 
+    name: P51_ID_ROL_PERSONA_PAGADOR
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 40
+    region: Persona # 40010188863031534
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_SCORE_CEDENTE_HIST ===================
+  id: 46905995182170514
+  identification: 
+    name: P51_SCORE_CEDENTE_HIST
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: Scoring # 46275446153803225
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_SCORE_PAGADOR_HIST ===================
+  id: 46906286502170517
+  identification: 
+    name: P51_SCORE_PAGADOR_HIST
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 60
+    region: Scoring # 46275446153803225
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ID_LOGO ==============================
+  id: 47300594818024148
+  identification: 
+    name: P51_ID_LOGO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 100
+    region: Scoring # 46275446153803225
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ARCHIVO_NOMBRE =======================
+  id: 47301178950024153
+  identification: 
+    name: P51_ARCHIVO_NOMBRE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 140
+    region: Scoring # 46275446153803225
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: ARCHIVO_NOMBRE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ARCHIVO_TIPO_MIME ====================
+  id: 47301264166024154
+  identification: 
+    name: P51_ARCHIVO_TIPO_MIME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 130
+    region: Scoring # 46275446153803225
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: ARCHIVO_TIPO_MIME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P51_ARCHIVO_CONTENIDO ====================
+  id: 47301322976024155
+  identification: 
+    name: P51_ARCHIVO_CONTENIDO
+    type: Image Upload
+
+  label: 
+    label: Logo
+    alignment: Left
+
+  display: 
+    display-as: Icon Dropzone
+    preview-size: Auto
+    capture-using: NONE
+
+  storage:: 
+    type: Table APEX_APPLICATION_TEMP_FILES
+    purge-files-at: End of Session
+    allow-multiple-files: false
+
+  cropping: 
+    allow-cropping: false
+
+  resize-to: 
+    maximum-file-size: 100
+    maximum-width: 64
+    maximum-height: 64
+
+  layout: 
+    sequence: 120
+    region: Scoring # 46275446153803225
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - margin-bottom-none
+    - t-Form-fieldContainer--slimPadding
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Información Registral # 43663906450875332
+    column: ARCHIVO_CONTENIDO
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: AGREGAR_CONTACTO ============================
+  id: 40723039934789336
+  identification: 
+    button-name: AGREGAR_CONTACTO
+    label: Agregar
+
+  layout: 
+    sequence: 10
+    region: Contactos # 42473088152089853
+    slot: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:52:&SESSION.::&DEBUG.:52:P52_ID_PERSONA_EMPRESA:&P51_ID_PERSONA.'
+      page: 52 # Contacto
+      clear-cache: 52
+      values: 
+        p52_id_persona_empresa: '&P51_ID_PERSONA.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CARGAR_LOGO =================================
+  id: 41962861482012797
+  identification: 
+    button-name: CARGAR_LOGO
+    label: Cambiar Imagen
+
+  layout: 
+    sequence: 150
+    region: Scoring # 46275446153803225
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--simple
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    static-id: BTN_CAMBIAR_LOGO
+
+- # ====== Button: AGREGAR_FACTURA =============================
+  id: 42540382116450935
+  identification: 
+    button-name: AGREGAR_FACTURA
+    label: Agregar
+
+  layout: 
+    sequence: 10
+    region: Facturas # 44281346101289911
+    slot: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:61:&SESSION.::&DEBUG.:61::'
+      page: 61 # Factura
+      clear-cache: 61
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CREAR_EMPRESA ===============================
+  id: 43666308979875356
+  identification: 
+    button-name: CREAR_EMPRESA
+    label: Crear
+
+  layout: 
+    sequence: 10
+    region: Persona jurídica # 43663384303875327
+    slot: EDIT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-save
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P51_ID_PERSONA
+
+- # ====== Button: APLICAR_CAMBIOS =============================
+  id: 43851386308751253
+  identification: 
+    button-name: APLICAR_CAMBIOS
+    label: Aplicar Cambios
+
+  layout: 
+    sequence: 20
+    region: Buttons # 44861116044364535
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P51_ID_PERSONA
+
+- # ====== Button: CREAR_DIRECCION =============================
+  id: 44138433481598326
+  identification: 
+    button-name: CREAR_DIRECCION
+    label: Crear
+
+  layout: 
+    sequence: 10
+    region: Dirección # 43666259916875355
+    slot: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:70:&SESSION.::&DEBUG.:70:P70_ID_PERSONA:&P51_ID_PERSONA.'
+      page: 70 # Direccion
+      clear-cache: 70
+      values: 
+        p70_id_persona: '&P51_ID_PERSONA.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CREAR =======================================
+  id: 44692144674749432
+  identification: 
+    button-name: CREAR
+    label: Crear
+
+  layout: 
+    sequence: 40
+    region: Buttons # 44861116044364535
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P51_ID_PERSONA
+
+- # ====== Button: CANCELAR ====================================
+  id: 44863554780364559
+  identification: 
+    button-name: CANCELAR
+    label: Cancelar
+
+  layout: 
+    sequence: 10
+    region: Buttons # 44861116044364535
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: CANCELAR_DROPZONE ===========================
+  id: 47299510128024137
+  identification: 
+    button-name: CANCELAR_DROPZONE
+    label: Cancelar
+
+  layout: 
+    sequence: 10
+    region: Subir Archivo # 47135889545656143
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: onDialogClosed - Agregar Contacto ===
+  id: 40723496717789340
+  identification: 
+    name: onDialogClosed - Agregar Contacto
+
+  execution: 
+    sequence: 140
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Button
+    button: AGREGAR_CONTACTO # 40723039934789336
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 41315743728470191
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Contactos # 42473088152089853
+
+    execution: 
+      sequence: 10
+      event: onDialogClosed - Agregar Contacto # 40723496717789340
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onDialogClosed - Contactos ==========
+  id: 41315980516470193
+  identification: 
+    name: onDialogClosed - Contactos
+
+  execution: 
+    sequence: 150
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Region
+    region: Contactos # 42473088152089853
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 41316087870470194
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Contactos # 42473088152089853
+
+    execution: 
+      sequence: 10
+      event: onDialogClosed - Contactos # 41315980516470193
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onDialogClosed - Direccion ==========
+  id: 41317830967470212
+  identification: 
+    name: onDialogClosed - Direccion
+
+  execution: 
+    sequence: 160
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Region
+    region: Dirección # 43666259916875355
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 41317996978470213
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Dirección # 43666259916875355
+
+    execution: 
+      sequence: 10
+      event: onDialogClosed - Direccion # 41317830967470212
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: New_1 ===============================
+  id: 41962277987012791
+  identification: 
+    name: New_1
+
+  execution: 
+    sequence: 180
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P51_ARCHIVO_NOMBRE
+
+  client-side-condition: 
+    type: Item is not null
+    item: P51_ARCHIVO_NOMBRE
+
+  actions: 
+  - # ====== Action: Show ========================================
+    id: 41962372258012792
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P51_ARCHIVO_CONTENIDO
+
+    execution: 
+      sequence: 10
+      event: New_1 # 41962277987012791
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+  - # ====== Action: Hide ========================================
+    id: 41962451104012793
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P51_ARCHIVO_CONTENIDO
+
+    execution: 
+      sequence: 40
+      event: New_1 # 41962277987012791
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Show ========================================
+    id: 41962522513012794
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P51_LOGO_PREVIEW
+
+    execution: 
+      sequence: 10
+      event: New_1 # 41962277987012791
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Hide ========================================
+    id: 41962652397012795
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P51_LOGO_PREVIEW
+
+    execution: 
+      sequence: 30
+      event: New_1 # 41962277987012791
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: New_2 ===============================
+  id: 41962923997012798
+  identification: 
+    name: New_2
+
+  execution: 
+    sequence: 190
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CARGAR_LOGO # 41962861482012797
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 41963018355012799
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        // Dispara el click en el input file real del Image Upload
+        document.getElementById("P51_ARCHIVO_CONTENIDO_input").click();
+        
+
+    execution: 
+      sequence: 10
+      event: New_2 # 41962923997012798
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 41963136645012800
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P51_ARCHIVO_CONTENIDO
+
+    execution: 
+      sequence: 20
+      event: New_2 # 41962923997012798
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Hide ========================================
+    id: 41963248144012801
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P51_LOGO_PREVIEW
+
+    execution: 
+      sequence: 30
+      event: New_2 # 41962923997012798
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onDialogClosed - Crear Direccion ====
+  id: 44283248474289930
+  identification: 
+    name: onDialogClosed - Crear Direccion
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Button
+    button: CREAR_DIRECCION # 44138433481598326
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 44283381043289931
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Dirección # 43666259916875355
+
+    execution: 
+      sequence: 10
+      event: onDialogClosed - Crear Direccion # 44283248474289930
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Ejecutar Validaciones ===============
+  id: 44694372515749454
+  identification: 
+    name: Ejecutar Validaciones
+
+  execution: 
+    sequence: 90
+    event-scope: Dynamic
+
+  when: 
+    event: Before Page Submit
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 44694437249749455
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        /**
+         * Validación embebida directamente para usar en un Dynamic Action tipo "Before Submit".
+         * NO requiere función externa. Ideal para cancelar el submit con apex.event.gCancelFlag.
+         */
+        apex.message.clearErrors();
+        
+        let errors = [];
+        let cancel = false;
+        
+        function isRowDeleted(model, row, idColumn) {
+          const id = model.getValue(row, idColumn);
+          const changes = model._changes || [];
+          const match = changes.find(change => change.deleted === true && change.record?.[0] === id);
+          return !!match;
+        }
+        
+        /* CONTACTOS */
+        let seen = {};
+        try {
+          let model = apex.region("IG_CONTACTOS").widget().interactiveGrid("getViews").grid.model;
+          model.forEach(function(row) {
+            if (isRowDeleted(model, row, "ID_CONTACTO")) return;
+            let tipo = model.getValue(row, "TIPO_DOCUMENTO_RC");
+            let num  = model.getValue(row, "NUMERO_DOC");
+            let key = (tipo || '') + '|' + (num || '');
+            if (seen[key]) {
+              cancel = true;
+            } else {
+              seen[key] = true;
+            }
+          });
+          if (Object.keys(seen).length !== new Set(Object.keys(seen)).size) {
+            errors.push({
+              type: "error",
+              location: "page",
+              message: "Hay documentos duplicados en contactos.",
+              unsafe: false
+            });
+          }
+        } catch (e) {
+          console.warn("Error en CONTACTOS:", e);
+        }
+        
+        /* DIRECCIONES */
+        try {
+          let model = apex.region("IG_DIRECCIONES").widget().interactiveGrid("getViews").grid.model;
+          let count = 0;
+          model.forEach(function(row) {
+            if (isRowDeleted(model, row, "ID_DIRECCION_PERSONA")) return;
+            let val = model.getValue(row, "PRINCIPAL_SN");
+            if ((val?.v || val) === 'S') count++;
+          });
+          if (count > 1) {
+            cancel = true;
+            errors.push({
+              type: "error",
+              location: "page",
+              message: "Solo una dirección puede estar marcada como principal.",
+              unsafe: false
+            });
+          }
+        } catch (e) {
+          console.warn("Error en DIRECCIONES:", e);
+        }
+        
+        /* CUENTAS BANCARIAS */
+        try {
+          let model = apex.region("IG_DATOS_BANCARIOS").widget().interactiveGrid("getViews").grid.model;
+          let countPrincipal = 0;
+          let cuentasVistas = {};
+          let duplicadoDetectado = false;
+        
+          model.forEach(function(row) {
+            if (isRowDeleted(model, row, "ID_CUENTA_BANCARIA")) return;
+            let val = model.getValue(row, "ES_PRINCIPAL_SN");
+            if ((val?.v || val) === 'S') countPrincipal++;
+        
+            let institucionVal = model.getValue(row, "ID_INSTITUCION");
+            let institucion = institucionVal?.v || institucionVal || '';
+            let numeroCuenta = model.getValue(row, "NUMERO_CUENTA");
+            let cci = model.getValue(row, "CCI");
+        
+            let keyCuenta = institucion + '|' + (numeroCuenta || '');
+            let keyCCI    = institucion + '|' + (cci || '');
+        
+            if (cuentasVistas[keyCuenta] || cuentasVistas[keyCCI]) {
+              duplicadoDetectado = true;
+            } else {
+              cuentasVistas[keyCuenta] = true;
+              cuentasVistas[keyCCI] = true;
+            }
+          });
+        
+          if (countPrincipal > 1) {
+            cancel = true;
+            errors.push({
+              type: "error",
+              location: "page",
+              message: "Solo una cuenta bancaria puede estar marcada como principal.",
+              unsafe: false
+            });
+          }
+        
+          if (duplicadoDetectado) {
+            cancel = true;
+            errors.push({
+              type: "error",
+              location: "page",
+              message: "Hay combinaciones duplicadas de institución con número de cuenta o CCI en cuentas bancarias.",
+              unsafe: false
+            });
+          }
+        } catch (e) {
+          console.warn("Error en CUENTAS BANCARIAS:", e);
+        }
+        
+        if (errors.length > 0) {
+          apex.message.showErrors(errors);
+        }
+        
+        apex.event.gCancelFlag = cancel;
+        
+
+    execution: 
+      sequence: 10
+      event: Ejecutar Validaciones # 44694372515749454
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Cancelar ==================
+  id: 44906553922529410
+  identification: 
+    name: onClick - Cancelar
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCELAR # 44863554780364559
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 44906642027529411
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: onClick - Cancelar # 44906553922529410
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Archivo subido ======================
+  id: 47136355404656147
+  identification: 
+    name: Archivo subido
+
+  execution: 
+    sequence: 110
+    event-scope: Dynamic
+    type: Immediate
+
+  when: 
+    event: PLUGIN_DE.DANIELH.DROPZONE2|REGION TYPE|dropzone-upload-success
+    selection-type: Region
+    region: Dropzone # 47136224321656146
+
+  actions: 
+  - # ====== Action: Close Region ================================
+    id: 47136404361656148
+    identification: 
+      action: Close Region
+
+    affected-elements: 
+      selection-type: Region
+      region: Subir Archivo # 47135889545656143
+
+    execution: 
+      sequence: 10
+      event: Archivo subido # 47136355404656147
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: crear_archivo_evt ===================
+  id: 47299001855024132
+  identification: 
+    name: crear_archivo_evt
+
+  execution: 
+    sequence: 120
+    event-scope: Dynamic
+    type: Immediate
+
+  when: 
+    event: Custom
+    custom-event: crear_archivo_evt
+    selection-type: JavaScript Expression
+    javascript-expression: document
+
+  actions: 
+  - # ====== Action: Open Region =================================
+    id: 47136113747656145
+    identification: 
+      action: Open Region
+
+    affected-elements: 
+      selection-type: Region
+      region: Subir Archivo # 47135889545656143
+
+    execution: 
+      sequence: 10
+      event: crear_archivo_evt # 47299001855024132
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Click Cancelar Dropzone =============
+  id: 47299582518024138
+  identification: 
+    name: Click Cancelar Dropzone
+
+  execution: 
+    sequence: 130
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCELAR_DROPZONE # 47299510128024137
+
+  actions: 
+  - # ====== Action: Close Region ================================
+    id: 47299718355024139
+    identification: 
+      action: Close Region
+
+    affected-elements: 
+      selection-type: Region
+      region: Subir Archivo # 47135889545656143
+
+    execution: 
+      sequence: 10
+      event: Click Cancelar Dropzone # 47299582518024138
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+validations: 
+- # ====== Validation: Validar RUC =============================
+  id: 44694814568749459
+  identification: 
+    name: Validar RUC
+
+  execution: 
+    sequence: 10
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "BKO_EMPRESA_PKG.es_ruc_valido(:P51_NUMERO_DOC) = 'S'"
+    always-execute: false
+
+  error: 
+    error-message: RUC inválido
+    display-location: Inline with Field and in Notification
+    associated-item: P51_NUMERO_DOC # 43663712788875330
+
+computations: 
+- # ====== Computation: P51_SCORE_CEDENTE_HIST =================
+  id: 46906109229170515
+  identification: 
+    item-name: P51_SCORE_CEDENTE_HIST
+
+  execution: 
+    sequence: 10
+    point: Before Regions
+
+  computation: 
+    type: Item
+    item-name: P51_SCORE_CEDENTE_RC
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P51_SCORE_CEDENTE_RC
+
+- # ====== Computation: P51_SCORE_PAGADOR_HIST =================
+  id: 46906231631170516
+  identification: 
+    item-name: P51_SCORE_PAGADOR_HIST
+
+  execution: 
+    sequence: 20
+    point: Before Regions
+
+  computation: 
+    type: Item
+    item-name: P51_SCORE_PAGADOR_RC
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P51_SCORE_PAGADOR_RC
+
+processes: 
+- # ====== Process: Initialize form Persona ====================
+  id: 40010289390031535
+  identification: 
+    name: Initialize form Persona
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Persona # 40010188863031534
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process Direccion Collection ===============
+  id: 42539209289450923
+  identification: 
+    name: Process Direccion Collection
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          insert into bko_direccion_persona(          
+                direccion
+              , telefono_principal
+              , telefono_secundario
+              , id_persona
+              , principal_sn
+              , activo_sn
+              , id_pais
+              , id_subdivision_n1
+              , id_subdivision_n2
+          )
+          select c001
+               , c002
+               , c003
+               , :P51_ID_PERSONA
+               , c004
+               , c005
+               , n001
+               , n002
+               , n003
+            from apex_collections
+           where collection_name = 'COL_DIRECCION';    
+      END;
+
+  execution: 
+    sequence: 160
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |2
+          select 1
+            from apex_collections
+           where collection_name = 'COL_DIRECCION'
+
+- # ====== Process: Initialize Collections =====================
+  id: 42539226756450924
+  identification: 
+    name: Initialize Collections
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      IF APEX_COLLECTION.COLLECTION_EXISTS('COL_DIRECCION') 
+      THEN
+         APEX_COLLECTION.DELETE_COLLECTION('COL_DIRECCION');
+      END IF;
+      
+      IF APEX_COLLECTION.COLLECTION_EXISTS('COL_CONTACTO') 
+      THEN
+         APEX_COLLECTION.DELETE_COLLECTION('COL_CONTACTO');
+      END IF;
+
+  execution: 
+    sequence: 40
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process Contacto Collection ================
+  id: 42540311070450934
+  identification: 
+    name: Process Contacto Collection
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_id_persona            bko_persona.id_persona%type;
+          l_id_contacto           bko_contacto.id_contacto%type;
+          l_id_contacto_persona   bko_contacto_persona.id_contacto_persona%type;
+      BEGIN
+          FOR i IN ( select c001 as tipo_contacto_rc
+                          , c005 as activo_sn
+                          , n001 as id_persona
+                          , c002 as cargo_rc
+                          , c003 as notas
+                          , c004 as correo
+                          , c006 as telefono_1
+                          , c007 as telefono_2
+                          , c008 as nombres
+                          , c009 as apellido_paterno
+                          , c010 as apellido_materno
+                          , c011 as tipo_documento_rc
+                          , c012 as numero_doc
+                       from apex_collections
+                      where collection_name = 'COL_CONTACTO'
+          )LOOP
+              IF i.id_persona is null THEN
+                  --REGISTRAR PERSONA SI NO EXISTE
+                  bko_persona_pkg.upsert_persona(
+                        p_id_persona        => l_id_persona
+                      , p_tipo_persona_rc   => 'NAT'
+                      , p_tipo_documento_rc => i.tipo_documento_rc
+                      , p_numero_doc        => i.numero_doc
+                      , p_nombres           => i.nombres
+                      , p_apellido_paterno  => i.apellido_paterno
+                      , p_apellido_materno  => i.apellido_materno
+                      , p_razon_social      => null
+                      , p_fecha_nacimiento  => null
+                      , p_estado_rc         => 'ACTVO'
+                      , p_id_pais           => 1
+                      , p_id_subdivision_n1 => null
+                      , p_id_subdivision_n2 => null
+                      );
+              END IF;
+              
+              --REGISTRAR CONTACTO SI NO EXISTE
+              BEGIN
+                  select id_contacto
+                    into l_id_contacto
+                    from bko_contacto
+                   where id_persona = coalesce(i.id_persona,l_id_persona);
+              exception
+                  when no_data_found then
+                      bko_persona_pkg.upsert_contacto(
+                            p_id_contacto      => l_id_contacto
+                          , p_tipo_contacto_rc => i.tipo_contacto_rc
+                          , p_activo_sn        => i.activo_sn
+                          , p_id_persona       => coalesce(i.id_persona,l_id_persona)
+                          , p_cargo_rc         => i.cargo_rc
+                          , p_notas            => i.notas
+                          , p_correo           => i.correo
+                          , p_telefono_1       => i.telefono_1
+                          , p_telefono_2       => i.telefono_2
+                          );
+              END;
+              
+              --REGISTRAR CONTACTO_PERSONA
+              BEGIN
+                  select id_contacto_persona
+                    into l_id_contacto_persona
+                    from bko_contacto_persona
+                   where id_persona = :P51_ID_PERSONA
+                     and id_contacto = l_id_contacto;
+              EXCEPTION
+                  when no_data_found then
+                      insert into bko_contacto_persona(
+                            id_persona
+                          , id_contacto
+                      )
+                      values(
+                            :P51_ID_PERSONA
+                          , l_id_contacto
+                      );
+              END;
+          END LOOP;
+      END;
+
+  execution: 
+    sequence: 170
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |2
+          select 1
+            from apex_collections
+           where collection_name = 'COL_CONTACTO'
+
+- # ====== Process: Process Persona ============================
+  id: 43847404101751213
+  identification: 
+    name: Process Persona
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Persona # 40010188863031534
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Initialize form Empresa ====================
+  id: 43849107404751230
+  identification: 
+    name: Initialize form Empresa
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Información Registral # 43663906450875332
+
+  execution: 
+    sequence: 20
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process Empresa ============================
+  id: 43851043208751249
+  identification: 
+    name: Process Empresa
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_empresa bko_empresa%rowtype;
+      
+          l_blob       BLOB;
+          l_filename   VARCHAR2(255);
+          l_mime_type  VARCHAR2(100);
+          l_filesize   NUMBER;
+      BEGIN
+          -- Obtener los metadatos y el contenido del item tipo File Upload
+          BEGIN
+              SELECT blob_content
+                   , filename
+                   , mime_type
+                   , dbms_lob.getlength(blob_content)
+                INTO l_blob
+                   , l_filename
+                   , l_mime_type
+                   , l_filesize
+                FROM apex_application_temp_files
+               WHERE name = :P51_ARCHIVO_CONTENIDO;
+          EXCEPTION
+              WHEN NO_DATA_FOUND THEN
+              BEGIN
+                  select archivo_contenido
+                       , archivo_tipo_mime
+                       , archivo_nombre
+                    into l_blob
+                       , l_mime_type
+                       , l_filename
+                    from bko_empresa 
+                   where id_empresa = :P51_ID_EMPRESA;
+              EXCEPTION
+                  WHEN NO_DATA_FOUND THEN
+                  null;
+              END;
+          END;
+      
+          l_empresa.id_persona             := :P51_ID_PERSONA;
+          l_empresa.actividad_economica_rc := :P51_ACTIVIDAD_ECONOMICA_RC;
+          l_empresa.fecha_constitucion     := to_date(:P51_FECHA_CONSTITUCION,'&DATE_FORMAT.');
+          l_empresa.pagina_web             := :P51_PAGINA_WEB;
+          l_empresa.estado_rc              := :P51_ESTADO_RC;
+          l_empresa.nombre_comercial       := :P51_NOMBRE_COMERCIAL;
+          l_empresa.tipo_sociedad_rc       := :P51_TIPO_SOCIEDAD_RC;
+          l_empresa.tamano_rc              := :P51_TAMANO_RC;
+          l_empresa.ciiu_rc                := :P51_CIIU_RC;
+          l_empresa.ambito_operacional_rc  := :P51_AMBITO_OPERACIONAL_RC;
+          l_empresa.regimen_tributario_rc  := :P51_REGIMEN_TRIBUTARIO_RC;
+          l_empresa.tipo_contribuyente_rc  := :P51_TIPO_CONTRIBUYENTE_RC;
+          l_empresa.id_empresa             := :P51_ID_EMPRESA;
+          l_empresa.score_cedente_rc       := :P51_SCORE_CEDENTE_RC;
+          l_empresa.score_pagador_rc       := :P51_SCORE_PAGADOR_RC;
+          l_empresa.archivo_nombre         := l_filename;
+          l_empresa.archivo_tipo_mime      := l_mime_type;
+          l_empresa.archivo_contenido      := l_blob;
+      
+          bko_empresa_pkg.upsert_bko_empresa( p_row => l_empresa);
+      
+          :P51_ID_EMPRESA := l_empresa.id_empresa;
+      END;
+      
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Datos Bancarios - Guardar Data =============
+  id: 44694555523749456
+  identification: 
+    name: Datos Bancarios - Guardar Data
+    type: Interactive Grid - Automatic Row Processing (DML)
+    execution-chain: None
+    editable-region: Datos Bancarios # 44859510670364519
+
+  settings: 
+    target-type: PL/SQL Code
+    pl/sql-code-to-insert/update/delete: |
+      declare
+        l_id_pais   number;
+        l_exists    number;
+      begin
+        -- Obtener país de la persona padre
+        select id_pais
+          into l_id_pais
+          from bko_persona
+         where id_persona = :P51_ID_PERSONA;
+      
+        if :APEX$ROW_STATUS = 'D' then
+          delete from BKO_CUENTA_BANCARIA
+           where ID_CUENTA_BANCARIA = :ID_CUENTA_BANCARIA;
+          return;
+      
+        elsif :APEX$ROW_STATUS = 'C' then
+          :ID_PERSONA := :P51_ID_PERSONA;
+          :ID_PAIS := l_id_pais;
+      
+          -- Validar duplicado por institución + cuenta o institución + cci
+          select count(*)
+            into l_exists
+            from BKO_CUENTA_BANCARIA
+           where ID_PERSONA     = :P51_ID_PERSONA
+             and (
+               (ID_INSTITUCION = :ID_INSTITUCION and NUMERO_CUENTA = :NUMERO_CUENTA) or
+               (ID_INSTITUCION = :ID_INSTITUCION and CCI = :CCI)
+             );
+      
+          if l_exists > 0 then
+            raise_application_error(-20002, 'Esta cuenta bancaria ya fue registrada previamente.');
+          end if;
+      
+          insert into BKO_CUENTA_BANCARIA (
+            ID_PERSONA,
+            ID_INSTITUCION,
+            NUMERO_CUENTA,
+            CCI,
+            MONEDA_RC,
+            TIPO_CUENTA_RC,
+            ID_PAIS,
+            ES_PRINCIPAL_SN
+          ) values (
+            :ID_PERSONA,
+            :ID_INSTITUCION,
+            :NUMERO_CUENTA,
+            :CCI,
+            :MONEDA_RC,
+            :TIPO_CUENTA_RC,
+            :ID_PAIS,
+            :ES_PRINCIPAL_SN
+          );
+      
+          return;
+      
+        elsif :APEX$ROW_STATUS = 'U' then
+          update BKO_CUENTA_BANCARIA
+             set ID_INSTITUCION  = :ID_INSTITUCION,
+                 NUMERO_CUENTA   = :NUMERO_CUENTA,
+                 CCI             = :CCI,
+                 MONEDA_RC       = :MONEDA_RC,
+                 TIPO_CUENTA_RC  = :TIPO_CUENTA_RC,
+                 ID_PAIS         = :ID_PAIS,
+                 ES_PRINCIPAL_SN = :ES_PRINCIPAL_SN
+           where ID_CUENTA_BANCARIA = :ID_CUENTA_BANCARIA;
+      
+          return;
+        end if;
+      end;
+    prevent-lost-updates: true
+    lock-row: Yes
+
+  execution: 
+    sequence: 150
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    execution-scope: For Created and Modified Rows
+
+- # ====== Process: Close Dialog ===============================
+  id: 45020499870032537
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 180
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Datos guardados.
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Process Rol Persona Cedente ================
+  id: 46905844624170512
+  identification: 
+    name: Process Rol Persona Cedente
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      begin
+          insert 
+          into bko_rol_persona (
+              id_persona,
+              tipo_rol_rc,
+              fecha_inicio
+          )values(
+              :P51_ID_PERSONA, 
+              'CEDENTE',
+              sysdate
+          )returning id_rol_persona 
+          into :P51_ID_ROL_PERSONA_CEDENTE;
+      end; 
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P51_ID_ROL_PERSONA_CEDENTE is null and :REQUEST in ('APLICAR_CAMBIOS','CREAR')"
+
+- # ====== Process: Process Rol Persona Pagador ================
+  id: 46905941106170513
+  identification: 
+    name: Process Rol Persona Pagador
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      begin
+          insert 
+          into bko_rol_persona (
+              id_persona,
+              tipo_rol_rc,
+              fecha_inicio
+          )values(
+              :P51_ID_PERSONA, 
+              'PAGADOR',
+              sysdate
+          )returning id_rol_persona 
+          into :P51_ID_ROL_PERSONA_PAGADOR;
+      end; 
+
+  execution: 
+    sequence: 60
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P51_ID_ROL_PERSONA_PAGADOR is null and :REQUEST in ('APLICAR_CAMBIOS','CREAR')"
+
+- # ====== Process: Process Scores =============================
+  id: 46906416041170518
+  identification: 
+    name: Process Scores
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_dias number;
+      begin
+          -- Obtener valor de días desde VARIABLE_SISTEMA
+          select to_number(valor)
+            into l_dias
+            from variable_sistema
+           where nombre_variable = 'INTERV_DIAS_REV_SCRE';
+      
+          -- SCORE_CEDENTE
+          if nvl(:P51_SCORE_CEDENTE_HIST, -1) != nvl(:P51_SCORE_CEDENTE_RC, -1) then
+              -- Desactivar anteriores
+              update bko_score_empresa
+                 set activo_sn = 'N'
+               where id_rol_persona = :P51_ID_ROL_PERSONA_CEDENTE
+                 and activo_sn = 'S';
+      
+              -- Insertar nuevo solo si tiene valor
+              if :P51_SCORE_CEDENTE_RC is not null then
+                  insert into bko_score_empresa (
+                      id_rol_persona,
+                      fecha_reevaluacion,
+                      activo_sn,
+                      score_rc
+                  ) values (
+                      :P51_ID_ROL_PERSONA_CEDENTE,
+                      sysdate + l_dias,
+                      'S',
+                      :P51_SCORE_CEDENTE_RC
+                  );
+              end if;
+          end if;
+      
+          -- SCORE_PAGADOR
+          if nvl(:P51_SCORE_PAGADOR_HIST, -1) != nvl(:P51_SCORE_PAGADOR_RC, -1) then
+              -- Desactivar anteriores
+              update bko_score_empresa
+                 set activo_sn = 'N'
+               where id_rol_persona = :P51_ID_ROL_PERSONA_PAGADOR
+                 and activo_sn = 'S';
+      
+              -- Insertar nuevo solo si tiene valor
+              if :P51_SCORE_PAGADOR_RC is not null then
+                  insert into bko_score_empresa (
+                      id_rol_persona,
+                      fecha_reevaluacion,
+                      activo_sn,
+                      score_rc
+                  ) values (
+                      :P51_ID_ROL_PERSONA_PAGADOR,
+                      sysdate + l_dias,
+                      'S',
+                      :P51_SCORE_PAGADOR_RC
+                  );
+              end if;
+          end if;
+      end;
+      
+
+  execution: 
+    sequence: 70
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":REQUEST in ('APLICAR_CAMBIOS','CREAR')"
+
+- # ====== Process: Initialize ID_ROL_PERSONA ==================
+  id: 46907498012170529
+  identification: 
+    name: Initialize ID_ROL_PERSONA
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      begin
+          -- Intentar obtener CEDENTE
+          begin
+              select id_rol_persona
+                into :P51_ID_ROL_PERSONA_CEDENTE
+                from bko_rol_persona
+               where id_persona = :P51_ID_PERSONA
+                 and tipo_rol_rc = 'CEDENTE'
+                 and activo_sn = 'S';
+          exception
+              when no_data_found then
+                  :P51_ID_ROL_PERSONA_CEDENTE := null;
+          end;
+      
+          -- Intentar obtener PAGADOR
+          begin
+              select id_rol_persona
+                into :P51_ID_ROL_PERSONA_PAGADOR
+                from bko_rol_persona
+               where id_persona = :P51_ID_PERSONA
+                 and tipo_rol_rc = 'PAGADOR'
+                 and activo_sn = 'S';
+          exception
+              when no_data_found then
+                  :P51_ID_ROL_PERSONA_PAGADOR := null;
+          end;
+      end;
+
+  execution: 
+    sequence: 30
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P51_ID_PERSONA
+

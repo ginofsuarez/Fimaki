@@ -1,0 +1,127 @@
+---
+- # ====== Authentication: Oracle APEX Accounts ================
+  id: 23875478652324373
+  identification: 
+    name: Oracle APEX Accounts
+
+  subscription: 
+    version-number: 41717277103332
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: IAM =================================
+  id: 31561881331053669
+  identification: 
+    name: IAM
+
+  subscription: 
+    version-number: 45173334942775
+
+  settings: 
+    type: Custom
+    sentry-function-name: TOKEN_SENTRY_FN
+    authentication-function-name: iam_authentication.login
+    enable-legacy-authentication-attributes: false
+
+  source: 
+    pl/sql-code: |
+      FUNCTION TOKEN_SENTRY_FN
+      RETURN boolean
+      IS
+        l_token      VARCHAR2(1000);
+        l_id_usuario NUMBER;
+        l_username   VARCHAR2(200);
+        l_session    NUMBER;
+      BEGIN
+          -- don't do anything if user is already logged on
+          IF APEX_APPLICATION.G_USER <> 'nobody'
+          THEN
+              RETURN TRUE;
+          END IF;
+        
+          -- don't do nothing if page is public
+          IF v('APP_PAGE_ID') in ('101', '9999', '99980', '99982', '99981', '100', '99984','9950','99985','99986','99987')
+          THEN
+              RETURN true;
+          END IF;
+       
+          -- Grab the token value
+          l_token := regexp_substr(
+            owa_util.get_cgi_env('QUERY_STRING'),
+            'x01=([^&]+)',
+            1, 1, null, 1
+          );
+       
+          IF l_token IS NOT NULL
+          THEN
+              -- Validate token
+              select t.id_usuario
+                   , u.correo
+                into l_id_usuario
+                   , l_username
+                from inv_usuario_token    t
+                join inv_usuario_temporal u on u.id_usuario_temp = t.id_usuario
+               where token = l_token
+                 and tipo_rc = 'ACTIVACION'
+                 and usado = 'N'
+                 and expiracion > systimestamp;
+       apex_debug.message('SENTRY ACTIVAR CUENTA → l_id_usuario'||l_id_usuario,p_level =>5);
+              inv_registro_pkg.fn_sentry_activar_cuenta(
+                    p_token      => l_token
+                  , p_id_usuario => l_id_usuario
+              );
+       
+              -- is there already a session?
+              l_session := APEX_CUSTOM_AUTH.GET_SESSION_ID_FROM_COOKIE;
+      
+              IF l_session IS NOT NULL
+              THEN
+                  -- test if the session is still valid and get a new session id, if not valid
+                  IF NOT APEX_CUSTOM_AUTH.IS_SESSION_VALID
+                  THEN
+                      l_session := APEX_CUSTOM_AUTH.GET_NEXT_SESSION_ID;
+                  END IF;
+              ELSE
+                  -- no session in cookie found, get a new session id
+                  l_session := APEX_CUSTOM_AUTH.GET_NEXT_SESSION_ID;
+              END IF;
+      
+              -- initialize the session
+              APEX_CUSTOM_AUTH.DEFINE_USER_SESSION (
+                  l_username,
+                  l_session);
+      
+              RETURN TRUE;
+          END IF;
+      
+          RETURN FALSE;
+       
+          exception
+            WHEN NO_DATA_FOUND THEN
+              RETURN FALSE;
+              -- apex_util.redirect_url(apex_page.get_url(p_page => 99984));
+              -- apex_application.stop_apex_engine;
+      END;
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  post-logout-url: 
+    post-logout-url: 'f?p=&APP_ID.:101'
+
+  real-application-security: 
+    ras-mode: Disabled
+

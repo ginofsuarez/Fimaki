@@ -1,0 +1,14 @@
+---
+- # ====== Application Item: LOGIN_FAILED ======================
+  id: 44932951680563573
+  identification: 
+    name: LOGIN_FAILED
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 41722044372972
+

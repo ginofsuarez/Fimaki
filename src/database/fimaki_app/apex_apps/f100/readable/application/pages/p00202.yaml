@@ -1,0 +1,451 @@
+---
+# ====== Page: Validación Bancaria ===========================
+id: 202
+identification: 
+  name: Validación Bancaria
+  alias: VALIDACIÓN-BANCARIA
+  title: Validación Bancaria
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .deposit-confirmation {
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 28px 24px;
+      background-color: #e6f4ea; /* verde suave en todo el recuadro */
+      border: 2px solid #198754;
+      border-radius: 12px;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    
+    i.fa.fa-check-circle {
+        font-size: 40px;
+        color: #2e7d32;
+    }
+    
+    .deposit-confirmation h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #145c32;
+      margin-bottom: 12px;
+    }
+    
+    .deposit-confirmation .message-text {
+      font-size: 15px;
+      color: #2d4732;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .deposit-confirmation .message-question {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0c4520;
+      cursor: pointer;
+    }
+    
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Validación bancaria =========================
+  id: 32069230646927764
+  identification: 
+    name: Validación bancaria
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    icon: fa-check-circle-o
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  header-and-footer: 
+    header-text: |
+      <div class="deposit-confirmation">
+        <div class="deposit-icon">
+          <i class="fa fa-check-circle"></i>
+        </div>
+        <h2>Cuenta registrada con éxito</h2>
+        <p class="message-text">
+          Aún no has realizado tu primer depósito. Para comenzar a invertir, necesitas fondear tu cuenta.
+        </p>
+        <p class="message-question">¿Quieres registrar un depósito ahora?</p>
+      </div>
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Mensaje =====================================
+  id: 32070093599927772
+  identification: 
+    name: Mensaje
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div class="deposit-confirmation">
+        <div class="deposit-icon">
+          <i class="fa fa-check-circle"></i>
+        </div>
+        <h2>Cuenta registrada con éxito</h2>
+        <p class="message-text">
+          Aún no has realizado tu primer depósito. Para comenzar a invertir, necesitas fondear tu cuenta.
+        </p>
+        <p class="message-question">¿Quieres registrar un depósito ahora?</p>
+      </div>
+
+  layout: 
+    sequence: 10
+    parent-region: Validación bancaria # 32069230646927764
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--noBorder
+    - t-Region--scrollBody
+    css-classes: 
+    - alert-success
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Never
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Footer ======================================
+  id: 34530698758986068
+  identification: 
+    name: Footer
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Validación bancaria # 32069230646927764
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    - margin-left-sm
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P202_PREF_PRIMER_DEPOSITO ================
+  id: 32069380639927765
+  identification: 
+    name: P202_PREF_PRIMER_DEPOSITO
+    type: Checkbox
+
+  label: 
+    label: No volver a mostrar este mensaje
+    alignment: Left
+
+  settings: 
+    use-defaults: true
+
+  layout: 
+    sequence: 10
+    region: Footer # 34530698758986068
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--large
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P202_ID_CUENTA_BANCARIA ==================
+  id: 32069798262927769
+  identification: 
+    name: P202_ID_CUENTA_BANCARIA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 60
+    region: Validación bancaria # 32069230646927764
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: DEPOSITO ====================================
+  id: 32069432444927766
+  identification: 
+    button-name: DEPOSITO
+    label: Registrar Depósito
+
+  layout: 
+    sequence: 20
+    region: Validación bancaria # 32069230646927764
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    - t-Button--stretch
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:11:&SESSION.::&DEBUG.::P11_ID_CUENTA_BANCARIA:&P202_ID_CUENTA_BANCARIA.'
+      page: 11 # Solicitud Deposito
+      values: 
+        p11_id_cuenta_bancaria: '&P202_ID_CUENTA_BANCARIA.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: NUEVA =======================================
+  id: 32069519546927767
+  identification: 
+    button-name: NUEVA
+    label: Crear otra cuenta bancaria
+
+  layout: 
+    sequence: 30
+    region: Validación bancaria # 32069230646927764
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    - t-Button--stretch
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:201:&SESSION.::&DEBUG.:201::'
+      page: 201 # Detalles Cuenta Bancaria
+      clear-cache: 201
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CANCELAR ====================================
+  id: 32069622347927768
+  identification: 
+    button-name: CANCELAR
+    label: Cancelar
+
+  layout: 
+    sequence: 40
+    region: Validación bancaria # 32069230646927764
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    - t-Button--stretch
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:200:&SESSION.::&DEBUG.:200::'
+      page: 200 # Cuentas Bancarias
+      clear-cache: 200
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: Guardar Preferencia =================
+  id: 32069862461927770
+  identification: 
+    name: Guardar Preferencia
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P202_PREF_PRIMER_DEPOSITO
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 32069915597927771
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |2
+          apex_util.set_preference(p_preference => 'OCULTAR_PRIMER_DEPOSITO', p_value => :P202_PREF_PRIMER_DEPOSITO);
+        
+      items-to-submit: 
+      - P202_PREF_PRIMER_DEPOSITO
+
+    execution: 
+      sequence: 10
+      event: Guardar Preferencia # 32069862461927770
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+

@@ -4,7 +4,7 @@
     "connectionName" : "",
     "version" : "25.2.2.0"
   },
-  "schemas" : [ "FIMAKI_SEC_DB", "FIMAKI_BACK_DB", "FIMAKI_INV_DB" ],
+  "schemas" : [ "FIMAKI_APP", "FIMAKI_SEC_DB", "FIMAKI_BACK_DB", "FIMAKI_INV_DB" ],
   "lastReleaseVersion" : "",
   "export" : {
     "format" : {

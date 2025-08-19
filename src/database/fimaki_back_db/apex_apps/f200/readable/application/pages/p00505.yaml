@@ -1,0 +1,1888 @@
+---
+# ====== Page: Codigos de Referencia =========================
+id: 505
+identification: 
+  name: Codigos de Referencia
+  alias: CODIGOS-DE-REFERENCIA
+  title: Codigos de Referencia
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+css: 
+  inline: |
+    .t-Report-colHead.VARCHAR2 {
+      text-align: left;
+    }
+    .t-Report-colHead.NUMBER {
+      text-align: left;
+    }
+    [column~="Edit"]{
+        content: "aa";
+    }
+    .t-Report-colHead.CHAR {
+      text-align: left;
+    }
+    .highlight{
+        background-color:#E6EFFB !important;
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Codigo Referencia Tipo ======================
+  id: 24261554605355645
+  identification: 
+    name: Codigo Referencia Tipo
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select ROWID,
+             ID_CODIGO_REF_TIPO,
+             CODIGO,
+             NOMBRE,
+             DESCRIPCION,
+             SISTEMA_SN,
+             ACTIVO_SN,
+             CREADO_POR,
+             CREADO,
+             MODIFICADO_POR,
+             MODIFICADO,
+             '' edit_link
+        from CODIGO_REFERENCIA_TIPO
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: CODIGO_REF_TIPO_IR
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Customizable and Shown By Default
+
+  attributes: 
+    id: 24261631420355646
+    link: 
+      link-column: Link to Custom Target
+      target: 
+        url: 'f?p=&APP_ID.:510:&SESSION.::&DEBUG.:CR,510:P510_ID_CODIGO_REF_TIPO:#ID_CODIGO_REF_TIPO#'
+        page: 510 # Editar Tipo de Código
+        clear-cache: CR,510
+        values: 
+          p510_id_codigo_ref_tipo: '#ID_CODIGO_REF_TIPO#'
+
+      link-icon: <span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 24694806957071873
+      identification: 
+        name: Primary Report
+        alias: 85745
+
+    columns: 
+    - # ====== Column: ID_CODIGO_REF_TIPO ==========================
+      id: 24261946200355649
+      identification: 
+        column-name: ID_CODIGO_REF_TIPO
+        type: Hidden
+
+      heading: 
+        heading: Id Codigo Ref Tipo
+
+      layout: 
+        sequence: 20
+
+      source: 
+        primary-key: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CODIGO ======================================
+      id: 24262065915355650
+      identification: 
+        column-name: CODIGO
+        type: Plain Text
+
+      heading: 
+        heading: Codigo
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: NOMBRE ======================================
+      id: 24262174673355651
+      identification: 
+        column-name: NOMBRE
+        type: Link
+
+      heading: 
+        heading: Nombre
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      link: 
+        target: 'javascript:void(0);'
+        link-text: '#NOMBRE#'
+        link-attributes: id="#CODIGO#" class="ref_code_type"
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DESCRIPCION =================================
+      id: 24262239152355652
+      identification: 
+        column-name: DESCRIPCION
+        type: Plain Text
+
+      heading: 
+        heading: Descripcion
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SISTEMA_SN ==================================
+      id: 24262337510355653
+      identification: 
+        column-name: SISTEMA_SN
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SI_NO # 38066481741234781
+
+      heading: 
+        heading: Sistema
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: ACTIVO_SN ===================================
+      id: 24262388332355654
+      identification: 
+        column-name: ACTIVO_SN
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SI_NO # 38066481741234781
+
+      heading: 
+        heading: Activo
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: CREADO_POR ==================================
+      id: 24262523581355655
+      identification: 
+        column-name: CREADO_POR
+        type: Plain Text
+
+      heading: 
+        heading: Creado Por
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CREADO ======================================
+      id: 24262611360355656
+      identification: 
+        column-name: CREADO
+        type: Plain Text
+
+      heading: 
+        heading: Creado
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 90
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO_POR ==============================
+      id: 24262711122355657
+      identification: 
+        column-name: MODIFICADO_POR
+        type: Plain Text
+
+      heading: 
+        heading: Modificado Por
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 100
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO ==================================
+      id: 24262785976355658
+      identification: 
+        column-name: MODIFICADO
+        type: Plain Text
+
+      heading: 
+        heading: Modificado
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ROWID =======================================
+      id: 24697864258127928
+      identification: 
+        column-name: ROWID
+        type: Plain Text
+
+      heading: 
+        heading: Rowid
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: None
+
+      enable-users-to: 
+        hide: true
+        sort: false
+        filter: false
+        highlight: false
+        control-break: false
+        aggregate: false
+        compute: false
+        chart: false
+        group-by: false
+        pivot: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: EDIT_LINK ===================================
+      id: 24698177967127931
+      identification: 
+        column-name: EDIT_LINK
+        type: Plain Text
+
+      heading: 
+        heading: Edit Link
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Codigo Referencia ===========================
+  id: 24261727534355647
+  identification: 
+    name: Codigo Referencia
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select ID_CODIGO_REFERENCIA,
+             CODIGO_REF_TIPO,
+             CODIGO,
+             NOMBRE,
+             DESCRIPCION,
+             SECUENCIA,
+             ACTIVO_SN,
+             CREADO_POR,
+             CREADO,
+             MODIFICADO_POR,
+             MODIFICADO,
+             ATRIBUTO1,
+             ATRIBUTO2,
+             ATRIBUTO3,
+             ATRIBUTO4,
+             ATRIBUTO5,
+             ATRIBUTO6,
+             ATRIBUTO7,
+             ATRIBUTO8,
+             ATRIBUTO9,
+             ATRIBUTO10,
+             '' edit_link
+        from CODIGO_REFERENCIA
+       where codigo_ref_tipo = :P505_ID_CODIGO_REFERENCIA_TIPO
+      
+      
+    page-items-to-submit: 
+    - P505_ID_CODIGO_REFERENCIA_TIPO
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 24261845407355648
+    link: 
+      link-column: Link to Custom Target
+      target: 
+        url: 'f?p=&APP_ID.:511:&SESSION.::&DEBUG.:CR,511:P511_ID_CODIGO_REFERENCIA:#ID_CODIGO_REFERENCIA#'
+        page: 511 # Editar Código de Referencia
+        clear-cache: CR,511
+        values: 
+          p511_id_codigo_referencia: '#ID_CODIGO_REFERENCIA#'
+
+      link-icon: <span role="img" aria-label="Edit" class="fa fa-edit" title="Edit"></span>
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 24695307639071897
+      identification: 
+        name: Primary Report
+        alias: 85750
+
+    columns: 
+    - # ====== Column: ID_CODIGO_REFERENCIA ========================
+      id: 24262949125355659
+      identification: 
+        column-name: ID_CODIGO_REFERENCIA
+        type: Hidden
+
+      heading: 
+        heading: Id Codigo Referencia
+
+      layout: 
+        sequence: 20
+
+      source: 
+        primary-key: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CODIGO_REF_TIPO =============================
+      id: 24668989613070710
+      identification: 
+        column-name: CODIGO_REF_TIPO
+        type: Hidden
+
+      heading: 
+        heading: Codigo Ref Tipo
+
+      layout: 
+        sequence: 30
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CODIGO ======================================
+      id: 24669131444070711
+      identification: 
+        column-name: CODIGO
+        type: Plain Text
+
+      heading: 
+        heading: Codigo
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: NOMBRE ======================================
+      id: 24669207836070712
+      identification: 
+        column-name: NOMBRE
+        type: Plain Text
+
+      heading: 
+        heading: Nombre
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 50
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: DESCRIPCION =================================
+      id: 24669367577070713
+      identification: 
+        column-name: DESCRIPCION
+        type: Plain Text
+
+      heading: 
+        heading: Descripcion
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 60
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: SECUENCIA ===================================
+      id: 24669439114070714
+      identification: 
+        column-name: SECUENCIA
+        type: Plain Text
+
+      heading: 
+        heading: Secuencia
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 70
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ACTIVO_SN ===================================
+      id: 24669516886070715
+      identification: 
+        column-name: ACTIVO_SN
+        type: Plain Text (based on List of Values)
+
+      list-of-values: 
+        list-of-values: LOV_SI_NO # 38066481741234781
+
+      heading: 
+        heading: Activo
+        alignment: center
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 80
+        column-alignment: center
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Use Named List of Values to Filter Exact Match
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+    - # ====== Column: CREADO_POR ==================================
+      id: 24669637406070716
+      identification: 
+        column-name: CREADO_POR
+        type: Plain Text
+
+      heading: 
+        heading: Creado Por
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 90
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: CREADO ======================================
+      id: 24669708278070717
+      identification: 
+        column-name: CREADO
+        type: Plain Text
+
+      heading: 
+        heading: Creado
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 100
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO_POR ==============================
+      id: 24669861139070718
+      identification: 
+        column-name: MODIFICADO_POR
+        type: Plain Text
+
+      heading: 
+        heading: Modificado Por
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 110
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MODIFICADO ==================================
+      id: 24669938373070719
+      identification: 
+        column-name: MODIFICADO
+        type: Plain Text
+
+      heading: 
+        heading: Modificado
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 120
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+        date-ranges: All
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO1 ===================================
+      id: 24670037993070720
+      identification: 
+        column-name: ATRIBUTO1
+        type: Hidden
+
+      heading: 
+        heading: Atributo1
+
+      layout: 
+        sequence: 130
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO2 ===================================
+      id: 24670120012070721
+      identification: 
+        column-name: ATRIBUTO2
+        type: Hidden
+
+      heading: 
+        heading: Atributo2
+
+      layout: 
+        sequence: 140
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO3 ===================================
+      id: 24670192241070722
+      identification: 
+        column-name: ATRIBUTO3
+        type: Hidden
+
+      heading: 
+        heading: Atributo3
+
+      layout: 
+        sequence: 150
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO4 ===================================
+      id: 24670332894070723
+      identification: 
+        column-name: ATRIBUTO4
+        type: Hidden
+
+      heading: 
+        heading: Atributo4
+
+      layout: 
+        sequence: 160
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO5 ===================================
+      id: 24670412952070724
+      identification: 
+        column-name: ATRIBUTO5
+        type: Hidden
+
+      heading: 
+        heading: Atributo5
+
+      layout: 
+        sequence: 170
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO6 ===================================
+      id: 24670491593070725
+      identification: 
+        column-name: ATRIBUTO6
+        type: Hidden
+
+      heading: 
+        heading: Atributo6
+
+      layout: 
+        sequence: 180
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO7 ===================================
+      id: 24670623479070726
+      identification: 
+        column-name: ATRIBUTO7
+        type: Hidden
+
+      heading: 
+        heading: Atributo7
+
+      layout: 
+        sequence: 190
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO8 ===================================
+      id: 24670740050070727
+      identification: 
+        column-name: ATRIBUTO8
+        type: Hidden
+
+      heading: 
+        heading: Atributo8
+
+      layout: 
+        sequence: 200
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO9 ===================================
+      id: 24670804249070728
+      identification: 
+        column-name: ATRIBUTO9
+        type: Hidden
+
+      heading: 
+        heading: Atributo9
+
+      layout: 
+        sequence: 210
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: ATRIBUTO10 ==================================
+      id: 24670890372070729
+      identification: 
+        column-name: ATRIBUTO10
+        type: Hidden
+
+      heading: 
+        heading: Atributo10
+
+      layout: 
+        sequence: 220
+
+      source: 
+        primary-key: false
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: EDIT_LINK ===================================
+      id: 24700277142127952
+      identification: 
+        column-name: EDIT_LINK
+        type: Plain Text
+
+      heading: 
+        heading: Edit Link
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+page-items: 
+- # ====== Page Item: P505_ID_CODIGO_REFERENCIA_TIPO ===========
+  id: 24697400716127924
+  identification: 
+    name: P505_ID_CODIGO_REFERENCIA_TIPO
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CREATE_TIPO =================================
+  id: 24696862252127918
+  identification: 
+    button-name: CREATE_TIPO
+    label: Crear
+
+  layout: 
+    sequence: 10
+    region: Codigo Referencia Tipo # 24261554605355645
+    slot: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:510:&SESSION.::&DEBUG.:510::'
+      page: 510 # Editar Tipo de Código
+      clear-cache: 510
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CREATE_CODIGO_REF ===========================
+  id: 24696881749127919
+  identification: 
+    button-name: CREATE_CODIGO_REF
+    label: Crear
+
+  layout: 
+    sequence: 10
+    region: Codigo Referencia # 24261727534355647
+    slot: RIGHT_OF_IR_SEARCH_BAR
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:511:&SESSION.:CREATE:&DEBUG.:511:P511_CODIGO_REF_TIPO:&P505_ID_CODIGO_REFERENCIA_TIPO.'
+      page: 511 # Editar Código de Referencia
+      request: CREATE
+      clear-cache: 511
+      values: 
+        p511_codigo_ref_tipo: '&P505_ID_CODIGO_REFERENCIA_TIPO.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: New =================================
+  id: 24697197456127922
+  identification: 
+    name: New
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Region
+    region: Codigo Referencia Tipo # 24261554605355645
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 24697331597127923
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Codigo Referencia Tipo # 24261554605355645
+
+    execution: 
+      sequence: 10
+      event: New # 24697197456127922
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: New_1 ===============================
+  id: 24697958231127929
+  identification: 
+    name: New_1
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Region
+    region: Codigo Referencia # 24261727534355647
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 24698033261127930
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Codigo Referencia # 24261727534355647
+
+    execution: 
+      sequence: 10
+      event: New_1 # 24697958231127929
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Codigo Referencia Tipo ====
+  id: 36676228317138131
+  identification: 
+    name: onClick - Codigo Referencia Tipo
+
+  execution: 
+    sequence: 40
+    event-scope: Dynamic
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: jQuery Selector
+    jquery-selector: .ref_code_type
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 36676355905138132
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: this.triggeringElement.id
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P505_ID_CODIGO_REFERENCIA_TIPO
+
+    execution: 
+      sequence: 10
+      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 36676444890138133
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: null;
+      items-to-submit: 
+      - P505_ID_CODIGO_REFERENCIA_TIPO
+
+    execution: 
+      sequence: 20
+      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 36676548647138134
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var currentRow;
+        $("#CODIGO_REF_TIPO_IR tbody td").removeClass("highlight");
+        $(this.triggeringElement).closest("tr").find("td").addClass("highlight");
+        currentRow = $(this.triggeringElement).closest("tr").find("td[headers='ID']").text()
+        localStorage.setItem("currentRow", currentRow);
+
+    execution: 
+      sequence: 30
+      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Enable ======================================
+    id: 36676653091138135
+    identification: 
+      action: Enable
+
+    affected-elements: 
+      selection-type: Button
+      button: CREATE_CODIGO_REF # 24696881749127919
+
+    execution: 
+      sequence: 40
+      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Refresh =====================================
+    id: 36676760048138136
+    identification: 
+      action: Refresh
+
+    settings: 
+      maintain-pagination: false
+
+    affected-elements: 
+      selection-type: Region
+      region: Codigo Referencia # 24261727534355647
+
+    execution: 
+      sequence: 50
+      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Tipo seleccionado ===================
+  id: 43773083244564938
+  identification: 
+    name: Tipo seleccionado
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P505_ID_CODIGO_REFERENCIA_TIPO
+
+  client-side-condition: 
+    type: Item is not null
+    item: P505_ID_CODIGO_REFERENCIA_TIPO
+
+  actions: 
+  - # ====== Action: Show ========================================
+    id: 43773249382564939
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: Codigo Referencia # 24261727534355647
+
+    execution: 
+      sequence: 10
+      event: Tipo seleccionado # 43773083244564938
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Hide ========================================
+    id: 43773344133564940
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Codigo Referencia # 24261727534355647
+
+    execution: 
+      sequence: 10
+      event: Tipo seleccionado # 43773083244564938
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+processes: 
+- # ====== Process: Save 2 =====================================
+  id: 33859517393015730
+  identification: 
+    name: Save 2
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      UPDATE CODIGO_REFERENCIA
+         SET CODIGO_REF_TIPO     = :P505_CODIGO_REF_TIPO,
+             CODIGO              = :P505_CODIGO_1,
+             NOMBRE              = :P505_NOMBRE_1,
+             DESCRIPCION         = :P505_DESCRIPCION_1,
+             SECUENCIA           = :P505_SECUENCIA,
+             ACTIVO_SN           = :P505_ACTIVO_SN_1,
+             CREADO_POR          = :P505_CREADO_POR_1,
+             CREADO              = TO_DATE(:P505_CREADO_1, 'DD-MON-YYYY HH:MIPM'),
+             MODIFICADO_POR      = :P505_MODIFICADO_POR_1,
+             MODIFICADO          = TO_DATE(:P505_MODIFICADO_1, 'DD-MON-YYYY HH:MIPM'),
+             ATRIBUTO1           = :P505_ATRIBUTO_1,
+             ATRIBUTO2           = :P505_ATRIBUTO2,
+             ATRIBUTO3           = :P505_ATRIBUTO3,
+             ATRIBUTO4           = :P505_ATRIBUTO4,
+             ATRIBUTO5           = :P505_ATRIBUTO5,
+             ATRIBUTO6           = :P505_ATRIBUTO6,
+             ATRIBUTO7           = :P505_ATRIBUTO7,
+             ATRIBUTO8           = :P505_ATRIBUTO8,
+             ATRIBUTO9           = :P505_ATRIBUTO9,
+             ATRIBUTO10          = :P505_ATRIBUTO10
+       WHERE ID_CODIGO_REFERENCIA = :P505_OCULTO_3;
+      
+
+  execution: 
+    sequence: 20
+    point: After Submit
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

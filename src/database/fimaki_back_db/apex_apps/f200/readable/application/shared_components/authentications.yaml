@@ -1,0 +1,110 @@
+---
+- # ====== Authentication: Oracle APEX Accounts ================
+  id: 31837722897434554
+  identification: 
+    name: Oracle APEX Accounts
+
+  subscription: 
+    version-number: 41717224406159
+
+  settings: 
+    type: Oracle APEX Accounts
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+
+- # ====== Authentication: IAM =================================
+  id: 39501190294164422
+  identification: 
+    name: IAM
+
+  subscription: 
+    master: 
+      referenced-id: 23380000983822592
+
+    version-number: 41718505867183
+
+  settings: 
+    type: Custom
+    authentication-function-name: iam_authentication.login
+    enable-legacy-authentication-attributes: false
+
+  source: 
+    pl/sql-code: |
+      function fn_sentry_activar_cuenta
+        return boolean
+      is
+        l_token           varchar2(1000);
+        l_id_usuario      number;
+        l_username        varchar2(100);
+      begin
+        -- Leer token desde la URL (?token=XYZ)
+        l_token := regexp_substr(owa_util.get_cgi_env('QUERY_STRING'), 'token=([^&]+)', 1, 1, null, 1);
+      
+        if l_token is null then
+          return false;
+        end if;
+      
+        -- Validar token válido, tipo ACTIVACION, no usado, no expirado
+        select id_usuario
+          into l_id_usuario
+          from inv_usuario_token
+         where token = l_token
+           and tipo_rc = 'ACTIVACION'
+           and (usado is null or usado != 'S')
+           and (expiracion is null or expiracion > systimestamp);
+      
+        -- Marcar token como usado y registrar metadatos
+        update inv_usuario_token
+           set usado = 'S',
+               fecha_uso = current_timestamp,
+               ip_uso = owa_util.get_cgi_env('REMOTE_ADDR'),
+               user_agent_uso = owa_util.get_cgi_env('HTTP_USER_AGENT')
+         where token = l_token;
+      
+        -- Ejecutar migración a BKO_PERSONA, etc.
+        --inv_registro_pkg.finalizar_registro_usuario(l_id_usuario);
+      
+        -- Obtener nombre de usuario desde IAM_USUARIO usando el correo de BKO_PERSONA
+        /*select iu.nombre_usuario
+          into l_username
+          from iam_usuario iu
+         where iu.correo = (
+           select bp.correo
+             from bko_persona bp
+            where bp.id_usuario = l_id_usuario
+         );
+      
+        -- Iniciar sesión en APEX y redirigir
+        apex_authentication.login (
+          p_username     => l_username,
+          p_password     => null,
+          p_continue_url => '/inversionista/cuentas-bancarias'
+        );*/
+      
+        return true;
+      
+      exception
+        when no_data_found then
+          -- Token inválido, expirado o correo no encontrado
+          return false;
+        when others then
+          apex_debug.error('Error en fn_sentry_activar_cuenta: ' || sqlerrm);
+          return false;
+      end;
+
+  session-not-valid: 
+    redirect-to: Login Page
+
+  login-processing: 
+    switch-in-session: false
+
+  real-application-security: 
+    ras-mode: Disabled
+

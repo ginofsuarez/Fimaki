@@ -1,0 +1,99 @@
+---
+- # ====== Static Application File: icons/app-icon-32.png ======
+  id: 31840706072434566
+  identification: 
+    file-name: icons/app-icon-32.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-144-rounded.p
+  id: 31840980351434567
+  identification: 
+    file-name: icons/app-icon-144-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-192.png =====
+  id: 31841264812434568
+  identification: 
+    file-name: icons/app-icon-192.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-256-rounded.p
+  id: 31841563242434569
+  identification: 
+    file-name: icons/app-icon-256-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-512.png =====
+  id: 31841868009434570
+  identification: 
+    file-name: icons/app-icon-512.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app-200-logo.png ===========
+  id: 32040321701341940
+  identification: 
+    file-name: app-200-logo.png
+
+  attributes: 
+    mime-type: image/png
+
+- # ====== Static Application File: fimaki_logo/2.png ==========
+  id: 38064452864200398
+  identification: 
+    file-name: fimaki_logo/2.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: JS/utils.js ================
+  id: 40543332568239296
+  identification: 
+    file-name: JS/utils.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: JS/utils.min.js ============
+  id: 40547180926292399
+  identification: 
+    file-name: JS/utils.min.js
+
+  attributes: 
+    mime-type: text/javascript
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: CSS/style.css ==============
+  id: 40969257876863120
+  identification: 
+    file-name: CSS/style.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: CSS/style.min.css ==========
+  id: 44949080295973846
+  identification: 
+    file-name: CSS/style.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+

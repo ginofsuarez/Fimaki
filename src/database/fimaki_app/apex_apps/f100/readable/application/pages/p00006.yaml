@@ -1,0 +1,1283 @@
+---
+# ====== Page: Compra Directa ================================
+id: 6
+identification: 
+  name: Compra Directa
+  alias: COMPRA-DIRECTA
+  title: Compra Directa
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+javascript: 
+  file-urls: 
+  - '#APP_FILES#JS/utils#MIN#.js'
+
+security: 
+  authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+  authentication: Page Requires Authentication
+  deep-linking: Disabled
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Confirmación de inversión ===================
+  id: 8662285111407495
+  identification: 
+    name: Confirmación de inversión
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: BKO_INVERSION_FACTURA
+    include-rowid-column: false
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerTitle js-removeLandmark
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      lost-update-type: Row Values
+
+page-items: 
+- # ====== Page Item: P6_EMPRESA_PAGADORA ======================
+  id: 8663532744407507
+  identification: 
+    name: P6_EMPRESA_PAGADORA
+    type: Display Only
+
+  label: 
+    label: Empresa Pagadora
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Display Value of List of Values
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 60
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_EMPRESA_ALL # 42575194812619230
+    display-extra-values: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_TEA_DISP ==============================
+  id: 8664010471407512
+  identification: 
+    name: P6_TEA_DISP
+    type: Display Only
+
+  label: 
+    label: Tasa Efectiva Anual (TEA)%
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 150
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_TASA_ANUALIZADA =======================
+  id: 8664108766407513
+  identification: 
+    name: P6_TASA_ANUALIZADA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 200
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_MONTO_DISPONIBLE ======================
+  id: 8664565235407518
+  identification: 
+    name: P6_MONTO_DISPONIBLE
+    type: Display Only
+
+  label: 
+    label: Monto Disponible a Invertir
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 90
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-cart-arrow-up
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_ID_ROL_PERSONA ========================
+  id: 41324061282478100
+  identification: 
+    name: P6_ID_ROL_PERSONA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 50
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: ID_ROL_PERSONA
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Item
+    item: P_ID_ROL_PERSONA
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_ID_FACTURA ============================
+  id: 41324132243478101
+  identification: 
+    name: P6_ID_FACTURA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: ID_FACTURA
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_ID_INVERSION_FACTURA ==================
+  id: 41324229902478102
+  identification: 
+    name: P6_ID_INVERSION_FACTURA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: ID_INVERSION_FACTURA
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_ESTADO_RC =============================
+  id: 41324647677478106
+  identification: 
+    name: P6_ESTADO_RC
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 120
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: ESTADO_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: CONFIRMADO
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_MONTO_INVERTIDO =======================
+  id: 42541418215458772
+  identification: 
+    name: P6_MONTO_INVERTIDO
+    type: Number Field
+
+  label: 
+    label: Monto a Invertir
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 130
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-cart-arrow-down
+    format-mask: '&NUMBER_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: true
+    maximum-length: 8
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: MONTO_INVERTIDO
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_RENDIMIENTO_ESTIMADO_DISP =============
+  id: 42541607818458773
+  identification: 
+    name: P6_RENDIMIENTO_ESTIMADO_DISP
+    type: Display Only
+
+  label: 
+    label: Rendimiento Estimado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 140
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-money-bag
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_FECHA_INVERSION =======================
+  id: 42541668022458774
+  identification: 
+    name: P6_FECHA_INVERSION
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 170
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: FECHA_INVERSION
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_FECHA_VENCIMIENTO_DISP ================
+  id: 42541798681458775
+  identification: 
+    name: P6_FECHA_VENCIMIENTO_DISP
+    type: Display Only
+
+  label: 
+    label: Fecha de Cobro
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 180
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: FECHA_VENCIMIENTO_EST
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_PLAZO_EN_DIAS =========================
+  id: 42541892440458776
+  identification: 
+    name: P6_PLAZO_EN_DIAS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 190
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: PLAZO_EN_DIAS
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_MONEDA_RC =============================
+  id: 42541968996458777
+  identification: 
+    name: P6_MONEDA_RC
+    type: Display Only
+
+  label: 
+    label: Moneda
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Display Value of List of Values
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 80
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIPO_MON'
+             and activo_sn = 'S'
+    display-extra-values: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: MONEDA_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_RENDIMIENTO_ESTIMADO ==================
+  id: 42542066297458778
+  identification: 
+    name: P6_RENDIMIENTO_ESTIMADO
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 160
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Confirmación de inversión # 8662285111407495
+    column: RENDIMIENTO_ESTIMADO
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_SALDO_DISPONIBLE ======================
+  id: 43426341068142479
+  identification: 
+    name: P6_SALDO_DISPONIBLE
+    type: Display Only
+
+  label: 
+    label: Saldo Disponible
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 110
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-piggy-bank
+    format-mask: '&NUMBER_FORMAT.'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: 0.00
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_SIMBOLO_MONEDA ========================
+  id: 43427344004142489
+  identification: 
+    name: P6_SIMBOLO_MONEDA
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 220
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_TEA ===================================
+  id: 45124202300912960
+  identification: 
+    name: P6_TEA
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P6_FECHA_VENCIMIENTO =====================
+  id: 45124280055912961
+  identification: 
+    name: P6_FECHA_VENCIMIENTO
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 210
+    region: Confirmación de inversión # 8662285111407495
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CONFIRMAR_INVERSION =========================
+  id: 8662499442407497
+  identification: 
+    button-name: CONFIRMAR_INVERSION
+    label: Confirmar Inversión
+
+  layout: 
+    sequence: 10
+    region: Confirmación de inversión # 8662285111407495
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padTop
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  confirmation: 
+    message: |
+      <b>¿Desea confirmar la inversión?</b>
+      <p>Se descontará un monto de <b>&P6_SIMBOLO_MONEDA.&P6_MONTO_INVERTIDO.</b> de su cuenta disponible. Esta acción no se puede deshacer.</p>
+    style: Information
+
+- # ====== Button: CANCELAR ====================================
+  id: 8664257544407514
+  identification: 
+    button-name: CANCELAR
+    label: Cancelar
+
+  layout: 
+    sequence: 10
+    region: Confirmación de inversión # 8662285111407495
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:5:&SESSION.::&DEBUG.:5::'
+      page: 5 # Oportunidades
+      clear-cache: 5
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: onChange - Monto Invertido ==========
+  id: 42540991597458767
+  identification: 
+    name: onChange - Monto Invertido
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P6_MONTO_INVERTIDO
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 42541038046458768
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        DECLARE
+            l_roi NUMBER;
+        BEGIN
+        
+             l_roi := bko_operaciones_pkg.calcular_roi(
+                      p_tasa_anual      => :P6_TEA
+                    , p_fecha_pago      => :P6_FECHA_VENCIMIENTO
+                    , p_fecha_inversion => TRUNC(CURRENT_TIMESTAMP)
+                    , p_monto_invertido => to_number(:P6_MONTO_INVERTIDO,'&NUMBER_FORMAT.')
+                );
+        
+            :P6_RENDIMIENTO_ESTIMADO := l_roi;
+            :P6_RENDIMIENTO_ESTIMADO_DISP := to_char(:P6_RENDIMIENTO_ESTIMADO,'&NUMBER_FORMAT.');
+        EXCEPTION
+            when others then
+            raise;
+        END;
+      items-to-submit: 
+      - P6_TEA
+      - P6_FECHA_VENCIMIENTO
+      - P6_FECHA_INVERSION
+      - P6_MONTO_INVERTIDO
+      items-to-return: 
+      - P6_RENDIMIENTO_ESTIMADO
+      - P6_RENDIMIENTO_ESTIMADO_DISP
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: onChange - Monto Invertido # 42540991597458767
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+validations: 
+- # ====== Validation: La Inversion no es mayor que el monto dis
+  id: 42542448124458782
+  identification: 
+    name: 'La Inversion no es mayor que el monto disponible '
+
+  execution: 
+    sequence: 10
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_number(:P6_MONTO_INVERTIDO,'&NUMBER_FORMAT.') <= to_number(:P6_MONTO_DISPONIBLE,'&NUMBER_FORMAT.')"
+    always-execute: false
+
+  error: 
+    error-message: ' Ups! Solo puedes invertir hasta <b>&P6_SIMBOLO_MONEDA. &P6_MONTO_DISPONIBLE.</b> en esta oportunidad. Ajusta el monto para continuar'
+    display-location: Inline with Field and in Notification
+    associated-item: P6_MONTO_INVERTIDO # 42541418215458772
+
+- # ====== Validation: La Inversion no es mayor que el saldo dis
+  id: 42542917622458787
+  identification: 
+    name: La Inversion no es mayor que el saldo disponible
+
+  execution: 
+    sequence: 20
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_number(:P6_MONTO_INVERTIDO,'&NUMBER_FORMAT.') <= to_number(:P6_SALDO_DISPONIBLE,'&NUMBER_FORMAT.')"
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# no puede exceder su Saldo Disponible'
+    display-location: Inline with Field and in Notification
+    associated-item: P6_MONTO_INVERTIDO # 42541418215458772
+
+- # ====== Validation: La inversion debe ser mayor a cero ======
+  id: 45124387371912962
+  identification: 
+    name: La inversion debe ser mayor a cero
+
+  execution: 
+    sequence: 30
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_number(:P6_MONTO_INVERTIDO,'&NUMBER_FORMAT.') > 0"
+    always-execute: false
+
+  error: 
+    error-message: El monto invertido debe ser mayor que cero.
+    display-location: Inline with Field and in Notification
+    associated-item: P6_MONTO_INVERTIDO # 42541418215458772
+
+computations: 
+- # ====== Computation: P6_FECHA_INVERSION =====================
+  id: 42542160686458779
+  identification: 
+    item-name: P6_FECHA_INVERSION
+
+  execution: 
+    sequence: 10
+    point: After Submit
+
+  computation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: TRUNC(localtimestamp)
+
+processes: 
+- # ====== Process: Initialize form Compra Directa =============
+  id: 41323889447478098
+  identification: 
+    name: Initialize form Compra Directa
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Confirmación de inversión # 8662285111407495
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Initialize Factura =========================
+  id: 42540692339458764
+  identification: 
+    name: Initialize Factura
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_saldo_disponible number;
+      BEGIN   
+         select f.moneda_rc
+              , f.id_empresa_pagador
+              , to_char(saldo_a_pago - nvl(( select sum(i.monto_invertido)
+                                                from bko_inversion_factura i
+                                               where i.id_factura = f.id_factura
+                                            ), 0),'&NUMBER_FORMAT.') as monto_restante
+              , fecha_vencimiento
+              , tasa_interes
+              , plazo_en_dias
+              , simbolo_moneda
+           into :P6_MONEDA_RC
+              , :P6_EMPRESA_PAGADORA
+              , :P6_MONTO_DISPONIBLE
+              , :P6_FECHA_VENCIMIENTO
+              , :P6_TEA
+              , :P6_PLAZO_EN_DIAS
+              , :P6_SIMBOLO_MONEDA
+           from factura_v f
+          where id_factura = :P6_ID_FACTURA;    
+      
+          --OBTIENE EL SALDO DISPONIBLE DEL INVESIONISTA
+          select 
+              bko_operaciones_pkg.get_saldo_disponible(
+                    p_rol_persona => :P_ID_ROL_PERSONA
+                  , p_moneda_rc   => :P6_MONEDA_RC
+                  )
+            into l_saldo_disponible
+            from dual;
+      
+            :P6_FECHA_VENCIMIENTO_DISP := :P6_FECHA_VENCIMIENTO;
+            :P6_TEA_DISP := to_char(:P6_TEA,'&NUMBER_FORMAT.');
+            :P6_SALDO_DISPONIBLE := to_char(l_saldo_disponible,'&NUMBER_FORMAT.');
+      EXCEPTION
+          when others then
+          raise_application_error(-20001,'Error in Process Initialize Factura');
+      END;
+
+  execution: 
+    sequence: 20
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Confirmación de inversión =====
+  id: 42541374882458771
+  identification: 
+    name: Process form Confirmación de inversión
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Confirmación de inversión # 8662285111407495
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Inversión Confirmada.
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Process Movimiento Financiero ==============
+  id: 42542322758458781
+  identification: 
+    name: Process Movimiento Financiero
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE   
+         l_monto_restante           NUMBER := to_number(:P6_MONTO_INVERTIDO,'&NUMBER_FORMAT.');
+         l_id_movimiento_financiero bko_movimiento_financiero.id_movimiento_financiero%TYPE;
+      BEGIN
+         :P6_MONTO_INVERTIDO := to_number(:P6_MONTO_INVERTIDO,'&NUMBER_FORMAT.');
+         FOR rec IN (
+             
+             WITH cuentas AS (
+                SELECT id_cuenta_bancaria,
+                       bko_operaciones_pkg.get_cuenta_saldo_disponible (id_cuenta_bancaria)
+                          AS saldo_disponible
+                  FROM bko_cuenta_bancaria
+                 WHERE id_persona = :P_ID_PERSONA
+                   AND moneda_rc  = :P6_MONEDA_RC
+                   AND bko_operaciones_pkg.get_cuenta_saldo_disponible (id_cuenta_bancaria) > 0
+             ), ordenadas AS (
+                SELECT c.*,
+                       SUM(saldo_disponible)
+                           OVER (ORDER BY saldo_disponible DESC
+                                 ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS prev_sum
+                  FROM cuentas c
+             )
+             SELECT id_cuenta_bancaria,
+                    LEAST( saldo_disponible,
+                           GREATEST( 0, :P6_MONTO_INVERTIDO - NVL(prev_sum,0) )
+                         ) AS monto_a_debitar
+               FROM ordenadas
+              WHERE :P6_MONTO_INVERTIDO - NVL(prev_sum,0) > 0
+              ORDER BY saldo_disponible DESC
+         )
+         LOOP
+            EXIT WHEN l_monto_restante <= 0;  -- safety
+      
+            /* Register the movement with just the portion taken from this account */
+            l_id_movimiento_financiero := null;
+            bko_transacciones_pkg.registrar_movimiento_financiero(
+                 p_id_movimiento_financiero => l_id_movimiento_financiero,
+                 p_id_rol_persona           => :P6_ID_ROL_PERSONA,
+                 p_id_factura               => :P6_ID_FACTURA,
+                 p_id_inversion_factura     => :P6_ID_INVERSION_FACTURA,
+                 p_tipo_movimiento_rc       => 'INVERSION',
+                 p_monto                    => rec.monto_a_debitar,
+                 p_moneda_rc                => :P6_MONEDA_RC,
+                 p_estado_rc                => 'ACTIVO',
+                 p_referencia_externa       => NULL,
+                 p_fecha_movimiento         => TRUNC(CURRENT_TIMESTAMP),
+                 p_observaciones            => NULL,
+                 p_id_cuenta_bancaria       => rec.id_cuenta_bancaria
+            );
+      
+            l_monto_restante := l_monto_restante - rec.monto_a_debitar;
+         END LOOP;
+      
+         /* Optional sanity check */
+         IF l_monto_restante > 0 THEN
+            raise_application_error(
+               -20001,
+               'No hay suficiente saldo disponible para cubrir la inversión solicitada.'
+            );
+         END IF;
+      END;
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+branches: 
+- # ====== Branch: Go To 5 (Oportunidades) =====================
+  id: 42542282151458780
+  identification: 
+    name: Go To 5 (Oportunidades)
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:5:&SESSION.::&DEBUG.:5::&success_msg=#SUCCESS_MSG#'
+      page: 5 # Oportunidades
+      clear-cache: 5
+

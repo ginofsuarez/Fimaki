@@ -1,0 +1,2147 @@
+---
+# ====== Page: Solicitud Deposito ============================
+id: 11
+identification: 
+  name: Solicitud Deposito
+  alias: SOLICITUD-DEPOSITO
+  title: Solicitud Deposito
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+javascript: 
+  file-urls: 
+  - '#APP_FILES#JS/utils#MIN#.js'
+  function-and-global-variable-declaration: |
+    /**
+     * Toggle visibility of APEX items or regions and update trigger label.
+     *
+     * @param {string} triggerId - The ID of the HTML element to attach the toggle to (usually DISPLAY item ID).
+     * @param {string[]} targetContainerIds - Array of APEX container IDs (e.g., P11_XYZ_CONTAINER).
+     * @param {string} labelShow - Label to display when items are hidden.
+     * @param {string} labelHide - Label to display when items are visible.
+     */
+    function apexToggleItemsWithLabel(triggerId, targetContainerIds, labelShow, labelHide) {
+      const trigger = document.getElementById(triggerId);
+      if (!trigger) return;
+    
+      let visible = false;
+    
+      trigger.addEventListener('click', function () {
+        visible = !visible;
+    
+        targetContainerIds.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.classList.toggle('u-hidden', !visible);
+          }
+        });
+    
+        trigger.innerText = visible ? labelHide : labelShow;
+      });
+    }
+    
+    /**
+     * Copia el valor de un item APEX y cambia el ícono por un check temporalmente.
+     *
+     * @param {string} itemId - ID del item APEX (ej: 'P11_BBVA_CC').
+     * @param {string} buttonId - ID del botón de copiar.
+     */
+    function copyApexItemWithIcon(itemId, buttonId) {
+      const value = $v(itemId);
+      const btn = document.getElementById(buttonId);
+      const icon = btn?.querySelector('span');
+    
+      if (!value || !btn || !icon) return;
+    
+      navigator.clipboard.writeText(value).then(() => {
+        // Cambia a ícono de check
+        icon.classList.remove('fa-copy');
+        icon.classList.add('fa-check');
+    
+        // Vuelve al ícono original después de 1.5 segundos
+        setTimeout(() => {
+          icon.classList.remove('fa-check');
+          icon.classList.add('fa-copy');
+        }, 1500);
+      }).catch(err => {
+        apex.message.alert("Error al copiar: " + err);
+      });
+    }
+    
+  execute-when-page-loads: |
+    // -----------------------------
+    // Toggle: Mostrar/Ocultar cuentas bancarias
+    // -----------------------------
+    function apexToggleItemsWithLabel(triggerId, targetContainerIds, labelShow, labelHide) {
+      const trigger = document.getElementById(triggerId);
+      if (!trigger) return;
+    
+      let visible = false;
+    
+      trigger.addEventListener('click', function () {
+        visible = !visible;
+    
+        targetContainerIds.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.classList.toggle('u-hidden', !visible);
+          }
+        });
+    
+        trigger.innerText = visible ? labelHide : labelShow;
+      });
+    }
+    
+    // -----------------------------
+    // Función: copiar con ícono animado
+    // -----------------------------
+    function copyApexItemWithIcon(itemId, buttonId) {
+      const value = $v(itemId);
+      const btn = document.getElementById(buttonId);
+      const icon = btn?.querySelector('span');
+    
+      if (!value || !btn || !icon) return;
+    
+      navigator.clipboard.writeText(value).then(() => {
+        icon.classList.remove('fa-copy');
+        icon.classList.add('fa-check');
+    
+        setTimeout(() => {
+          icon.classList.remove('fa-check');
+          icon.classList.add('fa-copy');
+        }, 1500);
+      }).catch(err => {
+        apex.message.alert("Error al copiar: " + err);
+      });
+    }
+    
+    // -----------------------------
+    // Asignar evento de copia a múltiples botones
+    // -----------------------------
+    function bindCopy(btnId, itemId) {
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        btn.addEventListener('click', function () {
+          copyApexItemWithIcon(itemId, btnId);
+        });
+      }
+    }
+    
+    // -----------------------------
+    // Inicialización
+    // -----------------------------
+    
+    // Toggle de cuentas
+    apexToggleItemsWithLabel(
+      'P11_CUENTAS_FIMAKI_DISPLAY',
+      [
+        'P11_BBVA_CC_CONTAINER',
+        'P11_BBVA_CCI_CONTAINER',
+        'P11_BCP_CC_SOLES_CONTAINER',
+        'P11_BCP_CCI_SOLES_CONTAINER',
+        'P11_BCP_CC_DOLARES_CONTAINER',
+        'P11_BCP_CCI_DOLARES_CONTAINER'
+      ],
+      'Ver cuentas bancarias de FIMAKI',
+      'Ocultar cuentas bancarias de FIMAKI'
+    );
+    
+    // Vincular botones de copiar
+    bindCopy('btnCopiarBBVA_CC', 'P11_BBVA_CC');
+    bindCopy('btnCopiarBBVA_CCI', 'P11_BBVA_CCI');
+    bindCopy('btnCopiarBCP_CC', 'P11_BCP_CC_SOLES');
+    bindCopy('btnCopiarBCP_CCI', 'P11_BCP_CCI_SOLES');
+    bindCopy('btnCopiarBCP_CC_USD', 'P11_BCP_CC_DOLARES');
+    bindCopy('btnCopiarBCP_CCI_USD', 'P11_BCP_CCI_DOLARES');
+    
+
+css: 
+  inline: |
+    div#P11_SUBIR_COMPROBANTE_DROPZONE {
+        padding: 35px;
+        border-style: dashed !important;
+        border-width: 2px !important;
+        border-color: #bbb !important;
+        color: #bbb;
+    }
+    
+    /* Oculta el ícono y texto "Arrastrar y soltar" */
+    .hide-dropzone-ui .a-FileDrop-icon,
+    .hide-dropzone-ui .a-FileDrop-heading {
+      display: none !important;
+    }
+    
+    /* Estiliza el texto "Subir comprobante" */
+    .hide-dropzone-ui .a-FileDrop-description {
+      font-size: 1.1em;
+      font-weight: 500;
+      color: #bbb;
+    }
+    
+    /* Oculta botón eliminar si aparece */
+    .hide-dropzone-ui .a-FileDrop-remove {
+      display: none !important;
+    }
+    
+    .display-link-style {
+      display: inline-block;
+      padding: 0.6em 1.4em;
+      font-weight: 500;
+      color: #6f2dbd;
+      border: 2px solid #6f2dbd;
+      border-radius: 1em;
+      text-align: center;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: transparent;
+    }
+    
+    .display-link-style:hover {
+      background-color: #f5ebff;
+    }
+    /* Contenedor para posicionar el botón junto al input */
+    .copy-wrapper {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    
+    /* Botón minimalista alineado al borde derecho */
+    .copy-btn {
+      background: transparent;
+      border: none;
+      height: 100%;
+      padding: 0 10px;
+      cursor: pointer;
+      color: #6f42c1;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid #eee;
+      border-radius: 0; /* sin bordes redondeados */
+      transition: background 0.2s ease;
+      margin: 0; /* <- clave para eliminar el gap */
+    }
+    
+    .copy-btn:hover {
+      background: #f3ecff;
+    }
+    
+    #P11_CUENTAS_FIMAKI_CONTAINER {
+      border: none !important;
+      background: none !important;
+      padding: 0 !important;
+    }
+    
+    /* Estilo SOLO al span interno */
+    #P11_CUENTAS_FIMAKI_DISPLAY {
+      display: block;
+      background-color: #f9f5ff;
+      border: 1px solid #e0d7f8;
+      border-radius: 0.3em;
+      padding: 0.9em 1.2em;
+      font-weight: 400;
+      color: #6f2dbd;
+      cursor: pointer;
+      text-align: center;
+      font-size: 1.1em;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    #P11_CUENTAS_FIMAKI_DISPLAY:hover {
+      background-color: #efe6fc;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    
+    
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Solicitud de depósito =======================
+  id: 31721388939063517
+  identification: 
+    name: Solicitud de depósito
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: FIMAKI_BACK_DB
+    table-name: BKO_SOLICITUD_DEPOSITO
+    include-rowid-column: false
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: 4
+    new-column: true
+    column-span: 5
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerTitle js-removeLandmark
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Declaración de origen de fondos =============
+  id: 35834891322461195
+  identification: 
+    name: Declaración de origen de fondos
+    title: Declaración de origen de fondos
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: false
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerTitle js-removeLandmark
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |
+      select 1 
+        from bko_persona 
+       where id_persona = :P_ID_PERSONA
+         and origen_fondos_rc is null
+         and :P11_ID_DEPOSITO is null
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P11_CUENTAS_FIMAKI =======================
+  id: 28738626732034395
+  identification: 
+    name: P11_CUENTAS_FIMAKI
+    type: Display Only
+
+  label: 
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 40
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    css-classes: 
+    - display-link-style
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: Ver cuentas bancarias de FIMAKI
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_SUBIR_COMPROBANTE ====================
+  id: 28738714650034396
+  identification: 
+    name: P11_SUBIR_COMPROBANTE
+    type: Image Upload
+
+  label: 
+    label: Subir Comprobante
+    alignment: Left
+
+  display: 
+    display-as: Inline Dropzone
+    dropzone-description: Subir comprobante
+    capture-using: NONE
+
+  storage:: 
+    type: Table APEX_APPLICATION_TEMP_FILES
+    purge-files-at: End of Session
+    allow-multiple-files: false
+
+  cropping: 
+    allow-cropping: false
+
+  resize-to: 
+    maximum-file-size: 500
+    maximum-width: 800
+    maximum-height: 600
+
+  layout: 
+    sequence: 140
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - hide-dropzone-ui
+    icon: fa-camera
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    css-classes: 
+    - hide-dropzone-ui
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_BBVA_CC ==============================
+  id: 28739220749034401
+  identification: 
+    name: P11_BBVA_CC
+    type: Display Only
+
+  label: 
+    label: BBVA Soles - CC
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 50
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-hidden
+
+  advanced: 
+    post-text-: |
+      <div class="copy-wrapper">
+        <button type="button" id="btnCopiarBBVA_CC" class="copy-btn" title="Copiar">
+          <span class="t-Icon fa fa-copy"></span>
+        </button>
+      </div>
+      
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: 0011-0367-0100032127
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_BBVA_CCI =============================
+  id: 28739373844034402
+  identification: 
+    name: P11_BBVA_CCI
+    type: Display Only
+
+  label: 
+    label: BBVA Soles - CCI
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 60
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-hidden
+
+  advanced: 
+    post-text-: |
+      <div class="copy-wrapper">
+        <button type="button" id="btnCopiarBBVA_CCI" class="copy-btn" title="Copiar">
+          <span class="t-Icon fa fa-copy"></span>
+        </button>
+      </div>
+      
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: 011-367-000100032127-01
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_BCP_CC_SOLES =========================
+  id: 28739428006034403
+  identification: 
+    name: P11_BCP_CC_SOLES
+    type: Display Only
+
+  label: 
+    label: BCP Soles - CC
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 70
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-hidden
+
+  advanced: 
+    post-text-: |
+      <div class="copy-wrapper">
+        <button type="button" id="btnCopiarBCP_CC" class="copy-btn" title="Copiar">
+          <span class="t-Icon fa fa-copy"></span>
+        </button>
+      </div>
+      
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: 1947200808032
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_BCP_CCI_SOLES ========================
+  id: 28739574766034404
+  identification: 
+    name: P11_BCP_CCI_SOLES
+    type: Display Only
+
+  label: 
+    label: BCP Soles - CCI
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 80
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-hidden
+
+  advanced: 
+    post-text-: |
+      <div class="copy-wrapper">
+        <button type="button" id="btnCopiarBCP_CCI" class="copy-btn" title="Copiar">
+          <span class="t-Icon fa fa-copy"></span>
+        </button>
+      </div>
+      
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: 00219400720080803296
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_BCP_CC_DOLARES =======================
+  id: 28739615953034405
+  identification: 
+    name: P11_BCP_CC_DOLARES
+    type: Display Only
+
+  label: 
+    label: BCP Dólares - CC
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 90
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-hidden
+
+  advanced: 
+    post-text-: |
+      <div class="copy-wrapper">
+        <button type="button" id="btnCopiarBCP_CC_USD" class="copy-btn" title="Copiar">
+          <span class="t-Icon fa fa-copy"></span>
+        </button>
+      </div>
+      
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: 1947200812183
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_BCP_CCI_DOLARES ======================
+  id: 28739772772034406
+  identification: 
+    name: P11_BCP_CCI_DOLARES
+    type: Display Only
+
+  label: 
+    label: BCP Dólares - CCI
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 100
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-hidden
+
+  advanced: 
+    post-text-: |
+      <div class="copy-wrapper">
+        <button type="button" id="btnCopiarBCP_CCI_USD" class="copy-btn" title="Copiar">
+          <span class="t-Icon fa fa-copy"></span>
+        </button>
+      </div>
+      
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: 00219400720081218391
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ID_DEPOSITO ==========================
+  id: 31721748734063527
+  identification: 
+    name: P11_ID_DEPOSITO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Solicitud de depósito # 31721388939063517
+    column: ID_DEPOSITO
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_MONTO ================================
+  id: 31722151247063535
+  identification: 
+    name: P11_MONTO
+    type: Number Field
+
+  label: 
+    label: Monto
+    alignment: Left
+
+  settings: 
+    number-alignment: End
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 130
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Solicitud de depósito # 31721388939063517
+    column: MONTO
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P11_ID_DEPOSITO
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_MONEDA_RC ============================
+  id: 31722591200063539
+  identification: 
+    name: P11_MONEDA_RC
+    type: Display Only
+
+  label: 
+    label: Moneda
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 120
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select descripcion
+               , codigo
+            from codigo_referencia   cr
+            join bko_cuenta_bancaria b  on b.moneda_rc = cr.codigo 
+           where codigo_ref_tipo = 'TIPO_MON'
+             and cr.activo_sn = 'S'
+             and b.activo_sn = 'S'
+             and b.id_cuenta_bancaria = :P11_ID_CUENTA_BANCARIA
+    display-extra-values: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_VALIDADO_POR =========================
+  id: 31724144702063547
+  identification: 
+    name: P11_VALIDADO_POR
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 170
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Solicitud de depósito # 31721388939063517
+    column: VALIDADO_POR
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_FECHA_VALIDACION =====================
+  id: 31724578396063549
+  identification: 
+    name: P11_FECHA_VALIDACION
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 180
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Solicitud de depósito # 31721388939063517
+    column: FECHA_VALIDACION
+    data-type: TIMESTAMP WITH LOCAL TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_OBSERVACIONES ========================
+  id: 31725321896063552
+  identification: 
+    name: P11_OBSERVACIONES
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 190
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Solicitud de depósito # 31721388939063517
+    column: OBSERVACIONES
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ID_ROL_PERSONA =======================
+  id: 31725805812063553
+  identification: 
+    name: P11_ID_ROL_PERSONA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 200
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Solicitud de depósito # 31721388939063517
+    column: ID_ROL_PERSONA
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Item
+    item: P_ID_ROL_PERSONA
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ID_CUENTA_BANCARIA ===================
+  id: 31726113755063555
+  identification: 
+    name: P11_ID_CUENTA_BANCARIA
+    type: Select List
+
+  label: 
+    label: Cuenta de origen
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 110
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - margin-top-sm
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      select CASE 
+              WHEN alias IS NOT NULL THEN alias || ' (' || numero_cuenta || ')'
+              ELSE numero_cuenta
+             END AS display_value
+           , id_cuenta_bancaria AS return_value
+        from bko_cuenta_bancaria
+       where id_persona = :P_ID_PERSONA
+         and activo_sn = 'S'
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Solicitud de depósito # 31721388939063517
+    column: ID_CUENTA_BANCARIA
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P11_ID_DEPOSITO
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_MODIFICADO_POR =======================
+  id: 31727801162063561
+  identification: 
+    name: P11_MODIFICADO_POR
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 210
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Solicitud de depósito # 31721388939063517
+    column: MODIFICADO_POR
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_MODIFICADO ===========================
+  id: 31728159723063563
+  identification: 
+    name: P11_MODIFICADO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 220
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Solicitud de depósito # 31721388939063517
+    column: MODIFICADO
+    data-type: TIMESTAMP WITH LOCAL TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_ORIGEN_FONDOS_RC =====================
+  id: 35835001529461196
+  identification: 
+    name: P11_ORIGEN_FONDOS_RC
+    type: Select List
+
+  label: 
+    label: Origen Fondos
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Declaración de origen de fondos # 35834891322461195
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_ORIGEN_FONDOS_ACTIVO # 36734655606450403
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_CONFIRMACION_LECTURA =================
+  id: 35835091831461197
+  identification: 
+    name: P11_CONFIRMACION_LECTURA
+    type: Checkbox
+
+  label: 
+    label: Declaro que los fondos que utilizo para invertir en FIMAKI provienen de actividades lícitas y no de delitos de lavado de activos y financiamiento del terrorismo.
+    alignment: Left
+
+  settings: 
+    use-defaults: true
+
+  layout: 
+    sequence: 30
+    region: Declaración de origen de fondos # 35834891322461195
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P11_EXISTE_ORIGEN_FONDOS =================
+  id: 35835719583461204
+  identification: 
+    name: P11_EXISTE_ORIGEN_FONDOS
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 30
+    region: Solicitud de depósito # 31721388939063517
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 31733453331063583
+  identification: 
+    button-name: CANCEL
+    label: Cancelar
+
+  layout: 
+    sequence: 170
+    region: Solicitud de depósito # 31721388939063517
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:10:&SESSION.::&DEBUG.:10::'
+      page: 10 # Transacciones Financieras
+      clear-cache: 10
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CREATE ======================================
+  id: 31735681326063595
+  identification: 
+    button-name: CREATE
+    label: Enviar Solicitud
+
+  layout: 
+    sequence: 150
+    region: Solicitud de depósito # 31721388939063517
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padTop
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P11_ID_DEPOSITO
+
+- # ====== Button: CREATE_DEC ==================================
+  id: 35835198933461198
+  identification: 
+    button-name: CREATE_DEC
+    label: Aceptar
+
+  layout: 
+    sequence: 50
+    region: Declaración de origen de fondos # 35834891322461195
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--stretch
+    - t-Button--padTop
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P11_ID_DEPOSITO
+
+- # ====== Button: CANCELAR_DEC ================================
+  id: 36752236331645673
+  identification: 
+    button-name: CANCELAR_DEC
+    label: Cancelar
+
+  layout: 
+    sequence: 60
+    region: Declaración de origen de fondos # 35834891322461195
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--stretch
+    - t-Button--padTop
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P11_ID_DEPOSITO
+
+- # ====== Button: SAVE ========================================
+  id: 48859162417276494
+  identification: 
+    button-name: SAVE
+    label: Aplicar Cambios
+
+  layout: 
+    sequence: 160
+    region: Solicitud de depósito # 31721388939063517
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padTop
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P11_ID_DEPOSITO
+
+dynamic-actions: 
+- # ====== Dynamic Action: New =================================
+  id: 32113282417353659
+  identification: 
+    name: New
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P11_ID_CUENTA_BANCARIA
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 32113388971353660
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |2
+            select descripcion
+              into :P11_MONEDA_RC
+              from codigo_referencia   cr
+              join bko_cuenta_bancaria b  on b.moneda_rc = cr.codigo 
+             where codigo_ref_tipo = 'TIPO_MON'
+               and cr.activo_sn = 'S'
+               and b.activo_sn = 'S'
+               and b.id_cuenta_bancaria = :P11_ID_CUENTA_BANCARIA;
+      items-to-submit: 
+      - P11_ID_CUENTA_BANCARIA
+      items-to-return: 
+      - P11_MONEDA_RC
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: New # 32113282417353659
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+    client-side-condition: 
+      type: Item is not null
+      item: P11_ID_CUENTA_BANCARIA
+
+  - # ====== Action: Hide ========================================
+    id: 36751906082645669
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Declaración de origen de fondos # 35834891322461195
+
+    execution: 
+      sequence: 20
+      event: New # 32113282417353659
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 36751990563645670
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: Solicitud de depósito # 31721388939063517
+
+    execution: 
+      sequence: 10
+      event: New # 32113282417353659
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Click Create ========================
+  id: 35835893599461205
+  identification: 
+    name: Click Create
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CREATE # 31735681326063595
+
+  client-side-condition: 
+    type: Item = Value
+    item: P11_EXISTE_ORIGEN_FONDOS
+    value: Y
+
+  actions: 
+  - # ====== Action: Submit Page =================================
+    id: 35835920407461206
+    identification: 
+      action: Submit Page
+
+    settings: 
+      request-/-button-name: CREATE
+      show-processing: true
+
+    execution: 
+      sequence: 30
+      event: Click Create # 35835893599461205
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 35836066995461207
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: Declaración de origen de fondos # 35834891322461195
+
+    execution: 
+      sequence: 20
+      event: Click Create # 35835893599461205
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Hide ========================================
+    id: 35836152198461208
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Solicitud de depósito # 31721388939063517
+
+    execution: 
+      sequence: 30
+      event: Click Create # 35835893599461205
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 36751546756645666
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.message.clearErrors(); // Limpia errores anteriores
+        
+        var errores = [];
+        
+        if (!$v("P11_ID_CUENTA_BANCARIA")) {
+          errores.push({
+            type: "error",
+            location: "page",
+            message: "Debe seleccionar una cuenta bancaria.",
+            unsafe: false
+          });
+        }
+        
+        if (!$v("P11_MONTO")) {
+          errores.push({
+            type: "error",
+            location: "page",
+            message: "Debe ingresar un monto.",
+            unsafe: false
+          });
+        }
+        
+        if (!$v("P11_SUBIR_COMPROBANTE")) {
+          errores.push({
+            type: "error",
+            location: "page",
+            message: "Debe subir un comprobante.",
+            unsafe: false
+          });
+        }
+        
+        if (errores.length > 0) {
+          apex.message.showErrors(errores);
+          return false; // Detiene el flujo
+        }
+
+    execution: 
+      sequence: 10
+      event: Click Create # 35835893599461205
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Click Create DEC ====================
+  id: 36750858864645659
+  identification: 
+    name: Click Create DEC
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CREATE_DEC # 35835198933461198
+
+  actions: 
+  - # ====== Action: Submit Page =================================
+    id: 36750947746645660
+    identification: 
+      action: Submit Page
+
+    settings: 
+      request-/-button-name: CREATE
+      show-processing: true
+
+    execution: 
+      sequence: 10
+      event: Click Create DEC # 36750858864645659
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Cambio Declaración ==================
+  id: 36751228677645663
+  identification: 
+    name: Cambio Declaración
+
+  execution: 
+    sequence: 50
+    event-scope: Dynamic
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P11_ORIGEN_FONDOS_RC
+    - P11_CONFIRMACION_LECTURA
+
+  client-side-condition: 
+    type: JavaScript expression
+    javascript-expression: |
+      apex.item( "P11_ORIGEN_FONDOS_RC" ).isEmpty() || apex.item( "P11_CONFIRMACION_LECTURA" ).getValue() === 'N'
+      
+
+  actions: 
+  - # ====== Action: Enable ======================================
+    id: 36751392164645664
+    identification: 
+      action: Enable
+
+    affected-elements: 
+      selection-type: Button
+      button: CREATE_DEC # 35835198933461198
+
+    execution: 
+      sequence: 10
+      event: Cambio Declaración # 36751228677645663
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Disable =====================================
+    id: 36751431960645665
+    identification: 
+      action: Disable
+
+    affected-elements: 
+      selection-type: Button
+      button: CREATE_DEC # 35835198933461198
+
+    execution: 
+      sequence: 10
+      event: Cambio Declaración # 36751228677645663
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: Click Cancelar Dec ==================
+  id: 36752316367645674
+  identification: 
+    name: Click Cancelar Dec
+
+  execution: 
+    sequence: 60
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCELAR_DEC # 36752236331645673
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 36752478572645675
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Region
+      region: Declaración de origen de fondos # 35834891322461195
+
+    execution: 
+      sequence: 10
+      event: Click Cancelar Dec # 36752316367645674
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Show ========================================
+    id: 36752577701645676
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Region
+      region: Solicitud de depósito # 31721388939063517
+
+    execution: 
+      sequence: 20
+      event: Click Cancelar Dec # 36752316367645674
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+processes: 
+- # ====== Process: Initialize form Solicitud Deposito =========
+  id: 31736093904063597
+  identification: 
+    name: Initialize form Solicitud Deposito
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Solicitud de depósito # 31721388939063517
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Solicitud Deposito ============
+  id: 31736488442063599
+  identification: 
+    name: Process form Solicitud Deposito
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Solicitud de depósito # 31721388939063517
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Solicitud de depósito registrada.
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: CREATE # 31735681326063595
+
+- # ====== Process: Process Deposito Comprobante ===============
+  id: 34533227993986094
+  identification: 
+    name: Process Deposito Comprobante
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_nombre     VARCHAR2(255);
+          l_mime       VARCHAR2(255);
+          l_blob       BLOB;
+      BEGIN
+          -- Verifica que se haya subido un archivo
+          IF :P11_SUBIR_COMPROBANTE IS NOT NULL THEN
+              SELECT filename,
+                     mime_type,
+                     blob_content
+                INTO l_nombre,
+                     l_mime,
+                     l_blob
+                FROM apex_application_temp_files
+               WHERE name = :P11_SUBIR_COMPROBANTE;
+      
+              -- Llamar al procedimiento
+              BKO_TRANSACCIONES_PKG.registrar_deposito_comprobante(
+                  p_id_deposito        => :P11_ID_DEPOSITO,
+                  p_archivo_nombre     => l_nombre,
+                  p_archivo_tipo_mime  => l_mime,
+                  p_archivo_contenido  => l_blob
+              );
+          END IF;
+      END;
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE
+
+- # ====== Process: Obtener origen fondos ======================
+  id: 35835612998461203
+  identification: 
+    name: Obtener origen fondos
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      begin
+          select 'Y' 
+            into :P11_EXISTE_ORIGEN_FONDOS
+            from bko_persona 
+           where id_persona = :P_ID_PERSONA
+             and origen_fondos_rc is not null;
+      exception when no_data_found then
+          null;
+      end;
+
+  execution: 
+    sequence: 20
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: actualizar_origen_fondos_rc ================
+  id: 36752637474645677
+  identification: 
+    name: actualizar_origen_fondos_rc
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      fimaki_back_db.bko_persona_pkg.actualizar_origen_fondos_rc(
+                p_id_persona       => :P_ID_PERSONA
+              , p_origen_fondos_rc => :P11_ORIGEN_FONDOS_RC
+      );
+      
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Process Actualizacion de Deposito ==========
+  id: 48859291258276495
+  identification: 
+    name: Process Actualizacion de Deposito
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          fimaki_back_db.BKO_SOLICITUD_DEPOSITO_PKG.actualizar_estado_solicitud_deposito(
+                p_id_deposito => :P11_ID_DEPOSITO
+              , p_estado_rc => 'PENDIENTE_REVISION'
+          );
+      END;
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: la solicitud se actualizó correctamente.
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SAVE # 48859162417276494
+
+branches: 
+- # ====== Branch: Got To Page 10 ==============================
+  id: 32113427321353661
+  identification: 
+    name: Got To Page 10
+
+  execution: 
+    sequence: 20
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:10:&SESSION.::&DEBUG.:10::&success_msg=#SUCCESS_MSG#'
+      page: 10 # Transacciones Financieras
+      clear-cache: 10
+
+- # ====== Branch: go to page 12 ===============================
+  id: 36752740824645678
+  identification: 
+    name: go to page 12
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:12:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 12 # Origen Fondos Actualizado
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P11_EXISTE_ORIGEN_FONDOS
+

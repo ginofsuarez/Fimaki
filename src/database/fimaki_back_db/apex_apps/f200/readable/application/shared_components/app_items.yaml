@@ -1,0 +1,14 @@
+---
+- # ====== Application Item: G_ID_ARCHIVO ======================
+  id: 47141019096664298
+  identification: 
+    name: G_ID_ARCHIVO
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 41720839909386
+

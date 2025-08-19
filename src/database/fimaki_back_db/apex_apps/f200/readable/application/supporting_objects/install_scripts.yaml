@@ -1,0 +1,218 @@
+---
+- # ====== Install Script: cr_amb_op_tipo_dml ==================
+  id: 35506432345708014
+  identification: 
+    name: cr_amb_op_tipo_dml
+
+  execution: 
+    sequence: 20
+
+- # ====== Install Script: cr_cargo_tipo_dml ===================
+  id: 35666251179043496
+  identification: 
+    name: cr_cargo_tipo_dml
+
+  execution: 
+    sequence: 30
+
+- # ====== Install Script: pais_dml ============================
+  id: 35765003259754526
+  identification: 
+    name: pais_dml
+
+  execution: 
+    sequence: 40
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Install Script: subdivision_geografica_departamentos_
+  id: 35765934443143141
+  identification: 
+    name: subdivision_geografica_departamentos_dml
+
+  execution: 
+    sequence: 40
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Install Script: subdivision_geografica_provincias_dml
+  id: 35767218147767683
+  identification: 
+    name: subdivision_geografica_provincias_dml
+
+  execution: 
+    sequence: 50
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Install Script: cr_ciiu_tipo_dml ====================
+  id: 39460222594267976
+  identification: 
+    name: cr_ciiu_tipo_dml
+
+  execution: 
+    sequence: 60
+
+- # ====== Install Script: cr_act_eco_tipo_dml =================
+  id: 39460949774447315
+  identification: 
+    name: cr_act_eco_tipo_dml
+
+  execution: 
+    sequence: 10
+
+- # ====== Install Script: cr_tam_emp_tipo_dml =================
+  id: 41724674223594428
+  identification: 
+    name: cr_tam_emp_tipo_dml
+
+  execution: 
+    sequence: 150
+
+- # ====== Install Script: cr_tip_comp_tipo_dml ================
+  id: 41724761380599115
+  identification: 
+    name: cr_tip_comp_tipo_dml
+
+  execution: 
+    sequence: 160
+
+- # ====== Install Script: cr_tip_cont_tipo_dml ================
+  id: 41724916449601211
+  identification: 
+    name: cr_tip_cont_tipo_dml
+
+  execution: 
+    sequence: 170
+
+- # ====== Install Script: cr_tip_cta_tipo_dml =================
+  id: 41725000171609232
+  identification: 
+    name: cr_tip_cta_tipo_dml
+
+  execution: 
+    sequence: 180
+
+- # ====== Install Script: cr_tip_score_tipo_dml ===============
+  id: 41725063527615748
+  identification: 
+    name: cr_tip_score_tipo_dml
+
+  execution: 
+    sequence: 190
+
+- # ====== Install Script: cr_tip_soc_tipo_dml =================
+  id: 41725187341620190
+  identification: 
+    name: cr_tip_soc_tipo_dml
+
+  execution: 
+    sequence: 200
+
+- # ====== Install Script: cr_tipo_doc_tipo_dml ================
+  id: 41725274290623141
+  identification: 
+    name: cr_tipo_doc_tipo_dml
+
+  execution: 
+    sequence: 210
+
+- # ====== Install Script: cr_tipo_mon_tipo_dml ================
+  id: 41725399914625924
+  identification: 
+    name: cr_tipo_mon_tipo_dml
+
+  execution: 
+    sequence: 220
+
+- # ====== Install Script: cr_tipo_per_tipo_dml ================
+  id: 41725446920628300
+  identification: 
+    name: cr_tipo_per_tipo_dml
+
+  execution: 
+    sequence: 230
+
+- # ====== Install Script: cr_tipo_rol_tipo_dml ================
+  id: 41725536509630881
+  identification: 
+    name: cr_tipo_rol_tipo_dml
+
+  execution: 
+    sequence: 240
+
+- # ====== Install Script: cr_tip_contac_tipo_dml ==============
+  id: 41725787133659250
+  identification: 
+    name: cr_tip_contac_tipo_dml
+
+  execution: 
+    sequence: 250
+
+- # ====== Install Script: cr_entidad_financiera_tipo_dml ======
+  id: 42700209125923998
+  identification: 
+    name: cr_entidad_financiera_tipo_dml
+
+  execution: 
+    sequence: 80
+
+- # ====== Install Script: cr_est_fact_tipo_dml ================
+  id: 42701027379025906
+  identification: 
+    name: cr_est_fact_tipo_dml
+
+  execution: 
+    sequence: 90
+
+- # ====== Install Script: cr_est_usu_tipo_dml =================
+  id: 42701226723043667
+  identification: 
+    name: cr_est_usu_tipo_dml
+
+  execution: 
+    sequence: 100
+
+- # ====== Install Script: cr_estado_empresa_tipo_dml ==========
+  id: 42710563051138307
+  identification: 
+    name: cr_estado_empresa_tipo_dml
+
+  execution: 
+    sequence: 110
+
+- # ====== Install Script: cr_org_fon_tipo_dml =================
+  id: 42710694724155861
+  identification: 
+    name: cr_org_fon_tipo_dml
+
+  execution: 
+    sequence: 120
+
+- # ====== Install Script: cr_reg_trib_tipo_dml ================
+  id: 42710959483166105
+  identification: 
+    name: cr_reg_trib_tipo_dml
+
+  execution: 
+    sequence: 130
+
+- # ====== Install Script: cr_solctdept_tipo_dml ===============
+  id: 42711711463215083
+  identification: 
+    name: cr_solctdept_tipo_dml
+
+  execution: 
+    sequence: 140
+
+- # ====== Install Script: subdivision_geografica_distritos_dml 
+  id: 46125122886067990
+  identification: 
+    name: subdivision_geografica_distritos_dml
+
+  execution: 
+    sequence: 260
+
