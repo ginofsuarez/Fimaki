@@ -38,7 +38,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Facturas ====================================
-  id: 46329736314191870
+  id: 38152618198977980
   identification: 
     name: Facturas
     type: Interactive Report
@@ -110,7 +110,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 46329834693191870
+    id: 38152716577977980
     link: 
       link-column: Link to Custom Target
       target: 
@@ -180,14 +180,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 46339436172196389
+      id: 38162318056982499
       identification: 
         name: Primary Report
         alias: 302191
 
     columns: 
     - # ====== Column: CREADO ======================================
-      id: 40718959816789295
+      id: 32541841701575405
       identification: 
         column-name: CREADO
         type: Plain Text
@@ -232,7 +232,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREADO_POR ==================================
-      id: 40719029831789296
+      id: 32541911716575406
       identification: 
         column-name: CREADO_POR
         type: Plain Text
@@ -273,7 +273,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO ==================================
-      id: 40719202544789297
+      id: 32542084429575407
       identification: 
         column-name: MODIFICADO
         type: Plain Text
@@ -315,7 +315,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO_POR ==============================
-      id: 40719261050789298
+      id: 32542142935575408
       identification: 
         column-name: MODIFICADO_POR
         type: Plain Text
@@ -356,7 +356,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SCORE_OPERACION_RC ==========================
-      id: 40721880944789324
+      id: 32544762829575434
       identification: 
         column-name: SCORE_OPERACION_RC
         type: Plain Text
@@ -397,13 +397,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: VISIBLE_EN_OPORTUNIDADES_SN =================
-      id: 46278181133803252
+      id: 38101063018589362
       identification: 
         column-name: VISIBLE_EN_OPORTUNIDADES_SN
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SI_NO # 38066481741234781
+        list-of-values: LOV_SI_NO # 29889363626020891
 
       heading: 
         heading: Publicada
@@ -438,7 +438,7 @@ regions:
         pivot: true
 
     - # ====== Column: FECHA_PUBLICACION ===========================
-      id: 46278260731803253
+      id: 38101142616589363
       identification: 
         column-name: FECHA_PUBLICACION
         type: Plain Text
@@ -483,7 +483,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_FACTURA ==================================
-      id: 46330381963191975
+      id: 38153263847978085
       identification: 
         column-name: ID_FACTURA
         type: Hidden
@@ -501,7 +501,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_INGRESO ===============================
-      id: 46330867202191977
+      id: 38153749086978087
       identification: 
         column-name: FECHA_INGRESO
         type: Plain Text
@@ -546,7 +546,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_EMISION ===============================
-      id: 46331251623191978
+      id: 38154133507978088
       identification: 
         column-name: FECHA_EMISION
         type: Plain Text
@@ -591,7 +591,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_PAGO ==================================
-      id: 46331627923191980
+      id: 38154509807978090
       identification: 
         column-name: FECHA_PAGO
         type: Plain Text
@@ -636,7 +636,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TIPO_COMPROBANTE_RC =========================
-      id: 46332062620191981
+      id: 38154944504978091
       identification: 
         column-name: TIPO_COMPROBANTE_RC
         type: Plain Text
@@ -677,7 +677,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TIPO_COMPROBANTE ============================
-      id: 46332412434191982
+      id: 38155294318978092
       identification: 
         column-name: TIPO_COMPROBANTE
         type: Plain Text
@@ -718,7 +718,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SERIE =======================================
-      id: 46332816931191984
+      id: 38155698815978094
       identification: 
         column-name: SERIE
         type: Plain Text
@@ -759,7 +759,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NUMERO ======================================
-      id: 46333218566191985
+      id: 38156100450978095
       identification: 
         column-name: NUMERO
         type: Plain Text
@@ -800,7 +800,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONEDA_RC ===================================
-      id: 46333650973191987
+      id: 38156532857978097
       identification: 
         column-name: MONEDA_RC
         type: Plain Text
@@ -841,7 +841,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONEDA ======================================
-      id: 46333992933191988
+      id: 38156874817978098
       identification: 
         column-name: MONEDA
         type: Plain Text
@@ -882,7 +882,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONTO_TOTAL =================================
-      id: 46334426804191990
+      id: 38157308688978100
       identification: 
         column-name: MONTO_TOTAL
         type: Plain Text
@@ -926,7 +926,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DETRACCION ==================================
-      id: 46334878311191991
+      id: 38157760195978101
       identification: 
         column-name: DETRACCION
         type: Plain Text
@@ -970,7 +970,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DESCUENTOS ==================================
-      id: 46335281366191993
+      id: 38158163250978103
       identification: 
         column-name: DESCUENTOS
         type: Plain Text
@@ -1014,7 +1014,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SALDO_A_PAGO ================================
-      id: 46335623195191994
+      id: 38158505079978104
       identification: 
         column-name: SALDO_A_PAGO
         type: Plain Text
@@ -1058,7 +1058,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_VENCIMIENTO ===========================
-      id: 46336042370191996
+      id: 38158924254978106
       identification: 
         column-name: FECHA_VENCIMIENTO
         type: Plain Text
@@ -1103,7 +1103,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: OBSERVACION =================================
-      id: 46336421336191997
+      id: 38159303220978107
       identification: 
         column-name: OBSERVACION
         type: Plain Text
@@ -1144,7 +1144,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_EMPRESA_CEDENTE ==========================
-      id: 46336864292191998
+      id: 38159746176978108
       identification: 
         column-name: ID_EMPRESA_CEDENTE
         type: Plain Text
@@ -1185,7 +1185,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_EMPRESA_PAGADOR ==========================
-      id: 46337213620192000
+      id: 38160095504978110
       identification: 
         column-name: ID_EMPRESA_PAGADOR
         type: Plain Text
@@ -1226,7 +1226,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ESTADO_FACTURA_RC ===========================
-      id: 46337593484192001
+      id: 38160475368978111
       identification: 
         column-name: ESTADO_FACTURA_RC
         type: Plain Text
@@ -1267,7 +1267,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ESTADO_FACTURA ==============================
-      id: 46338048870192003
+      id: 38160930754978113
       identification: 
         column-name: ESTADO_FACTURA
         type: Plain Text
@@ -1308,7 +1308,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EMPRESA_CEDENTE =============================
-      id: 46338470888192004
+      id: 38161352772978114
       identification: 
         column-name: EMPRESA_CEDENTE
         type: Plain Text
@@ -1349,7 +1349,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EMPRESA_PAGADOR =============================
-      id: 46338862376192005
+      id: 38161744260978115
       identification: 
         column-name: EMPRESA_PAGADOR
         type: Plain Text
@@ -1434,14 +1434,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREAR =======================================
-  id: 46278340582803254
+  id: 38101222467589364
   identification: 
     button-name: CREAR
     label: Crear
 
   layout: 
     sequence: 10
-    region: Breadcrumb # 31860555998690030
+    region: Breadcrumb # 23683437883476140
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1466,7 +1466,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onDialogClosed - Facturas ===========
-  id: 40718556125789291
+  id: 32541438010575401
   identification: 
     name: onDialogClosed - Facturas
 
@@ -1478,11 +1478,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Facturas # 46329736314191870
+    region: Facturas # 38152618198977980
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 40718621834789292
+    id: 32541503719575402
     identification: 
       action: Refresh
 
@@ -1491,16 +1491,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Facturas # 46329736314191870
+      region: Facturas # 38152618198977980
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Facturas # 40718556125789291
+      event: onDialogClosed - Facturas # 32541438010575401
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onDialogClosed - Crear ==============
-  id: 40718785985789293
+  id: 32541667870575403
   identification: 
     name: onDialogClosed - Crear
 
@@ -1512,11 +1512,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Button
-    button: CREAR # 46278340582803254
+    button: CREAR # 38101222467589364
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 40718884907789294
+    id: 32541766792575404
     identification: 
       action: Refresh
 
@@ -1525,11 +1525,11 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Facturas # 46329736314191870
+      region: Facturas # 38152618198977980
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Crear # 40718785985789293
+      event: onDialogClosed - Crear # 32541667870575403
       fire-when-event-result-is: True
       fire-on-initialization: false
 

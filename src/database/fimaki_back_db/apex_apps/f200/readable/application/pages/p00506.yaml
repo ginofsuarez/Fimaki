@@ -43,7 +43,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Crear Tipo de Código ========================
-  id: 24740551363558797
+  id: 16563433248344907
   identification: 
     name: Crear Tipo de Código
     type: Form
@@ -92,7 +92,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 24748662204558827
+  id: 16571544089344937
   identification: 
     name: Buttons
     type: Static Content
@@ -131,7 +131,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P506_ID_CODIGO_REF_TIPO ==================
-  id: 24740812045558800
+  id: 16563693930344910
   identification: 
     name: P506_ID_CODIGO_REF_TIPO
     type: Hidden
@@ -141,14 +141,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: ID_CODIGO_REF_TIPO
     data-type: NUMBER
     query-only: true
@@ -164,7 +164,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P506_CODIGO ==============================
-  id: 24741208710558805
+  id: 16564090595344915
   identification: 
     name: P506_CODIGO
     type: Text Field
@@ -182,7 +182,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -206,7 +206,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: CODIGO
     data-type: VARCHAR2
     query-only: false
@@ -224,7 +224,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P506_NOMBRE ==============================
-  id: 24741658488558806
+  id: 16564540373344916
   identification: 
     name: P506_NOMBRE
     type: Text Field
@@ -242,7 +242,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -266,7 +266,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: NOMBRE
     data-type: VARCHAR2
     query-only: false
@@ -284,7 +284,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P506_DESCRIPCION =========================
-  id: 24742018937558807
+  id: 16564900822344917
   identification: 
     name: P506_DESCRIPCION
     type: Text Field
@@ -302,7 +302,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -326,7 +326,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: DESCRIPCION
     data-type: VARCHAR2
     query-only: false
@@ -344,7 +344,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P506_SISTEMA_SN ==========================
-  id: 24742444742558809
+  id: 16565326627344919
   identification: 
     name: P506_SISTEMA_SN
     type: Select One
@@ -363,7 +363,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -390,7 +390,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: SISTEMA_SN
     data-type: VARCHAR2
     query-only: false
@@ -406,7 +406,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P506_ACTIVO_SN ===========================
-  id: 24742781956558810
+  id: 16565663841344920
   identification: 
     name: P506_ACTIVO_SN
     type: Select One
@@ -425,7 +425,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -452,7 +452,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: ACTIVO_SN
     data-type: VARCHAR2
     query-only: false
@@ -468,7 +468,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P506_CREADO_POR ==========================
-  id: 24743213894558811
+  id: 16566095779344921
   identification: 
     name: P506_CREADO_POR
     type: Text Field
@@ -486,7 +486,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -510,7 +510,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -528,7 +528,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P506_CREADO ==============================
-  id: 24743603442558812
+  id: 16566485327344922
   identification: 
     name: P506_CREADO
     type: Date Picker
@@ -547,7 +547,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -571,7 +571,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -589,7 +589,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P506_MODIFICADO_POR ======================
-  id: 24744396877558815
+  id: 16567278762344925
   identification: 
     name: P506_MODIFICADO_POR
     type: Text Field
@@ -607,7 +607,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -631,7 +631,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -649,7 +649,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P506_MODIFICADO ==========================
-  id: 24744862006558816
+  id: 16567743891344926
   identification: 
     name: P506_MODIFICADO
     type: Date Picker
@@ -668,7 +668,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Crear Tipo de Código # 24740551363558797
+    region: Crear Tipo de Código # 16563433248344907
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -692,7 +692,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -711,14 +711,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 24749016561558828
+  id: 16571898446344938
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 24748662204558827
+    region: Buttons # 16571544089344937
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -737,14 +737,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 24750442568558834
+  id: 16573324453344944
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 24748662204558827
+    region: Buttons # 16571544089344937
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -774,14 +774,14 @@ buttons:
     item: P506_ID_CODIGO_REF_TIPO
 
 - # ====== Button: SAVE ========================================
-  id: 24750868607558835
+  id: 16573750492344945
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 24748662204558827
+    region: Buttons # 16571544089344937
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -807,14 +807,14 @@ buttons:
     item: P506_ID_CODIGO_REF_TIPO
 
 - # ====== Button: CREATE ======================================
-  id: 24751219551558835
+  id: 16574101436344945
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 24748662204558827
+    region: Buttons # 16571544089344937
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -841,7 +841,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 24749109131558828
+  id: 16571991016344938
   identification: 
     name: Cancel Dialog
 
@@ -853,23 +853,23 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 24749016561558828
+    button: CANCEL # 16571898446344938
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 24749936173558832
+    id: 16572818058344942
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 24749109131558828
+      event: Cancel Dialog # 16571991016344938
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: P506_CREADO must be timestamp ===========
-  id: 24744103601558815
+  id: 16566985486344925
   identification: 
     name: P506_CREADO must be timestamp
 
@@ -884,10 +884,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P506_CREADO # 24743603442558812
+    associated-item: P506_CREADO # 16566485327344922
 
 - # ====== Validation: P506_MODIFICADO must be timestamp =======
-  id: 24745346418558818
+  id: 16568228303344928
   identification: 
     name: P506_MODIFICADO must be timestamp
 
@@ -902,16 +902,16 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P506_MODIFICADO # 24744862006558816
+    associated-item: P506_MODIFICADO # 16567743891344926
 
 processes: 
 - # ====== Process: Initialize form Crear Tipo de Código =======
-  id: 24751637804558837
+  id: 16574519689344947
   identification: 
     name: Initialize form Crear Tipo de Código
     type: Form - Initialization
     execution-chain: None
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
 
   execution: 
     sequence: 10
@@ -919,12 +919,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Crear Tipo de Código ==========
-  id: 24752018581558838
+  id: 16574900466344948
   identification: 
     name: Process form Crear Tipo de Código
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Crear Tipo de Código # 24740551363558797
+    form-region: Crear Tipo de Código # 16563433248344907
 
   settings: 
     target-type: Region Source
@@ -941,7 +941,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 24752442039558839
+  id: 16575323924344949
   identification: 
     name: Close Dialog
     type: Close Dialog

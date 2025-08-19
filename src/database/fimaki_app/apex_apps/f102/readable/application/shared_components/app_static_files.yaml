@@ -1,0 +1,99 @@
+---
+- # ====== Static Application File: BCP.jpg ====================
+  id: 32148579059029123
+  identification: 
+    file-name: BCP.jpg
+
+  attributes: 
+    mime-type: image/jpeg
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-32.png ======
+  id: 43379403834881367
+  identification: 
+    file-name: icons/app-icon-32.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-144-rounded.p
+  id: 43379708072881370
+  identification: 
+    file-name: icons/app-icon-144-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-192.png =====
+  id: 43380009453881371
+  identification: 
+    file-name: icons/app-icon-192.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-256-rounded.p
+  id: 43380332790881372
+  identification: 
+    file-name: icons/app-icon-256-rounded.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: icons/app-icon-512.png =====
+  id: 43380666841881382
+  identification: 
+    file-name: icons/app-icon-512.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: fimaki_logo/2.png ==========
+  id: 43599201243782546
+  identification: 
+    file-name: fimaki_logo/2.png
+
+  attributes: 
+    mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app-100-logo.png ===========
+  id: 43602980203854808
+  identification: 
+    file-name: app-100-logo.png
+
+  attributes: 
+    mime-type: image/png
+
+- # ====== Static Application File: docs/Política_de_Privacidad_
+  id: 47031967430362932
+  identification: 
+    file-name: docs/Política_de_Privacidad_y_Protección_de_Datos_Personales.pdf
+
+  attributes: 
+    mime-type: application/pdf
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: docs/Términos_y_Condiciones.
+  id: 47032168143362934
+  identification: 
+    file-name: docs/Términos_y_Condiciones.pdf
+
+  attributes: 
+    mime-type: application/pdf
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: docs/CONTRATO_MARCO_DE_INVER
+  id: 47032533232362935
+  identification: 
+    file-name: docs/CONTRATO_MARCO_DE_INVERSIÓN_v1.1.pdf
+
+  attributes: 
+    mime-type: application/pdf
+    file-character-set: Unicode UTF-8
+

@@ -48,7 +48,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Editar Código de Referencia =================
-  id: 35723261327480900
+  id: 27546143212267010
   identification: 
     name: Editar Código de Referencia
     type: Form
@@ -98,7 +98,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 35738998462480968
+  id: 27561880347267078
   identification: 
     name: Buttons
     type: Static Content
@@ -136,7 +136,7 @@ regions:
       show-line-breaks: true
 
 - # ====== Region: Auditoria ===================================
-  id: 36676021077138129
+  id: 28498902961924239
   identification: 
     name: Auditoria
     type: Static Content
@@ -184,7 +184,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P511_ID_CODIGO_REFERENCIA ================
-  id: 35723672611480902
+  id: 27546554496267012
   identification: 
     name: P511_ID_CODIGO_REFERENCIA
     type: Hidden
@@ -194,14 +194,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ID_CODIGO_REFERENCIA
     data-type: NUMBER
     query-only: true
@@ -217,7 +217,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_CODIGO_REF_TIPO =====================
-  id: 35724080919480905
+  id: 27546962804267015
   identification: 
     name: P511_CODIGO_REF_TIPO
     type: Hidden
@@ -227,14 +227,14 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: CODIGO_REF_TIPO
     data-type: VARCHAR2
     query-only: false
@@ -250,7 +250,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_CODIGO ==============================
-  id: 35724466109480907
+  id: 27547347994267017
   identification: 
     name: P511_CODIGO
     type: Text Field
@@ -268,7 +268,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -292,7 +292,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: CODIGO
     data-type: VARCHAR2
     query-only: false
@@ -314,7 +314,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_NOMBRE ==============================
-  id: 35724880535480908
+  id: 27547762420267018
   identification: 
     name: P511_NOMBRE
     type: Text Field
@@ -332,7 +332,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -356,7 +356,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: NOMBRE
     data-type: VARCHAR2
     query-only: false
@@ -374,7 +374,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_DESCRIPCION =========================
-  id: 35725209689480910
+  id: 27548091574267020
   identification: 
     name: P511_DESCRIPCION
     type: Text Field
@@ -392,7 +392,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -416,7 +416,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: DESCRIPCION
     data-type: VARCHAR2
     query-only: false
@@ -434,7 +434,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_SECUENCIA ===========================
-  id: 35725647763480911
+  id: 27548529648267021
   identification: 
     name: P511_SECUENCIA
     type: Number Field
@@ -449,7 +449,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -473,7 +473,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: SECUENCIA
     data-type: NUMBER
     query-only: false
@@ -491,7 +491,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ACTIVO_SN ===========================
-  id: 35725990534480915
+  id: 27548872419267025
   identification: 
     name: P511_ACTIVO_SN
     type: Switch
@@ -509,7 +509,7 @@ page-items:
 
   layout: 
     sequence: 180
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -532,7 +532,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ACTIVO_SN
     data-type: VARCHAR2
     query-only: false
@@ -551,7 +551,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_CREADO_POR ==========================
-  id: 35726464813480916
+  id: 27549346698267026
   identification: 
     name: P511_CREADO_POR
     type: Display Only
@@ -568,7 +568,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 36676021077138129
+    region: Auditoria # 28498902961924239
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -587,7 +587,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -603,7 +603,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_CREADO ==============================
-  id: 35726794065480918
+  id: 27549675950267028
   identification: 
     name: P511_CREADO
     type: Display Only
@@ -620,7 +620,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 36676021077138129
+    region: Auditoria # 28498902961924239
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -640,7 +640,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -656,7 +656,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_MODIFICADO_POR ======================
-  id: 35727589592480921
+  id: 27550471477267031
   identification: 
     name: P511_MODIFICADO_POR
     type: Display Only
@@ -673,7 +673,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 36676021077138129
+    region: Auditoria # 28498902961924239
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -692,7 +692,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -708,7 +708,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_MODIFICADO ==========================
-  id: 35727981945480923
+  id: 27550863830267033
   identification: 
     name: P511_MODIFICADO
     type: Display Only
@@ -725,7 +725,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 36676021077138129
+    region: Auditoria # 28498902961924239
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -745,7 +745,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -761,7 +761,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO1 ===========================
-  id: 35728881096480926
+  id: 27551762981267036
   identification: 
     name: P511_ATRIBUTO1
     type: Text Field
@@ -779,7 +779,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -803,7 +803,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO1
     data-type: VARCHAR2
     query-only: false
@@ -821,7 +821,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO2 ===========================
-  id: 35729221217480928
+  id: 27552103102267038
   identification: 
     name: P511_ATRIBUTO2
     type: Text Field
@@ -839,7 +839,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -863,7 +863,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO2
     data-type: VARCHAR2
     query-only: false
@@ -881,7 +881,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO3 ===========================
-  id: 35729613894480930
+  id: 27552495779267040
   identification: 
     name: P511_ATRIBUTO3
     type: Text Field
@@ -899,7 +899,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -923,7 +923,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO3
     data-type: VARCHAR2
     query-only: false
@@ -941,7 +941,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO4 ===========================
-  id: 35730031128480932
+  id: 27552913013267042
   identification: 
     name: P511_ATRIBUTO4
     type: Text Field
@@ -959,7 +959,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -983,7 +983,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO4
     data-type: VARCHAR2
     query-only: false
@@ -1001,7 +1001,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO5 ===========================
-  id: 35730409529480934
+  id: 27553291414267044
   identification: 
     name: P511_ATRIBUTO5
     type: Text Field
@@ -1019,7 +1019,7 @@ page-items:
 
   layout: 
     sequence: 120
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1043,7 +1043,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO5
     data-type: VARCHAR2
     query-only: false
@@ -1061,7 +1061,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO6 ===========================
-  id: 35730806152480936
+  id: 27553688037267046
   identification: 
     name: P511_ATRIBUTO6
     type: Hidden
@@ -1071,14 +1071,14 @@ page-items:
 
   layout: 
     sequence: 130
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO6
     data-type: VARCHAR2
     query-only: false
@@ -1094,7 +1094,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO7 ===========================
-  id: 35731250961480937
+  id: 27554132846267047
   identification: 
     name: P511_ATRIBUTO7
     type: Hidden
@@ -1104,14 +1104,14 @@ page-items:
 
   layout: 
     sequence: 140
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO7
     data-type: VARCHAR2
     query-only: false
@@ -1127,7 +1127,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO8 ===========================
-  id: 35731600727480939
+  id: 27554482612267049
   identification: 
     name: P511_ATRIBUTO8
     type: Hidden
@@ -1137,14 +1137,14 @@ page-items:
 
   layout: 
     sequence: 150
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO8
     data-type: VARCHAR2
     query-only: false
@@ -1160,7 +1160,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO9 ===========================
-  id: 35732059970480941
+  id: 27554941855267051
   identification: 
     name: P511_ATRIBUTO9
     type: Hidden
@@ -1170,14 +1170,14 @@ page-items:
 
   layout: 
     sequence: 160
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO9
     data-type: VARCHAR2
     query-only: false
@@ -1193,7 +1193,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P511_ATRIBUTO10 ==========================
-  id: 35732388039480942
+  id: 27555269924267052
   identification: 
     name: P511_ATRIBUTO10
     type: Hidden
@@ -1203,14 +1203,14 @@ page-items:
 
   layout: 
     sequence: 170
-    region: Editar Código de Referencia # 35723261327480900
+    region: Editar Código de Referencia # 27546143212267010
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
     column: ATRIBUTO10
     data-type: VARCHAR2
     query-only: false
@@ -1227,14 +1227,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 35739390893480970
+  id: 27562272778267080
   identification: 
     button-name: CANCEL
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 35738998462480968
+    region: Buttons # 27561880347267078
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -1253,14 +1253,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 35740816416480976
+  id: 27563698301267086
   identification: 
     button-name: DELETE
     label: Eliminar
 
   layout: 
     sequence: 20
-    region: Buttons # 35738998462480968
+    region: Buttons # 27561880347267078
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -1291,14 +1291,14 @@ buttons:
     item: P511_ID_CODIGO_REFERENCIA
 
 - # ====== Button: SAVE ========================================
-  id: 35741230617480977
+  id: 27564112502267087
   identification: 
     button-name: SAVE
     label: Aplicar Cambios
 
   layout: 
     sequence: 30
-    region: Buttons # 35738998462480968
+    region: Buttons # 27561880347267078
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1324,14 +1324,14 @@ buttons:
     item: P511_ID_CODIGO_REFERENCIA
 
 - # ====== Button: CREATE ======================================
-  id: 35741617440480978
+  id: 27564499325267088
   identification: 
     button-name: CREATE
     label: Crear
 
   layout: 
     sequence: 40
-    region: Buttons # 35738998462480968
+    region: Buttons # 27561880347267078
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1358,7 +1358,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 35739545464480970
+  id: 27562427349267080
   identification: 
     name: Cancel Dialog
 
@@ -1370,23 +1370,23 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 35739390893480970
+    button: CANCEL # 27562272778267080
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 35740301093480974
+    id: 27563182978267084
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 35739545464480970
+      event: Cancel Dialog # 27562427349267080
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: P511_CREADO must be timestamp ===========
-  id: 35727304217480920
+  id: 27550186102267030
   identification: 
     name: P511_CREADO must be timestamp
 
@@ -1401,10 +1401,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P511_CREADO # 35726794065480918
+    associated-item: P511_CREADO # 27549675950267028
 
 - # ====== Validation: P511_MODIFICADO must be timestamp =======
-  id: 35728519019480925
+  id: 27551400904267035
   identification: 
     name: P511_MODIFICADO must be timestamp
 
@@ -1419,10 +1419,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P511_MODIFICADO # 35727981945480923
+    associated-item: P511_MODIFICADO # 27550863830267033
 
 - # ====== Validation: Validar  P511_CODIGO no duplicado =======
-  id: 43773734025564944
+  id: 35596615910351054
   identification: 
     name: Validar  P511_CODIGO no duplicado
 
@@ -1453,11 +1453,11 @@ validations:
 
   error: 
     display-location: Inline with Field and in Notification
-    associated-item: P511_CODIGO # 35724466109480907
+    associated-item: P511_CODIGO # 27547347994267017
 
 computations: 
 - # ====== Computation: P511_CODIGO_REF_TIPO ===================
-  id: 43773615720564943
+  id: 35596497605351053
   identification: 
     item-name: P511_CODIGO_REF_TIPO
 
@@ -1475,12 +1475,12 @@ computations:
 
 processes: 
 - # ====== Process: Initialize form Editar Código de Referencia 
-  id: 35742032390480980
+  id: 27564914275267090
   identification: 
     name: Initialize form Editar Código de Referencia
     type: Form - Initialization
     execution-chain: None
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
 
   execution: 
     sequence: 10
@@ -1488,12 +1488,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Editar Código de Referencia ===
-  id: 35742409528480982
+  id: 27565291413267092
   identification: 
     name: Process form Editar Código de Referencia
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Editar Código de Referencia # 35723261327480900
+    form-region: Editar Código de Referencia # 27546143212267010
 
   settings: 
     target-type: Region Source
@@ -1510,7 +1510,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 35742797529480983
+  id: 27565679414267093
   identification: 
     name: Close Dialog
     type: Close Dialog

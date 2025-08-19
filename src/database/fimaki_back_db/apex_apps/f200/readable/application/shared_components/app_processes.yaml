@@ -1,6 +1,6 @@
 ---
 - # ====== Application Process: DESCARGAR_ARCHIVO ==============
-  id: 47140736668662518
+  id: 38963618553448628
   identification: 
     name: DESCARGAR_ARCHIVO
     type: NATIVE_PLSQL
@@ -49,7 +49,7 @@
     version-number: 41720839898791
 
 - # ====== Application Process: SET_DECIMAL_CONFIG =============
-  id: 48478538640103442
+  id: 40301420524889552
   identification: 
     name: SET_DECIMAL_CONFIG
     type: NATIVE_PLSQL
@@ -65,7 +65,8 @@
 
   subscription: 
     master: 
-      referenced-id: 26941767673341345
+      app: 100 # FIMAKI-INVERSIONISTA
+      referenced-id: 26941767673341345 # SET_DECIMAL_CONFIG
 
     version-number: 41719162603876
 

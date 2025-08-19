@@ -138,7 +138,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Transacciones Financieras ===================
-  id: 51796972279374190
+  id: 43615659689152432
   identification: 
     name: Transacciones Financieras
     type: Cards
@@ -228,7 +228,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 32127715571647463
+    id: 23946402981425705
     appearance: 
       layout: Grid
       grid-columns: Auto
@@ -332,14 +332,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREAR =======================================
-  id: 28738596832034394
+  id: 20557284241812636
   identification: 
     button-name: CREAR
     label: Nuevo Depósito
 
   layout: 
     sequence: 10
-    region: Breadcrumb # 27854057095976059
+    region: Breadcrumb # 19672744505754301
     slot: EDIT
     start-new-layout: false
     start-new-row: true

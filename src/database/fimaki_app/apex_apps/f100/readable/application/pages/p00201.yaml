@@ -61,7 +61,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Cuenta Bancaria =============================
-  id: 32000085529914040
+  id: 23818772939692282
   identification: 
     name: Cuenta Bancaria
     type: Form
@@ -116,7 +116,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P201_ID_CUENTA_BANCARIA ==================
-  id: 32000435358914043
+  id: 23819122768692285
   identification: 
     name: P201_ID_CUENTA_BANCARIA
     type: Hidden
@@ -126,14 +126,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: ID_CUENTA_BANCARIA
     data-type: NUMBER
     query-only: true
@@ -149,7 +149,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_NUMERO_CUENTA =======================
-  id: 32000870670914049
+  id: 23819558080692291
   identification: 
     name: P201_NUMERO_CUENTA
     type: Text Field
@@ -167,7 +167,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -194,7 +194,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: NUMERO_CUENTA
     data-type: VARCHAR2
     query-only: false
@@ -216,7 +216,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_CCI =================================
-  id: 32001242898914051
+  id: 23819930308692293
   identification: 
     name: P201_CCI
     type: Text Field
@@ -234,7 +234,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -261,7 +261,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: CCI
     data-type: VARCHAR2
     query-only: false
@@ -283,7 +283,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_MONEDA_RC ===========================
-  id: 32001613360914053
+  id: 23820300770692295
   identification: 
     name: P201_MONEDA_RC
     type: Select List
@@ -300,7 +300,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -321,7 +321,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_MONEDA_ACTIVO # 32019300127930460
+    list-of-values: LOV_MONEDA_ACTIVO # 23837987537708702
     display-extra-values: false
     display-null-value: false
 
@@ -329,7 +329,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: MONEDA_RC
     data-type: VARCHAR2
     query-only: false
@@ -351,7 +351,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_ALIAS ===============================
-  id: 32002088766914054
+  id: 23820776176692296
   identification: 
     name: P201_ALIAS
     type: Text Field
@@ -369,7 +369,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -393,7 +393,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: ALIAS
     data-type: VARCHAR2
     query-only: false
@@ -414,7 +414,7 @@ page-items:
     help-text: Nombre personalizado para identificar esta cuenta (ej. "BCP Soles", “Cuenta principal en soles”).
 
 - # ====== Page Item: P201_ES_PRINCIPAL_SN =====================
-  id: 32002496645914056
+  id: 23821184055692298
   identification: 
     name: P201_ES_PRINCIPAL_SN
     type: Switch
@@ -432,7 +432,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -456,7 +456,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: ES_PRINCIPAL_SN
     data-type: VARCHAR2
     query-only: false
@@ -471,7 +471,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_ID_PERSONA ==========================
-  id: 32002813685914057
+  id: 23821501095692299
   identification: 
     name: P201_ID_PERSONA
     type: Hidden
@@ -481,14 +481,14 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: ID_PERSONA
     data-type: NUMBER
     query-only: false
@@ -508,7 +508,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_ID_INSTITUCION ======================
-  id: 32003294744914060
+  id: 23821982154692302
   identification: 
     name: P201_ID_INSTITUCION
     type: Select One
@@ -527,7 +527,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -549,13 +549,13 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_INSTITUCION_FINANCIERA # 32027293905104718
+    list-of-values: LOV_INSTITUCION_FINANCIERA # 23845981314882960
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: ID_INSTITUCION
     data-type: NUMBER
     query-only: false
@@ -575,7 +575,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_ID_PAIS =============================
-  id: 32003655924914062
+  id: 23822343334692304
   identification: 
     name: P201_ID_PAIS
     type: Select List
@@ -592,7 +592,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -613,7 +613,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PAIS_ACTIVO # 29533080453665549
+    list-of-values: LOV_PAIS_ACTIVO # 21351767863443791
     display-extra-values: false
     display-null-value: false
 
@@ -621,7 +621,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: ID_PAIS
     data-type: NUMBER
     query-only: false
@@ -643,7 +643,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_ALERT_CLASS =========================
-  id: 34530316428986065
+  id: 26349003838764307
   identification: 
     name: P201_ALERT_CLASS
     type: Hidden
@@ -674,7 +674,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_ACTIVA_SN ===========================
-  id: 44945997778963059
+  id: 36764685188741301
   identification: 
     name: P201_ACTIVA_SN
     type: Switch
@@ -692,7 +692,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -717,7 +717,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
     column: ACTIVO_SN
     data-type: VARCHAR2
     query-only: false
@@ -736,7 +736,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P201_CODIGO_REGULADOR ====================
-  id: 44946544593963065
+  id: 36765232003741307
   identification: 
     name: P201_CODIGO_REGULADOR
     type: Hidden
@@ -746,7 +746,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: BODY
 
   advanced: 
@@ -767,14 +767,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 32010241763914089
+  id: 23828929173692331
   identification: 
     button-name: CANCEL
     label: Cancelar
 
   layout: 
     sequence: 50
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -797,14 +797,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: DELETE ======================================
-  id: 32010869322914091
+  id: 23829556732692333
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 10
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -833,14 +833,14 @@ buttons:
     type: Never
 
 - # ====== Button: SAVE ========================================
-  id: 32011220109914092
+  id: 23829907519692334
   identification: 
     button-name: SAVE
     label: Guardar Cambios
 
   layout: 
     sequence: 30
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -866,14 +866,14 @@ buttons:
     item: P201_ID_CUENTA_BANCARIA
 
 - # ====== Button: CREATE ======================================
-  id: 32011711707914094
+  id: 23830399117692336
   identification: 
     button-name: CREATE
     label: Crear Cuenta
 
   layout: 
     sequence: 40
-    region: Cuenta Bancaria # 32000085529914040
+    region: Cuenta Bancaria # 23818772939692282
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -900,7 +900,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onChange - ID Institucion ===========
-  id: 44946324623963063
+  id: 36765012033741305
   identification: 
     name: onChange - ID Institucion
 
@@ -917,7 +917,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 44946427627963064
+    id: 36765115037741306
     identification: 
       action: Execute Server-side Code
 
@@ -941,7 +941,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - ID Institucion # 44946324623963063
+      event: onChange - ID Institucion # 36765012033741305
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
@@ -949,7 +949,7 @@ dynamic-actions:
 
 validations: 
 - # ====== Validation: Cuenta Bancaria no tiene Solicitud de Dep
-  id: 44946050740963060
+  id: 36764738150741302
   identification: 
     name: Cuenta Bancaria no tiene Solicitud de Depositos activa
 
@@ -971,7 +971,7 @@ validations:
     value: N
 
 - # ====== Validation: Cuenta Bancaria no tiene Saldo Disponible
-  id: 44946194041963061
+  id: 36764881451741303
   identification: 
     name: Cuenta Bancaria no tiene Saldo Disponible
 
@@ -1001,7 +1001,7 @@ validations:
     value: N
 
 - # ====== Validation: El numero de Cuenta es valido ===========
-  id: 44946240777963062
+  id: 36764928187741304
   identification: 
     name: El numero de Cuenta es valido
 
@@ -1028,10 +1028,10 @@ validations:
   error: 
     error-message: El número de cuenta es inválido.
     display-location: Inline with Field and in Notification
-    associated-item: P201_NUMERO_CUENTA # 32000870670914049
+    associated-item: P201_NUMERO_CUENTA # 23819558080692291
 
 - # ====== Validation: El numero de Cuenta Interbancario es vali
-  id: 44946626581963066
+  id: 36765313991741308
   identification: 
     name: El numero de Cuenta Interbancario es valido
 
@@ -1058,10 +1058,10 @@ validations:
   error: 
     error-message: El número de codigo de cuenta interbancario es inválido.
     display-location: Inline with Field and in Notification
-    associated-item: P201_CCI # 32001242898914051
+    associated-item: P201_CCI # 23819930308692293
 
 - # ====== Validation: El CC es unico ==========================
-  id: 44946745300963067
+  id: 36765432710741309
   identification: 
     name: El CC es unico
 
@@ -1080,14 +1080,14 @@ validations:
   error: 
     error-message: El número de cuenta ya se encuentra registrado.
     display-location: Inline with Field and in Notification
-    associated-item: P201_NUMERO_CUENTA # 32000870670914049
+    associated-item: P201_NUMERO_CUENTA # 23819558080692291
 
   server-side-condition: 
     type: Item is NULL
     item: P201_ID_CUENTA_BANCARIA
 
 - # ====== Validation: El CCI es unico =========================
-  id: 44946860548963068
+  id: 36765547958741310
   identification: 
     name: El CCI es unico
 
@@ -1106,7 +1106,7 @@ validations:
   error: 
     error-message: El número de codigo de cuenta interbancario ya se encuentra registrado.
     display-location: Inline with Field and in Notification
-    associated-item: P201_CCI # 32001242898914051
+    associated-item: P201_CCI # 23819930308692293
 
   server-side-condition: 
     type: Item is NULL
@@ -1114,7 +1114,7 @@ validations:
 
 computations: 
 - # ====== Computation: P201_ALERT_CLASS =======================
-  id: 34530518938986067
+  id: 26349206348764309
   identification: 
     item-name: P201_ALERT_CLASS
 
@@ -1138,12 +1138,12 @@ computations:
 
 processes: 
 - # ====== Process: Initialize form Detalles Cuenta Bancaria ===
-  id: 32012438480914097
+  id: 23831125890692339
   identification: 
     name: Initialize form Detalles Cuenta Bancaria
     type: Form - Initialization
     execution-chain: None
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
 
   execution: 
     sequence: 10
@@ -1151,12 +1151,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Detalles Cuenta Bancaria ======
-  id: 32012841400914099
+  id: 23831528810692341
   identification: 
     name: Process form Detalles Cuenta Bancaria
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Cuenta Bancaria # 32000085529914040
+    form-region: Cuenta Bancaria # 23818772939692282
 
   settings: 
     target-type: Region Source
@@ -1176,7 +1176,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Modificar Cuenta Primaria ==================
-  id: 32070150381927773
+  id: 23888837791706015
   identification: 
     name: Modificar Cuenta Primaria
     type: Execute Code
@@ -1211,7 +1211,7 @@ processes:
 
 branches: 
 - # ====== Branch: Go To Page 200 ==============================
-  id: 32011961883914094
+  id: 23830649293692336
   identification: 
     name: Go To Page 200
 
@@ -1226,7 +1226,7 @@ branches:
       page: 200 # Cuentas Bancarias
 
 - # ====== Branch: Go To Page 202 ==============================
-  id: 32069133184927763
+  id: 23887820594706005
   identification: 
     name: Go To Page 202
 

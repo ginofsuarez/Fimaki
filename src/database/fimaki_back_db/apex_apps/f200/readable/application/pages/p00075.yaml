@@ -48,7 +48,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Auditoria ===================================
-  id: 44139047754598332
+  id: 35961929639384442
   identification: 
     name: Auditoria
     type: Static Content
@@ -95,7 +95,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Cuentas Bancarias ===========================
-  id: 44188762565312813
+  id: 36011644450098923
   identification: 
     name: Cuentas Bancarias
     type: Form
@@ -145,7 +145,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 44199590919312858
+  id: 36022472804098968
   identification: 
     name: Buttons
     type: Static Content
@@ -184,7 +184,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P75_ID_CUENTA_BANCARIA ===================
-  id: 44189093352312814
+  id: 36011975237098924
   identification: 
     name: P75_ID_CUENTA_BANCARIA
     type: Hidden
@@ -194,14 +194,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: ID_CUENTA_BANCARIA
     data-type: NUMBER
     query-only: true
@@ -217,7 +217,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_NUMERO_CUENTA ========================
-  id: 44189504455312818
+  id: 36012386340098928
   identification: 
     name: P75_NUMERO_CUENTA
     type: Text Field
@@ -235,7 +235,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -259,7 +259,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: NUMERO_CUENTA
     data-type: VARCHAR2
     query-only: false
@@ -277,7 +277,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_CCI ==================================
-  id: 44189911239312820
+  id: 36012793124098930
   identification: 
     name: P75_CCI
     type: Text Field
@@ -295,7 +295,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -319,7 +319,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: CCI
     data-type: VARCHAR2
     query-only: false
@@ -337,7 +337,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_ALIAS ================================
-  id: 44190185212312821
+  id: 36013067097098931
   identification: 
     name: P75_ALIAS
     type: Text Field
@@ -355,7 +355,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -379,7 +379,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: ALIAS
     data-type: VARCHAR2
     query-only: false
@@ -397,7 +397,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_ES_PRINCIPAL_SN ======================
-  id: 44190652606312823
+  id: 36013534491098933
   identification: 
     name: P75_ES_PRINCIPAL_SN
     type: Switch
@@ -415,7 +415,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -438,7 +438,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: ES_PRINCIPAL_SN
     data-type: VARCHAR2
     query-only: false
@@ -453,7 +453,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_ID_PERSONA ===========================
-  id: 44190998736312824
+  id: 36013880621098934
   identification: 
     name: P75_ID_PERSONA
     type: Hidden
@@ -463,14 +463,14 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: ID_PERSONA
     data-type: NUMBER
     query-only: false
@@ -486,7 +486,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_ID_INSTITUCION =======================
-  id: 44191433041312828
+  id: 36014314926098938
   identification: 
     name: P75_ID_INSTITUCION
     type: Select List
@@ -503,7 +503,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -524,7 +524,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_INSTITUCION_FINANCIERA # 39964173578190615
+    list-of-values: LOV_INSTITUCION_FINANCIERA # 31787055462976725
     display-extra-values: true
     display-null-value: true
 
@@ -532,7 +532,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: ID_INSTITUCION
     data-type: NUMBER
     query-only: false
@@ -550,7 +550,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_ID_PAIS ==============================
-  id: 44191800791312829
+  id: 36014682676098939
   identification: 
     name: P75_ID_PAIS
     type: Hidden
@@ -560,14 +560,14 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: ID_PAIS
     data-type: NUMBER
     query-only: false
@@ -590,7 +590,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_CREADO_POR ===========================
-  id: 44192265174312831
+  id: 36015147059098941
   identification: 
     name: P75_CREADO_POR
     type: Display Only
@@ -607,7 +607,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 44139047754598332
+    region: Auditoria # 35961929639384442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -626,7 +626,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -642,7 +642,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_CREADO ===============================
-  id: 44192602371312833
+  id: 36015484256098943
   identification: 
     name: P75_CREADO
     type: Display Only
@@ -659,7 +659,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 44139047754598332
+    region: Auditoria # 35961929639384442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -678,7 +678,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -694,7 +694,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_MODIFICADO_POR =======================
-  id: 44193414970312836
+  id: 36016296855098946
   identification: 
     name: P75_MODIFICADO_POR
     type: Display Only
@@ -711,7 +711,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 44139047754598332
+    region: Auditoria # 35961929639384442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -730,7 +730,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -746,7 +746,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_MODIFICADO ===========================
-  id: 44193878314312837
+  id: 36016760199098947
   identification: 
     name: P75_MODIFICADO
     type: Display Only
@@ -763,7 +763,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 44139047754598332
+    region: Auditoria # 35961929639384442
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -782,7 +782,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -798,7 +798,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_MONEDA_RC ============================
-  id: 44194584486312840
+  id: 36017466371098950
   identification: 
     name: P75_MONEDA_RC
     type: Select List
@@ -815,7 +815,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -849,7 +849,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: MONEDA_RC
     data-type: VARCHAR2
     query-only: false
@@ -867,7 +867,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P75_TIPO_CUENTA_RC =======================
-  id: 44195014670312841
+  id: 36017896555098951
   identification: 
     name: P75_TIPO_CUENTA_RC
     type: Select List
@@ -884,7 +884,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Cuentas Bancarias # 44188762565312813
+    region: Cuentas Bancarias # 36011644450098923
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -918,7 +918,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
     column: TIPO_CUENTA_RC
     data-type: VARCHAR2
     query-only: false
@@ -937,14 +937,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 44200035288312859
+  id: 36022917173098969
   identification: 
     button-name: CANCEL
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 44199590919312858
+    region: Buttons # 36022472804098968
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -963,14 +963,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 44201439943312865
+  id: 36024321828098975
   identification: 
     button-name: DELETE
     label: Eliminar
 
   layout: 
     sequence: 20
-    region: Buttons # 44199590919312858
+    region: Buttons # 36022472804098968
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -1000,14 +1000,14 @@ buttons:
     item: P75_ID_CUENTA_BANCARIA
 
 - # ====== Button: SAVE ========================================
-  id: 44201865778312866
+  id: 36024747663098976
   identification: 
     button-name: SAVE
     label: Aplicar Cambios
 
   layout: 
     sequence: 30
-    region: Buttons # 44199590919312858
+    region: Buttons # 36022472804098968
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1033,14 +1033,14 @@ buttons:
     item: P75_ID_CUENTA_BANCARIA
 
 - # ====== Button: CREATE ======================================
-  id: 44202191445312867
+  id: 36025073330098977
   identification: 
     button-name: CREATE
     label: Crear
 
   layout: 
     sequence: 40
-    region: Buttons # 44199590919312858
+    region: Buttons # 36022472804098968
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1067,7 +1067,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 44200128076312859
+  id: 36023009961098969
   identification: 
     name: Cancel Dialog
 
@@ -1079,23 +1079,23 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 44200035288312859
+    button: CANCEL # 36022917173098969
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 44200890862312863
+    id: 36023772747098973
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 44200128076312859
+      event: Cancel Dialog # 36023009961098969
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: P75_CREADO must be timestamp ============
-  id: 44193148608312835
+  id: 36016030493098945
   identification: 
     name: P75_CREADO must be timestamp
 
@@ -1110,10 +1110,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P75_CREADO # 44192602371312833
+    associated-item: P75_CREADO # 36015484256098943
 
 - # ====== Validation: P75_MODIFICADO must be timestamp ========
-  id: 44194365443312839
+  id: 36017247328098949
   identification: 
     name: P75_MODIFICADO must be timestamp
 
@@ -1128,16 +1128,16 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P75_MODIFICADO # 44193878314312837
+    associated-item: P75_MODIFICADO # 36016760199098947
 
 processes: 
 - # ====== Process: Initialize form Cuentas Bancarias ==========
-  id: 44202591042312870
+  id: 36025472927098980
   identification: 
     name: Initialize form Cuentas Bancarias
     type: Form - Initialization
     execution-chain: None
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
 
   execution: 
     sequence: 10
@@ -1145,12 +1145,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Cuentas Bancarias =============
-  id: 44203013012312871
+  id: 36025894897098981
   identification: 
     name: Process form Cuentas Bancarias
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Cuentas Bancarias # 44188762565312813
+    form-region: Cuentas Bancarias # 36011644450098923
 
   settings: 
     target-type: Region Source
@@ -1167,7 +1167,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 44203430321312872
+  id: 36026312206098982
   identification: 
     name: Close Dialog
     type: Close Dialog

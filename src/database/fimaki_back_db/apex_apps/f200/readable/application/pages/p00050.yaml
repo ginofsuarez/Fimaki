@@ -38,7 +38,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Empresas ====================================
-  id: 43920908155341146
+  id: 35743790040127256
   identification: 
     name: Empresas
     type: Classic Report
@@ -158,7 +158,7 @@ regions:
 
   columns: 
   - # ====== Column: ID_EMPRESA ==================================
-    id: 43925203628341285
+    id: 35748085513127395
     identification: 
       column-name: ID_EMPRESA
       type: Hidden
@@ -173,7 +173,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ACTIVIDAD_ECONOMICA_RC ======================
-    id: 43925616575341287
+    id: 35748498460127397
     identification: 
       column-name: ACTIVIDAD_ECONOMICA_RC
       type: Plain Text (based on List of Values)
@@ -191,7 +191,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO # 44099756873121584
+      list-of-values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO # 35922638757907694
 
     sorting: 
       sortable: true
@@ -209,7 +209,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: FECHA_CONSTITUCION ==========================
-    id: 43926071574341288
+    id: 35748953459127398
     identification: 
       column-name: FECHA_CONSTITUCION
       type: Plain Text
@@ -244,7 +244,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: PAGINA_WEB ==================================
-    id: 43926456665341289
+    id: 35749338550127399
     identification: 
       column-name: PAGINA_WEB
       type: Plain Text
@@ -281,7 +281,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: EMPRESA_ESTADO_RC ===========================
-    id: 43926855298341290
+    id: 35749737183127400
     identification: 
       column-name: EMPRESA_ESTADO_RC
       type: Plain Text (based on List of Values)
@@ -299,7 +299,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_ESTADO_EMPRESA_ACTIVO # 44125861706239448
+      list-of-values: LOV_ESTADO_EMPRESA_ACTIVO # 35948743591025558
 
     sorting: 
       default-sequence: 1
@@ -319,7 +319,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ID_PERSONA ==================================
-    id: 43927228692341292
+    id: 35750110577127402
     identification: 
       column-name: ID_PERSONA
       type: Link
@@ -362,7 +362,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: NOMBRE_COMERCIAL ============================
-    id: 43927649605341293
+    id: 35750531490127403
     identification: 
       column-name: NOMBRE_COMERCIAL
       type: Hidden
@@ -381,7 +381,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: TIPO_SOCIEDAD_RC ============================
-    id: 43928017757341294
+    id: 35750899642127404
     identification: 
       column-name: TIPO_SOCIEDAD_RC
       type: Plain Text (based on List of Values)
@@ -399,7 +399,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_TIPO_SOCIEDAD_ACTIVO # 44100165451134095
+      list-of-values: LOV_TIPO_SOCIEDAD_ACTIVO # 35923047335920205
 
     sorting: 
       default-sequence: 1
@@ -419,7 +419,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: TAMANO_RC ===================================
-    id: 43928400989341295
+    id: 35751282874127405
     identification: 
       column-name: TAMANO_RC
       type: Plain Text (based on List of Values)
@@ -437,7 +437,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_TAMANO_ACTIVO # 44102485436497962
+      list-of-values: LOV_TAMANO_ACTIVO # 35925367321284072
 
     sorting: 
       default-sequence: 1
@@ -457,7 +457,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: CIIU_RC =====================================
-    id: 43928847871341297
+    id: 35751729756127407
     identification: 
       column-name: CIIU_RC
       type: Plain Text
@@ -494,7 +494,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: AMBITO_OPERACIONAL_RC =======================
-    id: 43929181798341298
+    id: 35752063683127408
     identification: 
       column-name: AMBITO_OPERACIONAL_RC
       type: Hidden
@@ -513,7 +513,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: REGIMEN_TRIBUTARIO_RC =======================
-    id: 43929623724341299
+    id: 35752505609127409
     identification: 
       column-name: REGIMEN_TRIBUTARIO_RC
       type: Plain Text (based on List of Values)
@@ -531,7 +531,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_REGIMEN_TRIBUTARIO_ACTIVO # 44100681882170234
+      list-of-values: LOV_REGIMEN_TRIBUTARIO_ACTIVO # 35923563766956344
 
     sorting: 
       default-sequence: 1
@@ -551,7 +551,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: TIPO_CONTRIBUYENTE_RC =======================
-    id: 43930080658341300
+    id: 35752962543127410
     identification: 
       column-name: TIPO_CONTRIBUYENTE_RC
       type: Hidden
@@ -570,7 +570,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: TIPO_PERSONA_RC =============================
-    id: 43930467397341302
+    id: 35753349282127412
     identification: 
       column-name: TIPO_PERSONA_RC
       type: Hidden
@@ -589,7 +589,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: TIPO_DOCUMENTO_RC ===========================
-    id: 43930787218341303
+    id: 35753669103127413
     identification: 
       column-name: TIPO_DOCUMENTO_RC
       type: Hidden
@@ -608,7 +608,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: NUMERO_DOC ==================================
-    id: 43931216427341304
+    id: 35754098312127414
     identification: 
       column-name: NUMERO_DOC
       type: Hidden
@@ -627,7 +627,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: RAZON_SOCIAL ================================
-    id: 43932786843341309
+    id: 35755668728127419
     identification: 
       column-name: RAZON_SOCIAL
       type: Plain Text
@@ -661,7 +661,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: PERSONA_ESTADO_RC ===========================
-    id: 43933584290341312
+    id: 35756466175127422
     identification: 
       column-name: PERSONA_ESTADO_RC
       type: Hidden
@@ -680,7 +680,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ID_PAIS =====================================
-    id: 43934074981341313
+    id: 35756956866127423
     identification: 
       column-name: ID_PAIS
       type: Hidden
@@ -695,7 +695,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ID_SUBDIVISION_N1 ===========================
-    id: 43934418108341314
+    id: 35757299993127424
     identification: 
       column-name: ID_SUBDIVISION_N1
       type: Hidden
@@ -710,7 +710,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ID_SUBDIVISION_N2 ===========================
-    id: 43934871252341316
+    id: 35757753137127426
     identification: 
       column-name: ID_SUBDIVISION_N2
       type: Hidden
@@ -725,7 +725,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: CREADO_POR ==================================
-    id: 43935267307341317
+    id: 35758149192127427
     identification: 
       column-name: CREADO_POR
       type: Hidden
@@ -744,7 +744,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: CREADO ======================================
-    id: 43935671080341318
+    id: 35758552965127428
     identification: 
       column-name: CREADO
       type: Hidden
@@ -759,7 +759,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: MODIFICADO_POR ==============================
-    id: 43936058356341320
+    id: 35758940241127430
     identification: 
       column-name: MODIFICADO_POR
       type: Hidden
@@ -778,7 +778,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: MODIFICADO ==================================
-    id: 43936292119341321
+    id: 35759174004127431
     identification: 
       column-name: MODIFICADO
       type: Hidden
@@ -793,13 +793,13 @@ regions:
       escape-special-characters: true
 
 - # ====== Region: Search ======================================
-  id: 43921035535341146
+  id: 35743917420127256
   identification: 
     name: Search
     type: Faceted Search
 
   source: 
-    filtered-region: Empresas # 43920908155341146
+    filtered-region: Empresas # 35743790040127256
 
   layout: 
     sequence: 10
@@ -844,7 +844,7 @@ regions:
 
   facets: 
   - # ====== Facet: P50_SEARCH ===================================
-    id: 43921526188341155
+    id: 35744408073127265
     identification: 
       name: P50_SEARCH
       type: Search
@@ -866,7 +866,7 @@ regions:
       store-value-encrypted-in-session-state: true
 
   - # ====== Facet: P50_ACTIVIDAD_ECONOMICA_RC ===================
-    id: 43921966683341159
+    id: 35744848568127269
     identification: 
       name: P50_ACTIVIDAD_ECONOMICA_RC
       type: Checkbox Group
@@ -883,7 +883,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO # 44099756873121584
+      list-of-values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO # 35922638757907694
       include-null-option: false
 
     list-entries: 
@@ -915,7 +915,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Facet: P50_EMPRESA_ESTADO_RC ========================
-    id: 43922322210341160
+    id: 35745204095127270
     identification: 
       name: P50_EMPRESA_ESTADO_RC
       type: Checkbox Group
@@ -932,7 +932,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_ESTADO_EMPRESA_ACTIVO # 44125861706239448
+      list-of-values: LOV_ESTADO_EMPRESA_ACTIVO # 35948743591025558
       include-null-option: false
 
     list-entries: 
@@ -964,7 +964,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Facet: P50_TIPO_SOCIEDAD_RC =========================
-    id: 43922721160341162
+    id: 35745603045127272
     identification: 
       name: P50_TIPO_SOCIEDAD_RC
       type: Checkbox Group
@@ -981,7 +981,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_TIPO_SOCIEDAD_ACTIVO # 44100165451134095
+      list-of-values: LOV_TIPO_SOCIEDAD_ACTIVO # 35923047335920205
       include-null-option: false
 
     list-entries: 
@@ -1008,7 +1008,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Facet: P50_TAMANO_RC ================================
-    id: 43923151326341163
+    id: 35746033211127273
     identification: 
       name: P50_TAMANO_RC
       type: Checkbox Group
@@ -1025,7 +1025,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_TAMANO_ACTIVO # 44102485436497962
+      list-of-values: LOV_TAMANO_ACTIVO # 35925367321284072
       include-null-option: false
 
     list-entries: 
@@ -1057,7 +1057,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Facet: P50_AMBITO_OPERACIONAL_RC ====================
-    id: 43923530679341165
+    id: 35746412564127275
     identification: 
       name: P50_AMBITO_OPERACIONAL_RC
       type: Checkbox Group
@@ -1074,7 +1074,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_AMBITO_OPERACIONA_ACTIVO # 44100339868147651
+      list-of-values: LOV_AMBITO_OPERACIONA_ACTIVO # 35923221752933761
       include-null-option: false
 
     list-entries: 
@@ -1106,7 +1106,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Facet: P50_REGIMEN_TRIBUTARIO_RC ====================
-    id: 43923902149341166
+    id: 35746784034127276
     identification: 
       name: P50_REGIMEN_TRIBUTARIO_RC
       type: Checkbox Group
@@ -1123,7 +1123,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_REGIMEN_TRIBUTARIO_ACTIVO # 44100681882170234
+      list-of-values: LOV_REGIMEN_TRIBUTARIO_ACTIVO # 35923563766956344
       include-null-option: false
 
     list-entries: 
@@ -1151,7 +1151,7 @@ regions:
 
   filters: 
   - # ====== Filter: P50_SEARCH ==================================
-    id: 43921526188341155
+    id: 35744408073127265
     identification: 
       name: P50_SEARCH
       type: Search
@@ -1173,7 +1173,7 @@ regions:
       store-value-encrypted-in-session-state: true
 
   - # ====== Filter: P50_ACTIVIDAD_ECONOMICA_RC ==================
-    id: 43921966683341159
+    id: 35744848568127269
     identification: 
       name: P50_ACTIVIDAD_ECONOMICA_RC
       type: Checkbox Group
@@ -1186,7 +1186,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO # 44099756873121584
+      list-of-values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO # 35922638757907694
       include-null-option: false
 
     list-entries: 
@@ -1212,7 +1212,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Filter: P50_EMPRESA_ESTADO_RC =======================
-    id: 43922322210341160
+    id: 35745204095127270
     identification: 
       name: P50_EMPRESA_ESTADO_RC
       type: Checkbox Group
@@ -1225,7 +1225,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_ESTADO_EMPRESA_ACTIVO # 44125861706239448
+      list-of-values: LOV_ESTADO_EMPRESA_ACTIVO # 35948743591025558
       include-null-option: false
 
     list-entries: 
@@ -1251,7 +1251,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Filter: P50_TIPO_SOCIEDAD_RC ========================
-    id: 43922721160341162
+    id: 35745603045127272
     identification: 
       name: P50_TIPO_SOCIEDAD_RC
       type: Checkbox Group
@@ -1264,7 +1264,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_TIPO_SOCIEDAD_ACTIVO # 44100165451134095
+      list-of-values: LOV_TIPO_SOCIEDAD_ACTIVO # 35923047335920205
       include-null-option: false
 
     list-entries: 
@@ -1290,7 +1290,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Filter: P50_TAMANO_RC ===============================
-    id: 43923151326341163
+    id: 35746033211127273
     identification: 
       name: P50_TAMANO_RC
       type: Checkbox Group
@@ -1303,7 +1303,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_TAMANO_ACTIVO # 44102485436497962
+      list-of-values: LOV_TAMANO_ACTIVO # 35925367321284072
       include-null-option: false
 
     list-entries: 
@@ -1329,7 +1329,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Filter: P50_AMBITO_OPERACIONAL_RC ===================
-    id: 43923530679341165
+    id: 35746412564127275
     identification: 
       name: P50_AMBITO_OPERACIONAL_RC
       type: Checkbox Group
@@ -1342,7 +1342,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_AMBITO_OPERACIONA_ACTIVO # 44100339868147651
+      list-of-values: LOV_AMBITO_OPERACIONA_ACTIVO # 35923221752933761
       include-null-option: false
 
     list-entries: 
@@ -1368,7 +1368,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Filter: P50_REGIMEN_TRIBUTARIO_RC ===================
-    id: 43923902149341166
+    id: 35746784034127276
     identification: 
       name: P50_REGIMEN_TRIBUTARIO_RC
       type: Checkbox Group
@@ -1381,7 +1381,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_REGIMEN_TRIBUTARIO_ACTIVO # 44100681882170234
+      list-of-values: LOV_REGIMEN_TRIBUTARIO_ACTIVO # 35923563766956344
       include-null-option: false
 
     list-entries: 
@@ -1407,7 +1407,7 @@ regions:
       escape-special-characters: true
 
 - # ====== Region: Button Bar ==================================
-  id: 43924263256341167
+  id: 35747145141127277
   identification: 
     name: Button Bar
     type: Static Content
@@ -1451,14 +1451,14 @@ regions:
 
 buttons: 
 - # ====== Button: RESET =======================================
-  id: 43924702785341171
+  id: 35747584670127281
   identification: 
     button-name: RESET
     label: Reset
 
   layout: 
     sequence: 10
-    region: Button Bar # 43924263256341167
+    region: Button Bar # 35747145141127277
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1485,14 +1485,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CREAR =======================================
-  id: 44140619679598348
+  id: 35963501564384458
   identification: 
     button-name: CREAR
     label: Crear
 
   layout: 
     sequence: 20
-    region: Breadcrumb # 31860555998690030
+    region: Breadcrumb # 23683437883476140
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1516,14 +1516,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: REFRESCAR ===================================
-  id: 45020244060032534
+  id: 36843125944818644
   identification: 
     button-name: REFRESCAR
     label: Refrescar
 
   layout: 
     sequence: 10
-    region: Breadcrumb # 31860555998690030
+    region: Breadcrumb # 23683437883476140
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1543,7 +1543,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onClick - Refrescar =================
-  id: 45020374449032535
+  id: 36843256333818645
   identification: 
     name: onClick - Refrescar
 
@@ -1555,11 +1555,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: REFRESCAR # 45020244060032534
+    button: REFRESCAR # 36843125944818644
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 45020403132032536
+    id: 36843285016818646
     identification: 
       action: Refresh
 
@@ -1568,16 +1568,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Search # 43921035535341146
+      region: Search # 35743917420127256
 
     execution: 
       sequence: 10
-      event: onClick - Refrescar # 45020374449032535
+      event: onClick - Refrescar # 36843256333818645
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onDialogClose - Empresas ============
-  id: 45020660483032538
+  id: 36843542367818648
   identification: 
     name: onDialogClose - Empresas
 
@@ -1589,11 +1589,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Empresas # 43920908155341146
+    region: Empresas # 35743790040127256
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 45020736832032539
+    id: 36843618716818649
     identification: 
       action: Refresh
 
@@ -1602,16 +1602,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Empresas # 43920908155341146
+      region: Empresas # 35743790040127256
 
     execution: 
       sequence: 10
-      event: onDialogClose - Empresas # 45020660483032538
+      event: onDialogClose - Empresas # 36843542367818648
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onDialogClosed - Crear ==============
-  id: 45997235863143913
+  id: 37820117747930023
   identification: 
     name: onDialogClosed - Crear
 
@@ -1623,11 +1623,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Button
-    button: CREAR # 44140619679598348
+    button: CREAR # 35963501564384458
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 45997379157143914
+    id: 37820261041930024
     identification: 
       action: Refresh
 
@@ -1636,11 +1636,11 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Empresas # 43920908155341146
+      region: Empresas # 35743790040127256
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Crear # 45997235863143913
+      event: onDialogClosed - Crear # 37820117747930023
       fire-when-event-result-is: True
       fire-on-initialization: false
 

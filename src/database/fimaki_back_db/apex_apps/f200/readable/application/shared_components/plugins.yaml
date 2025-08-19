@@ -1,6 +1,6 @@
 ---
 - # ====== Plugin: Dropzone 2 ==================================
-  id: 183574378866830656
+  id: 175397260751616766
   identification: 
     name: Dropzone 2
     internal-name: DE.DANIELH.DROPZONE2
@@ -702,7 +702,7 @@
 
   custom-attributes: 
   - # ====== Custom Attribute: Image Resizing ====================
-    id: 128497745080837788
+    id: 120320626965623898
     identification: 
       static-id: attribute_22
       attribute: 22
@@ -730,7 +730,7 @@
 
     entries: 
     - # ====== Entry: True =========================================
-      id: 128498560759838305
+      id: 120321442644624415
       entry: 
         sequence: 10
         display: True
@@ -740,7 +740,7 @@
         quick-pick: false
 
     - # ====== Entry: False ========================================
-      id: 128498974998838954
+      id: 120321856883625064
       entry: 
         sequence: 20
         display: False
@@ -750,7 +750,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Resize Width ======================
-    id: 128499752799844209
+    id: 120322634684630319
     identification: 
       static-id: attribute_23
       attribute: 23
@@ -768,7 +768,7 @@
       translatable: false
 
     condition: 
-      depending-on-custom-attribute: Image Resizing # 128497745080837788
+      depending-on-custom-attribute: Image Resizing # 120320626965623898
       depending-on-condition-type: equal to
       expression: true
       always-evaluate: true
@@ -779,7 +779,7 @@
         Please provide a width in pixels.
 
   - # ====== Custom Attribute: Resize Height =====================
-    id: 128500497092846410
+    id: 120323378977632520
     identification: 
       static-id: attribute_24
       attribute: 24
@@ -797,7 +797,7 @@
       translatable: false
 
     condition: 
-      depending-on-custom-attribute: Image Resizing # 128497745080837788
+      depending-on-custom-attribute: Image Resizing # 120320626965623898
       depending-on-condition-type: equal to
       expression: true
       always-evaluate: true
@@ -808,7 +808,7 @@
         Please provide a height in pixels.
 
   - # ====== Custom Attribute: Chunk Size (in KB) ================
-    id: 128529704562109028
+    id: 120352586446895138
     identification: 
       static-id: attribute_09
       attribute: 9
@@ -835,7 +835,7 @@
         Default is 1MB = 1048576 KB.
 
   - # ====== Custom Attribute: Width =============================
-    id: 183574546279830658
+    id: 175397428164616768
     identification: 
       static-id: attribute_08
       attribute: 8
@@ -864,7 +864,7 @@
         100%
 
   - # ====== Custom Attribute: Height ============================
-    id: 183575004159830658
+    id: 175397886044616768
     identification: 
       static-id: attribute_09
       attribute: 9
@@ -893,7 +893,7 @@
         500px
 
   - # ====== Custom Attribute: max. Filesize in MB ===============
-    id: 183575757267830658
+    id: 175398639152616768
     identification: 
       static-id: attribute_10
       attribute: 10
@@ -923,7 +923,7 @@
         3.5
 
   - # ====== Custom Attribute: Clickable =========================
-    id: 183576174460830658
+    id: 175399056345616768
     identification: 
       static-id: attribute_16
       attribute: 16
@@ -949,7 +949,7 @@
 
     entries: 
     - # ====== Entry: True =========================================
-      id: 183576559938830658
+      id: 175399441823616768
       entry: 
         sequence: 10
         display: True
@@ -959,7 +959,7 @@
         quick-pick: false
 
     - # ====== Entry: False ========================================
-      id: 183577098923830658
+      id: 175399980808616768
       entry: 
         sequence: 20
         display: False
@@ -969,7 +969,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Remove Files after Upload =========
-    id: 183579740869830659
+    id: 175402622754616769
     identification: 
       static-id: attribute_19
       attribute: 19
@@ -995,7 +995,7 @@
 
     entries: 
     - # ====== Entry: True =========================================
-      id: 183580150234830659
+      id: 175403032119616769
       entry: 
         sequence: 10
         display: True
@@ -1005,7 +1005,7 @@
         quick-pick: false
 
     - # ====== Entry: False ========================================
-      id: 183580696778830659
+      id: 175403578663616769
       entry: 
         sequence: 20
         display: False
@@ -1015,7 +1015,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Accepted File Types ===============
-    id: 183581158949830659
+    id: 175404040834616769
     identification: 
       static-id: attribute_13
       attribute: 13
@@ -1042,7 +1042,7 @@
       examples: image/*,application/pdf,.psd
 
   - # ====== Custom Attribute: max. Files ========================
-    id: 183582331891830659
+    id: 175405213776616769
     identification: 
       static-id: attribute_11
       attribute: 11
@@ -1063,7 +1063,7 @@
       help-text: Maximum number of allowed files that can be uploaded at once.
 
   - # ====== Custom Attribute: Copy & Paste Support ==============
-    id: 183583140036830660
+    id: 175406021921616770
     identification: 
       static-id: attribute_18
       attribute: 18
@@ -1095,7 +1095,7 @@
 
     entries: 
     - # ====== Entry: True =========================================
-      id: 183583568725830660
+      id: 175406450610616770
       entry: 
         sequence: 10
         display: True
@@ -1105,7 +1105,7 @@
         quick-pick: false
 
     - # ====== Entry: False ========================================
-      id: 183584119368830660
+      id: 175407001253616770
       entry: 
         sequence: 20
         display: False
@@ -1115,7 +1115,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Wait Time (ms) [NOT USED] =========
-    id: 183584522785830660
+    id: 175407404670616770
     identification: 
       static-id: attribute_14
       attribute: 14
@@ -1136,7 +1136,7 @@
       value: 700
 
     condition: 
-      depending-on-custom-attribute: Storage Type # 183641522440893607
+      depending-on-custom-attribute: Storage Type # 175464404325679717
       depending-on-condition-type: equal to
       expression: NEVER
       always-evaluate: true
@@ -1148,7 +1148,7 @@
         Default: 700ms
 
   - # ====== Custom Attribute: Parallel Uploads [NOT USED] =======
-    id: 183584971740830661
+    id: 175407853625616771
     identification: 
       static-id: attribute_12
       attribute: 12
@@ -1170,7 +1170,7 @@
       value: 1
 
     condition: 
-      depending-on-custom-attribute: Storage Type # 183641522440893607
+      depending-on-custom-attribute: Storage Type # 175464404325679717
       depending-on-condition-type: equal to
       expression: NEVER
       always-evaluate: true
@@ -1181,7 +1181,7 @@
         Choose a value between 1 and 2. 1 works most reliable!
 
   - # ====== Custom Attribute: Show File Previews ================
-    id: 183585407334830661
+    id: 175408289219616771
     identification: 
       static-id: attribute_17
       attribute: 17
@@ -1210,7 +1210,7 @@
 
     entries: 
     - # ====== Entry: True =========================================
-      id: 183585782752830661
+      id: 175408664637616771
       entry: 
         sequence: 10
         display: True
@@ -1220,7 +1220,7 @@
         quick-pick: false
 
     - # ====== Entry: False ========================================
-      id: 183586237964830661
+      id: 175409119849616771
       entry: 
         sequence: 20
         display: False
@@ -1230,7 +1230,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Dropzone Style ====================
-    id: 183586805432830661
+    id: 175409687317616771
     identification: 
       static-id: attribute_07
       attribute: 7
@@ -1261,7 +1261,7 @@
 
     entries: 
     - # ====== Entry: Grey Border ==================================
-      id: 183587204074830661
+      id: 175410085959616771
       entry: 
         sequence: 10
         display: Grey Border
@@ -1271,7 +1271,7 @@
         quick-pick: false
 
     - # ====== Entry: Blue Dashed Border ===========================
-      id: 183587719244830661
+      id: 175410601129616771
       entry: 
         sequence: 20
         display: Blue Dashed Border
@@ -1281,7 +1281,7 @@
         quick-pick: false
 
     - # ====== Entry: Red Dashed Border ============================
-      id: 183775201121655825
+      id: 175598083006441935
       entry: 
         sequence: 30
         display: Red Dashed Border
@@ -1291,7 +1291,7 @@
         quick-pick: false
 
     - # ====== Entry: Grey Dashed Border/Background ================
-      id: 183992050452827505
+      id: 175814932337613615
       entry: 
         sequence: 40
         display: Grey Dashed Border/Background
@@ -1301,7 +1301,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Delete Files ======================
-    id: 183589925422830662
+    id: 175412807307616772
     identification: 
       static-id: attribute_20
       attribute: 20
@@ -1329,7 +1329,7 @@
 
     entries: 
     - # ====== Entry: True =========================================
-      id: 183590381094830662
+      id: 175413262979616772
       entry: 
         sequence: 10
         display: True
@@ -1339,7 +1339,7 @@
         quick-pick: false
 
     - # ====== Entry: False ========================================
-      id: 183590895747830662
+      id: 175413777632616772
       entry: 
         sequence: 20
         display: False
@@ -1349,7 +1349,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Collection / Table Name ===========
-    id: 183635871075775996
+    id: 175458752960562106
     identification: 
       static-id: attribute_02
       attribute: 2
@@ -1370,7 +1370,7 @@
       value: DROPZONE_UPLOAD
 
     condition: 
-      depending-on-custom-attribute: Storage Type # 183641522440893607
+      depending-on-custom-attribute: Storage Type # 175464404325679717
       depending-on-condition-type: in list
       expression: COLLECTION,TABLE
       always-evaluate: true
@@ -1379,7 +1379,7 @@
       help-text: Name of the APEX Collection or of your Custom Table
 
   - # ====== Custom Attribute: Display Message ===================
-    id: 183636448568793693
+    id: 175459330453579803
     identification: 
       static-id: attribute_01
       attribute: 1
@@ -1403,7 +1403,7 @@
       help-text: Message that is displayed inside of the Dropzone Region
 
   - # ====== Custom Attribute: Fallback Message ==================
-    id: 183637282377797618
+    id: 175460164262583728
     identification: 
       static-id: attribute_02
       attribute: 2
@@ -1427,7 +1427,7 @@
       help-text: Message that is displayed when your Browser doesn´t support HTML5 Drag & Drop File Uploads
 
   - # ====== Custom Attribute: File too Big Message ==============
-    id: 183637737863802897
+    id: 175460619748589007
     identification: 
       static-id: attribute_03
       attribute: 3
@@ -1455,7 +1455,7 @@
         {{maxFilesize}} for the max. allowed Filesize
 
   - # ====== Custom Attribute: max. Files Message ================
-    id: 183638243905805307
+    id: 175461125790591417
     identification: 
       static-id: attribute_04
       attribute: 4
@@ -1482,7 +1482,7 @@
         {{maxFiles}} for the max. allowed Files
 
   - # ====== Custom Attribute: Remove File Message ===============
-    id: 183638764007807599
+    id: 175461645892593709
     identification: 
       static-id: attribute_05
       attribute: 5
@@ -1508,7 +1508,7 @@
         Only possible if "Delete Files" is set.
 
   - # ====== Custom Attribute: Cancel Upload Message =============
-    id: 183639293230810401
+    id: 175462175115596511
     identification: 
       static-id: attribute_06
       attribute: 6
@@ -1534,7 +1534,7 @@
         Only possible if "Delete Files" is set.
 
   - # ====== Custom Attribute: Cancel Upload Confirm Message =====
-    id: 183639727111813368
+    id: 175462608996599478
     identification: 
       static-id: attribute_07
       attribute: 7
@@ -1560,7 +1560,7 @@
         Only possible if "Delete Files" is set.
 
   - # ====== Custom Attribute: Invalid File Type Message =========
-    id: 183640306910817088
+    id: 175463188795603198
     identification: 
       static-id: attribute_08
       attribute: 8
@@ -1584,7 +1584,7 @@
       help-text: Message that is displayed per File, if the File´s Mime-Type is in the Exclude List.
 
   - # ====== Custom Attribute: Storage Type ======================
-    id: 183641522440893607
+    id: 175464404325679717
     identification: 
       static-id: attribute_01
       attribute: 1
@@ -1635,7 +1635,7 @@
 
     entries: 
     - # ====== Entry: APEX Collection ==============================
-      id: 183642027353894647
+      id: 175464909238680757
       entry: 
         sequence: 10
         display: APEX Collection
@@ -1645,7 +1645,7 @@
         quick-pick: false
 
     - # ====== Entry: Custom Table =================================
-      id: 183642490068895946
+      id: 175465371953682056
       entry: 
         sequence: 20
         display: Custom Table
@@ -1655,7 +1655,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Filename Column ===================
-    id: 183645686720914062
+    id: 175468568605700172
     identification: 
       static-id: attribute_03
       attribute: 3
@@ -1673,7 +1673,7 @@
       translatable: false
 
     condition: 
-      depending-on-custom-attribute: Storage Type # 183641522440893607
+      depending-on-custom-attribute: Storage Type # 175464404325679717
       depending-on-condition-type: equal to
       expression: TABLE
       always-evaluate: true
@@ -1682,7 +1682,7 @@
       help-text: Column of your custom Table which holds the information for the Filename
 
   - # ====== Custom Attribute: Mime Type Column ==================
-    id: 183646171225917765
+    id: 175469053110703875
     identification: 
       static-id: attribute_04
       attribute: 4
@@ -1700,7 +1700,7 @@
       translatable: false
 
     condition: 
-      depending-on-custom-attribute: Storage Type # 183641522440893607
+      depending-on-custom-attribute: Storage Type # 175464404325679717
       depending-on-condition-type: equal to
       expression: TABLE
       always-evaluate: true
@@ -1709,7 +1709,7 @@
       help-text: Column of your custom Table which holds the information for the File Mime-Type
 
   - # ====== Custom Attribute: BLOB Column =======================
-    id: 183646699017927550
+    id: 175469580902713660
     identification: 
       static-id: attribute_05
       attribute: 5
@@ -1727,7 +1727,7 @@
       translatable: false
 
     condition: 
-      depending-on-custom-attribute: Storage Type # 183641522440893607
+      depending-on-custom-attribute: Storage Type # 175464404325679717
       depending-on-condition-type: equal to
       expression: TABLE
       always-evaluate: true
@@ -1736,7 +1736,7 @@
       help-text: Column of your custom Table which holds the information for the File Content (BLOB)
 
   - # ====== Custom Attribute: Date Column =======================
-    id: 183647187324931038
+    id: 175470069209717148
     identification: 
       static-id: attribute_06
       attribute: 6
@@ -1754,7 +1754,7 @@
       translatable: false
 
     condition: 
-      depending-on-custom-attribute: Storage Type # 183641522440893607
+      depending-on-custom-attribute: Storage Type # 175464404325679717
       depending-on-condition-type: equal to
       expression: TABLE
       always-evaluate: true
@@ -1763,7 +1763,7 @@
       help-text: Column of your custom Table which holds the information for the File Upload Date
 
   - # ====== Custom Attribute: Upload Mechanism ==================
-    id: 183660147419010012
+    id: 175483029303796122
     identification: 
       static-id: attribute_15
       attribute: 15
@@ -1792,7 +1792,7 @@
 
     entries: 
     - # ====== Entry: Normal =======================================
-      id: 183660683949022168
+      id: 175483565833808278
       entry: 
         sequence: 10
         display: Normal
@@ -1802,7 +1802,7 @@
         quick-pick: false
 
     - # ====== Entry: Chunked ======================================
-      id: 183661070391023445
+      id: 175483952275809555
       entry: 
         sequence: 20
         display: Chunked
@@ -1812,7 +1812,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: PK Column =========================
-    id: 183999568926103939
+    id: 175822450810890049
     identification: 
       static-id: attribute_21
       attribute: 21
@@ -1830,7 +1830,7 @@
       translatable: false
 
     condition: 
-      depending-on-custom-attribute: Storage Type # 183641522440893607
+      depending-on-custom-attribute: Storage Type # 175464404325679717
       depending-on-condition-type: equal to
       expression: TABLE
       always-evaluate: true
@@ -1840,86 +1840,86 @@
 
   events: 
   - # ====== Event: dropzone-added-file ==========================
-    id: 183594352504830663
+    id: 175417234389616773
     identification: 
       name: Dropzone File added
       internal-name: dropzone-added-file
 
   - # ====== Event: dropzone-delete-error ========================
-    id: 183594790539830663
+    id: 175417672424616773
     identification: 
       name: Dropzone File Delete Error (AJAX)
       internal-name: dropzone-delete-error
 
   - # ====== Event: dropzone-delete-success ======================
-    id: 183595152688830663
+    id: 175418034573616773
     identification: 
       name: Dropzone File Delete Success (AJAX)
       internal-name: dropzone-delete-success
 
   - # ====== Event: dropzone-maxfiles-exceeded ===================
-    id: 183595570885830664
+    id: 175418452770616774
     identification: 
       name: Dropzone max Files exceeded
       internal-name: dropzone-maxfiles-exceeded
 
   - # ====== Event: dropzone-upload-complete =====================
-    id: 183596017221830664
+    id: 175418899106616774
     identification: 
       name: Dropzone Upload completed
       internal-name: dropzone-upload-complete
 
   - # ====== Event: dropzone-upload-error ========================
-    id: 183596341611830665
+    id: 175419223496616775
     identification: 
       name: Dropzone File Upload Error (AJAX)
       internal-name: dropzone-upload-error
 
   - # ====== Event: dropzone-upload-success ======================
-    id: 183596798733830665
+    id: 175419680618616775
     identification: 
       name: Dropzone File Upload Success (AJAX)
       internal-name: dropzone-upload-success
 
   - # ====== Event: dropzone-deleted-file ========================
-    id: 183740084824512720
+    id: 175562966709298830
     identification: 
       name: Dropzone File deleted
       internal-name: dropzone-deleted-file
 
   - # ====== Event: dropzone-totalupload-progress ================
-    id: 183740369972512721
+    id: 175563251857298831
     identification: 
       name: Dropzone Total Upload Progress
       internal-name: dropzone-totalupload-progress
 
   - # ====== Event: dropzone-upload-chunk-success ================
-    id: 183740778048512721
+    id: 175563659933298831
     identification: 
       name: Dropzone Chunked File Upload Success (AJAX)
       internal-name: dropzone-upload-chunk-success
 
   - # ====== Event: dropzone-upload-chunk-error ==================
-    id: 183741206501512721
+    id: 175564088386298831
     identification: 
       name: Dropzone Chunked File Upload Error (AJAX)
       internal-name: dropzone-upload-chunk-error
 
   - # ====== Event: dropzone-file-error ==========================
-    id: 183996690431871867
+    id: 175819572316657977
     identification: 
       name: Dropzone File Error
       internal-name: dropzone-file-error
 
   - # ====== Event: dropzone-drag-over ===========================
-    id: 183997035687871867
+    id: 175819917572657977
     identification: 
       name: Dropzone Dragging File over Region
       internal-name: dropzone-drag-over
 
   files: 
   - # ====== File: css/apexdropzone.css ==========================
-    id: 119601616264767995
+    id: 111424498149554105
     identification: 
       file-name: css/apexdropzone.css
 
@@ -1928,7 +1928,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: css/apexdropzone.min.css ======================
-    id: 119601952394767996
+    id: 111424834279554106
     identification: 
       file-name: css/apexdropzone.min.css
 
@@ -1937,7 +1937,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: css/dropzone.css ==============================
-    id: 119602286789767997
+    id: 111425168674554107
     identification: 
       file-name: css/dropzone.css
 
@@ -1946,7 +1946,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: css/dropzone.min.css ==========================
-    id: 119602710466768000
+    id: 111425592351554110
     identification: 
       file-name: css/dropzone.min.css
 
@@ -1955,7 +1955,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/3gp.png ===================================
-    id: 119603182974768000
+    id: 111426064859554110
     identification: 
       file-name: img/3gp.png
 
@@ -1964,7 +1964,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/7z.png ====================================
-    id: 119603486489768001
+    id: 111426368374554111
     identification: 
       file-name: img/7z.png
 
@@ -1973,7 +1973,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/ae.png ====================================
-    id: 119603901479768002
+    id: 111426783364554112
     identification: 
       file-name: img/ae.png
 
@@ -1982,7 +1982,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/ai.png ====================================
-    id: 119604360334768004
+    id: 111427242219554114
     identification: 
       file-name: img/ai.png
 
@@ -1991,7 +1991,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/apk.png ===================================
-    id: 119604777457768005
+    id: 111427659342554115
     identification: 
       file-name: img/apk.png
 
@@ -2000,7 +2000,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/asf.png ===================================
-    id: 119605116101768006
+    id: 111427997986554116
     identification: 
       file-name: img/asf.png
 
@@ -2009,7 +2009,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/avi.png ===================================
-    id: 119605513786768007
+    id: 111428395671554117
     identification: 
       file-name: img/avi.png
 
@@ -2018,7 +2018,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/bak.png ===================================
-    id: 119605975033768013
+    id: 111428856918554123
     identification: 
       file-name: img/bak.png
 
@@ -2027,7 +2027,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/bmp.png ===================================
-    id: 119606377917768014
+    id: 111429259802554124
     identification: 
       file-name: img/bmp.png
 
@@ -2036,7 +2036,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/cdr.png ===================================
-    id: 119606731194768016
+    id: 111429613079554126
     identification: 
       file-name: img/cdr.png
 
@@ -2045,7 +2045,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/css.png ===================================
-    id: 119607177530768017
+    id: 111430059415554127
     identification: 
       file-name: img/css.png
 
@@ -2054,7 +2054,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/csv.png ===================================
-    id: 119607517875768018
+    id: 111430399760554128
     identification: 
       file-name: img/csv.png
 
@@ -2063,7 +2063,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/divx.png ==================================
-    id: 119607921127768019
+    id: 111430803012554129
     identification: 
       file-name: img/divx.png
 
@@ -2072,7 +2072,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/dll.png ===================================
-    id: 119608333676768021
+    id: 111431215561554131
     identification: 
       file-name: img/dll.png
 
@@ -2081,7 +2081,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/doc.png ===================================
-    id: 119608771624768022
+    id: 111431653509554132
     identification: 
       file-name: img/doc.png
 
@@ -2090,7 +2090,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/docx.png ==================================
-    id: 119609182845768024
+    id: 111432064730554134
     identification: 
       file-name: img/docx.png
 
@@ -2099,7 +2099,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/dw.png ====================================
-    id: 119609488685768025
+    id: 111432370570554135
     identification: 
       file-name: img/dw.png
 
@@ -2108,7 +2108,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/dwg.png ===================================
-    id: 119609898030768027
+    id: 111432779915554137
     identification: 
       file-name: img/dwg.png
 
@@ -2117,7 +2117,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/eps.png ===================================
-    id: 119610328005768030
+    id: 111433209890554140
     identification: 
       file-name: img/eps.png
 
@@ -2126,7 +2126,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/exe.png ===================================
-    id: 119610779193768032
+    id: 111433661078554142
     identification: 
       file-name: img/exe.png
 
@@ -2135,7 +2135,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/flv.png ===================================
-    id: 119611100945768033
+    id: 111433982830554143
     identification: 
       file-name: img/flv.png
 
@@ -2144,7 +2144,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/fw.png ====================================
-    id: 119611514109768035
+    id: 111434395994554145
     identification: 
       file-name: img/fw.png
 
@@ -2153,7 +2153,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/gif.png ===================================
-    id: 119611901514768037
+    id: 111434783399554147
     identification: 
       file-name: img/gif.png
 
@@ -2162,7 +2162,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/gz.png ====================================
-    id: 119612289203768038
+    id: 111435171088554148
     identification: 
       file-name: img/gz.png
 
@@ -2171,7 +2171,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/gz2.png ===================================
-    id: 119612717232768040
+    id: 111435599117554150
     identification: 
       file-name: img/gz2.png
 
@@ -2180,7 +2180,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/html.png ==================================
-    id: 119613096611768042
+    id: 111435978496554152
     identification: 
       file-name: img/html.png
 
@@ -2189,7 +2189,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/ico.png ===================================
-    id: 119613528101768044
+    id: 111436409986554154
     identification: 
       file-name: img/ico.png
 
@@ -2198,7 +2198,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/iso.png ===================================
-    id: 119613887460768046
+    id: 111436769345554156
     identification: 
       file-name: img/iso.png
 
@@ -2207,7 +2207,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/jar.png ===================================
-    id: 119614303761768048
+    id: 111437185646554158
     identification: 
       file-name: img/jar.png
 
@@ -2216,7 +2216,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/jpg.png ===================================
-    id: 119614733444768050
+    id: 111437615329554160
     identification: 
       file-name: img/jpg.png
 
@@ -2225,7 +2225,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/js.png ====================================
-    id: 119615124320768052
+    id: 111438006205554162
     identification: 
       file-name: img/js.png
 
@@ -2234,7 +2234,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/mov.png ===================================
-    id: 119615515879768054
+    id: 111438397764554164
     identification: 
       file-name: img/mov.png
 
@@ -2243,7 +2243,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/mp3.png ===================================
-    id: 119615967885768056
+    id: 111438849770554166
     identification: 
       file-name: img/mp3.png
 
@@ -2252,7 +2252,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/mp4.png ===================================
-    id: 119616319775768058
+    id: 111439201660554168
     identification: 
       file-name: img/mp4.png
 
@@ -2261,7 +2261,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/mpeg.png ==================================
-    id: 119616760399768061
+    id: 111439642284554171
     identification: 
       file-name: img/mpeg.png
 
@@ -2270,7 +2270,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/odp.png ===================================
-    id: 119617117106768063
+    id: 111439998991554173
     identification: 
       file-name: img/odp.png
 
@@ -2279,7 +2279,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/ods.png ===================================
-    id: 119617488000768065
+    id: 111440369885554175
     identification: 
       file-name: img/ods.png
 
@@ -2288,7 +2288,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/odt.png ===================================
-    id: 119617968255768068
+    id: 111440850140554178
     identification: 
       file-name: img/odt.png
 
@@ -2297,7 +2297,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/other.png =================================
-    id: 119618364464768070
+    id: 111441246349554180
     identification: 
       file-name: img/other.png
 
@@ -2306,7 +2306,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/pdf.png ===================================
-    id: 119618741044768072
+    id: 111441622929554182
     identification: 
       file-name: img/pdf.png
 
@@ -2315,7 +2315,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/php.png ===================================
-    id: 119619084922768075
+    id: 111441966807554185
     identification: 
       file-name: img/php.png
 
@@ -2324,7 +2324,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/png.png ===================================
-    id: 119619461002768077
+    id: 111442342887554187
     identification: 
       file-name: img/png.png
 
@@ -2333,7 +2333,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/ppt.png ===================================
-    id: 119619810984768080
+    id: 111442692869554190
     identification: 
       file-name: img/ppt.png
 
@@ -2342,7 +2342,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/pptx.png ==================================
-    id: 119620258639768083
+    id: 111443140524554193
     identification: 
       file-name: img/pptx.png
 
@@ -2351,7 +2351,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/ps.png ====================================
-    id: 119620656901768085
+    id: 111443538786554195
     identification: 
       file-name: img/ps.png
 
@@ -2360,7 +2360,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/psd.png ===================================
-    id: 119621066015768089
+    id: 111443947900554199
     identification: 
       file-name: img/psd.png
 
@@ -2369,7 +2369,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/rar.png ===================================
-    id: 119621426158768092
+    id: 111444308043554202
     identification: 
       file-name: img/rar.png
 
@@ -2378,7 +2378,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/svg.png ===================================
-    id: 119621835981768095
+    id: 111444717866554205
     identification: 
       file-name: img/svg.png
 
@@ -2387,7 +2387,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/swf.png ===================================
-    id: 119622216344768098
+    id: 111445098229554208
     identification: 
       file-name: img/swf.png
 
@@ -2396,7 +2396,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/sys.png ===================================
-    id: 119622672181768101
+    id: 111445554066554211
     identification: 
       file-name: img/sys.png
 
@@ -2405,7 +2405,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/tar.png ===================================
-    id: 119622984654768104
+    id: 111445866539554214
     identification: 
       file-name: img/tar.png
 
@@ -2414,7 +2414,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/tiff.png ==================================
-    id: 119623475813768107
+    id: 111446357698554217
     identification: 
       file-name: img/tiff.png
 
@@ -2423,7 +2423,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/txt.png ===================================
-    id: 119623814100768110
+    id: 111446695985554220
     identification: 
       file-name: img/txt.png
 
@@ -2432,7 +2432,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/wav.png ===================================
-    id: 119624186558768113
+    id: 111447068443554223
     identification: 
       file-name: img/wav.png
 
@@ -2441,7 +2441,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/xls.png ===================================
-    id: 119624677716768116
+    id: 111447559601554226
     identification: 
       file-name: img/xls.png
 
@@ -2450,7 +2450,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/xlsx.png ==================================
-    id: 119625013896768119
+    id: 111447895781554229
     identification: 
       file-name: img/xlsx.png
 
@@ -2459,7 +2459,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: img/zip.png ===================================
-    id: 119625435666768122
+    id: 111448317551554232
     identification: 
       file-name: img/zip.png
 
@@ -2468,7 +2468,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: js/apexdropzone.js ============================
-    id: 119625788049768126
+    id: 111448669934554236
     identification: 
       file-name: js/apexdropzone.js
 
@@ -2477,7 +2477,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: js/apexdropzone.min.js ========================
-    id: 119626233389768129
+    id: 111449115274554239
     identification: 
       file-name: js/apexdropzone.min.js
 
@@ -2486,7 +2486,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: js/dropzone.js ================================
-    id: 119626678952768133
+    id: 111449560837554243
     identification: 
       file-name: js/dropzone.js
 
@@ -2495,7 +2495,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: js/dropzone.min.js ============================
-    id: 119627028451768136
+    id: 111449910336554246
     identification: 
       file-name: js/dropzone.min.js
 
@@ -2504,7 +2504,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: js/filereader.js ==============================
-    id: 119627481232768140
+    id: 111450363117554250
     identification: 
       file-name: js/filereader.js
 
@@ -2513,7 +2513,7 @@
       file-character-set: Unicode UTF-8
 
   - # ====== File: js/filereader.min.js ==========================
-    id: 119627842619768144
+    id: 111450724504554254
     identification: 
       file-name: js/filereader.min.js
 
@@ -2522,7 +2522,7 @@
       file-character-set: Unicode UTF-8
 
 - # ====== Plugin: APEX Items with APEX Button =================
-  id: 25718492754994115280
+  id: 25710315636878901390
   identification: 
     name: APEX Items with APEX Button
     internal-name: APEX.ITEMS.WITH.BUTTONS
@@ -2573,7 +2573,7 @@
 
   custom-attributes: 
   - # ====== Custom Attribute: Item where the button is added ====
-    id: 25718548817353333955
+    id: 25710371699238120065
     identification: 
       attribute: 1
       name: Item where the button is added
@@ -2591,7 +2591,7 @@
 
   files: 
   - # ====== File: LICENSE =======================================
-    id: 31977553633932622596
+    id: 31969376515817408706
     identification: 
       file-name: LICENSE
 

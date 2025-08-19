@@ -1,6 +1,6 @@
 ---
 - # ====== List of Values: LOV_TIPO_DOC ========================
-  id: 28410201412950539
+  id: 20228888822728781
   identification: 
     name: LOV_TIPO_DOC
 
@@ -27,7 +27,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_TIPO_PER ========================
-  id: 28413717713247503
+  id: 20232405123025745
   identification: 
     name: LOV_TIPO_PER
 
@@ -53,7 +53,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_PAIS_ACTIVO =====================
-  id: 29533080453665549
+  id: 21351767863443791
   identification: 
     name: LOV_PAIS_ACTIVO
 
@@ -78,7 +78,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_MONEDA_ACTIVO ===================
-  id: 32019300127930460
+  id: 23837987537708702
   identification: 
     name: LOV_MONEDA_ACTIVO
 
@@ -104,7 +104,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_INSTITUCION_FINANCIERA ==========
-  id: 32027293905104718
+  id: 23845981314882960
   identification: 
     name: LOV_INSTITUCION_FINANCIERA
 
@@ -127,7 +127,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_SI_NO ===========================
-  id: 32027629224104720
+  id: 23846316633882962
   identification: 
     name: LOV_SI_NO
 
@@ -142,21 +142,21 @@
 
   entries: 
   - # ====== Entry: Si ===========================================
-    id: 32028027977104722
+    id: 23846715386882964
     entry: 
       sequence: 1
       display: Si
       return: S
 
   - # ====== Entry: No ===========================================
-    id: 32028415114104724
+    id: 23847102523882966
     entry: 
       sequence: 2
       display: No
       return: N
 
 - # ====== List of Values: LOV_ORIGEN_FONDOS_ACTIVO ============
-  id: 36734655606450403
+  id: 28553343016228645
   identification: 
     name: LOV_ORIGEN_FONDOS_ACTIVO
 
@@ -183,7 +183,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_EMPRESA_ALL =====================
-  id: 42575194812619230
+  id: 34393882222397472
   identification: 
     name: LOV_EMPRESA_ALL
 
@@ -206,26 +206,25 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_EMPRESA_ACTIVO ==================
-  id: 43416572611996029
+  id: 35235260021774271
   identification: 
     name: LOV_EMPRESA_ACTIVO
 
   subscription: 
-    version-number: 41721799339784
+    version-number: 45262310577014
 
   source: 
     location: Local Database
     type: SQL Query
     sql-query: |2
-            select nombre_comercial
-                 , id_empresa
+            select id_empresa
+                 , razon_social
               from bko_persona p
               join bko_empresa e on e.id_persona = p.id_persona
              where e.estado_rc = 'ACTIVO'
 
   column-mapping: 
     return: ID_EMPRESA
-    display: NOMBRE_COMERCIAL
-    default-sort: NOMBRE_COMERCIAL
-    sort-direction: Ascending (Nulls Last)
+    display: RAZON_SOCIAL
+    default-sort: Use Order By from Query
 

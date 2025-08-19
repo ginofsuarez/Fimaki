@@ -21,7 +21,7 @@ create or replace package fimaki_back_db.bko_operaciones_pkg as
         p_id_cuenta_bancaria in bko_cuenta_bancaria.id_cuenta_bancaria%type
     ) return number;
     
-    --|| Description: Obtiene el Saldo de Cuentas disponible por Cuenta Bancaria
+     --|| Description: Obtiene el Saldo de Cuentas disponible por Cuenta Bancaria
     --|| Author: Gino Suarez
     function get_cuenta_saldo_disponible (
         p_id_cuenta_bancaria in bko_cuenta_bancaria.id_cuenta_bancaria%type,

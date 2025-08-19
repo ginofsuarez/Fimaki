@@ -43,7 +43,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Confirmación de inversión ===================
-  id: 8662285111407495
+  id: 480972521185737
   identification: 
     name: Confirmación de inversión
     type: Form
@@ -93,7 +93,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P6_EMPRESA_PAGADORA ======================
-  id: 8663532744407507
+  id: 482220154185749
   identification: 
     name: P6_EMPRESA_PAGADORA
     type: Display Only
@@ -110,7 +110,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -127,7 +127,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_EMPRESA_ALL # 42575194812619230
+    list-of-values: LOV_EMPRESA_ALL # 34393882222397472
     display-extra-values: false
 
   advanced: 
@@ -147,7 +147,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_TEA_DISP ==============================
-  id: 8664010471407512
+  id: 482697881185754
   identification: 
     name: P6_TEA_DISP
     type: Display Only
@@ -164,7 +164,7 @@ page-items:
 
   layout: 
     sequence: 150
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -197,7 +197,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_TASA_ANUALIZADA =======================
-  id: 8664108766407513
+  id: 482796176185755
   identification: 
     name: P6_TASA_ANUALIZADA
     type: Hidden
@@ -207,7 +207,7 @@ page-items:
 
   layout: 
     sequence: 200
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
@@ -227,7 +227,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_MONTO_DISPONIBLE ======================
-  id: 8664565235407518
+  id: 483252645185760
   identification: 
     name: P6_MONTO_DISPONIBLE
     type: Display Only
@@ -244,7 +244,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -277,7 +277,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_ID_ROL_PERSONA ========================
-  id: 41324061282478100
+  id: 33142748692256342
   identification: 
     name: P6_ID_ROL_PERSONA
     type: Hidden
@@ -287,14 +287,14 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: ID_ROL_PERSONA
     data-type: NUMBER
     query-only: false
@@ -314,7 +314,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_ID_FACTURA ============================
-  id: 41324132243478101
+  id: 33142819653256343
   identification: 
     name: P6_ID_FACTURA
     type: Hidden
@@ -324,14 +324,14 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: ID_FACTURA
     data-type: NUMBER
     query-only: false
@@ -347,7 +347,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_ID_INVERSION_FACTURA ==================
-  id: 41324229902478102
+  id: 33142917312256344
   identification: 
     name: P6_ID_INVERSION_FACTURA
     type: Hidden
@@ -357,14 +357,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: ID_INVERSION_FACTURA
     data-type: NUMBER
     query-only: true
@@ -380,7 +380,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_ESTADO_RC =============================
-  id: 41324647677478106
+  id: 33143335087256348
   identification: 
     name: P6_ESTADO_RC
     type: Hidden
@@ -390,14 +390,14 @@ page-items:
 
   layout: 
     sequence: 120
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: ESTADO_RC
     data-type: VARCHAR2
     query-only: false
@@ -417,7 +417,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_MONTO_INVERTIDO =======================
-  id: 42541418215458772
+  id: 34360105625237014
   identification: 
     name: P6_MONTO_INVERTIDO
     type: Number Field
@@ -432,7 +432,7 @@ page-items:
 
   layout: 
     sequence: 130
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -461,7 +461,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: MONTO_INVERTIDO
     data-type: NUMBER
     query-only: false
@@ -479,7 +479,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_RENDIMIENTO_ESTIMADO_DISP =============
-  id: 42541607818458773
+  id: 34360295228237015
   identification: 
     name: P6_RENDIMIENTO_ESTIMADO_DISP
     type: Display Only
@@ -496,7 +496,7 @@ page-items:
 
   layout: 
     sequence: 140
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -529,7 +529,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_FECHA_INVERSION =======================
-  id: 42541668022458774
+  id: 34360355432237016
   identification: 
     name: P6_FECHA_INVERSION
     type: Hidden
@@ -539,14 +539,14 @@ page-items:
 
   layout: 
     sequence: 170
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: FECHA_INVERSION
     data-type: DATE
     query-only: false
@@ -562,7 +562,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_FECHA_VENCIMIENTO_DISP ================
-  id: 42541798681458775
+  id: 34360486091237017
   identification: 
     name: P6_FECHA_VENCIMIENTO_DISP
     type: Display Only
@@ -579,7 +579,7 @@ page-items:
 
   layout: 
     sequence: 180
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -598,7 +598,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: FECHA_VENCIMIENTO_EST
     data-type: DATE
     query-only: false
@@ -614,7 +614,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_PLAZO_EN_DIAS =========================
-  id: 42541892440458776
+  id: 34360579850237018
   identification: 
     name: P6_PLAZO_EN_DIAS
     type: Hidden
@@ -624,14 +624,14 @@ page-items:
 
   layout: 
     sequence: 190
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: PLAZO_EN_DIAS
     data-type: NUMBER
     query-only: false
@@ -647,7 +647,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_MONEDA_RC =============================
-  id: 42541968996458777
+  id: 34360656406237019
   identification: 
     name: P6_MONEDA_RC
     type: Display Only
@@ -664,7 +664,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -693,7 +693,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: MONEDA_RC
     data-type: VARCHAR2
     query-only: false
@@ -709,7 +709,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_RENDIMIENTO_ESTIMADO ==================
-  id: 42542066297458778
+  id: 34360753707237020
   identification: 
     name: P6_RENDIMIENTO_ESTIMADO
     type: Hidden
@@ -719,14 +719,14 @@ page-items:
 
   layout: 
     sequence: 160
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
     column: RENDIMIENTO_ESTIMADO
     data-type: NUMBER
     query-only: false
@@ -742,7 +742,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_SALDO_DISPONIBLE ======================
-  id: 43426341068142479
+  id: 35245028477920721
   identification: 
     name: P6_SALDO_DISPONIBLE
     type: Display Only
@@ -759,7 +759,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -797,7 +797,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_SIMBOLO_MONEDA ========================
-  id: 43427344004142489
+  id: 35246031413920731
   identification: 
     name: P6_SIMBOLO_MONEDA
     type: Hidden
@@ -807,7 +807,7 @@ page-items:
 
   layout: 
     sequence: 220
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
@@ -827,7 +827,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_TEA ===================================
-  id: 45124202300912960
+  id: 36942889710691202
   identification: 
     name: P6_TEA
     type: Hidden
@@ -857,7 +857,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P6_FECHA_VENCIMIENTO =====================
-  id: 45124280055912961
+  id: 36942967465691203
   identification: 
     name: P6_FECHA_VENCIMIENTO
     type: Hidden
@@ -867,7 +867,7 @@ page-items:
 
   layout: 
     sequence: 210
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: BODY
 
   advanced: 
@@ -888,14 +888,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CONFIRMAR_INVERSION =========================
-  id: 8662499442407497
+  id: 481186852185739
   identification: 
     button-name: CONFIRMAR_INVERSION
     label: Confirmar Inversión
 
   layout: 
     sequence: 10
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -924,14 +924,14 @@ buttons:
     style: Information
 
 - # ====== Button: CANCELAR ====================================
-  id: 8664257544407514
+  id: 482944954185756
   identification: 
     button-name: CANCELAR
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Confirmación de inversión # 8662285111407495
+    region: Confirmación de inversión # 480972521185737
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -956,7 +956,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onChange - Monto Invertido ==========
-  id: 42540991597458767
+  id: 34359679007237009
   identification: 
     name: onChange - Monto Invertido
 
@@ -973,7 +973,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 42541038046458768
+    id: 34359725456237010
     identification: 
       action: Execute Server-side Code
 
@@ -1009,7 +1009,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - Monto Invertido # 42540991597458767
+      event: onChange - Monto Invertido # 34359679007237009
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
@@ -1017,7 +1017,7 @@ dynamic-actions:
 
 validations: 
 - # ====== Validation: La Inversion no es mayor que el monto dis
-  id: 42542448124458782
+  id: 34361135534237024
   identification: 
     name: 'La Inversion no es mayor que el monto disponible '
 
@@ -1033,10 +1033,10 @@ validations:
   error: 
     error-message: ' Ups! Solo puedes invertir hasta <b>&P6_SIMBOLO_MONEDA. &P6_MONTO_DISPONIBLE.</b> en esta oportunidad. Ajusta el monto para continuar'
     display-location: Inline with Field and in Notification
-    associated-item: P6_MONTO_INVERTIDO # 42541418215458772
+    associated-item: P6_MONTO_INVERTIDO # 34360105625237014
 
 - # ====== Validation: La Inversion no es mayor que el saldo dis
-  id: 42542917622458787
+  id: 34361605032237029
   identification: 
     name: La Inversion no es mayor que el saldo disponible
 
@@ -1052,10 +1052,10 @@ validations:
   error: 
     error-message: '#LABEL# no puede exceder su Saldo Disponible'
     display-location: Inline with Field and in Notification
-    associated-item: P6_MONTO_INVERTIDO # 42541418215458772
+    associated-item: P6_MONTO_INVERTIDO # 34360105625237014
 
 - # ====== Validation: La inversion debe ser mayor a cero ======
-  id: 45124387371912962
+  id: 36943074781691204
   identification: 
     name: La inversion debe ser mayor a cero
 
@@ -1071,11 +1071,11 @@ validations:
   error: 
     error-message: El monto invertido debe ser mayor que cero.
     display-location: Inline with Field and in Notification
-    associated-item: P6_MONTO_INVERTIDO # 42541418215458772
+    associated-item: P6_MONTO_INVERTIDO # 34360105625237014
 
 computations: 
 - # ====== Computation: P6_FECHA_INVERSION =====================
-  id: 42542160686458779
+  id: 34360848096237021
   identification: 
     item-name: P6_FECHA_INVERSION
 
@@ -1090,12 +1090,12 @@ computations:
 
 processes: 
 - # ====== Process: Initialize form Compra Directa =============
-  id: 41323889447478098
+  id: 33142576857256340
   identification: 
     name: Initialize form Compra Directa
     type: Form - Initialization
     execution-chain: None
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
 
   execution: 
     sequence: 10
@@ -1103,7 +1103,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Initialize Factura =========================
-  id: 42540692339458764
+  id: 34359379749237006
   identification: 
     name: Initialize Factura
     type: Execute Code
@@ -1159,12 +1159,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Confirmación de inversión =====
-  id: 42541374882458771
+  id: 34360062292237013
   identification: 
     name: Process form Confirmación de inversión
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Confirmación de inversión # 8662285111407495
+    form-region: Confirmación de inversión # 480972521185737
 
   settings: 
     target-type: Region Source
@@ -1184,7 +1184,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Process Movimiento Financiero ==============
-  id: 42542322758458781
+  id: 34361010168237023
   identification: 
     name: Process Movimiento Financiero
     type: Execute Code
@@ -1266,7 +1266,7 @@ processes:
 
 branches: 
 - # ====== Branch: Go To 5 (Oportunidades) =====================
-  id: 42542282151458780
+  id: 34360969561237022
   identification: 
     name: Go To 5 (Oportunidades)
 

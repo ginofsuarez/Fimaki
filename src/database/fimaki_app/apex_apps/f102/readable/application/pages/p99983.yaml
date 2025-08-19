@@ -1,0 +1,265 @@
+---
+# ====== Page: Activar Cuenta ================================
+id: 99983
+identification: 
+  name: Activar Cuenta
+  alias: ACTIVAR
+  title: Activar Cuenta
+
+appearance: 
+  page-mode: Normal
+  page-template: Minimal (No Navigation)
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+read-only: 
+  type: Always
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Enabled
+  page-access-protection: Unrestricted
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Error =======================================
+  id: 58770319751925791
+  identification: 
+    name: Error
+    type: Static Content
+
+  source: 
+    html-code: Ha ocurrido un problema, el link ha expirado o es inválido.
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: User is the Public User (user has not authenticated)
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Registro Exitoso ============================
+  id: 82163780475422546
+  identification: 
+    name: Registro Exitoso
+    type: Static Content
+
+  source: 
+    html-code: El registro ha sido exitoso, por favor procede a crear una cuenta bancaria para comenzar a invertir.
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: User is Authenticated (not public)
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: TOKEN ====================================
+  id: 54031086924542993
+  identification: 
+    name: TOKEN
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CUENTA_BANCARIA =============================
+  id: 58770203701925790
+  identification: 
+    button-name: CUENTA_BANCARIA
+    label: Crear Cuenta Bancaria
+
+  layout: 
+    sequence: 10
+    region: Registro Exitoso # 82163780475422546
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: VOLVER ======================================
+  id: 58770380375925792
+  identification: 
+    button-name: VOLVER
+    label: Volver al Inicio
+
+  layout: 
+    sequence: 10
+    region: Error # 58770319751925791
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:101:&SESSION.::&DEBUG.:::'
+      page: 101 # Landing
+
+    warn-on-unsaved-changes: Do Not Check
+
+branches: 
+- # ====== Branch: Redirect luego de log in ====================
+  id: 51569766930484690
+  identification: 
+    name: Redirect luego de log in
+
+  execution: 
+    sequence: 20
+    point: Before Header
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:201:&SESSION.:PRIMER_REGISTRO:&DEBUG.:201::&success_msg=#SUCCESS_MSG#'
+      page: 201 # Detalles Cuenta Bancaria
+      request: PRIMER_REGISTRO
+      clear-cache: 201
+
+  server-side-condition: 
+    type: User is Authenticated (not public)
+
+- # ====== Branch: Go To Page 99984 ============================
+  id: 51571468458484707
+  identification: 
+    name: Go To Page 99984
+
+  execution: 
+    sequence: 10
+    point: Before Header
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:99984:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 99984 # Activation Error
+
+  server-side-condition: 
+    type: User is the Public User (user has not authenticated)
+

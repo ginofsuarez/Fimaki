@@ -48,7 +48,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Audit =======================================
-  id: 48854402529268620
+  id: 40677284414054730
   identification: 
     name: Audit
     type: Static Content
@@ -95,7 +95,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Plantilla de Correo =========================
-  id: 50172178896969066
+  id: 41995060781755176
   identification: 
     name: Plantilla de Correo
     type: Form
@@ -145,7 +145,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 50180262456969094
+  id: 42003144341755204
   identification: 
     name: Buttons
     type: Static Content
@@ -184,7 +184,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P96_ID_TEMPLATE ==========================
-  id: 50172549250969067
+  id: 41995431135755177
   identification: 
     name: P96_ID_TEMPLATE
     type: Hidden
@@ -194,14 +194,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Plantilla de Correo # 50172178896969066
+    region: Plantilla de Correo # 41995060781755176
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: ID_TEMPLATE
     data-type: NUMBER
     query-only: true
@@ -217,7 +217,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P96_CODIGO ===============================
-  id: 50172977805969071
+  id: 41995859690755181
   identification: 
     name: P96_CODIGO
     type: Text Field
@@ -235,7 +235,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Plantilla de Correo # 50172178896969066
+    region: Plantilla de Correo # 41995060781755176
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -259,7 +259,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: CODIGO
     data-type: VARCHAR2
     query-only: false
@@ -281,7 +281,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P96_NOMBRE ===============================
-  id: 50173414468969072
+  id: 41996296353755182
   identification: 
     name: P96_NOMBRE
     type: Text Field
@@ -299,7 +299,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Plantilla de Correo # 50172178896969066
+    region: Plantilla de Correo # 41995060781755176
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -323,7 +323,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: NOMBRE
     data-type: VARCHAR2
     query-only: false
@@ -341,7 +341,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P96_ASUNTO ===============================
-  id: 50173773589969073
+  id: 41996655474755183
   identification: 
     name: P96_ASUNTO
     type: Text Field
@@ -359,7 +359,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Plantilla de Correo # 50172178896969066
+    region: Plantilla de Correo # 41995060781755176
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -383,7 +383,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: ASUNTO
     data-type: VARCHAR2
     query-only: false
@@ -401,7 +401,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P96_CONTENIDO_HTML =======================
-  id: 50174195681969074
+  id: 41997077566755184
   identification: 
     name: P96_CONTENIDO_HTML
     type: Rich Text Editor
@@ -419,7 +419,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Plantilla de Correo # 50172178896969066
+    region: Plantilla de Correo # 41995060781755176
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -441,7 +441,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: CONTENIDO_HTML
     data-type: CLOB
     query-only: false
@@ -457,7 +457,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P96_ACTIVO ===============================
-  id: 50174572177969077
+  id: 41997454062755187
   identification: 
     name: P96_ACTIVO
     type: Switch
@@ -475,7 +475,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Plantilla de Correo # 50172178896969066
+    region: Plantilla de Correo # 41995060781755176
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -498,7 +498,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: ACTIVO
     data-type: VARCHAR2
     query-only: false
@@ -513,7 +513,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P96_CREADO_POR ===========================
-  id: 50174962904969078
+  id: 41997844789755188
   identification: 
     name: P96_CREADO_POR
     type: Display Only
@@ -530,7 +530,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Audit # 48854402529268620
+    region: Audit # 40677284414054730
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -549,7 +549,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -565,7 +565,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P96_CREADO ===============================
-  id: 50175318962969080
+  id: 41998200847755190
   identification: 
     name: P96_CREADO
     type: Display Only
@@ -582,7 +582,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Audit # 48854402529268620
+    region: Audit # 40677284414054730
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -601,7 +601,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -617,7 +617,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P96_MODIFICADO_POR =======================
-  id: 50176183054969082
+  id: 41999064939755192
   identification: 
     name: P96_MODIFICADO_POR
     type: Display Only
@@ -634,7 +634,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Audit # 48854402529268620
+    region: Audit # 40677284414054730
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -653,7 +653,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -669,7 +669,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P96_MODIFICADO ===========================
-  id: 50176572162969084
+  id: 41999454047755194
   identification: 
     name: P96_MODIFICADO
     type: Display Only
@@ -686,7 +686,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Audit # 48854402529268620
+    region: Audit # 40677284414054730
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -705,7 +705,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -722,14 +722,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 50180679911969095
+  id: 42003561796755205
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 50180262456969094
+    region: Buttons # 42003144341755204
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -748,14 +748,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 50182104667969100
+  id: 42004986552755210
   identification: 
     button-name: DELETE
     label: Eliminar
 
   layout: 
     sequence: 20
-    region: Buttons # 50180262456969094
+    region: Buttons # 42003144341755204
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -786,14 +786,14 @@ buttons:
     item: P96_ID_TEMPLATE
 
 - # ====== Button: SAVE ========================================
-  id: 50182503467969101
+  id: 42005385352755211
   identification: 
     button-name: SAVE
     label: Guardar cambios
 
   layout: 
     sequence: 30
-    region: Buttons # 50180262456969094
+    region: Buttons # 42003144341755204
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -819,14 +819,14 @@ buttons:
     item: P96_ID_TEMPLATE
 
 - # ====== Button: CREATE ======================================
-  id: 50182825771969102
+  id: 42005707656755212
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 50180262456969094
+    region: Buttons # 42003144341755204
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -853,7 +853,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 50180737643969095
+  id: 42003619528755205
   identification: 
     name: Cancel Dialog
 
@@ -865,23 +865,23 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 50180679911969095
+    button: CANCEL # 42003561796755205
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 50181522122969099
+    id: 42004404007755209
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 50180737643969095
+      event: Cancel Dialog # 42003619528755205
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: P96_CREADO must be timestamp ============
-  id: 50175820981969081
+  id: 41998702866755191
   identification: 
     name: P96_CREADO must be timestamp
 
@@ -896,10 +896,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P96_CREADO # 50175318962969080
+    associated-item: P96_CREADO # 41998200847755190
 
 - # ====== Validation: P96_MODIFICADO must be timestamp ========
-  id: 50177110328969085
+  id: 41999992213755195
   identification: 
     name: P96_MODIFICADO must be timestamp
 
@@ -914,16 +914,16 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P96_MODIFICADO # 50176572162969084
+    associated-item: P96_MODIFICADO # 41999454047755194
 
 processes: 
 - # ====== Process: Initialize form Plantilla de Correo ========
-  id: 50183242827969104
+  id: 42006124712755214
   identification: 
     name: Initialize form Plantilla de Correo
     type: Form - Initialization
     execution-chain: None
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
 
   execution: 
     sequence: 10
@@ -931,12 +931,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Plantilla de Correo ===========
-  id: 50183652546969105
+  id: 42006534431755215
   identification: 
     name: Process form Plantilla de Correo
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Plantilla de Correo # 50172178896969066
+    form-region: Plantilla de Correo # 41995060781755176
 
   settings: 
     target-type: Region Source
@@ -953,7 +953,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 50184039296969106
+  id: 42006921181755216
   identification: 
     name: Close Dialog
     type: Close Dialog

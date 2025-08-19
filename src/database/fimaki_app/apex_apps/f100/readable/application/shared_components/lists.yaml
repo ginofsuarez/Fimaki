@@ -1,18 +1,18 @@
 ---
 - # ====== List: Navigation Menu ===============================
-  id: 23876330948324380
+  id: 15695018358102622
   identification: 
     name: Navigation Menu
 
   subscription: 
-    version-number: 41721712919516
+    version-number: 45262453060562
 
   source: 
     type: Static Values
 
   entries: 
   - # ====== Entry: Panel de Control =============================
-    id: 23887979377324499
+    id: 15706666787102741
     label: 
       label: Panel de Control
 
@@ -40,7 +40,7 @@
       type: Never
 
   - # ====== Entry: Cuentas Bancarias ============================
-    id: 27846092525780895
+    id: 19664779935559137
     label: 
       label: Cuentas Bancarias
 
@@ -65,7 +65,7 @@
       translatable: false
 
   - # ====== Entry: Transacciones Financieras ====================
-    id: 27846388172805586
+    id: 19665075582583828
     label: 
       label: Transacciones Financieras
 
@@ -91,7 +91,7 @@
       translatable: false
 
   - # ====== Entry: Oportunidades ================================
-    id: 27847030766832002
+    id: 19665718176610244
     label: 
       label: Oportunidades
 
@@ -116,8 +116,35 @@
     user-defined-attributes: 
       translatable: false
 
+  - # ====== Entry: Mis inversiones ==============================
+    id: 46579101973682995
+    label: 
+      label: Mis inversiones
+
+    icon: 
+      image/icon-css-classes: fa-money
+
+    layout: 
+      sequence: 50
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 203
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:203:&APP_SESSION.::&DEBUG.:::'
+        page: 203 # Mis inversiones
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
 - # ====== List: Navigation Bar ================================
-  id: 23877509325324416
+  id: 15696196735102658
   identification: 
     name: Navigation Bar
 
@@ -129,7 +156,7 @@
 
   entries: 
   - # ====== Entry: Saldo disponible =============================
-    id: 11085676980054322
+    id: 2904364389832564
     label: 
       label: Saldo disponible
 
@@ -149,7 +176,7 @@
       type: Never
 
   - # ====== Entry: &APP_USER. ===================================
-    id: 23889533631324518
+    id: 15708221041102760
     label: 
       label: '&APP_USER.'
 
@@ -173,13 +200,13 @@
       2.: has-username
 
   - # ====== Entry: --- ==========================================
-    id: 23889994809324520
+    id: 15708682219102762
     label: 
       label: '---'
 
     layout: 
       sequence: 20
-      parent-entry: '&APP_USER.' # 23889533631324518
+      parent-entry: '&APP_USER.' # 15708221041102760
 
     is-current: 
       type: Target Page
@@ -197,7 +224,7 @@
       type: User is Authenticated (not public)
 
   - # ====== Entry: Cerrar Sesión ================================
-    id: 23890348067324522
+    id: 15709035477102764
     label: 
       label: Cerrar Sesión
 
@@ -206,7 +233,7 @@
 
     layout: 
       sequence: 30
-      parent-entry: '&APP_USER.' # 23889533631324518
+      parent-entry: '&APP_USER.' # 15708221041102760
 
     is-current: 
       type: Target Page

@@ -59,8 +59,6 @@ create or replace package body fimaki_sec_db.iam_authz_utils is
 			-- Asignar el id del usuario creado o encontrado al parámetro de salida
         p_id_usuario_out := l_id_usuario;
     exception
-        -- WHEN NOT_DATA_FOUND THEN
-        -- RAISE_APPLICATION_ERROR(-20001, 'Error en el procedimiento CREAR_USUARIO: ' || SQLERRM);    
         when others then
             raise_application_error(-20001, 'Error en el procedimiento CREAR_USUARIO: ' || sqlerrm);
     end crear_usuario;
@@ -511,4 +509,4 @@ end iam_authz_utils;
 /
 
 
--- sqlcl_snapshot {"hash":"64a537f316f7307459c762c2cb02236fc1ec0e61","type":"PACKAGE_BODY","name":"IAM_AUTHZ_UTILS","schemaName":"FIMAKI_SEC_DB","sxml":""}
+-- sqlcl_snapshot {"hash":"52084ab08a7eda43bc550ff2e3042b3fe26360c8","type":"PACKAGE_BODY","name":"IAM_AUTHZ_UTILS","schemaName":"FIMAKI_SEC_DB","sxml":""}

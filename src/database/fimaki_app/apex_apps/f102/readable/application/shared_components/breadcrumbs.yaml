@@ -1,0 +1,77 @@
+---
+- # ====== Breadcrumb: Breadcrumb ==============================
+  id: 43376611651881305
+  identification: 
+    name: Breadcrumb
+
+  entries: 
+  - # ====== Entry: Home =========================================
+    id: 43376860010881306
+    identification: 
+      name: Home
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Home
+
+  - # ====== Entry: Cuentas Bancarias ============================
+    id: 47351530375505424
+    identification: 
+      name: Cuentas Bancarias
+      page-number: 200
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:200:&APP_SESSION.::&DEBUG.:::'
+        page: 200 # Cuentas Bancarias
+
+  - # ====== Entry: Oportunidades ================================
+    id: 49435955275270785
+    identification: 
+      name: Oportunidades
+      page-number: 5
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:5:&APP_SESSION.::&DEBUG.:::'
+        page: 5 # Oportunidades
+
+  - # ====== Entry: Transacciones Financieras ====================
+    id: 51070708558085273
+    identification: 
+      name: Transacciones Financieras
+      page-number: 10
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10:&APP_SESSION.::&DEBUG.:::'
+        page: 10 # Transacciones Financieras
+
+  - # ====== Entry: Detalles Cuenta Bancaria =====================
+    id: 51500688967470926
+    identification: 
+      name: Detalles Cuenta Bancaria
+      page-number: 201
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:201:&APP_SESSION.::&DEBUG.:::'
+        page: 201 # Detalles Cuenta Bancaria
+

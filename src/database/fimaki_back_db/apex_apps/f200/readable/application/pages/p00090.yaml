@@ -38,7 +38,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Solicitudes de Depósito =====================
-  id: 46721918243777519
+  id: 38544800128563629
   identification: 
     name: Solicitudes de Depósito
     type: Interactive Report
@@ -110,7 +110,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 46722098915777520
+    id: 38544980800563630
     link: 
       link-column: Link to Custom Target
       target: 
@@ -178,14 +178,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 48765768903231858
+      id: 40588650788017968
       identification: 
         name: Primary Report
         alias: 405887
 
     columns: 
     - # ====== Column: MONTO =======================================
-      id: 46722299717777522
+      id: 38545181602563632
       identification: 
         column-name: MONTO
         type: Plain Text
@@ -229,7 +229,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_TRANSFERENCIA =========================
-      id: 46722394256777523
+      id: 38545276141563633
       identification: 
         column-name: FECHA_TRANSFERENCIA
         type: Plain Text
@@ -274,13 +274,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ESTADO_RC ===================================
-      id: 46722471262777524
+      id: 38545353147563634
       identification: 
         column-name: ESTADO_RC
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_ESTADO_SOL_DEPOSITO # 48773181867308636
+        list-of-values: LOV_ESTADO_SOL_DEPOSITO # 40596063752094746
 
       heading: 
         heading: Estado Solicitud
@@ -315,7 +315,7 @@ regions:
         pivot: true
 
     - # ====== Column: VALIDADO_POR ================================
-      id: 46722540651777525
+      id: 38545422536563635
       identification: 
         column-name: VALIDADO_POR
         type: Plain Text
@@ -356,7 +356,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_VALIDACION ============================
-      id: 46722658548777526
+      id: 38545540433563636
       identification: 
         column-name: FECHA_VALIDACION
         type: Plain Text
@@ -401,7 +401,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: OBSERVACIONES ===============================
-      id: 46722748287777527
+      id: 38545630172563637
       identification: 
         column-name: OBSERVACIONES
         type: Plain Text
@@ -442,7 +442,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_ROL_PERSONA ==============================
-      id: 46722820387777528
+      id: 38545702272563638
       identification: 
         column-name: ID_ROL_PERSONA
         type: Hidden
@@ -460,7 +460,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_CUENTA_BANCARIA ==========================
-      id: 46722923415777529
+      id: 38545805300563639
       identification: 
         column-name: ID_CUENTA_BANCARIA
         type: Hidden
@@ -478,7 +478,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREADO_POR ==================================
-      id: 46723086271777530
+      id: 38545968156563640
       identification: 
         column-name: CREADO_POR
         type: Plain Text
@@ -519,7 +519,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREADO ======================================
-      id: 46723148719777531
+      id: 38546030604563641
       identification: 
         column-name: CREADO
         type: Plain Text
@@ -564,7 +564,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO_POR ==============================
-      id: 46723284477777532
+      id: 38546166362563642
       identification: 
         column-name: MODIFICADO_POR
         type: Plain Text
@@ -605,7 +605,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO ==================================
-      id: 46723396080777533
+      id: 38546277965563643
       identification: 
         column-name: MODIFICADO
         type: Plain Text
@@ -650,7 +650,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_MOVIMIENTO_FINANCIERO ====================
-      id: 46723487393777534
+      id: 38546369278563644
       identification: 
         column-name: ID_MOVIMIENTO_FINANCIERO
         type: Plain Text
@@ -691,7 +691,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NRO_OPERACION ===============================
-      id: 46723642863777536
+      id: 38546524748563646
       identification: 
         column-name: NRO_OPERACION
         type: Plain Text
@@ -732,7 +732,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NUMERO_CUENTA ===============================
-      id: 48851948806268596
+      id: 40674830691054706
       identification: 
         column-name: NUMERO_CUENTA
         type: Plain Text
@@ -773,7 +773,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TIPO_CUENTA_RC ==============================
-      id: 48852051442268597
+      id: 40674933327054707
       identification: 
         column-name: TIPO_CUENTA_RC
         type: Plain Text
@@ -814,7 +814,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ALIAS_CUENTA ================================
-      id: 48852149884268598
+      id: 40675031769054708
       identification: 
         column-name: ALIAS_CUENTA
         type: Plain Text
@@ -855,13 +855,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONEDA_RC ===================================
-      id: 48852237389268599
+      id: 40675119274054709
       identification: 
         column-name: MONEDA_RC
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_MONEDA # 44239467711699799
+        list-of-values: LOV_MONEDA # 36062349596485909
 
       heading: 
         heading: Moneda
@@ -896,7 +896,7 @@ regions:
         pivot: true
 
     - # ====== Column: NOMBRE_BANCO ================================
-      id: 48852385957268600
+      id: 40675267842054710
       identification: 
         column-name: NOMBRE_BANCO
         type: Plain Text
@@ -937,7 +937,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ACTIVO_SN ===================================
-      id: 48852512700268601
+      id: 40675394585054711
       identification: 
         column-name: ACTIVO_SN
         type: Plain Text
@@ -978,7 +978,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INVERSIONISTA ===============================
-      id: 48853261982268609
+      id: 40676143867054719
       identification: 
         column-name: INVERSIONISTA
         type: Plain Text
@@ -1019,7 +1019,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_PERSONA ==================================
-      id: 48856233105268639
+      id: 40679114990054749
       identification: 
         column-name: ID_PERSONA
         type: Plain Text
@@ -1102,7 +1102,7 @@ regions:
         alignment: center
 
 - # ====== Region: Filtros =====================================
-  id: 48851602070268592
+  id: 40674483955054702
   identification: 
     name: Filtros
     type: Static Content
@@ -1143,7 +1143,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P90_ESTADO_RC ============================
-  id: 48851633064268593
+  id: 40674514949054703
   identification: 
     name: P90_ESTADO_RC
     type: Select List
@@ -1160,7 +1160,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Filtros # 48851602070268592
+    region: Filtros # 40674483955054702
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1181,7 +1181,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_ESTADO_SOL_DEPOSITO # 48773181867308636
+    list-of-values: LOV_ESTADO_SOL_DEPOSITO # 40596063752094746
     display-extra-values: false
     display-null-value: true
     null-display-value: Todos
@@ -1207,7 +1207,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P90_ID_PERSONA ===========================
-  id: 48855955878268636
+  id: 40678837763054746
   identification: 
     name: P90_ID_PERSONA
     type: Popup LOV
@@ -1232,7 +1232,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Filtros # 48851602070268592
+    region: Filtros # 40674483955054702
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1288,7 +1288,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P90_MONEDA_RC ============================
-  id: 48856318236268640
+  id: 40679200121054750
   identification: 
     name: P90_MONEDA_RC
     type: Select List
@@ -1305,7 +1305,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Filtros # 48851602070268592
+    region: Filtros # 40674483955054702
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1326,7 +1326,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_MONEDA # 44239467711699799
+    list-of-values: LOV_MONEDA # 36062349596485909
     display-extra-values: false
     display-null-value: true
     null-display-value: Todos
@@ -1353,14 +1353,14 @@ page-items:
 
 buttons: 
 - # ====== Button: REFRESH =====================================
-  id: 48855670496268633
+  id: 40678552381054743
   identification: 
     button-name: REFRESH
     label: Refrescar
 
   layout: 
     sequence: 10
-    region: Solicitudes de Depósito # 46721918243777519
+    region: Solicitudes de Depósito # 38544800128563629
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -1381,7 +1381,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onChange - Estado ===================
-  id: 48851738183268594
+  id: 40674620068054704
   identification: 
     name: onChange - Estado
 
@@ -1398,7 +1398,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 48851866566268595
+    id: 40674748451054705
     identification: 
       action: Refresh
 
@@ -1407,16 +1407,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Solicitudes de Depósito # 46721918243777519
+      region: Solicitudes de Depósito # 38544800128563629
 
     execution: 
       sequence: 10
-      event: onChange - Estado # 48851738183268594
+      event: onChange - Estado # 40674620068054704
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onDialogClosed - Solicitud Deposito =
-  id: 48855472679268631
+  id: 40678354564054741
   identification: 
     name: onDialogClosed - Solicitud Deposito
 
@@ -1428,11 +1428,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Solicitudes de Depósito # 46721918243777519
+    region: Solicitudes de Depósito # 38544800128563629
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 48855577696268632
+    id: 40678459581054742
     identification: 
       action: Refresh
 
@@ -1441,16 +1441,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Solicitudes de Depósito # 46721918243777519
+      region: Solicitudes de Depósito # 38544800128563629
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Solicitud Deposito # 48855472679268631
+      event: onDialogClosed - Solicitud Deposito # 40678354564054741
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Refresh ===================
-  id: 48855719954268634
+  id: 40678601839054744
   identification: 
     name: onClick - Refresh
 
@@ -1462,11 +1462,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: REFRESH # 48855670496268633
+    button: REFRESH # 40678552381054743
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 48855842810268635
+    id: 40678724695054745
     identification: 
       action: Refresh
 
@@ -1475,16 +1475,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Solicitudes de Depósito # 46721918243777519
+      region: Solicitudes de Depósito # 38544800128563629
 
     execution: 
       sequence: 10
-      event: onClick - Refresh # 48855719954268634
+      event: onClick - Refresh # 40678601839054744
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onChange - Inversionista ============
-  id: 48856029757268637
+  id: 40678911642054747
   identification: 
     name: onChange - Inversionista
 
@@ -1501,7 +1501,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 48856200595268638
+    id: 40679082480054748
     identification: 
       action: Refresh
 
@@ -1510,16 +1510,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Solicitudes de Depósito # 46721918243777519
+      region: Solicitudes de Depósito # 38544800128563629
 
     execution: 
       sequence: 10
-      event: onChange - Inversionista # 48856029757268637
+      event: onChange - Inversionista # 40678911642054747
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Moneda ====================
-  id: 50241836954714192
+  id: 42064718839500302
   identification: 
     name: onClick - Moneda
 
@@ -1536,7 +1536,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 50242013617714193
+    id: 42064895502500303
     identification: 
       action: Refresh
 
@@ -1545,11 +1545,11 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Solicitudes de Depósito # 46721918243777519
+      region: Solicitudes de Depósito # 38544800128563629
 
     execution: 
       sequence: 10
-      event: onClick - Moneda # 50241836954714192
+      event: onClick - Moneda # 42064718839500302
       fire-when-event-result-is: True
       fire-on-initialization: false
 

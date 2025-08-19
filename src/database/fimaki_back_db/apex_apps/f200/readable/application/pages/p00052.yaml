@@ -49,7 +49,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Contacto ====================================
-  id: 43963232801503339
+  id: 35786114686289449
   identification: 
     name: Contacto
     type: Form
@@ -99,7 +99,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 43973705827503385
+  id: 35796587712289495
   identification: 
     name: Buttons
     type: Static Content
@@ -137,7 +137,7 @@ regions:
       show-line-breaks: true
 
 - # ====== Region: Audit =======================================
-  id: 43979198832559110
+  id: 35802080717345220
   identification: 
     name: Audit
     type: Static Content
@@ -184,14 +184,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Persona =====================================
-  id: 43980076856559118
+  id: 35802958741345228
   identification: 
     name: Persona
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Contacto # 43963232801503339
+    parent-region: Contacto # 35786114686289449
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -223,7 +223,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P52_ID_PERSONA_EMPRESA ===================
-  id: 42539712788450928
+  id: 34362594673237038
   identification: 
     name: P52_ID_PERSONA_EMPRESA
     type: Hidden
@@ -253,7 +253,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_NUMERO_DOC_CNTC ======================
-  id: 42540164474450933
+  id: 34363046359237043
   identification: 
     name: P52_NUMERO_DOC_CNTC
     type: Hidden
@@ -263,7 +263,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Contacto # 43963232801503339
+    region: Contacto # 35786114686289449
     slot: BODY
 
   advanced: 
@@ -283,7 +283,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_ID_CONTACTO ==========================
-  id: 43963502867503340
+  id: 35786384752289450
   identification: 
     name: P52_ID_CONTACTO
     type: Hidden
@@ -293,14 +293,14 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Contacto # 43963232801503339
+    region: Contacto # 35786114686289449
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: ID_CONTACTO
     data-type: NUMBER
     query-only: true
@@ -316,7 +316,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_TIPO_CONTACTO_RC =====================
-  id: 43963941624503343
+  id: 35786823509289453
   identification: 
     name: P52_TIPO_CONTACTO_RC
     type: Select List
@@ -333,7 +333,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Contacto # 43963232801503339
+    region: Contacto # 35786114686289449
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -367,7 +367,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: TIPO_CONTACTO_RC
     data-type: VARCHAR2
     query-only: false
@@ -385,7 +385,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_ACTIVO_SN ============================
-  id: 43964328651503345
+  id: 35787210536289455
   identification: 
     name: P52_ACTIVO_SN
     type: Switch
@@ -403,7 +403,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Persona # 43980076856559118
+    region: Persona # 35802958741345228
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -426,7 +426,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: ACTIVO_SN
     data-type: VARCHAR2
     query-only: false
@@ -445,7 +445,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_ID_PERSONA ===========================
-  id: 43964755983503346
+  id: 35787637868289456
   identification: 
     name: P52_ID_PERSONA
     type: Hidden
@@ -455,14 +455,14 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Contacto # 43963232801503339
+    region: Contacto # 35786114686289449
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: ID_PERSONA
     data-type: NUMBER
     query-only: false
@@ -478,7 +478,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_CREADO_POR ===========================
-  id: 43965429474503352
+  id: 35788311359289462
   identification: 
     name: P52_CREADO_POR
     type: Display Only
@@ -495,7 +495,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Audit # 43979198832559110
+    region: Audit # 35802080717345220
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -514,7 +514,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -530,7 +530,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_CREADO ===============================
-  id: 43965800440503354
+  id: 35788682325289464
   identification: 
     name: P52_CREADO
     type: Display Only
@@ -547,7 +547,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Audit # 43979198832559110
+    region: Audit # 35802080717345220
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -566,7 +566,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -582,7 +582,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_MODIFICADO_POR =======================
-  id: 43966645842503357
+  id: 35789527727289467
   identification: 
     name: P52_MODIFICADO_POR
     type: Display Only
@@ -599,7 +599,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Audit # 43979198832559110
+    region: Audit # 35802080717345220
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -618,7 +618,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -634,7 +634,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_MODIFICADO ===========================
-  id: 43967073938503359
+  id: 35789955823289469
   identification: 
     name: P52_MODIFICADO
     type: Display Only
@@ -651,7 +651,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Audit # 43979198832559110
+    region: Audit # 35802080717345220
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -670,7 +670,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -686,7 +686,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_CARGO_RC =============================
-  id: 43967815425503361
+  id: 35790697310289471
   identification: 
     name: P52_CARGO_RC
     type: Popup LOV
@@ -711,7 +711,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Contacto # 43963232801503339
+    region: Contacto # 35786114686289449
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -745,7 +745,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: CARGO_RC
     data-type: VARCHAR2
     query-only: false
@@ -763,7 +763,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_NOTAS ================================
-  id: 43968262736503363
+  id: 35791144621289473
   identification: 
     name: P52_NOTAS
     type: Textarea
@@ -780,7 +780,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Persona # 43980076856559118
+    region: Persona # 35802958741345228
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -805,7 +805,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: NOTAS
     data-type: VARCHAR2
     query-only: false
@@ -824,7 +824,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_CORREO ===============================
-  id: 43968586456503365
+  id: 35791468341289475
   identification: 
     name: P52_CORREO
     type: Text Field
@@ -842,7 +842,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Persona # 43980076856559118
+    region: Persona # 35802958741345228
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -867,7 +867,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: CORREO
     data-type: VARCHAR2
     query-only: false
@@ -885,7 +885,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_TELEFONO_1 ===========================
-  id: 43969052005503366
+  id: 35791933890289476
   identification: 
     name: P52_TELEFONO_1
     type: Text Field
@@ -903,7 +903,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Persona # 43980076856559118
+    region: Persona # 35802958741345228
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -928,7 +928,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: TELEFONO_1
     data-type: VARCHAR2
     query-only: false
@@ -946,7 +946,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_TELEFONO_2 ===========================
-  id: 43969424370503368
+  id: 35792306255289478
   identification: 
     name: P52_TELEFONO_2
     type: Text Field
@@ -964,7 +964,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Persona # 43980076856559118
+    region: Persona # 35802958741345228
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -989,7 +989,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
     column: TELEFONO_2
     data-type: VARCHAR2
     query-only: false
@@ -1007,7 +1007,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_NOMBRES ==============================
-  id: 43979323678559111
+  id: 35802205563345221
   identification: 
     name: P52_NOMBRES
     type: Text Field
@@ -1025,7 +1025,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Persona # 43980076856559118
+    region: Persona # 35802958741345228
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1063,7 +1063,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_APELLIDO_PATERNO =====================
-  id: 43979447236559112
+  id: 35802329121345222
   identification: 
     name: P52_APELLIDO_PATERNO
     type: Text Field
@@ -1081,7 +1081,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Persona # 43980076856559118
+    region: Persona # 35802958741345228
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1119,7 +1119,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_APELLIDO_MATERNO =====================
-  id: 43979552357559113
+  id: 35802434242345223
   identification: 
     name: P52_APELLIDO_MATERNO
     type: Text Field
@@ -1137,7 +1137,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Persona # 43980076856559118
+    region: Persona # 35802958741345228
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1175,7 +1175,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_NO_PERSON_FOUND ======================
-  id: 43980682748559125
+  id: 35803564633345235
   identification: 
     name: P52_NO_PERSON_FOUND
     type: Hidden
@@ -1209,7 +1209,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_TIPO_DOCUMENTO_RC ====================
-  id: 44002897576632565
+  id: 35825779461418675
   identification: 
     name: P52_TIPO_DOCUMENTO_RC
     type: Select List
@@ -1226,7 +1226,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Contacto # 43963232801503339
+    region: Contacto # 35786114686289449
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1279,7 +1279,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P52_NUMERO_DOC ===========================
-  id: 44003182590634927
+  id: 35826064475421037
   identification: 
     name: P52_NUMERO_DOC
     type: Text Field
@@ -1297,7 +1297,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Contacto # 43963232801503339
+    region: Contacto # 35786114686289449
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1341,14 +1341,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 43974176044503386
+  id: 35797057929289496
   identification: 
     button-name: CANCEL
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 43973705827503385
+    region: Buttons # 35796587712289495
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -1367,14 +1367,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 43975544109503391
+  id: 35798425994289501
   identification: 
     button-name: DELETE
     label: Eliminar
 
   layout: 
     sequence: 20
-    region: Buttons # 43973705827503385
+    region: Buttons # 35796587712289495
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -1405,14 +1405,14 @@ buttons:
     item: P52_ID_CONTACTO
 
 - # ====== Button: SAVE ========================================
-  id: 43975940681503393
+  id: 35798822566289503
   identification: 
     button-name: SAVE
     label: Aplicar Cambios
 
   layout: 
     sequence: 30
-    region: Buttons # 43973705827503385
+    region: Buttons # 35796587712289495
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1438,14 +1438,14 @@ buttons:
     item: P52_ID_CONTACTO
 
 - # ====== Button: CREATE ======================================
-  id: 43976363536503394
+  id: 35799245421289504
   identification: 
     button-name: CREATE
     label: Crear
 
   layout: 
     sequence: 40
-    region: Buttons # 43973705827503385
+    region: Buttons # 35796587712289495
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1471,14 +1471,14 @@ buttons:
     item: P52_ID_CONTACTO
 
 - # ====== Button: VERIFICAR ===================================
-  id: 43979736308559115
+  id: 35802618193345225
   identification: 
     button-name: VERIFICAR
     label: Verificar
 
   layout: 
     sequence: 100
-    region: Contacto # 43963232801503339
+    region: Contacto # 35786114686289449
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -1503,14 +1503,14 @@ buttons:
     item: P52_ID_CONTACTO
 
 - # ====== Button: RESTABLECER =================================
-  id: 43981140213559129
+  id: 35804022098345239
   identification: 
     button-name: RESTABLECER
     label: Restablecer
 
   layout: 
     sequence: 110
-    region: Contacto # 43963232801503339
+    region: Contacto # 35786114686289449
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -1533,7 +1533,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 43974216253503386
+  id: 35797098138289496
   identification: 
     name: Cancel Dialog
 
@@ -1545,22 +1545,22 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 43974176044503386
+    button: CANCEL # 35797057929289496
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 43975070288503390
+    id: 35797952173289500
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 43974216253503386
+      event: Cancel Dialog # 35797098138289496
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onPageLoad ==========================
-  id: 43979846760559116
+  id: 35802728645345226
   identification: 
     name: onPageLoad
 
@@ -1573,7 +1573,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: APEX Items with APEX Button =================
-    id: 43979902625559117
+    id: 35802784510345227
     identification: 
       action: APEX Items with APEX Button
 
@@ -1582,16 +1582,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Button
-      button: VERIFICAR # 43979736308559115
+      button: VERIFICAR # 35802618193345225
 
     execution: 
       sequence: 10
-      event: onPageLoad # 43979846760559116
+      event: onPageLoad # 35802728645345226
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Disable =====================================
-    id: 43980293197559121
+    id: 35803175082345231
     identification: 
       action: Disable
 
@@ -1604,12 +1604,12 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: onPageLoad # 43979846760559116
+      event: onPageLoad # 35802728645345226
       fire-when-event-result-is: True
       fire-on-initialization: true
 
   - # ====== Action: APEX Items with APEX Button =================
-    id: 43981195359559130
+    id: 35804077244345240
     identification: 
       action: APEX Items with APEX Button
 
@@ -1618,31 +1618,31 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Button
-      button: RESTABLECER # 43981140213559129
+      button: RESTABLECER # 35804022098345239
 
     execution: 
       sequence: 20
-      event: onPageLoad # 43979846760559116
+      event: onPageLoad # 35802728645345226
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Hide ========================================
-    id: 43981378421559131
+    id: 35804260306345241
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Button
-      button: RESTABLECER # 43981140213559129
+      button: RESTABLECER # 35804022098345239
 
     execution: 
       sequence: 40
-      event: onPageLoad # 43979846760559116
+      event: onPageLoad # 35802728645345226
       fire-when-event-result-is: True
       fire-on-initialization: true
 
 - # ====== Dynamic Action: onClick - Verificar =================
-  id: 43980152434559119
+  id: 35803034319345229
   identification: 
     name: onClick - Verificar
 
@@ -1654,11 +1654,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: VERIFICAR # 43979736308559115
+    button: VERIFICAR # 35802618193345225
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 40723416296789339
+    id: 32546298181575449
     identification: 
       action: Execute Server-side Code
 
@@ -1682,14 +1682,14 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onClick - Verificar # 43980152434559119
+      event: onClick - Verificar # 35803034319345229
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Execute Server-side Code ====================
-    id: 43980220186559120
+    id: 35803102071345230
     identification: 
       action: Execute Server-side Code
 
@@ -1735,14 +1735,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Verificar # 43980152434559119
+      event: onClick - Verificar # 35803034319345229
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: onChange - ID Persona ===============
-  id: 43980471355559122
+  id: 35803353240345232
   identification: 
     name: onChange - ID Persona
 
@@ -1764,7 +1764,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Enable ======================================
-    id: 43980517731559123
+    id: 35803399616345233
     identification: 
       action: Enable
 
@@ -1778,12 +1778,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - ID Persona # 43980471355559122
+      event: onChange - ID Persona # 35803353240345232
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Disable =====================================
-    id: 43980846888559126
+    id: 35803728773345236
     identification: 
       action: Disable
 
@@ -1797,12 +1797,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onChange - ID Persona # 43980471355559122
+      event: onChange - ID Persona # 35803353240345232
       fire-when-event-result-is: False
       fire-on-initialization: false
 
   - # ====== Action: Set Focus ===================================
-    id: 43980921485559127
+    id: 35803803370345237
     identification: 
       action: Set Focus
 
@@ -1813,12 +1813,12 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: onChange - ID Persona # 43980471355559122
+      event: onChange - ID Persona # 35803353240345232
       fire-when-event-result-is: False
       fire-on-initialization: false
 
   - # ====== Action: Set Focus ===================================
-    id: 43981075742559128
+    id: 35803957627345238
     identification: 
       action: Set Focus
 
@@ -1829,72 +1829,72 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onChange - ID Persona # 43980471355559122
+      event: onChange - ID Persona # 35803353240345232
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Hide ========================================
-    id: 43981391342559132
+    id: 35804273227345242
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Button
-      button: VERIFICAR # 43979736308559115
+      button: VERIFICAR # 35802618193345225
 
     execution: 
       sequence: 40
-      event: onChange - ID Persona # 43980471355559122
+      event: onChange - ID Persona # 35803353240345232
       fire-when-event-result-is: False
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 43981488116559133
+    id: 35804370001345243
     identification: 
       action: Show
 
     affected-elements: 
       selection-type: Button
-      button: RESTABLECER # 43981140213559129
+      button: RESTABLECER # 35804022098345239
 
     execution: 
       sequence: 50
-      event: onChange - ID Persona # 43980471355559122
+      event: onChange - ID Persona # 35803353240345232
       fire-when-event-result-is: False
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 43981645938559134
+    id: 35804527823345244
     identification: 
       action: Show
 
     affected-elements: 
       selection-type: Button
-      button: VERIFICAR # 43979736308559115
+      button: VERIFICAR # 35802618193345225
 
     execution: 
       sequence: 30
-      event: onChange - ID Persona # 43980471355559122
+      event: onChange - ID Persona # 35803353240345232
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Hide ========================================
-    id: 43981752268559135
+    id: 35804634153345245
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Button
-      button: RESTABLECER # 43981140213559129
+      button: RESTABLECER # 35804022098345239
 
     execution: 
       sequence: 40
-      event: onChange - ID Persona # 43980471355559122
+      event: onChange - ID Persona # 35803353240345232
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Clear =======================================
-    id: 43982034454559138
+    id: 35804916339345248
     identification: 
       action: Clear
 
@@ -1907,12 +1907,12 @@ dynamic-actions:
 
     execution: 
       sequence: 60
-      event: onChange - ID Persona # 43980471355559122
+      event: onChange - ID Persona # 35803353240345232
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onChange - Tipo Documento ===========
-  id: 43981815641559136
+  id: 35804697526345246
   identification: 
     name: onChange - Tipo Documento
 
@@ -1929,7 +1929,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Disable =====================================
-    id: 43982107149559139
+    id: 35804989034345249
     identification: 
       action: Disable
 
@@ -1942,27 +1942,27 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onChange - Tipo Documento # 43981815641559136
+      event: onChange - Tipo Documento # 35804697526345246
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Hide ========================================
-    id: 43982272557559140
+    id: 35805154442345250
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Button
-      button: RESTABLECER # 43981140213559129
+      button: RESTABLECER # 35804022098345239
 
     execution: 
       sequence: 40
-      event: onChange - Tipo Documento # 43981815641559136
+      event: onChange - Tipo Documento # 35804697526345246
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Clear =======================================
-    id: 43982375029559141
+    id: 35805256914345251
     identification: 
       action: Clear
 
@@ -1976,12 +1976,12 @@ dynamic-actions:
 
     execution: 
       sequence: 60
-      event: onChange - Tipo Documento # 43981815641559136
+      event: onChange - Tipo Documento # 35804697526345246
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Focus ===================================
-    id: 43982580974559143
+    id: 35805462859345253
     identification: 
       action: Set Focus
 
@@ -1992,12 +1992,12 @@ dynamic-actions:
 
     execution: 
       sequence: 70
-      event: onChange - Tipo Documento # 43981815641559136
+      event: onChange - Tipo Documento # 35804697526345246
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Enable ======================================
-    id: 43982661120559144
+    id: 35805543005345254
     identification: 
       action: Enable
 
@@ -2008,27 +2008,27 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - Tipo Documento # 43981815641559136
+      event: onChange - Tipo Documento # 35804697526345246
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 43982774050559145
+    id: 35805655935345255
     identification: 
       action: Show
 
     affected-elements: 
       selection-type: Button
-      button: VERIFICAR # 43979736308559115
+      button: VERIFICAR # 35802618193345225
 
     execution: 
       sequence: 50
-      event: onChange - Tipo Documento # 43981815641559136
+      event: onChange - Tipo Documento # 35804697526345246
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Restablecer ===============
-  id: 43982823752559146
+  id: 35805705637345256
   identification: 
     name: onClick - Restablecer
 
@@ -2040,41 +2040,41 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: RESTABLECER # 43981140213559129
+    button: RESTABLECER # 35804022098345239
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 43982973840559147
+    id: 35805855725345257
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Button
-      button: RESTABLECER # 43981140213559129
+      button: RESTABLECER # 35804022098345239
 
     execution: 
       sequence: 10
-      event: onClick - Restablecer # 43982823752559146
+      event: onClick - Restablecer # 35805705637345256
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 43983055190559148
+    id: 35805937075345258
     identification: 
       action: Show
 
     affected-elements: 
       selection-type: Button
-      button: VERIFICAR # 43979736308559115
+      button: VERIFICAR # 35802618193345225
 
     execution: 
       sequence: 20
-      event: onClick - Restablecer # 43982823752559146
+      event: onClick - Restablecer # 35805705637345256
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Clear =======================================
-    id: 43983145088559149
+    id: 35806026973345259
     identification: 
       action: Clear
 
@@ -2088,12 +2088,12 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: onClick - Restablecer # 43982823752559146
+      event: onClick - Restablecer # 35805705637345256
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Disable =====================================
-    id: 43983197843559150
+    id: 35806079728345260
     identification: 
       action: Disable
 
@@ -2106,12 +2106,12 @@ dynamic-actions:
 
     execution: 
       sequence: 40
-      event: onClick - Restablecer # 43982823752559146
+      event: onClick - Restablecer # 35805705637345256
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Focus ===================================
-    id: 43983311509559151
+    id: 35806193394345261
     identification: 
       action: Set Focus
 
@@ -2122,12 +2122,12 @@ dynamic-actions:
 
     execution: 
       sequence: 60
-      event: onClick - Restablecer # 43982823752559146
+      event: onClick - Restablecer # 35805705637345256
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Enable ======================================
-    id: 43983397894559152
+    id: 35806279779345262
     identification: 
       action: Enable
 
@@ -2138,13 +2138,13 @@ dynamic-actions:
 
     execution: 
       sequence: 50
-      event: onClick - Restablecer # 43982823752559146
+      event: onClick - Restablecer # 35805705637345256
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: P52_CREADO must be timestamp ============
-  id: 43966324123503356
+  id: 35789206008289466
   identification: 
     name: P52_CREADO must be timestamp
 
@@ -2159,10 +2159,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P52_CREADO # 43965800440503354
+    associated-item: P52_CREADO # 35788682325289464
 
 - # ====== Validation: P52_MODIFICADO must be timestamp ========
-  id: 43967509790503361
+  id: 35790391675289471
   identification: 
     name: P52_MODIFICADO must be timestamp
 
@@ -2177,11 +2177,11 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P52_MODIFICADO # 43967073938503359
+    associated-item: P52_MODIFICADO # 35789955823289469
 
 processes: 
 - # ====== Process: Process Contacto Persona ===================
-  id: 40723175681789337
+  id: 32546057566575447
   identification: 
     name: Process Contacto Persona
     type: Execute Code
@@ -2225,7 +2225,7 @@ processes:
     pl/sql-expression: ':P52_ID_PERSONA_EMPRESA is not null'
 
 - # ====== Process: Initialize Persona =========================
-  id: 41315911222470192
+  id: 33138793107256302
   identification: 
     name: Initialize Persona
     type: Execute Code
@@ -2259,7 +2259,7 @@ processes:
     item: P52_ID_CONTACTO
 
 - # ====== Process: Eliminar Persona ===========================
-  id: 41316124748470195
+  id: 33139006633256305
   identification: 
     name: Eliminar Persona
     type: Execute Code
@@ -2281,15 +2281,15 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: DELETE # 43975544109503391
+    when-button-pressed: DELETE # 35798425994289501
 
 - # ====== Process: Initialize form Contacto ===================
-  id: 43976693996503396
+  id: 35799575881289506
   identification: 
     name: Initialize form Contacto
     type: Form - Initialization
     execution-chain: None
-    form-region: Contacto # 43963232801503339
+    form-region: Contacto # 35786114686289449
 
   execution: 
     sequence: 10
@@ -2297,7 +2297,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Contacto ======================
-  id: 43977109938503397
+  id: 35799991823289507
   identification: 
     name: Process form Contacto
     type: Execute Code
@@ -2335,7 +2335,7 @@ processes:
     pl/sql-expression: ':P52_ID_PERSONA_EMPRESA is not null'
 
 - # ====== Process: Close Dialog ===============================
-  id: 43977512689503398
+  id: 35800394574289508
   identification: 
     name: Close Dialog
     type: Close Dialog
@@ -2353,7 +2353,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Process Persona Contacto ===================
-  id: 43983847272559156
+  id: 35806729157345266
   identification: 
     name: Process Persona Contacto
     type: Execute Code
@@ -2398,7 +2398,7 @@ processes:
     pl/sql-expression: ':P52_NO_PERSON_FOUND = 1 and :P52_ID_PERSONA_EMPRESA is not null'
 
 - # ====== Process: Process form Contacto Collection ===========
-  id: 44146201359367251
+  id: 35969083244153361
   identification: 
     name: Process form Contacto Collection
     type: Execute Code

@@ -39,7 +39,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Landing =====================================
-  id: 24063097653558958
+  id: 15881785063337200
   identification: 
     name: Landing
     type: Static Content
@@ -52,6 +52,7 @@ regions:
         <p style="font-size: 1.2em; margin-top: 40px;">
           Bienvenido al mundo de la inversión.<br>
           Invierte en facturas comerciales con bajo riesgo.
+      <span style="font-size: 0.95em; color: #8B4EB0;">Si no tienes una cuenta, regístrate.</span>
         </p>
       </div>
       
@@ -90,7 +91,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Alerta token invalido =======================
-  id: 32070502471927776
+  id: 23889189881706018
   identification: 
     name: Alerta token invalido
     type: Static Content
@@ -139,7 +140,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Footer ======================================
-  id: 45124062776912959
+  id: 36942750186691201
   identification: 
     name: Footer
     type: Static Content
@@ -153,7 +154,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Landing # 24063097653558958
+    parent-region: Landing # 15881785063337200
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -178,7 +179,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P101_ERROR_MSG ===========================
-  id: 32070607649927777
+  id: 23889295059706019
   identification: 
     name: P101_ERROR_MSG
     type: Hidden
@@ -209,14 +210,14 @@ page-items:
 
 buttons: 
 - # ====== Button: login =======================================
-  id: 24063153252558959
+  id: 15881840662337201
   identification: 
     button-name: login
     label: Iniciar Sesión
 
   layout: 
     sequence: 10
-    region: Landing # 24063097653558958
+    region: Landing # 15881785063337200
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -240,14 +241,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: register ====================================
-  id: 24063251744558960
+  id: 15881939154337202
   identification: 
     button-name: register
     label: Registrarse
 
   layout: 
     sequence: 20
-    region: Landing # 24063097653558958
+    region: Landing # 15881785063337200
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -272,7 +273,7 @@ buttons:
 
 processes: 
 - # ====== Process: Resetear Estado de Login ===================
-  id: 42545100543458808
+  id: 34363787953237050
   identification: 
     name: Resetear Estado de Login
     type: Clear Session State

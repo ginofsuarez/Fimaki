@@ -48,7 +48,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Auditoria ===================================
-  id: 44138505965598327
+  id: 35961387850384437
   identification: 
     name: Auditoria
     type: Static Content
@@ -95,7 +95,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Direccion ===================================
-  id: 44154296496852250
+  id: 35977178381638360
   identification: 
     name: Direccion
     type: Form
@@ -145,7 +145,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 44164527437852302
+  id: 35987409322638412
   identification: 
     name: Buttons
     type: Static Content
@@ -184,7 +184,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P70_ID_SUBDIVISION_N3 ====================
-  id: 41317778065470211
+  id: 33140659950256321
   identification: 
     name: P70_ID_SUBDIVISION_N3
     type: Popup LOV
@@ -209,7 +209,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -253,7 +253,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: ID_SUBDIVISION_N3
     data-type: NUMBER
     query-only: false
@@ -271,7 +271,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_PRINCIPAL_SN =========================
-  id: 44138631561598328
+  id: 35961513446384438
   identification: 
     name: P70_PRINCIPAL_SN
     type: Switch
@@ -289,7 +289,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -312,7 +312,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: PRINCIPAL_SN
     data-type: VARCHAR2
     query-only: false
@@ -327,7 +327,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_ID_DIRECCION_PERSONA =================
-  id: 44154639493852256
+  id: 35977521378638366
   identification: 
     name: P70_ID_DIRECCION_PERSONA
     type: Hidden
@@ -337,14 +337,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: ID_DIRECCION_PERSONA
     data-type: NUMBER
     query-only: true
@@ -360,7 +360,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_DIRECCION ============================
-  id: 44155050726852262
+  id: 35977932611638372
   identification: 
     name: P70_DIRECCION
     type: Textarea
@@ -377,7 +377,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -402,7 +402,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: DIRECCION
     data-type: VARCHAR2
     query-only: false
@@ -421,7 +421,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_TELEFONO_PRINCIPAL ===================
-  id: 44155383787852264
+  id: 35978265672638374
   identification: 
     name: P70_TELEFONO_PRINCIPAL
     type: Text Field
@@ -439,7 +439,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -464,7 +464,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: TELEFONO_PRINCIPAL
     data-type: VARCHAR2
     query-only: false
@@ -482,7 +482,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_TELEFONO_SECUNDARIO ==================
-  id: 44155881560852265
+  id: 35978763445638375
   identification: 
     name: P70_TELEFONO_SECUNDARIO
     type: Text Field
@@ -500,7 +500,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -525,7 +525,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: TELEFONO_SECUNDARIO
     data-type: VARCHAR2
     query-only: false
@@ -543,7 +543,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_ID_PERSONA ===========================
-  id: 44156238427852267
+  id: 35979120312638377
   identification: 
     name: P70_ID_PERSONA
     type: Hidden
@@ -553,14 +553,14 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: ID_PERSONA
     data-type: NUMBER
     query-only: false
@@ -576,7 +576,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_ACTIVO_SN ============================
-  id: 44156678988852271
+  id: 35979560873638381
   identification: 
     name: P70_ACTIVO_SN
     type: Switch
@@ -594,7 +594,7 @@ page-items:
 
   layout: 
     sequence: 120
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -617,7 +617,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: ACTIVO_SN
     data-type: VARCHAR2
     query-only: false
@@ -636,7 +636,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_ID_PAIS ==============================
-  id: 44157012318852272
+  id: 35979894203638382
   identification: 
     name: P70_ID_PAIS
     type: Popup LOV
@@ -661,7 +661,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -682,7 +682,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PAIS_ACTIVO # 37471767139739905
+    list-of-values: LOV_PAIS_ACTIVO # 29294649024526015
     display-extra-values: false
     display-null-value: false
 
@@ -690,7 +690,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: ID_PAIS
     data-type: NUMBER
     query-only: false
@@ -708,7 +708,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_ID_SUBDIVISION_N1 ====================
-  id: 44157448728852274
+  id: 35980330613638384
   identification: 
     name: P70_ID_SUBDIVISION_N1
     type: Popup LOV
@@ -733,7 +733,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -777,7 +777,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: ID_SUBDIVISION_N1
     data-type: NUMBER
     query-only: false
@@ -795,7 +795,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_ID_SUBDIVISION_N2 ====================
-  id: 44157813870852276
+  id: 35980695755638386
   identification: 
     name: P70_ID_SUBDIVISION_N2
     type: Popup LOV
@@ -820,7 +820,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Direccion # 44154296496852250
+    region: Direccion # 35977178381638360
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -865,7 +865,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: ID_SUBDIVISION_N2
     data-type: NUMBER
     query-only: false
@@ -883,7 +883,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_CREADO_POR ===========================
-  id: 44158186269852277
+  id: 35981068154638387
   identification: 
     name: P70_CREADO_POR
     type: Display Only
@@ -900,7 +900,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 44138505965598327
+    region: Auditoria # 35961387850384437
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -919,7 +919,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -935,7 +935,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_CREADO ===============================
-  id: 44158645543852279
+  id: 35981527428638389
   identification: 
     name: P70_CREADO
     type: Display Only
@@ -952,7 +952,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 44138505965598327
+    region: Auditoria # 35961387850384437
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -971,7 +971,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -987,7 +987,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_MODIFICADO_POR =======================
-  id: 44159411651852282
+  id: 35982293536638392
   identification: 
     name: P70_MODIFICADO_POR
     type: Display Only
@@ -1004,7 +1004,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 44138505965598327
+    region: Auditoria # 35961387850384437
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1023,7 +1023,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -1039,7 +1039,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P70_MODIFICADO ===========================
-  id: 44159866921852284
+  id: 35982748806638394
   identification: 
     name: P70_MODIFICADO
     type: Display Only
@@ -1056,7 +1056,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditoria # 44138505965598327
+    region: Auditoria # 35961387850384437
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1075,7 +1075,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -1092,14 +1092,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 44164905680852303
+  id: 35987787565638413
   identification: 
     button-name: CANCEL
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 44164527437852302
+    region: Buttons # 35987409322638412
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -1118,14 +1118,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 44166305558852309
+  id: 35989187443638419
   identification: 
     button-name: DELETE
     label: Eliminar
 
   layout: 
     sequence: 20
-    region: Buttons # 44164527437852302
+    region: Buttons # 35987409322638412
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -1156,14 +1156,14 @@ buttons:
     item: P70_ID_DIRECCION_PERSONA
 
 - # ====== Button: SAVE ========================================
-  id: 44166710414852310
+  id: 35989592299638420
   identification: 
     button-name: SAVE
     label: Aplicar Cambios
 
   layout: 
     sequence: 30
-    region: Buttons # 44164527437852302
+    region: Buttons # 35987409322638412
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1189,14 +1189,14 @@ buttons:
     item: P70_ID_DIRECCION_PERSONA
 
 - # ====== Button: CREATE ======================================
-  id: 44167127221852311
+  id: 35990009106638421
   identification: 
     button-name: CREATE
     label: Crear
 
   layout: 
     sequence: 40
-    region: Buttons # 44164527437852302
+    region: Buttons # 35987409322638412
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -1223,7 +1223,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 44164994326852303
+  id: 35987876211638413
   identification: 
     name: Cancel Dialog
 
@@ -1235,23 +1235,23 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 44164905680852303
+    button: CANCEL # 35987787565638413
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 44165791147852307
+    id: 35988673032638417
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 44164994326852303
+      event: Cancel Dialog # 35987876211638413
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: P70_CREADO must be timestamp ============
-  id: 44159145399852281
+  id: 35982027284638391
   identification: 
     name: P70_CREADO must be timestamp
 
@@ -1266,10 +1266,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P70_CREADO # 44158645543852279
+    associated-item: P70_CREADO # 35981527428638389
 
 - # ====== Validation: P70_MODIFICADO must be timestamp ========
-  id: 44160356138852285
+  id: 35983238023638395
   identification: 
     name: P70_MODIFICADO must be timestamp
 
@@ -1284,11 +1284,11 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P70_MODIFICADO # 44159866921852284
+    associated-item: P70_MODIFICADO # 35982748806638394
 
 processes: 
 - # ====== Process: Process form Direccion Collection ==========
-  id: 42539048798450922
+  id: 34361930683237032
   identification: 
     name: Process form Direccion Collection
     type: Execute Code
@@ -1333,12 +1333,12 @@ processes:
     item: P70_ID_PERSONA
 
 - # ====== Process: Initialize form Direccion ==================
-  id: 44167546821852313
+  id: 35990428706638423
   identification: 
     name: Initialize form Direccion
     type: Form - Initialization
     execution-chain: None
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
 
   execution: 
     sequence: 10
@@ -1346,12 +1346,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Direccion =====================
-  id: 44167960911852314
+  id: 35990842796638424
   identification: 
     name: Process form Direccion
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Direccion # 44154296496852250
+    form-region: Direccion # 35977178381638360
 
   settings: 
     target-type: Region Source
@@ -1372,7 +1372,7 @@ processes:
     item: P70_ID_PERSONA
 
 - # ====== Process: Close Dialog ===============================
-  id: 44168359881852316
+  id: 35991241766638426
   identification: 
     name: Close Dialog
     type: Close Dialog

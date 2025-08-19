@@ -43,7 +43,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Buttons =====================================
-  id: 48779301886383430
+  id: 40602183771169540
   identification: 
     name: Buttons
     type: Static Content
@@ -81,7 +81,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Correo ======================================
-  id: 48779703820383434
+  id: 40602585705169544
   identification: 
     name: Correo
     type: Static Content
@@ -121,7 +121,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P92_PARA =================================
-  id: 48779740926383435
+  id: 40602622811169545
   identification: 
     name: P92_PARA
     type: Text Field
@@ -139,7 +139,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Correo # 48779703820383434
+    region: Correo # 40602585705169544
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -177,7 +177,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P92_ASUNTO ===============================
-  id: 48779915906383436
+  id: 40602797791169546
   identification: 
     name: P92_ASUNTO
     type: Text Field
@@ -195,7 +195,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Correo # 48779703820383434
+    region: Correo # 40602585705169544
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -233,7 +233,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P92_PLANTILLA ============================
-  id: 48779957425383437
+  id: 40602839310169547
   identification: 
     name: P92_PLANTILLA
     type: Select List
@@ -250,7 +250,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Correo # 48779703820383434
+    region: Correo # 40602585705169544
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -297,7 +297,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P92_BODY =================================
-  id: 48780146022383439
+  id: 40603027907169549
   identification: 
     name: P92_BODY
     type: Rich Text Editor
@@ -315,7 +315,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Correo # 48779703820383434
+    region: Correo # 40602585705169544
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -350,7 +350,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P92_CC ===================================
-  id: 48780303727383440
+  id: 40603185612169550
   identification: 
     name: P92_CC
     type: Text Field
@@ -368,7 +368,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Correo # 48779703820383434
+    region: Correo # 40602585705169544
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -406,7 +406,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P92_ID_PERSONA ===========================
-  id: 48853675845268613
+  id: 40676557730054723
   identification: 
     name: P92_ID_PERSONA
     type: Hidden
@@ -436,7 +436,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P92_ID_DEPOSITO ==========================
-  id: 48854170383268618
+  id: 40677052268054728
   identification: 
     name: P92_ID_DEPOSITO
     type: Hidden
@@ -466,7 +466,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P92_FROM =================================
-  id: 48854566649268622
+  id: 40677448534054732
   identification: 
     name: P92_FROM
     type: Select List
@@ -483,7 +483,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Correo # 48779703820383434
+    region: Correo # 40602585705169544
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -532,7 +532,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P92_NRO_OPERACION ========================
-  id: 48854755926268624
+  id: 40677637811054734
   identification: 
     name: P92_NRO_OPERACION
     type: Display Only
@@ -549,7 +549,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Correo # 48779703820383434
+    region: Correo # 40602585705169544
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -584,14 +584,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCELAR ====================================
-  id: 48779400854383431
+  id: 40602282739169541
   identification: 
     button-name: CANCELAR
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 48779301886383430
+    region: Buttons # 40602183771169540
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -610,14 +610,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: ENVIAR ======================================
-  id: 48851438818268591
+  id: 40674320703054701
   identification: 
     button-name: ENVIAR
     label: Enviar
 
   layout: 
     sequence: 20
-    region: Buttons # 48779301886383430
+    region: Buttons # 40602183771169540
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -653,7 +653,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onClick - Cancelar ==================
-  id: 48779460438383432
+  id: 40602342323169542
   identification: 
     name: onClick - Cancelar
 
@@ -665,22 +665,22 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCELAR # 48779400854383431
+    button: CANCELAR # 40602282739169541
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 48779576917383433
+    id: 40602458802169543
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: onClick - Cancelar # 48779460438383432
+      event: onClick - Cancelar # 40602342323169542
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onChange - Plantilla ================
-  id: 48854013510268616
+  id: 40676895395054726
   identification: 
     name: onChange - Plantilla
 
@@ -697,7 +697,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 48854082278268617
+    id: 40676964163054727
     identification: 
       action: Execute Server-side Code
 
@@ -727,30 +727,30 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onChange - Plantilla # 48854013510268616
+      event: onChange - Plantilla # 40676895395054726
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Enable ======================================
-    id: 48854295564268619
+    id: 40677177449054729
     identification: 
       action: Enable
 
     affected-elements: 
       selection-type: Button
-      button: ENVIAR # 48851438818268591
+      button: ENVIAR # 40674320703054701
 
     execution: 
       sequence: 20
-      event: onChange - Plantilla # 48854013510268616
+      event: onChange - Plantilla # 40676895395054726
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Get persona details ========================
-  id: 48853739564268614
+  id: 40676621449054724
   identification: 
     name: Get persona details
     type: Execute Code
@@ -771,7 +771,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Procesar comunicacion ======================
-  id: 48854478195268621
+  id: 40677360080054731
   identification: 
     name: Procesar comunicacion
     type: Execute Code
@@ -816,7 +816,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 48854633498268623
+  id: 40677515383054733
   identification: 
     name: Close Dialog
     type: Close Dialog

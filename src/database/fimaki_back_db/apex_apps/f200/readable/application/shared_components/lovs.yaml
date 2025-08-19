@@ -1,6 +1,6 @@
 ---
 - # ====== List of Values: LOV_PAIS_ACTIVO =====================
-  id: 37471767139739905
+  id: 29294649024526015
   identification: 
     name: LOV_PAIS_ACTIVO
 
@@ -22,7 +22,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_SI_NO ===========================
-  id: 38066481741234781
+  id: 29889363626020891
   identification: 
     name: LOV_SI_NO
 
@@ -34,21 +34,21 @@
 
   entries: 
   - # ====== Entry: Si ===========================================
-    id: 38066850948234787
+    id: 29889732833020897
     entry: 
       sequence: 1
       display: Si
       return: S
 
   - # ====== Entry: No ===========================================
-    id: 38067202629234790
+    id: 29890084514020900
     entry: 
       sequence: 2
       display: No
       return: N
 
 - # ====== List of Values: LOV_MONEDA_ACTIVO ===================
-  id: 39963249794186114
+  id: 31786131678972224
   identification: 
     name: LOV_MONEDA_ACTIVO
 
@@ -71,7 +71,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_TIPO_DOC ========================
-  id: 39963535521186116
+  id: 31786417405972226
   identification: 
     name: LOV_TIPO_DOC
 
@@ -95,7 +95,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_TIPO_PER ========================
-  id: 39963842286186117
+  id: 31786724170972227
   identification: 
     name: LOV_TIPO_PER
 
@@ -118,7 +118,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_INSTITUCION_FINANCIERA ==========
-  id: 39964173578190615
+  id: 31787055462976725
   identification: 
     name: LOV_INSTITUCION_FINANCIERA
 
@@ -138,7 +138,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_ACTIVIDAD_ECONOMICA_ACTIVO ======
-  id: 44099756873121584
+  id: 35922638757907694
   identification: 
     name: LOV_ACTIVIDAD_ECONOMICA_ACTIVO
 
@@ -162,7 +162,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_TIPO_SOCIEDAD_ACTIVO ============
-  id: 44100165451134095
+  id: 35923047335920205
   identification: 
     name: LOV_TIPO_SOCIEDAD_ACTIVO
 
@@ -186,7 +186,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_AMBITO_OPERACIONA_ACTIVO ========
-  id: 44100339868147651
+  id: 35923221752933761
   identification: 
     name: LOV_AMBITO_OPERACIONA_ACTIVO
 
@@ -210,7 +210,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_REGIMEN_TRIBUTARIO_ACTIVO =======
-  id: 44100681882170234
+  id: 35923563766956344
   identification: 
     name: LOV_REGIMEN_TRIBUTARIO_ACTIVO
 
@@ -234,7 +234,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_TAMANO_ACTIVO ===================
-  id: 44102485436497962
+  id: 35925367321284072
   identification: 
     name: LOV_TAMANO_ACTIVO
 
@@ -258,7 +258,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_CIIU_ACTIVO =====================
-  id: 44103757793521801
+  id: 35926639678307911
   identification: 
     name: LOV_CIIU_ACTIVO
 
@@ -283,7 +283,7 @@
 
   columns: 
   - # ====== Column: CODIGO ======================================
-    id: 44105047499528624
+    id: 35927929384314734
     identification: 
       column-name: CODIGO
       show: false
@@ -298,7 +298,7 @@
       searchable: false
 
   - # ====== Column: NOMBRE ======================================
-    id: 44105430227528626
+    id: 35928312112314736
     identification: 
       column-name: NOMBRE
       show: true
@@ -316,7 +316,7 @@
       searchable: true
 
   - # ====== Column: ATRIBUTO1 ===================================
-    id: 44105841804528627
+    id: 35928723689314737
     identification: 
       column-name: ATRIBUTO1
       show: true
@@ -334,7 +334,7 @@
       searchable: true
 
 - # ====== List of Values: LOV_ESTADO_EMPRESA_ACTIVO ===========
-  id: 44125861706239448
+  id: 35948743591025558
   identification: 
     name: LOV_ESTADO_EMPRESA_ACTIVO
 
@@ -358,7 +358,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_SUBDIVISON_N1 ===================
-  id: 44136788162019460
+  id: 35959670046805570
   identification: 
     name: LOV_SUBDIVISON_N1
 
@@ -381,7 +381,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_SUBDIVISION_N2 ==================
-  id: 44137773572031308
+  id: 35960655456817418
   identification: 
     name: LOV_SUBDIVISION_N2
 
@@ -404,7 +404,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_SUBDIVISION_N3 ==================
-  id: 44138048778034477
+  id: 35960930662820587
   identification: 
     name: LOV_SUBDIVISION_N3
 
@@ -427,7 +427,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_TIPO_CONTACTO ===================
-  id: 44144806342328305
+  id: 35967688227114415
   identification: 
     name: LOV_TIPO_CONTACTO
 
@@ -450,7 +450,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_MONEDA ==========================
-  id: 44239467711699799
+  id: 36062349596485909
   identification: 
     name: LOV_MONEDA
 
@@ -474,7 +474,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: TIPO_CUENTA =========================
-  id: 44240200807709201
+  id: 36063082692495311
   identification: 
     name: TIPO_CUENTA
 
@@ -498,7 +498,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_ORIGEN_FONDOS_ACTIVO ============
-  id: 44661207091523616
+  id: 36484088976309726
   identification: 
     name: LOV_ORIGEN_FONDOS_ACTIVO
 
@@ -522,7 +522,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_CARGO ===========================
-  id: 45068286632490694
+  id: 36891168517276804
   identification: 
     name: LOV_CARGO
 
@@ -545,7 +545,7 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_EMPRESA =========================
-  id: 45921440117288738
+  id: 37744322002074848
   identification: 
     name: LOV_EMPRESA
 
@@ -566,7 +566,7 @@
 
   columns: 
   - # ====== Column: ID_EMPRESA ==================================
-    id: 45922245725313046
+    id: 37745127610099156
     identification: 
       column-name: ID_EMPRESA
       show: false
@@ -581,7 +581,7 @@
       searchable: false
 
   - # ====== Column: RAZON_SOCIAL ================================
-    id: 45922606275313048
+    id: 37745488160099158
     identification: 
       column-name: RAZON_SOCIAL
       show: true
@@ -599,7 +599,7 @@
       searchable: true
 
   - # ====== Column: NUMERO_DOC ==================================
-    id: 45923055527313049
+    id: 37745937412099159
     identification: 
       column-name: NUMERO_DOC
       show: true
@@ -617,7 +617,7 @@
       searchable: true
 
 - # ====== List of Values: LOV_SCORE_ACTIVO ====================
-  id: 47089999243687220
+  id: 38912881128473330
   identification: 
     name: LOV_SCORE_ACTIVO
 
@@ -641,7 +641,7 @@
     default-sort: Use Order By from Query
 
 - # ====== List of Values: LOV_ESTADO_SOL_DEPOSITO =============
-  id: 48773181867308636
+  id: 40596063752094746
   identification: 
     name: LOV_ESTADO_SOL_DEPOSITO
 

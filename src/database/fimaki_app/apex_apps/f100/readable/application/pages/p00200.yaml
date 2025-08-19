@@ -98,7 +98,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Cuentas Bancarias ===========================
-  id: 27850858088948497
+  id: 19669545498726739
   identification: 
     name: Cuentas Bancarias
     type: Cards
@@ -221,7 +221,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 32068718840927759
+    id: 23887406250706001
     appearance: 
       layout: Grid
       grid-columns: Auto
@@ -356,14 +356,14 @@ regions:
 
 buttons: 
 - # ====== Button: CREAR =======================================
-  id: 27854160975976060
+  id: 19672848385754302
   identification: 
     button-name: CREAR
     label: Añadir Cuenta Bancaria
 
   layout: 
     sequence: 10
-    region: Breadcrumb # 27854057095976059
+    region: Breadcrumb # 19672744505754301
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -390,7 +390,7 @@ buttons:
 
 processes: 
 - # ====== Process: ELIMINAR_CUENTA ============================
-  id: 32070305565927774
+  id: 23888992975706016
   identification: 
     name: ELIMINAR_CUENTA
     type: Execute Code

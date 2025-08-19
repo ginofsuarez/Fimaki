@@ -56,7 +56,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Codigo Referencia Tipo ======================
-  id: 24261554605355645
+  id: 16084436490141755
   identification: 
     name: Codigo Referencia Tipo
     type: Interactive Report
@@ -111,7 +111,7 @@ regions:
     customizable: Customizable and Shown By Default
 
   attributes: 
-    id: 24261631420355646
+    id: 16084513305141756
     link: 
       link-column: Link to Custom Target
       target: 
@@ -178,14 +178,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 24694806957071873
+      id: 16517688841857983
       identification: 
         name: Primary Report
         alias: 85745
 
     columns: 
     - # ====== Column: ID_CODIGO_REF_TIPO ==========================
-      id: 24261946200355649
+      id: 16084828085141759
       identification: 
         column-name: ID_CODIGO_REF_TIPO
         type: Hidden
@@ -203,7 +203,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CODIGO ======================================
-      id: 24262065915355650
+      id: 16084947800141760
       identification: 
         column-name: CODIGO
         type: Plain Text
@@ -244,7 +244,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NOMBRE ======================================
-      id: 24262174673355651
+      id: 16085056558141761
       identification: 
         column-name: NOMBRE
         type: Link
@@ -290,7 +290,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DESCRIPCION =================================
-      id: 24262239152355652
+      id: 16085121037141762
       identification: 
         column-name: DESCRIPCION
         type: Plain Text
@@ -331,13 +331,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SISTEMA_SN ==================================
-      id: 24262337510355653
+      id: 16085219395141763
       identification: 
         column-name: SISTEMA_SN
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SI_NO # 38066481741234781
+        list-of-values: LOV_SI_NO # 29889363626020891
 
       heading: 
         heading: Sistema
@@ -372,13 +372,13 @@ regions:
         pivot: true
 
     - # ====== Column: ACTIVO_SN ===================================
-      id: 24262388332355654
+      id: 16085270217141764
       identification: 
         column-name: ACTIVO_SN
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SI_NO # 38066481741234781
+        list-of-values: LOV_SI_NO # 29889363626020891
 
       heading: 
         heading: Activo
@@ -413,7 +413,7 @@ regions:
         pivot: true
 
     - # ====== Column: CREADO_POR ==================================
-      id: 24262523581355655
+      id: 16085405466141765
       identification: 
         column-name: CREADO_POR
         type: Plain Text
@@ -454,7 +454,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREADO ======================================
-      id: 24262611360355656
+      id: 16085493245141766
       identification: 
         column-name: CREADO
         type: Plain Text
@@ -496,7 +496,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO_POR ==============================
-      id: 24262711122355657
+      id: 16085593007141767
       identification: 
         column-name: MODIFICADO_POR
         type: Plain Text
@@ -537,7 +537,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO ==================================
-      id: 24262785976355658
+      id: 16085667861141768
       identification: 
         column-name: MODIFICADO
         type: Plain Text
@@ -579,7 +579,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ROWID =======================================
-      id: 24697864258127928
+      id: 16520746142914038
       identification: 
         column-name: ROWID
         type: Plain Text
@@ -620,7 +620,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EDIT_LINK ===================================
-      id: 24698177967127931
+      id: 16521059851914041
       identification: 
         column-name: EDIT_LINK
         type: Plain Text
@@ -703,7 +703,7 @@ regions:
         alignment: center
 
 - # ====== Region: Codigo Referencia ===========================
-  id: 24261727534355647
+  id: 16084609419141757
   identification: 
     name: Codigo Referencia
     type: Interactive Report
@@ -772,7 +772,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 24261845407355648
+    id: 16084727292141758
     link: 
       link-column: Link to Custom Target
       target: 
@@ -839,14 +839,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 24695307639071897
+      id: 16518189523858007
       identification: 
         name: Primary Report
         alias: 85750
 
     columns: 
     - # ====== Column: ID_CODIGO_REFERENCIA ========================
-      id: 24262949125355659
+      id: 16085831010141769
       identification: 
         column-name: ID_CODIGO_REFERENCIA
         type: Hidden
@@ -864,7 +864,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CODIGO_REF_TIPO =============================
-      id: 24668989613070710
+      id: 16491871497856820
       identification: 
         column-name: CODIGO_REF_TIPO
         type: Hidden
@@ -882,7 +882,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CODIGO ======================================
-      id: 24669131444070711
+      id: 16492013328856821
       identification: 
         column-name: CODIGO
         type: Plain Text
@@ -923,7 +923,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NOMBRE ======================================
-      id: 24669207836070712
+      id: 16492089720856822
       identification: 
         column-name: NOMBRE
         type: Plain Text
@@ -964,7 +964,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: DESCRIPCION =================================
-      id: 24669367577070713
+      id: 16492249461856823
       identification: 
         column-name: DESCRIPCION
         type: Plain Text
@@ -1005,7 +1005,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SECUENCIA ===================================
-      id: 24669439114070714
+      id: 16492320998856824
       identification: 
         column-name: SECUENCIA
         type: Plain Text
@@ -1046,13 +1046,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ACTIVO_SN ===================================
-      id: 24669516886070715
+      id: 16492398770856825
       identification: 
         column-name: ACTIVO_SN
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_SI_NO # 38066481741234781
+        list-of-values: LOV_SI_NO # 29889363626020891
 
       heading: 
         heading: Activo
@@ -1087,7 +1087,7 @@ regions:
         pivot: true
 
     - # ====== Column: CREADO_POR ==================================
-      id: 24669637406070716
+      id: 16492519290856826
       identification: 
         column-name: CREADO_POR
         type: Plain Text
@@ -1128,7 +1128,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CREADO ======================================
-      id: 24669708278070717
+      id: 16492590162856827
       identification: 
         column-name: CREADO
         type: Plain Text
@@ -1170,7 +1170,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO_POR ==============================
-      id: 24669861139070718
+      id: 16492743023856828
       identification: 
         column-name: MODIFICADO_POR
         type: Plain Text
@@ -1211,7 +1211,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MODIFICADO ==================================
-      id: 24669938373070719
+      id: 16492820257856829
       identification: 
         column-name: MODIFICADO
         type: Plain Text
@@ -1253,7 +1253,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO1 ===================================
-      id: 24670037993070720
+      id: 16492919877856830
       identification: 
         column-name: ATRIBUTO1
         type: Hidden
@@ -1271,7 +1271,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO2 ===================================
-      id: 24670120012070721
+      id: 16493001896856831
       identification: 
         column-name: ATRIBUTO2
         type: Hidden
@@ -1289,7 +1289,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO3 ===================================
-      id: 24670192241070722
+      id: 16493074125856832
       identification: 
         column-name: ATRIBUTO3
         type: Hidden
@@ -1307,7 +1307,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO4 ===================================
-      id: 24670332894070723
+      id: 16493214778856833
       identification: 
         column-name: ATRIBUTO4
         type: Hidden
@@ -1325,7 +1325,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO5 ===================================
-      id: 24670412952070724
+      id: 16493294836856834
       identification: 
         column-name: ATRIBUTO5
         type: Hidden
@@ -1343,7 +1343,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO6 ===================================
-      id: 24670491593070725
+      id: 16493373477856835
       identification: 
         column-name: ATRIBUTO6
         type: Hidden
@@ -1361,7 +1361,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO7 ===================================
-      id: 24670623479070726
+      id: 16493505363856836
       identification: 
         column-name: ATRIBUTO7
         type: Hidden
@@ -1379,7 +1379,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO8 ===================================
-      id: 24670740050070727
+      id: 16493621934856837
       identification: 
         column-name: ATRIBUTO8
         type: Hidden
@@ -1397,7 +1397,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO9 ===================================
-      id: 24670804249070728
+      id: 16493686133856838
       identification: 
         column-name: ATRIBUTO9
         type: Hidden
@@ -1415,7 +1415,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ATRIBUTO10 ==================================
-      id: 24670890372070729
+      id: 16493772256856839
       identification: 
         column-name: ATRIBUTO10
         type: Hidden
@@ -1433,7 +1433,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: EDIT_LINK ===================================
-      id: 24700277142127952
+      id: 16523159026914062
       identification: 
         column-name: EDIT_LINK
         type: Plain Text
@@ -1517,7 +1517,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P505_ID_CODIGO_REFERENCIA_TIPO ===========
-  id: 24697400716127924
+  id: 16520282600914034
   identification: 
     name: P505_ID_CODIGO_REFERENCIA_TIPO
     type: Hidden
@@ -1548,14 +1548,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CREATE_TIPO =================================
-  id: 24696862252127918
+  id: 16519744136914028
   identification: 
     button-name: CREATE_TIPO
     label: Crear
 
   layout: 
     sequence: 10
-    region: Codigo Referencia Tipo # 24261554605355645
+    region: Codigo Referencia Tipo # 16084436490141755
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -1579,14 +1579,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CREATE_CODIGO_REF ===========================
-  id: 24696881749127919
+  id: 16519763633914029
   identification: 
     button-name: CREATE_CODIGO_REF
     label: Crear
 
   layout: 
     sequence: 10
-    region: Codigo Referencia # 24261727534355647
+    region: Codigo Referencia # 16084609419141757
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -1614,7 +1614,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: New =================================
-  id: 24697197456127922
+  id: 16520079340914032
   identification: 
     name: New
 
@@ -1626,11 +1626,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Codigo Referencia Tipo # 24261554605355645
+    region: Codigo Referencia Tipo # 16084436490141755
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 24697331597127923
+    id: 16520213481914033
     identification: 
       action: Refresh
 
@@ -1639,16 +1639,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Codigo Referencia Tipo # 24261554605355645
+      region: Codigo Referencia Tipo # 16084436490141755
 
     execution: 
       sequence: 10
-      event: New # 24697197456127922
+      event: New # 16520079340914032
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: New_1 ===============================
-  id: 24697958231127929
+  id: 16520840115914039
   identification: 
     name: New_1
 
@@ -1660,11 +1660,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Region
-    region: Codigo Referencia # 24261727534355647
+    region: Codigo Referencia # 16084609419141757
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 24698033261127930
+    id: 16520915145914040
     identification: 
       action: Refresh
 
@@ -1673,16 +1673,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Codigo Referencia # 24261727534355647
+      region: Codigo Referencia # 16084609419141757
 
     execution: 
       sequence: 10
-      event: New_1 # 24697958231127929
+      event: New_1 # 16520840115914039
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Codigo Referencia Tipo ====
-  id: 36676228317138131
+  id: 28499110201924241
   identification: 
     name: onClick - Codigo Referencia Tipo
 
@@ -1698,7 +1698,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Set Value ===================================
-    id: 36676355905138132
+    id: 28499237789924242
     identification: 
       action: Set Value
 
@@ -1714,14 +1714,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      event: onClick - Codigo Referencia Tipo # 28499110201924241
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Execute Server-side Code ====================
-    id: 36676444890138133
+    id: 28499326774924243
     identification: 
       action: Execute Server-side Code
 
@@ -1733,14 +1733,14 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      event: onClick - Codigo Referencia Tipo # 28499110201924241
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 36676548647138134
+    id: 28499430531924244
     identification: 
       action: Execute JavaScript Code
 
@@ -1754,27 +1754,27 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      event: onClick - Codigo Referencia Tipo # 28499110201924241
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Enable ======================================
-    id: 36676653091138135
+    id: 28499534975924245
     identification: 
       action: Enable
 
     affected-elements: 
       selection-type: Button
-      button: CREATE_CODIGO_REF # 24696881749127919
+      button: CREATE_CODIGO_REF # 16519763633914029
 
     execution: 
       sequence: 40
-      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      event: onClick - Codigo Referencia Tipo # 28499110201924241
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh =====================================
-    id: 36676760048138136
+    id: 28499641932924246
     identification: 
       action: Refresh
 
@@ -1783,16 +1783,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Codigo Referencia # 24261727534355647
+      region: Codigo Referencia # 16084609419141757
 
     execution: 
       sequence: 50
-      event: onClick - Codigo Referencia Tipo # 36676228317138131
+      event: onClick - Codigo Referencia Tipo # 28499110201924241
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: Tipo seleccionado ===================
-  id: 43773083244564938
+  id: 35595965129351048
   identification: 
     name: Tipo seleccionado
 
@@ -1813,38 +1813,38 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Show ========================================
-    id: 43773249382564939
+    id: 35596131267351049
     identification: 
       action: Show
 
     affected-elements: 
       selection-type: Region
-      region: Codigo Referencia # 24261727534355647
+      region: Codigo Referencia # 16084609419141757
 
     execution: 
       sequence: 10
-      event: Tipo seleccionado # 43773083244564938
+      event: Tipo seleccionado # 35595965129351048
       fire-when-event-result-is: True
       fire-on-initialization: true
 
   - # ====== Action: Hide ========================================
-    id: 43773344133564940
+    id: 35596226018351050
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Region
-      region: Codigo Referencia # 24261727534355647
+      region: Codigo Referencia # 16084609419141757
 
     execution: 
       sequence: 10
-      event: Tipo seleccionado # 43773083244564938
+      event: Tipo seleccionado # 35595965129351048
       fire-when-event-result-is: False
       fire-on-initialization: true
 
 processes: 
 - # ====== Process: Save 2 =====================================
-  id: 33859517393015730
+  id: 25682399277801840
   identification: 
     name: Save 2
     type: Execute Code

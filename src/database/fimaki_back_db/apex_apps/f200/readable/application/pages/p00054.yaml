@@ -42,7 +42,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Subir Archivo ===============================
-  id: 47673803403182001
+  id: 39496685287968111
   identification: 
     name: Subir Archivo
     type: Form
@@ -91,7 +91,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 47681905915182042
+  id: 39504787799968152
   identification: 
     name: Buttons
     type: Static Content
@@ -130,7 +130,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P54_ID_ARCHIVO ===========================
-  id: 47674215351182004
+  id: 39497097235968114
   identification: 
     name: P54_ID_ARCHIVO
     type: Hidden
@@ -140,14 +140,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Subir Archivo # 47673803403182001
+    region: Subir Archivo # 39496685287968111
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Subir Archivo # 47673803403182001
+    form-region: Subir Archivo # 39496685287968111
     column: ID_ARCHIVO
     data-type: NUMBER
     query-only: true
@@ -163,7 +163,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P54_ARCHIVO_NOMBRE =======================
-  id: 47674597911182011
+  id: 39497479795968121
   identification: 
     name: P54_ARCHIVO_NOMBRE
     type: Hidden
@@ -173,14 +173,14 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Subir Archivo # 47673803403182001
+    region: Subir Archivo # 39496685287968111
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Subir Archivo # 47673803403182001
+    form-region: Subir Archivo # 39496685287968111
     column: ARCHIVO_NOMBRE
     data-type: VARCHAR2
     query-only: false
@@ -196,7 +196,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P54_ARCHIVO_TIPO_MIME ====================
-  id: 47674988044182013
+  id: 39497869928968123
   identification: 
     name: P54_ARCHIVO_TIPO_MIME
     type: Hidden
@@ -206,14 +206,14 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Subir Archivo # 47673803403182001
+    region: Subir Archivo # 39496685287968111
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Subir Archivo # 47673803403182001
+    form-region: Subir Archivo # 39496685287968111
     column: ARCHIVO_TIPO_MIME
     data-type: VARCHAR2
     query-only: false
@@ -229,7 +229,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P54_ARCHIVO_CONTENIDO ====================
-  id: 47675397458182015
+  id: 39498279342968125
   identification: 
     name: P54_ARCHIVO_CONTENIDO
     type: File Upload
@@ -251,7 +251,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Subir Archivo # 47673803403182001
+    region: Subir Archivo # 39496685287968111
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -275,7 +275,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Subir Archivo # 47673803403182001
+    form-region: Subir Archivo # 39496685287968111
     column: ARCHIVO_CONTENIDO
     data-type: BLOB
     query-only: false
@@ -289,7 +289,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P54_ATRIBUTO1 ============================
-  id: 47678130031182027
+  id: 39501011915968137
   identification: 
     name: P54_ATRIBUTO1
     type: Hidden
@@ -299,14 +299,14 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Subir Archivo # 47673803403182001
+    region: Subir Archivo # 39496685287968111
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Subir Archivo # 47673803403182001
+    form-region: Subir Archivo # 39496685287968111
     column: ATRIBUTO1
     data-type: VARCHAR2
     query-only: false
@@ -322,7 +322,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P54_ATRIBUTO2 ============================
-  id: 47678577758182029
+  id: 39501459642968139
   identification: 
     name: P54_ATRIBUTO2
     type: Hidden
@@ -332,14 +332,14 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Subir Archivo # 47673803403182001
+    region: Subir Archivo # 39496685287968111
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Subir Archivo # 47673803403182001
+    form-region: Subir Archivo # 39496685287968111
     column: ATRIBUTO2
     data-type: VARCHAR2
     query-only: false
@@ -356,14 +356,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 47682339448182044
+  id: 39505221332968154
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 47681905915182042
+    region: Buttons # 39504787799968152
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -382,14 +382,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 47683705662182049
+  id: 39506587546968159
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 47681905915182042
+    region: Buttons # 39504787799968152
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -419,14 +419,14 @@ buttons:
     item: P54_ID_ARCHIVO
 
 - # ====== Button: SAVE ========================================
-  id: 47684177293182050
+  id: 39507059177968160
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 47681905915182042
+    region: Buttons # 39504787799968152
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -452,14 +452,14 @@ buttons:
     item: P54_ID_ARCHIVO
 
 - # ====== Button: CREATE ======================================
-  id: 47684519369182051
+  id: 39507401253968161
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 47681905915182042
+    region: Buttons # 39504787799968152
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -486,7 +486,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 47682475076182044
+  id: 39505356960968154
   identification: 
     name: Cancel Dialog
 
@@ -498,28 +498,28 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 47682339448182044
+    button: CANCEL # 39505221332968154
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 47683260635182047
+    id: 39506142519968157
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 47682475076182044
+      event: Cancel Dialog # 39505356960968154
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Initialize form Subir Archivo ==============
-  id: 47684951264182053
+  id: 39507833148968163
   identification: 
     name: Initialize form Subir Archivo
     type: Form - Initialization
     execution-chain: None
-    form-region: Subir Archivo # 47673803403182001
+    form-region: Subir Archivo # 39496685287968111
 
   execution: 
     sequence: 10
@@ -527,12 +527,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Subir Archivo =================
-  id: 47685290038182055
+  id: 39508171922968165
   identification: 
     name: Process form Subir Archivo
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Subir Archivo # 47673803403182001
+    form-region: Subir Archivo # 39496685287968111
 
   settings: 
     target-type: Region Source
@@ -549,7 +549,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 47685711917182056
+  id: 39508593801968166
   identification: 
     name: Close Dialog
     type: Close Dialog

@@ -42,7 +42,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Mantenimiento Archivo =======================
-  id: 47134958471656133
+  id: 38957840356442243
   identification: 
     name: Mantenimiento Archivo
     type: Static Content
@@ -81,14 +81,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: New =========================================
-  id: 47135879292656142
+  id: 38958761177442252
   identification: 
     name: New
     type: Dropzone 2
 
   layout: 
     sequence: 60
-    parent-region: Mantenimiento Archivo # 47134958471656133
+    parent-region: Mantenimiento Archivo # 38957840356442243
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -135,7 +135,7 @@ regions:
       image-resizing: False
 
 - # ====== Region: Buttons =====================================
-  id: 47156723421807225
+  id: 38979605306593335
   identification: 
     name: Buttons
     type: Static Content
@@ -174,7 +174,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P53_ID_ARCHIVO_EMPRESA ===================
-  id: 47133303573656117
+  id: 38956185458442227
   identification: 
     name: P53_ID_ARCHIVO_EMPRESA
     type: Hidden
@@ -184,7 +184,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Mantenimiento Archivo # 47134958471656133
+    region: Mantenimiento Archivo # 38957840356442243
     slot: BODY
 
   advanced: 
@@ -204,7 +204,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P53_ID_EMPRESA ===========================
-  id: 47133448536656118
+  id: 38956330421442228
   identification: 
     name: P53_ID_EMPRESA
     type: Hidden
@@ -214,7 +214,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Mantenimiento Archivo # 47134958471656133
+    region: Mantenimiento Archivo # 38957840356442243
     slot: BODY
 
   advanced: 
@@ -234,7 +234,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P53_ATRIBUTO1 ============================
-  id: 47133647252656120
+  id: 38956529137442230
   identification: 
     name: P53_ATRIBUTO1
     type: Text Field
@@ -252,7 +252,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Mantenimiento Archivo # 47134958471656133
+    region: Mantenimiento Archivo # 38957840356442243
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -291,7 +291,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P53_ID_ARCHIVO ===========================
-  id: 47148983082807189
+  id: 38971864967593299
   identification: 
     name: P53_ID_ARCHIVO
     type: Hidden
@@ -301,7 +301,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Mantenimiento Archivo # 47134958471656133
+    region: Mantenimiento Archivo # 38957840356442243
     slot: BODY
 
   advanced: 
@@ -321,7 +321,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P53_ARCHIVO_NOMBRE =======================
-  id: 47149395678807194
+  id: 38972277563593304
   identification: 
     name: P53_ARCHIVO_NOMBRE
     type: Hidden
@@ -331,7 +331,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Mantenimiento Archivo # 47134958471656133
+    region: Mantenimiento Archivo # 38957840356442243
     slot: BODY
 
   advanced: 
@@ -351,7 +351,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P53_ARCHIVO_TIPO_MIME ====================
-  id: 47149801469807196
+  id: 38972683354593306
   identification: 
     name: P53_ARCHIVO_TIPO_MIME
     type: Hidden
@@ -361,7 +361,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Mantenimiento Archivo # 47134958471656133
+    region: Mantenimiento Archivo # 38957840356442243
     slot: BODY
 
   advanced: 
@@ -381,7 +381,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P53_ARCHIVO_CONTENIDO ====================
-  id: 47150195638807198
+  id: 38973077523593308
   identification: 
     name: P53_ARCHIVO_CONTENIDO
     type: File Upload
@@ -401,7 +401,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Mantenimiento Archivo # 47134958471656133
+    region: Mantenimiento Archivo # 38957840356442243
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -436,7 +436,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9000_FILE_ID ============================
-  id: 47297731738024119
+  id: 39120613622810229
   identification: 
     name: P9000_FILE_ID
     type: Hidden
@@ -446,7 +446,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Mantenimiento Archivo # 47134958471656133
+    region: Mantenimiento Archivo # 38957840356442243
     slot: BODY
 
   advanced: 
@@ -467,14 +467,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 47157172819807226
+  id: 38980054704593336
   identification: 
     button-name: CANCEL
     label: Cancel
 
   layout: 
     sequence: 10
-    region: Buttons # 47156723421807225
+    region: Buttons # 38979605306593335
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -493,14 +493,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: DELETE ======================================
-  id: 47158500068807233
+  id: 38981381953593343
   identification: 
     button-name: DELETE
     label: Delete
 
   layout: 
     sequence: 20
-    region: Buttons # 47156723421807225
+    region: Buttons # 38979605306593335
     slot: DELETE
     start-new-layout: false
     start-new-row: true
@@ -530,14 +530,14 @@ buttons:
     item: P53_ID_ARCHIVO
 
 - # ====== Button: SAVE ========================================
-  id: 47158921411807235
+  id: 38981803296593345
   identification: 
     button-name: SAVE
     label: Apply Changes
 
   layout: 
     sequence: 30
-    region: Buttons # 47156723421807225
+    region: Buttons # 38979605306593335
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -563,14 +563,14 @@ buttons:
     item: P53_ID_ARCHIVO
 
 - # ====== Button: CREATE ======================================
-  id: 47159355545807236
+  id: 38982237430593346
   identification: 
     button-name: CREATE
     label: Create
 
   layout: 
     sequence: 40
-    region: Buttons # 47156723421807225
+    region: Buttons # 38979605306593335
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -597,7 +597,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: Cancel Dialog =======================
-  id: 47157245642807226
+  id: 38980127527593336
   identification: 
     name: Cancel Dialog
 
@@ -609,23 +609,23 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 47157172819807226
+    button: CANCEL # 38980054704593336
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 47157992200807231
+    id: 38980874085593341
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: Cancel Dialog # 47157245642807226
+      event: Cancel Dialog # 38980127527593336
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Fetch Data =================================
-  id: 47134867886656132
+  id: 38957749771442242
   identification: 
     name: Fetch Data
     type: Execute Code
@@ -666,7 +666,7 @@ processes:
     item: P53_ID_ARCHIVO_EMPRESA
 
 - # ====== Process: New ========================================
-  id: 47135045474656134
+  id: 38957927359442244
   identification: 
     name: New
     type: Execute Code
@@ -712,7 +712,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 47160563003807241
+  id: 38983444888593351
   identification: 
     name: Close Dialog
     type: Close Dialog
@@ -733,7 +733,7 @@ processes:
     type: Never
 
 - # ====== Process: Download File ==============================
-  id: 47297633931024118
+  id: 39120515815810228
   identification: 
     name: Download File
     type: Execute Code
@@ -768,7 +768,7 @@ processes:
 
 branches: 
 - # ====== Branch: Go To Page 51 ===============================
-  id: 47134614529656130
+  id: 38957496414442240
   identification: 
     name: Go To Page 51
 

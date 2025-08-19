@@ -39,14 +39,14 @@ server-cache:
 
 regions: 
 - # ====== Region: Register-form ===============================
-  id: 104674784679649270
+  id: 96493472089427512
   identification: 
     name: Register-form
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Register # 120598156010004546
+    parent-region: Register # 112416843419782788
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -79,7 +79,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Register ====================================
-  id: 120598156010004546
+  id: 112416843419782788
   identification: 
     name: Register
     type: Static Content
@@ -152,7 +152,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P99987_CONTRASENA_CONFIRMAR ==============
-  id: 46724645938785372
+  id: 38543333348563614
   identification: 
     name: P99987_CONTRASENA_CONFIRMAR
     type: Password
@@ -166,7 +166,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Register-form # 104674784679649270
+    region: Register-form # 96493472089427512
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -203,7 +203,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99987_CORREO ============================
-  id: 46724980959785375
+  id: 38543668369563617
   identification: 
     name: P99987_CORREO
     type: Hidden
@@ -233,7 +233,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99987_TOKEN =============================
-  id: 46725077152785376
+  id: 38543764562563618
   identification: 
     name: P99987_TOKEN
     type: Hidden
@@ -263,7 +263,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P99987_CONTRASENA ========================
-  id: 104682056580649310
+  id: 96500743990427552
   identification: 
     name: P99987_CONTRASENA
     type: Password
@@ -277,7 +277,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Register-form # 104674784679649270
+    region: Register-form # 96493472089427512
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -315,14 +315,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 46973078689908045
+  id: 38791766099686287
   identification: 
     button-name: CANCEL
     label: Regresar al inicio de sesión
 
   layout: 
     sequence: 30
-    region: Register-form # 104674784679649270
+    region: Register-form # 96493472089427512
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -350,14 +350,14 @@ buttons:
     database-action: SQL INSERT action
 
 - # ====== Button: CHANGE ======================================
-  id: 46973435022908047
+  id: 38792122432686289
   identification: 
     button-name: CHANGE
     label: Cambiar Contraseña
 
   layout: 
     sequence: 10
-    region: Register-form # 104674784679649270
+    region: Register-form # 96493472089427512
     slot: NEXT
     start-new-layout: false
     start-new-row: true
@@ -381,7 +381,7 @@ buttons:
 
 validations: 
 - # ====== Validation: La contraseña es valida =================
-  id: 46725328685785379
+  id: 38544016095563621
   identification: 
     name: La contraseña es valida
 
@@ -405,7 +405,7 @@ validations:
 
 processes: 
 - # ====== Process: Cambiar Contrasena =========================
-  id: 46974409840908059
+  id: 38793097250686301
   identification: 
     name: Cambiar Contrasena
     type: Execute Code
@@ -435,11 +435,11 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: CHANGE # 46973435022908047
+    when-button-pressed: CHANGE # 38792122432686289
 
 branches: 
 - # ====== Branch: Go To 99986 =================================
-  id: 46974810666908061
+  id: 38793498076686303
   identification: 
     name: Go To 99986
 

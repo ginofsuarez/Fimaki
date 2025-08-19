@@ -48,14 +48,14 @@ server-cache:
 
 regions: 
 - # ====== Region: Auditar =====================================
-  id: 34862965484762252
+  id: 26685847369548362
   identification: 
     name: Auditar
     type: Static Content
 
   layout: 
     sequence: 120
-    parent-region: Crear Variable de Sistema # 35479907744333320
+    parent-region: Crear Variable de Sistema # 27302789629119430
     slot: BODY
     start-new-layout: false
     start-new-row: true
@@ -96,7 +96,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Crear Variable de Sistema ===================
-  id: 35479907744333320
+  id: 27302789629119430
   identification: 
     name: Crear Variable de Sistema
     type: Form
@@ -146,7 +146,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: Buttons =====================================
-  id: 36676796381138137
+  id: 28499678265924247
   identification: 
     name: Buttons
     type: Static Content
@@ -185,7 +185,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P509_AMBITO_RC ===========================
-  id: 34862027396762243
+  id: 26684909281548353
   identification: 
     name: P509_AMBITO_RC
     type: Hidden
@@ -195,14 +195,14 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Crear Variable de Sistema # 35479907744333320
+    region: Crear Variable de Sistema # 27302789629119430
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: AMBITO_RC
     data-type: VARCHAR2
     query-only: false
@@ -222,7 +222,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P509_ID_VARIABLE =========================
-  id: 35480292003333328
+  id: 27303173888119438
   identification: 
     name: P509_ID_VARIABLE
     type: Hidden
@@ -232,14 +232,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Crear Variable de Sistema # 35479907744333320
+    region: Crear Variable de Sistema # 27302789629119430
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: ID_VARIABLE
     data-type: NUMBER
     query-only: true
@@ -255,7 +255,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P509_NOMBRE_VARIABLE =====================
-  id: 35480765408333334
+  id: 27303647293119444
   identification: 
     name: P509_NOMBRE_VARIABLE
     type: Text Field
@@ -273,7 +273,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Crear Variable de Sistema # 35479907744333320
+    region: Crear Variable de Sistema # 27302789629119430
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -298,7 +298,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: NOMBRE_VARIABLE
     data-type: VARCHAR2
     query-only: false
@@ -320,7 +320,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P509_VALOR ===============================
-  id: 35481088562333336
+  id: 27303970447119446
   identification: 
     name: P509_VALOR
     type: Text Field
@@ -338,7 +338,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Crear Variable de Sistema # 35479907744333320
+    region: Crear Variable de Sistema # 27302789629119430
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -363,7 +363,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: VALOR
     data-type: VARCHAR2
     query-only: false
@@ -381,7 +381,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P509_DESCRIPCION =========================
-  id: 35481533466333341
+  id: 27304415351119451
   identification: 
     name: P509_DESCRIPCION
     type: Textarea
@@ -398,7 +398,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Crear Variable de Sistema # 35479907744333320
+    region: Crear Variable de Sistema # 27302789629119430
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -424,7 +424,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: DESCRIPCION
     data-type: VARCHAR2
     query-only: false
@@ -443,7 +443,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P509_CREADO_POR ==========================
-  id: 35481929225333342
+  id: 27304811110119452
   identification: 
     name: P509_CREADO_POR
     type: Text Field
@@ -462,7 +462,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Auditar # 34862965484762252
+    region: Auditar # 26685847369548362
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -488,7 +488,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -509,7 +509,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P509_CREADO ==============================
-  id: 35482333123333344
+  id: 27305215008119454
   identification: 
     name: P509_CREADO
     type: Text Field
@@ -528,7 +528,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Auditar # 34862965484762252
+    region: Auditar # 26685847369548362
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -553,7 +553,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -574,7 +574,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P509_MODIFICADO_POR ======================
-  id: 35483092234333348
+  id: 27305974119119458
   identification: 
     name: P509_MODIFICADO_POR
     type: Text Field
@@ -593,7 +593,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Auditar # 34862965484762252
+    region: Auditar # 26685847369548362
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -618,7 +618,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -639,7 +639,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P509_MODIFICADO ==========================
-  id: 35483502679333349
+  id: 27306384564119459
   identification: 
     name: P509_MODIFICADO
     type: Text Field
@@ -658,7 +658,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Auditar # 34862965484762252
+    region: Auditar # 26685847369548362
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -683,7 +683,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -704,7 +704,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P509_ACTIVO_SN ===========================
-  id: 35484238757333353
+  id: 27307120642119463
   identification: 
     name: P509_ACTIVO_SN
     type: Switch
@@ -722,7 +722,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Crear Variable de Sistema # 35479907744333320
+    region: Crear Variable de Sistema # 27302789629119430
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -745,7 +745,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
     column: ACTIVO_SN
     data-type: VARCHAR2
     query-only: false
@@ -765,14 +765,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CANCEL ======================================
-  id: 35487342639333366
+  id: 27310224524119476
   identification: 
     button-name: CANCEL
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 36676796381138137
+    region: Buttons # 28499678265924247
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -791,14 +791,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: SAVE ========================================
-  id: 35488346939333370
+  id: 27311228824119480
   identification: 
     button-name: SAVE
     label: Aplicar Cambios
 
   layout: 
     sequence: 30
-    region: Buttons # 36676796381138137
+    region: Buttons # 28499678265924247
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -824,14 +824,14 @@ buttons:
     item: P509_ID_VARIABLE
 
 - # ====== Button: CREATE ======================================
-  id: 35488698304333372
+  id: 27311580189119482
   identification: 
     button-name: CREATE
     label: Crear
 
   layout: 
     sequence: 50
-    region: Buttons # 36676796381138137
+    region: Buttons # 28499678265924247
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -858,7 +858,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onClick - Cancel ====================
-  id: 36676940033138138
+  id: 28499821917924248
   identification: 
     name: onClick - Cancel
 
@@ -870,23 +870,23 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCEL # 35487342639333366
+    button: CANCEL # 27310224524119476
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 36677060576138139
+    id: 28499942460924249
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: onClick - Cancel # 36676940033138138
+      event: onClick - Cancel # 28499821917924248
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 validations: 
 - # ====== Validation: P509_NOMBRE must be unique ==============
-  id: 34861780807762240
+  id: 26684662692548350
   identification: 
     name: P509_NOMBRE must be unique
 
@@ -913,10 +913,10 @@ validations:
   error: 
     error-message: Ya existe una variable con ese nombre.
     display-location: Inline with Field and in Notification
-    associated-item: P509_NOMBRE_VARIABLE # 35480765408333334
+    associated-item: P509_NOMBRE_VARIABLE # 27303647293119444
 
 - # ====== Validation: P509_ACTIVO_SN must be S or N ===========
-  id: 34861894852762242
+  id: 26684776737548352
   identification: 
     name: P509_ACTIVO_SN must be S or N
 
@@ -937,7 +937,7 @@ validations:
     display-location: Inline in Notification
 
 - # ====== Validation: P509_CREADO must be timestamp ===========
-  id: 35482810788333347
+  id: 27305692673119457
   identification: 
     name: P509_CREADO must be timestamp
 
@@ -952,10 +952,10 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P509_CREADO # 35482333123333344
+    associated-item: P509_CREADO # 27305215008119454
 
 - # ====== Validation: P509_MODIFICADO must be timestamp =======
-  id: 35484007192333352
+  id: 27306889077119462
   identification: 
     name: P509_MODIFICADO must be timestamp
 
@@ -970,16 +970,16 @@ validations:
   error: 
     error-message: '#LABEL# must be a valid timestamp.'
     display-location: Inline with Field and in Notification
-    associated-item: P509_MODIFICADO # 35483502679333349
+    associated-item: P509_MODIFICADO # 27306384564119459
 
 processes: 
 - # ====== Process: Initialize form Crear Variable de Sistema ==
-  id: 35489506621333377
+  id: 27312388506119487
   identification: 
     name: Initialize form Crear Variable de Sistema
     type: Form - Initialization
     execution-chain: None
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
 
   execution: 
     sequence: 10
@@ -987,12 +987,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process form Crear Variable de Sistema =====
-  id: 35489905993333378
+  id: 27312787878119488
   identification: 
     name: Process form Crear Variable de Sistema
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: Crear Variable de Sistema # 35479907744333320
+    form-region: Crear Variable de Sistema # 27302789629119430
 
   settings: 
     target-type: Region Source
@@ -1009,7 +1009,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 36677084071138140
+  id: 28499965955924250
   identification: 
     name: Close Dialog
     type: Close Dialog

@@ -43,7 +43,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Registro de Cancelacion =====================
-  id: 41318174092470215
+  id: 33141055977256325
   identification: 
     name: Registro de Cancelacion
     type: Static Content
@@ -82,7 +82,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Botonera ====================================
-  id: 41318220813470216
+  id: 33141102698256326
   identification: 
     name: Botonera
     type: Static Content
@@ -121,7 +121,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Vista previa de retorno por Inversionista ===
-  id: 45120407955905096
+  id: 36943289840691206
   identification: 
     name: Vista previa de retorno por Inversionista
     type: Interactive Report
@@ -145,26 +145,47 @@ regions:
                , cci
                , id_deposito
                , fecha_movimiento
-               , round(monto / to_number(:P80_MONTO_PAGO,'&NUMBER_FORMAT.'), 4) AS ratio
+               , round(monto / :P80_MONTO_PAGO, 4) AS ratio
                , ROUND(bko_operaciones_pkg.calcular_roi(
                           p_tasa_anual      => tasa_interes,
-                          p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO, '&DATE_FORMAT.')),
+                          p_fecha_pago      => TRUNC(TO_DATE(case 
+                                                              when to_date(:P80_FECHA_VENCIMIENTO,'&DATE_FORMAT.') < to_date(:P80_FECHA_PAGO,'&DATE_FORMAT.') then
+                                                                  :P80_FECHA_VENCIMIENTO 
+                                                              else 
+                                                                  :P80_FECHA_PAGO 
+                                                              end, '&DATE_FORMAT.')),
                           p_fecha_inversion => TRUNC(TO_DATE(fecha_movimiento, '&DATE_FORMAT.')),
                           p_monto_invertido => monto
-                      ) * (monto / to_number(:P80_MONTO_PAGO,'&NUMBER_FORMAT.')), 2) AS interes_ordinario
-               , CASE 
+                      ), 2) AS interes_ordinario
+              --  , ROUND(bko_operaciones_pkg.calcular_roi(
+              --             p_tasa_anual      => tasa_interes,
+              --             p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO, '&DATE_FORMAT.')),
+              --             p_fecha_inversion => TRUNC(TO_DATE(fecha_movimiento, '&DATE_FORMAT.')),
+              --             p_monto_invertido => monto
+              --         ) * (monto / :P80_MONTO_PAGO), 2) AS interes_ordinario
+              --  , CASE 
+              --     WHEN :P80_DIAS_ATRASO > 0 
+              --     THEN ROUND((:P80_MONTO_PAGO * (tasa_interes / 100) * (:P80_DIAS_ATRASO / 360)) * (monto / :P80_MONTO_PAGO), 2)
+              --     ELSE 0
+              --    END AS interes_mora
+              , CASE 
                   WHEN :P80_DIAS_ATRASO > 0 
-                  THEN ROUND((to_number(:P80_MONTO_PAGO,'&NUMBER_FORMAT.') * (tasa_interes / 100) * (:P80_DIAS_ATRASO / 360)) * (monto / to_number(:P80_MONTO_PAGO,'&NUMBER_FORMAT.')), 2)
-                  ELSE 0
-                 END AS interes_mora
+                  THEN ROUND(bko_operaciones_pkg.calcular_roi(
+                                  p_tasa_anual      => tasa_interes,
+                                  p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO,'&DATE_FORMAT.')),
+                                  p_fecha_inversion => TRUNC(TO_DATE(:P80_FECHA_VENCIMIENTO, '&DATE_FORMAT.')),
+                                  p_monto_invertido => monto
+                              ), 2) 
+                END AS interes_mora
             from bko_movimiento_financiero_v
-           where id_factura = :P80_ID_FACTURA
+           where id_factura         = :P80_ID_FACTURA
              and tipo_movimiento_rc = 'INVERSION'
              and estado_rc          = 'ACTIVO'
     page-items-to-submit: 
     - P80_ID_FACTURA
     - P80_MONTO_PAGO
     - P80_FECHA_PAGO
+    - P80_FECHA_VENCIMIENTO
 
   layout: 
     sequence: 30
@@ -200,7 +221,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 45120996024905102
+    id: 36943877909691212
     link: 
       link-column: Exclude Link Column
 
@@ -259,14 +280,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 45368372498307741
+      id: 37191254383093851
       identification: 
         name: Primary Report
         alias: 371913
 
     columns: 
     - # ====== Column: ID_MOVIMIENTO_FINANCIERO ====================
-      id: 45121089673905103
+      id: 36943971558691213
       identification: 
         column-name: ID_MOVIMIENTO_FINANCIERO
         type: Hidden
@@ -284,7 +305,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_ROL_PERSONA ==============================
-      id: 45121217475905104
+      id: 36944099360691214
       identification: 
         column-name: ID_ROL_PERSONA
         type: Hidden
@@ -302,7 +323,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: SIGNO =======================================
-      id: 45121320065905106
+      id: 36944201950691216
       identification: 
         column-name: SIGNO
         type: Plain Text
@@ -343,13 +364,13 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONEDA_RC ===================================
-      id: 45121444764905107
+      id: 36944326649691217
       identification: 
         column-name: MONEDA_RC
         type: Plain Text (based on List of Values)
 
       list-of-values: 
-        list-of-values: LOV_MONEDA # 44239467711699799
+        list-of-values: LOV_MONEDA # 36062349596485909
 
       heading: 
         heading: Moneda
@@ -384,7 +405,7 @@ regions:
         pivot: true
 
     - # ====== Column: ESTADO_RC ===================================
-      id: 45121519362905108
+      id: 36944401247691218
       identification: 
         column-name: ESTADO_RC
         type: Plain Text
@@ -425,7 +446,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_CUENTA_BANCARIA ==========================
-      id: 45121623027905109
+      id: 36944504912691219
       identification: 
         column-name: ID_CUENTA_BANCARIA
         type: Hidden
@@ -443,7 +464,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: MONTO =======================================
-      id: 45121764380905110
+      id: 36944646265691220
       identification: 
         column-name: MONTO
         type: Plain Text
@@ -487,7 +508,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_FACTURA ==================================
-      id: 45121869817905111
+      id: 36944751702691221
       identification: 
         column-name: ID_FACTURA
         type: Hidden
@@ -505,7 +526,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_INVERSION_FACTURA ========================
-      id: 45121922890905112
+      id: 36944804775691222
       identification: 
         column-name: ID_INVERSION_FACTURA
         type: Hidden
@@ -523,7 +544,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INVERSIONISTA ===============================
-      id: 45122096516905113
+      id: 36944978401691223
       identification: 
         column-name: INVERSIONISTA
         type: Plain Text
@@ -564,7 +585,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: NUMERO_CUENTA ===============================
-      id: 45122118127905114
+      id: 36945000012691224
       identification: 
         column-name: NUMERO_CUENTA
         type: Plain Text
@@ -605,7 +626,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: CCI =========================================
-      id: 45122272172905115
+      id: 36945154057691225
       identification: 
         column-name: CCI
         type: Plain Text
@@ -646,7 +667,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: ID_DEPOSITO =================================
-      id: 45122408642905116
+      id: 36945290527691226
       identification: 
         column-name: ID_DEPOSITO
         type: Plain Text
@@ -687,7 +708,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: FECHA_MOVIMIENTO ============================
-      id: 45122494910905117
+      id: 36945376795691227
       identification: 
         column-name: FECHA_MOVIMIENTO
         type: Plain Text
@@ -732,7 +753,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: TIPO_MOVIMIENTO =============================
-      id: 45122528877905118
+      id: 36945410762691228
       identification: 
         column-name: TIPO_MOVIMIENTO
         type: Plain Text
@@ -773,7 +794,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: RATIO =======================================
-      id: 45123012749905122
+      id: 36945894634691232
       identification: 
         column-name: RATIO
         type: Plain Text
@@ -817,7 +838,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INTERES_ORDINARIO ===========================
-      id: 45123033998905123
+      id: 36945915883691233
       identification: 
         column-name: INTERES_ORDINARIO
         type: Plain Text
@@ -861,7 +882,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: INTERES_MORA ================================
-      id: 45123169097905124
+      id: 36946050982691234
       identification: 
         column-name: INTERES_MORA
         type: Plain Text
@@ -948,7 +969,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P80_ID_FACTURA ===========================
-  id: 41318096547470214
+  id: 33140978432256324
   identification: 
     name: P80_ID_FACTURA
     type: Hidden
@@ -978,7 +999,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P80_FECHA_PAGO ===========================
-  id: 41318571031470219
+  id: 33141452916256329
   identification: 
     name: P80_FECHA_PAGO
     type: Date Picker
@@ -992,14 +1013,13 @@ page-items:
     display-as: Popup
     minimum-date: Item
     minimum-item: P80_FECHA_PAGO_MINIMO
-    maximum-date: Static
-    maximum-static: +0d
+    maximum-date: None
     multiple-months: No
     use-defaults: true
 
   layout: 
     sequence: 70
-    region: Registro de Cancelacion # 41318174092470215
+    region: Registro de Cancelacion # 33141055977256325
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1038,42 +1058,23 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P80_MONTO_PAGO ===========================
-  id: 41318708681470220
+  id: 33141590566256330
   identification: 
     name: P80_MONTO_PAGO
-    type: Display Only
-
-  label: 
-    label: Monto de Cancelación
-    alignment: Left
+    type: Hidden
 
   settings: 
-    format: Plain Text
-    based-on: Item Value
-    show-line-breaks: true
-    send-on-page-submit: true
+    value-protected: true
 
   layout: 
     sequence: 30
-    region: Registro de Cancelacion # 41318174092470215
+    region: Registro de Cancelacion # 33141055977256325
     slot: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating
-    template-options: 
-    - '#DEFAULT#'
     format-mask: '&NUMBER_FORMAT.'
 
   advanced: 
-    css-classes: 
-    - u-textEnd
     warn-on-unsaved-changes: Page Default
 
   source: 
@@ -1090,7 +1091,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P80_MONEDA_RC ============================
-  id: 41318801819470221
+  id: 33141683704256331
   identification: 
     name: P80_MONEDA_RC
     type: Select List
@@ -1106,8 +1107,8 @@ page-items:
     type: No
 
   layout: 
-    sequence: 40
-    region: Registro de Cancelacion # 41318174092470215
+    sequence: 50
+    region: Registro de Cancelacion # 33141055977256325
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1128,7 +1129,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_MONEDA # 44239467711699799
+    list-of-values: LOV_MONEDA # 36062349596485909
     display-extra-values: false
     display-null-value: true
 
@@ -1154,7 +1155,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P80_FECHA_VENCIMIENTO ====================
-  id: 41318835467470222
+  id: 33141717352256332
   identification: 
     name: P80_FECHA_VENCIMIENTO
     type: Date Picker
@@ -1173,7 +1174,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Registro de Cancelacion # 41318174092470215
+    region: Registro de Cancelacion # 33141055977256325
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1215,7 +1216,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P80_DIAS_ATRASO ==========================
-  id: 41318956492470223
+  id: 33141838377256333
   identification: 
     name: P80_DIAS_ATRASO
     type: Display Only
@@ -1232,7 +1233,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Registro de Cancelacion # 41318174092470215
+    region: Registro de Cancelacion # 33141055977256325
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1266,7 +1267,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P80_INTERES_MORA =========================
-  id: 41319047304470224
+  id: 33141929189256334
   identification: 
     name: P80_INTERES_MORA
     type: Display Only
@@ -1283,7 +1284,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: Registro de Cancelacion # 41318174092470215
+    region: Registro de Cancelacion # 33141055977256325
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1317,7 +1318,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P80_FECHA_PAGO_MINIMO ====================
-  id: 41319159969470225
+  id: 33142041854256335
   identification: 
     name: P80_FECHA_PAGO_MINIMO
     type: Hidden
@@ -1327,7 +1328,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Registro de Cancelacion # 41318174092470215
+    region: Registro de Cancelacion # 33141055977256325
     slot: BODY
 
   advanced: 
@@ -1347,7 +1348,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P80_INTERES_ORDINARIO ====================
-  id: 45120244180905095
+  id: 36943126065691205
   identification: 
     name: P80_INTERES_ORDINARIO
     type: Display Only
@@ -1364,7 +1365,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Registro de Cancelacion # 41318174092470215
+    region: Registro de Cancelacion # 33141055977256325
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1398,7 +1399,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P80_TEA ==================================
-  id: 45123311202905125
+  id: 36946193087691235
   identification: 
     name: P80_TEA
     type: Display Only
@@ -1415,7 +1416,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Registro de Cancelacion # 41318174092470215
+    region: Registro de Cancelacion # 33141055977256325
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1448,16 +1449,70 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P80_MONTO_PAGO_DISP ======================
+  id: 42065054173500305
+  identification: 
+    name: P80_MONTO_PAGO_DISP
+    type: Display Only
+
+  label: 
+    label: Monto de Cancelación
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 20
+    region: Registro de Cancelacion # 33141055977256325
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_char(:P80_MONTO_PAGO,'&NUMBER_FORMAT.')"
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
 buttons: 
 - # ====== Button: CONFIRMAR_CANCELACION =======================
-  id: 41318384474470217
+  id: 33141266359256327
   identification: 
     button-name: CONFIRMAR_CANCELACION
     label: Confirmar
 
   layout: 
     sequence: 20
-    region: Botonera # 41318220813470216
+    region: Botonera # 33141102698256326
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -1484,14 +1539,14 @@ buttons:
     style: Default
 
 - # ====== Button: CANCELAR ====================================
-  id: 41318470132470218
+  id: 33141352017256328
   identification: 
     button-name: CANCELAR
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Botonera # 41318220813470216
+    region: Botonera # 33141102698256326
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -1510,14 +1565,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: PREVISUALIZAR ===============================
-  id: 45120641772905099
+  id: 36943523657691209
   identification: 
     button-name: PREVISUALIZAR
     label: Vista Previa
 
   layout: 
     sequence: 10
-    region: Botonera # 41318220813470216
+    region: Botonera # 33141102698256326
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -1538,14 +1593,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: RECALCULAR ==================================
-  id: 45122900714905121
+  id: 36945782599691231
   identification: 
     button-name: RECALCULAR
     label: Recalcular
 
   layout: 
     sequence: 10
-    region: Vista previa de retorno por Inversionista # 45120407955905096
+    region: Vista previa de retorno por Inversionista # 36943289840691206
     slot: RIGHT_OF_IR_SEARCH_BAR
     start-new-layout: false
     start-new-row: true
@@ -1567,7 +1622,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onClick - Cancelar ==================
-  id: 43422320567134613
+  id: 35245202451920723
   identification: 
     name: onClick - Cancelar
 
@@ -1579,22 +1634,22 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCELAR # 41318470132470218
+    button: CANCELAR # 33141352017256328
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 43422421046134614
+    id: 35245302930920724
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: onClick - Cancelar # 43422320567134613
+      event: onClick - Cancelar # 35245202451920723
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onChange - Fecha Pago ===============
-  id: 43422681058134616
+  id: 35245562942920726
   identification: 
     name: onChange - Fecha Pago
 
@@ -1615,7 +1670,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 43422782836134617
+    id: 35245664720920727
     identification: 
       action: Execute Server-side Code
 
@@ -1634,8 +1689,14 @@ dynamic-actions:
                       , p_fecha_inversion => TRUNC(TO_DATE(fecha_ingreso,'&DATE_FORMAT.'))
                       , p_monto_invertido => saldo_a_pago
                       ) as roi
-                 --, (((saldo_a_pago * tasa_interes)/100)/30)*
-                      , saldo_a_pago * (tasa_interes / 100) * (to_number(:P80_DIAS_ATRASO) / 360)
+                --  , saldo_a_pago * (tasa_interes / 100) * (to_number(:P80_DIAS_ATRASO) / 360)
+                 , ROUND(bko_operaciones_pkg.calcular_roi(
+                        p_tasa_anual      => tasa_interes,
+                        p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO,'&DATE_FORMAT.')),
+                        p_fecha_inversion => TRUNC(TO_DATE(:P80_FECHA_VENCIMIENTO, '&DATE_FORMAT.')),
+                        p_monto_invertido => saldo_a_pago
+                    ), 2) 
+                  AS interes_moratorio
               into l_roi
                  , l_interes_mora
               from factura_v
@@ -1655,14 +1716,14 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onChange - Fecha Pago # 43422681058134616
+      event: onChange - Fecha Pago # 35245562942920726
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Refresh =====================================
-    id: 45123390494905126
+    id: 36946272379691236
     identification: 
       action: Refresh
 
@@ -1671,31 +1732,31 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Vista previa de retorno por Inversionista # 45120407955905096
+      region: Vista previa de retorno por Inversionista # 36943289840691206
 
     execution: 
       sequence: 30
-      event: onChange - Fecha Pago # 43422681058134616
+      event: onChange - Fecha Pago # 35245562942920726
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Disable =====================================
-    id: 45123800014905130
+    id: 36946681899691240
     identification: 
       action: Disable
 
     affected-elements: 
       selection-type: Button
-      button: PREVISUALIZAR # 45120641772905099
+      button: PREVISUALIZAR # 36943523657691209
 
     execution: 
       sequence: 10
-      event: onChange - Fecha Pago # 43422681058134616
+      event: onChange - Fecha Pago # 35245562942920726
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onPageLoad ==========================
-  id: 45120508231905097
+  id: 36943390116691207
   identification: 
     name: onPageLoad
 
@@ -1708,37 +1769,37 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 45120527387905098
+    id: 36943409272691208
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Region
-      region: Vista previa de retorno por Inversionista # 45120407955905096
+      region: Vista previa de retorno por Inversionista # 36943289840691206
 
     execution: 
       sequence: 10
-      event: onPageLoad # 45120508231905097
+      event: onPageLoad # 36943390116691207
       fire-when-event-result-is: True
       fire-on-initialization: true
 
   - # ====== Action: Disable =====================================
-    id: 45123462899905127
+    id: 36946344784691237
     identification: 
       action: Disable
 
     affected-elements: 
       selection-type: Button
-      button: PREVISUALIZAR # 45120641772905099
+      button: PREVISUALIZAR # 36943523657691209
 
     execution: 
       sequence: 20
-      event: onPageLoad # 45120508231905097
+      event: onPageLoad # 36943390116691207
       fire-when-event-result-is: True
       fire-on-initialization: true
 
 - # ====== Dynamic Action: onClick - Previsualizar =============
-  id: 45120751207905100
+  id: 36943633092691210
   identification: 
     name: onClick - Previsualizar
 
@@ -1750,26 +1811,26 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: PREVISUALIZAR # 45120641772905099
+    button: PREVISUALIZAR # 36943523657691209
 
   actions: 
   - # ====== Action: Show ========================================
-    id: 45120880737905101
+    id: 36943762622691211
     identification: 
       action: Show
 
     affected-elements: 
       selection-type: Region
-      region: Vista previa de retorno por Inversionista # 45120407955905096
+      region: Vista previa de retorno por Inversionista # 36943289840691206
 
     execution: 
       sequence: 10
-      event: onClick - Previsualizar # 45120751207905100
+      event: onClick - Previsualizar # 36943633092691210
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: afterRefresh - Retorno Por Inversioni
-  id: 45123592722905128
+  id: 36946474607691238
   identification: 
     name: afterRefresh - Retorno Por Inversionista
 
@@ -1781,26 +1842,26 @@ dynamic-actions:
   when: 
     event: After Refresh
     selection-type: Region
-    region: Vista previa de retorno por Inversionista # 45120407955905096
+    region: Vista previa de retorno por Inversionista # 36943289840691206
 
   actions: 
   - # ====== Action: Enable ======================================
-    id: 45123677940905129
+    id: 36946559825691239
     identification: 
       action: Enable
 
     affected-elements: 
       selection-type: Button
-      button: PREVISUALIZAR # 45120641772905099
+      button: PREVISUALIZAR # 36943523657691209
 
     execution: 
       sequence: 10
-      event: afterRefresh - Retorno Por Inversionista # 45123592722905128
+      event: afterRefresh - Retorno Por Inversionista # 36946474607691238
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Recalcular ================
-  id: 45404810102378315
+  id: 37227691987164425
   identification: 
     name: onClick - Recalcular
 
@@ -1812,11 +1873,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: RECALCULAR # 45122900714905121
+    button: RECALCULAR # 36945782599691231
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 45404902067378316
+    id: 37227783952164426
     identification: 
       action: Refresh
 
@@ -1825,17 +1886,17 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Vista previa de retorno por Inversionista # 45120407955905096
+      region: Vista previa de retorno por Inversionista # 36943289840691206
 
     execution: 
       sequence: 10
-      event: onClick - Recalcular # 45404810102378315
+      event: onClick - Recalcular # 37227691987164425
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Initialize =================================
-  id: 41319244366470226
+  id: 33142126251256336
   identification: 
     name: Initialize
     type: Execute Code
@@ -1848,7 +1909,7 @@ processes:
           select to_char(fecha_emision,'&DATE_FORMAT.')
                , to_char(fecha_vencimiento,'&DATE_FORMAT.')
                , moneda_rc
-               , to_char(saldo_a_pago,'&NUMBER_FORMAT.')
+               , saldo_a_pago
                , to_char(tasa_interes,'&NUMBER_FORMAT.')
             into :P80_FECHA_PAGO_MINIMO
                , :P80_FECHA_VENCIMIENTO
@@ -1864,7 +1925,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process Cancelacion ========================
-  id: 43422530184134615
+  id: 35245412068920725
   identification: 
     name: Process Cancelacion
     type: Execute Code
@@ -1904,7 +1965,15 @@ processes:
               --       , p_monto_invertido => saldo_a_pago
               --       ) as interes_ordinario
               --  , (((saldo_a_pago * tasa_interes)/100)/30)*dias_atraso
-               , saldo_a_pago * (tasa_interes / 100) * (to_number(:P80_DIAS_ATRASO) / 360) as interes_moratorio
+      
+              --  , saldo_a_pago * (tasa_interes / 100) * (to_number(:P80_DIAS_ATRASO) / 360) as interes_moratorio
+               , ROUND(bko_operaciones_pkg.calcular_roi(
+                                  p_tasa_anual      => tasa_interes,
+                                  p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO,'&DATE_FORMAT.')),
+                                  p_fecha_inversion => TRUNC(TO_DATE(:P80_FECHA_VENCIMIENTO, '&DATE_FORMAT.')),
+                                  p_monto_invertido => saldo_a_pago
+                              ), 2) 
+                AS interes_moratorio
                , tasa_interes
             into l_saldo_a_pago
               --  , l_interes_ordinario
@@ -1927,7 +1996,7 @@ processes:
                             , id_cuenta_bancaria
                             , fecha_movimiento
                          FROM bko_movimiento_financiero_v 
-                        WHERE id_factura = :P80_ID_FACTURA
+                        WHERE id_factura          = :P80_ID_FACTURA
                           AND tipo_movimiento_rc  = 'INVERSION'
                           AND estado_rc           = 'ACTIVO'
           )LOOP
@@ -1957,7 +2026,11 @@ processes:
                   -- Calcular interés individual por inversión
                   v_interes_ordinario := bko_operaciones_pkg.calcular_roi(
                       p_tasa_anual      => l_tasa_interes,  -- Debería venir de inv.tasa_interes si varía
-                      p_fecha_pago      => TRUNC(TO_DATE(:P80_FECHA_PAGO, '&DATE_FORMAT.')),
+                      p_fecha_pago      => TRUNC(TO_DATE(case 
+                                                          when to_date(:P80_FECHA_VENCIMIENTO,'&DATE_FORMAT.')<to_date(:P80_FECHA_PAGO,'&DATE_FORMAT.') 
+                                                          then :P80_FECHA_VENCIMIENTO 
+                                                          else :P80_FECHA_PAGO 
+                                                         end, '&DATE_FORMAT.')),
                       p_fecha_inversion => TRUNC(TO_DATE(inv.fecha_movimiento, '&DATE_FORMAT.')),
                       p_monto_invertido => inv.monto
                   );
@@ -2016,7 +2089,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Close Dialog ===============================
-  id: 43422907701134618
+  id: 35245789585920728
   identification: 
     name: Close Dialog
     type: Close Dialog

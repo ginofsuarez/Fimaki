@@ -1,0 +1,487 @@
+---
+# ====== Page: Email de confirmacion =========================
+id: 99982
+identification: 
+  name: Email de confirmacion
+  alias: EMAIL-DE-CONFIRMACION
+  title: Email de confirmacion
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Revisa tu correo ============================
+  id: 47857421666951729
+  identification: 
+    name: Revisa tu correo
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center;">
+        <span aria-hidden="true" class="fa fa-envelope fa-4x fa-lg" style="color:green !important;"></span>
+        <h1 style="font-size: 2.5 rem; font-weight: bold; letter-spacing: 0px;">
+          ¡Revisa tu correo!
+        </h1>
+        <h4>
+          Hemos enviado un enlace de activación al correo electrónico registrado.
+        </h4>
+        <h4 style="font-weight: bold;">
+          Por favor activa tu cuenta por este medio.
+        </h4>
+        <h4>
+          No olvides revisar tu bandeja de entrada, o en su defecto, la carpeta de spam.
+        </h4>
+      </div>
+
+  layout: 
+    sequence: 10
+    parent-region: Register # 103247856547938675
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    custom-attributes: 
+    - className="relative"
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Button Container ============================
+  id: 88353732903138503
+  identification: 
+    name: Button Container
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Revisa tu correo # 47857421666951729
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Register ====================================
+  id: 103247856547938675
+  identification: 
+    name: Register
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center;">
+        <h1 style="font-size: 2.5em; font-weight: bold; letter-spacing: 0px;">
+          <img src="#APP_FILES#fimaki_logo/2.png" alt="FIMAKI Logo" style="max-width: 300px; ">
+        </h1>
+      </div>
+      
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - margin-top-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P99982_ID_USUARIO_TEMP ===================
+  id: 48239276491591322
+  identification: 
+    name: P99982_ID_USUARIO_TEMP
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: EXIT ========================================
+  id: 47857573737951731
+  identification: 
+    button-name: EXIT
+    label: Iniciar sesión
+
+  layout: 
+    sequence: 20
+    region: Button Container # 88353732903138503
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--large
+    - t-Button--stretch
+    - t-Button--padTop
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999::'
+      page: 9999 # Login Page
+      clear-cache: 9999
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: SEND_EMAIL ==================================
+  id: 48009225776696989
+  identification: 
+    button-name: SEND_EMAIL
+    label: Reenviar correo de activación
+
+  layout: 
+    sequence: 10
+    region: Button Container # 88353732903138503
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--large
+    - t-Button--stretch
+    - t-Button--padTop
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+dynamic-actions: 
+- # ====== Dynamic Action: Check_TP ============================
+  id: 48015439963697012
+  identification: 
+    name: Check_TP
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Item(s)
+    item(s): 
+    - P99982_PERSON_TYPE
+
+  configuration: 
+    build-option: Commented Out # 43376043324881300
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 48015936993697016
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var person_value = $v('P99982_PERSON_TYPE'); 
+        
+        if (person_value === 'N') {
+            $('.juridica').hide(); 
+            $('.natural').show(); 
+        } else {
+            $('.natural').hide(); 
+            $('.juridica').show();
+        }
+        
+
+    execution: 
+      sequence: 10
+      event: Check_TP # 48015439963697012
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: On Change ===========================
+  id: 48016257371697017
+  identification: 
+    name: On Change
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P99982_TIPO_DOCUMENTO_RC
+
+  client-side-condition: 
+    type: Item = Value
+    item: P99982_TIPO_DOCUMENTO_RC
+    value: RUC
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 48016797384697019
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99982_NOMBRES
+      - P99982_APELLIDO_PATERNO
+      - P99982_APELLIDO_MATERNO
+      - P99982_FECHA_NACIMIENTO
+
+    execution: 
+      sequence: 10
+      event: On Change # 48016257371697017
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 48017321351697021
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99982_RAZON_SOCIAL
+
+    execution: 
+      sequence: 20
+      event: On Change # 48016257371697017
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Hide ========================================
+    id: 48017802765697022
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99982_RAZON_SOCIAL
+
+    execution: 
+      sequence: 20
+      event: On Change # 48016257371697017
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 48018259944697024
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99982_NOMBRES
+      - P99982_APELLIDO_PATERNO
+      - P99982_APELLIDO_MATERNO
+      - P99982_FECHA_NACIMIENTO
+      - P99982_NUMERO_DOCUMENTO
+
+    execution: 
+      sequence: 10
+      event: On Change # 48016257371697017
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Hide Items ==========================
+  id: 48018722226697025
+  identification: 
+    name: Hide Items
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+
+  when: 
+    event: Page Load
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 48019230879697027
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99982_RAZON_SOCIAL
+      - P99982_NOMBRES
+      - P99982_APELLIDO_PATERNO
+      - P99982_APELLIDO_MATERNO
+      - P99982_FECHA_NACIMIENTO
+
+    execution: 
+      sequence: 10
+      event: Hide Items # 48018722226697025
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+processes: 
+- # ====== Process: Enviar Correo de Activacion ================
+  id: 49677332339362358
+  identification: 
+    name: Enviar Correo de Activacion
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          inv_utils_pkg.enviar_email_activacion(
+                p_id_usuario => :P99982_ID_USUARIO_TEMP
+              );
+      END;
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Correo de activación enviado
+
+  error: 
+    display-location: Inline in Notification
+

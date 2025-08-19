@@ -70,7 +70,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Buttons =====================================
-  id: 46723752719777537
+  id: 38546634604563647
   identification: 
     name: Buttons
     type: Static Content
@@ -108,7 +108,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Imagen ======================================
-  id: 48775421551383392
+  id: 40598303436169502
   identification: 
     name: Imagen
     type: Form
@@ -122,7 +122,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Tab # 48778679554383424
+    parent-region: Tab # 40601561439169534
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -153,7 +153,7 @@ regions:
       enabled: false
 
 - # ====== Region: Vista Previa ================================
-  id: 48777017657383407
+  id: 40599899542169517
   identification: 
     name: Vista Previa
     type: Static Content
@@ -194,7 +194,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Solicitud ===================================
-  id: 48777018991383408
+  id: 40599900876169518
   identification: 
     name: Solicitud
     type: Form
@@ -208,7 +208,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Tab # 48778679554383424
+    parent-region: Tab # 40601561439169534
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -247,7 +247,7 @@ regions:
       enabled: false
 
 - # ====== Region: Tab =========================================
-  id: 48778679554383424
+  id: 40601561439169534
   identification: 
     name: Tab
     type: Static Content
@@ -287,7 +287,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Historial ===================================
-  id: 48778859307383426
+  id: 40601741192169536
   identification: 
     name: Historial
     type: Form
@@ -301,7 +301,7 @@ regions:
 
   layout: 
     sequence: 30
-    parent-region: Tab # 48778679554383424
+    parent-region: Tab # 40601561439169534
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -335,14 +335,14 @@ regions:
       enabled: false
 
 - # ====== Region: Información Bancaria ========================
-  id: 48853321745268610
+  id: 40676203630054720
   identification: 
     name: Información Bancaria
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: Solicitud # 48777018991383408
+    parent-region: Solicitud # 40599900876169518
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -375,14 +375,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: General =====================================
-  id: 48853463898268611
+  id: 40676345783054721
   identification: 
     name: General
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Solicitud # 48777018991383408
+    parent-region: Solicitud # 40599900876169518
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -417,7 +417,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P91_ID_COMPROBANTE =======================
-  id: 48775771022383395
+  id: 40598652907169505
   identification: 
     name: P91_ID_COMPROBANTE
     type: Hidden
@@ -427,14 +427,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: ID_COMPROBANTE
     data-type: NUMBER
     query-only: true
@@ -450,7 +450,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ID_DEPOSITO ==========================
-  id: 48775823500383396
+  id: 40598705385169506
   identification: 
     name: P91_ID_DEPOSITO
     type: Display Only
@@ -467,7 +467,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -486,7 +486,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: ID_DEPOSITO
     data-type: NUMBER
     query-only: false
@@ -502,7 +502,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ARCHIVO_NOMBRE =======================
-  id: 48776006461383397
+  id: 40598888346169507
   identification: 
     name: P91_ARCHIVO_NOMBRE
     type: Display Only
@@ -519,7 +519,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -538,7 +538,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: ARCHIVO_NOMBRE
     data-type: VARCHAR2
     query-only: false
@@ -554,7 +554,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ARCHIVO_TIPO_MIME ====================
-  id: 48776044571383398
+  id: 40598926456169508
   identification: 
     name: P91_ARCHIVO_TIPO_MIME
     type: Display Only
@@ -571,7 +571,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -590,7 +590,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: ARCHIVO_TIPO_MIME
     data-type: VARCHAR2
     query-only: false
@@ -606,7 +606,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ARCHIVO_CONTENIDO ====================
-  id: 48776182981383399
+  id: 40599064866169509
   identification: 
     name: P91_ARCHIVO_CONTENIDO
     type: Display Image
@@ -622,7 +622,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Vista Previa # 48777017657383407
+    region: Vista Previa # 40599899542169517
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -642,7 +642,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: ARCHIVO_CONTENIDO
     data-type: BLOB
     query-only: false
@@ -656,7 +656,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_USUARIO_REGISTRO =====================
-  id: 48776316224383400
+  id: 40599198109169510
   identification: 
     name: P91_USUARIO_REGISTRO
     type: Hidden
@@ -666,14 +666,14 @@ page-items:
 
   layout: 
     sequence: 60
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: USUARIO_REGISTRO
     data-type: VARCHAR2
     query-only: false
@@ -689,7 +689,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_CREADO_POR ===========================
-  id: 48776354527383401
+  id: 40599236412169511
   identification: 
     name: P91_CREADO_POR
     type: Display Only
@@ -706,7 +706,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -725,7 +725,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -741,7 +741,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_CREADO ===============================
-  id: 48776488143383402
+  id: 40599370028169512
   identification: 
     name: P91_CREADO
     type: Display Only
@@ -758,7 +758,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -777,7 +777,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -793,7 +793,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_MODIFICADO_POR =======================
-  id: 48776536896383403
+  id: 40599418781169513
   identification: 
     name: P91_MODIFICADO_POR
     type: Display Only
@@ -810,7 +810,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -829,7 +829,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -845,7 +845,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_MODIFICADO ===========================
-  id: 48776620051383404
+  id: 40599501936169514
   identification: 
     name: P91_MODIFICADO
     type: Display Only
@@ -862,7 +862,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -881,7 +881,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -897,7 +897,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ID_SOLICITUD_DEPOSITO ================
-  id: 48777235276383410
+  id: 40600117161169520
   identification: 
     name: P91_ID_SOLICITUD_DEPOSITO
     type: Display Only
@@ -914,7 +914,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -933,7 +933,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: ID_DEPOSITO
     data-type: NUMBER
     query-only: true
@@ -949,7 +949,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_MONTO ================================
-  id: 48777394959383411
+  id: 40600276844169521
   identification: 
     name: P91_MONTO
     type: Number Field
@@ -964,7 +964,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -988,7 +988,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: MONTO
     data-type: NUMBER
     query-only: false
@@ -1006,7 +1006,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_FECHA_TRANSFERENCIA ==================
-  id: 48777421469383412
+  id: 40600303354169522
   identification: 
     name: P91_FECHA_TRANSFERENCIA
     type: Date Picker
@@ -1025,7 +1025,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1049,7 +1049,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: FECHA_TRANSFERENCIA
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -1067,7 +1067,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ESTADO_RC ============================
-  id: 48777561862383413
+  id: 40600443747169523
   identification: 
     name: P91_ESTADO_RC
     type: Select List
@@ -1084,7 +1084,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1105,7 +1105,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_ESTADO_SOL_DEPOSITO # 48773181867308636
+    list-of-values: LOV_ESTADO_SOL_DEPOSITO # 40596063752094746
     display-extra-values: false
     display-null-value: true
 
@@ -1113,7 +1113,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: ESTADO_RC
     data-type: VARCHAR2
     query-only: false
@@ -1131,7 +1131,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_VALIDADO_POR =========================
-  id: 48777665670383414
+  id: 40600547555169524
   identification: 
     name: P91_VALIDADO_POR
     type: Text Field
@@ -1149,7 +1149,7 @@ page-items:
 
   layout: 
     sequence: 90
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1175,7 +1175,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: VALIDADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -1193,7 +1193,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_FECHA_VALIDACION =====================
-  id: 48777774648383415
+  id: 40600656533169525
   identification: 
     name: P91_FECHA_VALIDACION
     type: Date Picker
@@ -1212,7 +1212,7 @@ page-items:
 
   layout: 
     sequence: 80
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1236,7 +1236,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: FECHA_VALIDACION
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -1254,7 +1254,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_OBSERVACIONES ========================
-  id: 48777877921383416
+  id: 40600759806169526
   identification: 
     name: P91_OBSERVACIONES
     type: Hidden
@@ -1264,14 +1264,14 @@ page-items:
 
   layout: 
     sequence: 120
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: OBSERVACIONES
     data-type: VARCHAR2
     query-only: false
@@ -1287,7 +1287,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ID_ROL_PERSONA =======================
-  id: 48778014069383417
+  id: 40600895954169527
   identification: 
     name: P91_ID_ROL_PERSONA
     type: Hidden
@@ -1297,14 +1297,14 @@ page-items:
 
   layout: 
     sequence: 130
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: ID_ROL_PERSONA
     data-type: NUMBER
     query-only: false
@@ -1320,7 +1320,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ID_CUENTA_BANCARIA ===================
-  id: 48778043821383418
+  id: 40600925706169528
   identification: 
     name: P91_ID_CUENTA_BANCARIA
     type: Hidden
@@ -1330,14 +1330,14 @@ page-items:
 
   layout: 
     sequence: 140
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: ID_CUENTA_BANCARIA
     data-type: NUMBER
     query-only: false
@@ -1353,7 +1353,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_CREADO_POR_1 =========================
-  id: 48778136818383419
+  id: 40601018703169529
   identification: 
     name: P91_CREADO_POR_1
     type: Text Field
@@ -1371,7 +1371,7 @@ page-items:
 
   layout: 
     sequence: 110
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1397,7 +1397,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: CREADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -1415,7 +1415,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_CREADO_1 =============================
-  id: 48778314942383420
+  id: 40601196827169530
   identification: 
     name: P91_CREADO_1
     type: Date Picker
@@ -1434,7 +1434,7 @@ page-items:
 
   layout: 
     sequence: 100
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1458,7 +1458,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: CREADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -1476,7 +1476,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_MODIFICADO_POR_1 =====================
-  id: 48778354190383421
+  id: 40601236075169531
   identification: 
     name: P91_MODIFICADO_POR_1
     type: Hidden
@@ -1486,14 +1486,14 @@ page-items:
 
   layout: 
     sequence: 150
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: MODIFICADO_POR
     data-type: VARCHAR2
     query-only: false
@@ -1509,7 +1509,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_MODIFICADO_1 =========================
-  id: 48778496063383422
+  id: 40601377948169532
   identification: 
     name: P91_MODIFICADO_1
     type: Hidden
@@ -1519,14 +1519,14 @@ page-items:
 
   layout: 
     sequence: 160
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: MODIFICADO
     data-type: TIMESTAMP WITH LOCAL TIME ZONE
     query-only: false
@@ -1542,7 +1542,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ID_MOVIMIENTO_FINANCIERO =============
-  id: 48778592629383423
+  id: 40601474514169533
   identification: 
     name: P91_ID_MOVIMIENTO_FINANCIERO
     type: Hidden
@@ -1552,14 +1552,14 @@ page-items:
 
   layout: 
     sequence: 170
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: ID_MOVIMIENTO_FINANCIERO
     data-type: NUMBER
     query-only: false
@@ -1575,7 +1575,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_NUMERO_CUENTA ========================
-  id: 48852560467268602
+  id: 40675442352054712
   identification: 
     name: P91_NUMERO_CUENTA
     type: Text Field
@@ -1593,7 +1593,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Información Bancaria # 48853321745268610
+    region: Información Bancaria # 40676203630054720
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1617,7 +1617,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: NUMERO_CUENTA
     data-type: VARCHAR2
     query-only: false
@@ -1635,7 +1635,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_TIPO_CUENTA_RC =======================
-  id: 48852622535268603
+  id: 40675504420054713
   identification: 
     name: P91_TIPO_CUENTA_RC
     type: Hidden
@@ -1645,14 +1645,14 @@ page-items:
 
   layout: 
     sequence: 180
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: TIPO_CUENTA_RC
     data-type: VARCHAR2
     query-only: false
@@ -1668,7 +1668,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ALIAS_CUENTA =========================
-  id: 48852814402268604
+  id: 40675696287054714
   identification: 
     name: P91_ALIAS_CUENTA
     type: Text Field
@@ -1686,7 +1686,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Información Bancaria # 48853321745268610
+    region: Información Bancaria # 40676203630054720
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1710,7 +1710,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: ALIAS_CUENTA
     data-type: VARCHAR2
     query-only: false
@@ -1728,7 +1728,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_MONEDA_RC ============================
-  id: 48852823223268605
+  id: 40675705108054715
   identification: 
     name: P91_MONEDA_RC
     type: Select List
@@ -1745,7 +1745,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1766,7 +1766,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_MONEDA # 44239467711699799
+    list-of-values: LOV_MONEDA # 36062349596485909
     display-extra-values: false
     display-null-value: true
 
@@ -1774,7 +1774,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: MONEDA_RC
     data-type: VARCHAR2
     query-only: false
@@ -1792,7 +1792,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_NOMBRE_BANCO =========================
-  id: 48852934133268606
+  id: 40675816018054716
   identification: 
     name: P91_NOMBRE_BANCO
     type: Text Field
@@ -1810,7 +1810,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Información Bancaria # 48853321745268610
+    region: Información Bancaria # 40676203630054720
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1834,7 +1834,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: NOMBRE_BANCO
     data-type: VARCHAR2
     query-only: false
@@ -1852,7 +1852,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ACTIVO_SN ============================
-  id: 48853071523268607
+  id: 40675953408054717
   identification: 
     name: P91_ACTIVO_SN
     type: Hidden
@@ -1862,14 +1862,14 @@ page-items:
 
   layout: 
     sequence: 190
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: ACTIVO_SN
     data-type: VARCHAR2
     query-only: false
@@ -1885,7 +1885,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_INVERSIONISTA ========================
-  id: 48853156830268608
+  id: 40676038715054718
   identification: 
     name: P91_INVERSIONISTA
     type: Text Field
@@ -1903,7 +1903,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: General # 48853463898268611
+    region: General # 40676345783054721
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -1927,7 +1927,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: INVERSIONISTA
     data-type: VARCHAR2
     query-only: false
@@ -1945,7 +1945,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_ID_PERSONA ===========================
-  id: 48853896433268615
+  id: 40676778318054725
   identification: 
     name: P91_ID_PERSONA
     type: Hidden
@@ -1955,14 +1955,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Solicitud # 48777018991383408
+    region: Solicitud # 40599900876169518
     slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
     column: ID_PERSONA
     data-type: NUMBER
     query-only: false
@@ -1978,7 +1978,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P91_DESCARGAR ============================
-  id: 50242063868714194
+  id: 42064945753500304
   identification: 
     name: P91_DESCARGAR
     type: Image Upload
@@ -2003,7 +2003,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Imagen # 48775421551383392
+    region: Imagen # 40598303436169502
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -2026,7 +2026,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
     column: ARCHIVO_CONTENIDO
     data-type: BLOB
     query-only: false
@@ -2044,14 +2044,14 @@ page-items:
 
 buttons: 
 - # ====== Button: APROBAR =====================================
-  id: 46723902796777538
+  id: 38546784681563648
   identification: 
     button-name: APROBAR
     label: Aprobar
 
   layout: 
     sequence: 40
-    region: Buttons # 46723752719777537
+    region: Buttons # 38546634604563647
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -2085,14 +2085,14 @@ buttons:
     list: 'PENDIENTE:PENDIENTE_REVISION'
 
 - # ====== Button: CANCELAR ====================================
-  id: 46723985398777539
+  id: 38546867283563649
   identification: 
     button-name: CANCELAR
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 46723752719777537
+    region: Buttons # 38546634604563647
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -2111,14 +2111,14 @@ buttons:
     execute-validations: true
 
 - # ====== Button: SOLICITAR_INFO ==============================
-  id: 48778960858383427
+  id: 40601842743169537
   identification: 
     button-name: SOLICITAR_INFO
     label: Solicitar Información
 
   layout: 
     sequence: 20
-    region: Buttons # 46723752719777537
+    region: Buttons # 38546634604563647
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -2152,14 +2152,14 @@ buttons:
     list: 'PENDIENTE:PENDIENTE_REVISION'
 
 - # ====== Button: RECHAZAR ====================================
-  id: 48779050160383428
+  id: 40601932045169538
   identification: 
     button-name: RECHAZAR
     label: Rechazar
 
   layout: 
     sequence: 10
-    region: Buttons # 46723752719777537
+    region: Buttons # 38546634604563647
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -2194,14 +2194,14 @@ buttons:
     list: 'PENDIENTE:PENDIENTE_REVISION'
 
 - # ====== Button: REEMPLAZAR_IMAGEN ===========================
-  id: 48779194819383429
+  id: 40602076704169539
   identification: 
     button-name: REEMPLAZAR_IMAGEN
     label: Reemplazar Imagen
 
   layout: 
     sequence: 30
-    region: Vista Previa # 48777017657383407
+    region: Vista Previa # 40599899542169517
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -2226,7 +2226,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onClick - Cancelar ==================
-  id: 46724102974777540
+  id: 38546984859563650
   identification: 
     name: onClick - Cancelar
 
@@ -2238,23 +2238,23 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCELAR # 46723985398777539
+    button: CANCELAR # 38546867283563649
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 48775405686383391
+    id: 40598287571169501
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: onClick - Cancelar # 46724102974777540
+      event: onClick - Cancelar # 38546984859563650
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 computations: 
 - # ====== Computation: P91_ID_COMPROBANTE =====================
-  id: 48776911323383406
+  id: 40599793208169516
   identification: 
     item-name: P91_ID_COMPROBANTE
 
@@ -2268,12 +2268,12 @@ computations:
 
 processes: 
 - # ====== Process: Initialize form Aprobacion Deposito ========
-  id: 48775647622383394
+  id: 40598529507169504
   identification: 
     name: Initialize form Aprobacion Deposito
     type: Form - Initialization
     execution-chain: None
-    form-region: Imagen # 48775421551383392
+    form-region: Imagen # 40598303436169502
 
   execution: 
     sequence: 10
@@ -2281,12 +2281,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Initialize form Solicitud Deposito =========
-  id: 48777156976383409
+  id: 40600038861169519
   identification: 
     name: Initialize form Solicitud Deposito
     type: Form - Initialization
     execution-chain: None
-    form-region: Solicitud # 48777018991383408
+    form-region: Solicitud # 40599900876169518
 
   execution: 
     sequence: 20
@@ -2294,7 +2294,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: Process aprobación =========================
-  id: 48853607014268612
+  id: 40676488899054722
   identification: 
     name: Process aprobación
     type: Execute Code
@@ -2322,10 +2322,10 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: APROBAR # 46723902796777538
+    when-button-pressed: APROBAR # 38546784681563648
 
 - # ====== Process: Close Dialog ===============================
-  id: 48855171103268628
+  id: 40678052988054738
   identification: 
     name: Close Dialog
     type: Close Dialog
@@ -2343,7 +2343,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: Process Rechazo ============================
-  id: 48855276065268629
+  id: 40678157950054739
   identification: 
     name: Process Rechazo
     type: Execute Code
@@ -2372,5 +2372,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: RECHAZAR # 48779050160383428
+    when-button-pressed: RECHAZAR # 40601932045169538
 

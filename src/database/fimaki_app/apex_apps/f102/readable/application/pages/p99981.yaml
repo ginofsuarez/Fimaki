@@ -1,0 +1,2251 @@
+---
+# ====== Page: Datos Personales ==============================
+id: 99981
+identification: 
+  name: Datos Personales
+  alias: DATOS-PERSONALES
+  title: Datos Personales
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+css: 
+  inline: |
+    .label_link  {
+      cursor: pointer; /* Cambia el cursor a una mano para indicar que es interactivo */
+      text-decoration: underline; /* Subraya el texto */
+    }
+    
+    .label_link:hover {
+      text-decoration: underline; /* Subraya aún más en hover */
+      color: blue !important; /* Puede cambiar el color en hover, opcional */
+    }
+    
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Register-form ===============================
+  id: 67016658835665214
+  identification: 
+    name: Register-form
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Register # 82940030166020490
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Button Container ============================
+  id: 68045906521220318
+  identification: 
+    name: Button Container
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Register-form # 67016658835665214
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-ButtonRegion--noPadding
+    - t-ButtonRegion--noUI
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Register ====================================
+  id: 82940030166020490
+  identification: 
+    name: Register
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center;">
+        <h1 style="font-size: 2.5em; font-weight: bold; letter-spacing: 0px;">
+          <img src="#APP_FILES#fimaki_logo/2.png" alt="FIMAKI Logo" style="max-width: 300px; ">
+        </h1>
+      </div>
+      
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - margin-top-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P99981_TERMINOS_LINK =====================
+  id: 47857793254951733
+  identification: 
+    name: P99981_TERMINOS_LINK
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 260
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: '#APP_FILES#docs/Términos_y_Condiciones.pdf'
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_CONTRATO_LINK =====================
+  id: 47857912842951734
+  identification: 
+    name: P99981_CONTRATO_LINK
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 270
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: '#APP_FILES#docs/CONTRATO_MARCO_DE_INVERSIÓN_v1.1.pdf'
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_DATOS_LINK ========================
+  id: 47858000464951735
+  identification: 
+    name: P99981_DATOS_LINK
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 280
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: '#APP_FILES#docs/Política_de_Privacidad_y_Protección_de_Datos_Personales.pdf'
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_ID_PAIS ===========================
+  id: 48237112002591300
+  identification: 
+    name: P99981_ID_PAIS
+    type: Select List
+
+  label: 
+    label: Pais
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 130
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_PAIS_ACTIVO # 49033916373222478
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_ID_DEPARTAMENTO ===================
+  id: 48237171892591301
+  identification: 
+    name: P99981_ID_DEPARTAMENTO
+    type: Select List
+
+  label: 
+    label: Departamento
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 140
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , id_subdivision
+            from bko_subdivision_geografica 
+           where id_pais = :P99981_ID_PAIS 
+             and tipo_rc = 'DEPT'
+             and activo_sn = 'S'
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P99981_ID_PAIS
+    items-to-submit: 
+    - P99981_ID_PAIS
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_ID_PROVINCIA ======================
+  id: 48237261140591302
+  identification: 
+    name: P99981_ID_PROVINCIA
+    type: Select List
+
+  label: 
+    label: Provincia
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 150
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , id_subdivision
+            from bko_subdivision_geografica 
+           where id_subdivision_padre = :P99981_ID_DEPARTAMENTO
+             and tipo_rc = 'PROV'
+             and activo_sn = 'S'
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P99981_ID_DEPARTAMENTO
+    items-to-submit: 
+    - P99981_ID_DEPARTAMENTO
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_ID_USUARIO_TEMP ===================
+  id: 48237427145591303
+  identification: 
+    name: P99981_ID_USUARIO_TEMP
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_TIPO_PERSONA_RC ===================
+  id: 67019629203665245
+  identification: 
+    name: P99981_TIPO_PERSONA_RC
+    type: Select List
+
+  label: 
+    label: Tipo Persona
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 50
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_TIPO_PER # 47914553632804432
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_TIPO_DOCUMENTO_RC =================
+  id: 67020049110665247
+  identification: 
+    name: P99981_TIPO_DOCUMENTO_RC
+    type: Select List
+
+  label: 
+    label: Tipo Documento
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 60
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |
+      select nombre || ' - ' || descripcion d
+           , codigo r
+        from codigo_referencia
+       where codigo_ref_tipo = 'TIPO_DOC'
+         and atributo1 = :P99981_TIPO_PERSONA_RC
+       order by secuencia
+    display-extra-values: false
+    display-null-value: false
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P99981_TIPO_PERSONA_RC
+    items-to-submit: 
+    - P99981_TIPO_PERSONA_RC
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_NUMERO_DOCUMENTO ==================
+  id: 67020419626665248
+  identification: 
+    name: P99981_NUMERO_DOCUMENTO
+    type: Number Field
+
+  label: 
+    label: Numero Documento
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Numeric
+
+  layout: 
+    sequence: 70
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - natural
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 20
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_RAZON_SOCIAL ======================
+  id: 67020822095665250
+  identification: 
+    name: P99981_RAZON_SOCIAL
+    type: Text Field
+
+  label: 
+    label: Razon Social
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 80
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - juridica
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 200
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_NOMBRES ===========================
+  id: 67021199105665251
+  identification: 
+    name: P99981_NOMBRES
+    type: Text Field
+
+  label: 
+    label: Nombres
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 90
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - natural
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_APELLIDO_PATERNO ==================
+  id: 67021620344665253
+  identification: 
+    name: P99981_APELLIDO_PATERNO
+    type: Text Field
+
+  label: 
+    label: Apellido Paterno
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 100
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - natural
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_APELLIDO_MATERNO ==================
+  id: 67022026931665254
+  identification: 
+    name: P99981_APELLIDO_MATERNO
+    type: Text Field
+
+  label: 
+    label: Apellido Materno
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 110
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - natural
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_FECHA_NACIMIENTO ==================
+  id: 67022394606665256
+  identification: 
+    name: P99981_FECHA_NACIMIENTO
+    type: Date Picker
+
+  label: 
+    label: Fecha Nacimiento
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: Static
+    maximum-static: '-18y'
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 120
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - natural
+    width: 32
+    value-placeholder: (dd/mmm/aaaa)
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    custom-attributes: 
+    - year-selection-range="20"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_CORREO ============================
+  id: 67022832655665258
+  identification: 
+    name: P99981_CORREO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_CELULAR ===========================
+  id: 67023223869665259
+  identification: 
+    name: P99981_CELULAR
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 40
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Checksum Required - Application Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_TIPO_ROL_RC =======================
+  id: 67023602264665261
+  identification: 
+    name: P99981_TIPO_ROL_RC
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 160
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: INVERSIONISTA
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_TOKEN_VALIDACION ==================
+  id: 67023980863665262
+  identification: 
+    name: P99981_TOKEN_VALIDACION
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 170
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_FECHA_REGISTRO ====================
+  id: 67024385086665264
+  identification: 
+    name: P99981_FECHA_REGISTRO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 180
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: sysdate
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_FECHA_EXPIRACION ==================
+  id: 67025270014665267
+  identification: 
+    name: P99981_FECHA_EXPIRACION
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 190
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      SYSDATE + (72/24)
+      
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_ESTADO_RC =========================
+  id: 67026021940665270
+  identification: 
+    name: P99981_ESTADO_RC
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 200
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: PENDIENTE
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_IP_ORIGEN =========================
+  id: 67026439784665271
+  identification: 
+    name: P99981_IP_ORIGEN
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 210
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: owa_util.get_cgi_env('REMOTE_ADDR')
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_USER_AGENT ========================
+  id: 67026792313665273
+  identification: 
+    name: P99981_USER_AGENT
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 220
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      owa_util.get_cgi_env('HTTP_USER_AGENT')
+      
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_VERSION_TERMINOS ==================
+  id: 67027667925665276
+  identification: 
+    name: P99981_VERSION_TERMINOS
+    type: Checkbox
+
+  label: 
+    label: <a href="&P99981_TERMINOS_LINK." target="_blank" class="label_link">Términos y Condiciones</a>
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    checked-value: S
+    unchecked-value: N
+
+  layout: 
+    sequence: 230
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--xlarge
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_VERSION_DATOS_PERSONALES ==========
+  id: 67028020284665277
+  identification: 
+    name: P99981_VERSION_DATOS_PERSONALES
+    type: Checkbox
+
+  label: 
+    label: <a href="&P99981_DATOS_LINK." target="_blank" class="label_link">Uso de Datos Personales</a>
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    checked-value: S
+    unchecked-value: N
+
+  layout: 
+    sequence: 250
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--stretchInputs
+    - t-Form-fieldContainer--xlarge
+    - margin-top-none
+    - margin-bottom-none
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_VERSION_CONTRATO_MANDATO ==========
+  id: 67028414207665279
+  identification: 
+    name: P99981_VERSION_CONTRATO_MANDATO
+    type: Checkbox
+
+  label: 
+    label: <a href="&P99981_CONTRATO_LINK." target="_blank" class="label_link">Contrato de Mandato</a>
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    checked-value: S
+    unchecked-value: N
+
+  layout: 
+    sequence: 240
+    region: Register-form # 67016658835665214
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--stretchInputs
+    - t-Form-fieldContainer--xlarge
+    - margin-top-none
+    - margin-bottom-none
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99981_PASSWORD ==========================
+  id: 68048184446220346
+  identification: 
+    name: P99981_PASSWORD
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: Register-form # 67016658835665214
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Checksum Required - Application Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 47875810346047339
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Register-form # 67016658835665214
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:101:&APP_SESSION.::&DEBUG.:::'
+      page: 101 # Landing
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CREATE ======================================
+  id: 47894417499047425
+  identification: 
+    button-name: CREATE
+    label: Crear Cuenta
+
+  layout: 
+    sequence: 10
+    region: Button Container # 68045906521220318
+    slot: CHANGE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--large
+    - t-Button--stretch
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  advanced: 
+    custom-attributes: 
+    - disabled
+
+dynamic-actions: 
+- # ====== Dynamic Action: onChange - Tipo Persona RC ==========
+  id: 47854676806951702
+  identification: 
+    name: onChange - Tipo Persona RC
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P99981_TIPO_DOCUMENTO_RC
+    - P99981_TIPO_PERSONA_RC
+
+  client-side-condition: 
+    type: Item = Value
+    item: P99981_TIPO_PERSONA_RC
+    value: JUR
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 47855559250951711
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99981_NOMBRES
+      - P99981_APELLIDO_PATERNO
+      - P99981_APELLIDO_MATERNO
+      - P99981_FECHA_NACIMIENTO
+
+    execution: 
+      sequence: 10
+      event: onChange - Tipo Persona RC # 47854676806951702
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 47855681912951712
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99981_RAZON_SOCIAL
+
+    execution: 
+      sequence: 20
+      event: onChange - Tipo Persona RC # 47854676806951702
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Hide ========================================
+    id: 47855840173951713
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99981_RAZON_SOCIAL
+
+    execution: 
+      sequence: 20
+      event: onChange - Tipo Persona RC # 47854676806951702
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+  - # ====== Action: Show ========================================
+    id: 47855884238951714
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99981_NOMBRES
+      - P99981_APELLIDO_PATERNO
+      - P99981_APELLIDO_MATERNO
+      - P99981_FECHA_NACIMIENTO
+
+    execution: 
+      sequence: 10
+      event: onChange - Tipo Persona RC # 47854676806951702
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+  - # ====== Action: Set Focus ===================================
+    id: 48236241470591291
+    identification: 
+      action: Set Focus
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99981_NUMERO_DOCUMENTO
+
+    execution: 
+      sequence: 30
+      event: onChange - Tipo Persona RC # 47854676806951702
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Focus ===================================
+    id: 48236929256591298
+    identification: 
+      action: Set Focus
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99981_NUMERO_DOCUMENTO
+
+    execution: 
+      sequence: 30
+      event: onChange - Tipo Persona RC # 47854676806951702
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: Hide Items ==========================
+  id: 47856005063951715
+  identification: 
+    name: Hide Items
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+
+  when: 
+    event: Page Load
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 47856080574951716
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99981_RAZON_SOCIAL
+      - P99981_NOMBRES
+      - P99981_APELLIDO_PATERNO
+      - P99981_APELLIDO_MATERNO
+      - P99981_FECHA_NACIMIENTO
+
+    execution: 
+      sequence: 10
+      event: Hide Items # 47856005063951715
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: Check_TP ============================
+  id: 47896128438047444
+  identification: 
+    name: Check_TP
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Item(s)
+    item(s): 
+    - P99981_PERSON_TYPE
+
+  configuration: 
+    build-option: Commented Out # 43376043324881300
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 47896609776047448
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var person_value = $v('P99981_PERSON_TYPE'); 
+        
+        if (person_value === 'N') {
+            $('.juridica').hide(); 
+            $('.natural').show(); 
+        } else {
+            $('.natural').hide(); 
+            $('.juridica').show();
+        }
+        
+
+    execution: 
+      sequence: 10
+      event: Check_TP # 47896128438047444
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onChange - Version Terminos =========
+  id: 48235902492591288
+  identification: 
+    name: onChange - Version Terminos
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P99981_VERSION_TERMINOS
+    - P99981_VERSION_CONTRATO_MANDATO
+    - P99981_VERSION_DATOS_PERSONALES
+
+  client-side-condition: 
+    type: JavaScript expression
+    javascript-expression: |
+      $v('P99981_VERSION_TERMINOS') == 'S' &&
+      $v('P99981_VERSION_CONTRATO_MANDATO') == 'S' &&
+      $v('P99981_VERSION_DATOS_PERSONALES') == 'S'
+
+  actions: 
+  - # ====== Action: Enable ======================================
+    id: 48236046740591289
+    identification: 
+      action: Enable
+
+    affected-elements: 
+      selection-type: Button
+      button: CREATE # 47894417499047425
+
+    execution: 
+      sequence: 10
+      event: onChange - Version Terminos # 48235902492591288
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Disable =====================================
+    id: 48236055833591290
+    identification: 
+      action: Disable
+
+    affected-elements: 
+      selection-type: Button
+      button: CREATE # 47894417499047425
+
+    execution: 
+      sequence: 10
+      event: onChange - Version Terminos # 48235902492591288
+      fire-when-event-result-is: False
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: onPageLoad ==========================
+  id: 48236325091591292
+  identification: 
+    name: onPageLoad
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+
+  when: 
+    event: Page Load
+
+  client-side-condition: 
+    type: Item = Value
+    item: P99981_TIPO_PERSONA_RC
+    value: NAT
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 48236508145591294
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.event.trigger('#P99981_TIPO_PERSONA_RC', 'change');
+        apex.event.trigger('#P99981_ID_PAIS', 'change');
+
+    execution: 
+      sequence: 10
+      event: onPageLoad # 48236325091591292
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+validations: 
+- # ====== Validation: Tipo persona no es nulo =================
+  id: 47854919148951704
+  identification: 
+    name: Tipo persona no es nulo
+
+  execution: 
+    sequence: 230
+
+  validation: 
+    type: Item is NOT NULL
+    item: P99981_TIPO_PERSONA_RC
+    always-execute: false
+
+  error: 
+    error-message: Por favor seleccione el tipo de persona
+    display-location: Inline with Field
+    associated-item: P99981_TIPO_PERSONA_RC # 67019629203665245
+
+- # ====== Validation: Validar numero de documento =============
+  id: 47856196056951717
+  identification: 
+    name: Validar numero de documento
+
+  execution: 
+    sequence: 240
+
+  validation: 
+    type: Function Body (returning Boolean)
+    language: PL/SQL
+    pl/sql-function-body: |
+      declare
+          l_return boolean;
+          l_tipo_doc varchar2(100);
+          l_nro_doc varchar2(1000);
+      begin
+          l_tipo_doc := :P99981_TIPO_DOCUMENTO_RC;
+          l_nro_doc := :P99981_NUMERO_DOCUMENTO;
+          if  l_tipo_doc = 'DNI' and length(l_nro_doc) = 8 then
+              l_return := true;
+          elsif l_tipo_doc = 'RUC' and length(l_nro_doc) = 11 then
+              l_return := true;
+          elsif l_tipo_doc != 'DNI' and l_tipo_doc != 'RUC' then
+              l_return := true;
+          else
+              l_return := false;
+          end if;
+          return l_return;
+      end;
+    always-execute: false
+
+  error: 
+    error-message: Por favor ingrese un documento válido.
+    display-location: Inline with Field
+    associated-item: P99981_NUMERO_DOCUMENTO # 67020419626665248
+
+- # ====== Validation: Razon social no es nulo =================
+  id: 47856473990951720
+  identification: 
+    name: Razon social no es nulo
+
+  execution: 
+    sequence: 270
+
+  validation: 
+    type: Item is NOT NULL
+    item: P99981_RAZON_SOCIAL
+    always-execute: false
+
+  error: 
+    error-message: Por favor ingrese la razón social.
+    display-location: Inline with Field
+    associated-item: P99981_RAZON_SOCIAL # 67020822095665250
+
+  server-side-condition: 
+    type: Item = Value
+    item: P99981_TIPO_DOCUMENTO_RC
+    value: RUC
+
+- # ====== Validation: Nombres no es nulo ======================
+  id: 47856553442951721
+  identification: 
+    name: Nombres no es nulo
+
+  execution: 
+    sequence: 280
+
+  validation: 
+    type: Item is NOT NULL
+    item: P99981_NOMBRES
+    always-execute: false
+
+  error: 
+    error-message: Por favor ingrese sus nombres.
+    display-location: Inline with Field
+    associated-item: P99981_NOMBRES # 67021199105665251
+
+  server-side-condition: 
+    type: Item = Value
+    item: P99981_TIPO_PERSONA_RC
+    value: NAT
+
+- # ====== Validation: Apellido paterno no es nulo =============
+  id: 47856725926951722
+  identification: 
+    name: Apellido paterno no es nulo
+
+  execution: 
+    sequence: 290
+
+  validation: 
+    type: Item is NOT NULL
+    item: P99981_APELLIDO_PATERNO
+    always-execute: false
+
+  error: 
+    error-message: Por favor ingrese su apellido paterno.
+    display-location: Inline with Field
+    associated-item: P99981_APELLIDO_PATERNO # 67021620344665253
+
+  server-side-condition: 
+    type: Item = Value
+    item: P99981_TIPO_PERSONA_RC
+    value: NAT
+
+- # ====== Validation: Apellido materno no es nulo =============
+  id: 47856829728951723
+  identification: 
+    name: Apellido materno no es nulo
+
+  execution: 
+    sequence: 300
+
+  validation: 
+    type: Item is NOT NULL
+    item: P99981_APELLIDO_MATERNO
+    always-execute: false
+
+  error: 
+    error-message: Por favor ingrese su apellido materno
+    display-location: Inline with Field
+    associated-item: P99981_APELLIDO_MATERNO # 67022026931665254
+
+  server-side-condition: 
+    type: Item = Value
+    item: P99981_TIPO_PERSONA_RC
+    value: NAT
+
+- # ====== Validation: Fecha de nacimiento no es nulo ==========
+  id: 47856879987951724
+  identification: 
+    name: Fecha de nacimiento no es nulo
+
+  execution: 
+    sequence: 310
+
+  validation: 
+    type: Item is NOT NULL
+    item: P99981_FECHA_NACIMIENTO
+    always-execute: false
+
+  error: 
+    error-message: Por favor ingrese su fecha de nacimiento.
+    display-location: Inline with Field
+    associated-item: P99981_FECHA_NACIMIENTO # 67022394606665256
+
+  server-side-condition: 
+    type: Item != Value
+    item: P99981_TIPO_DOCUMENTO_RC
+    value: RUC
+
+- # ====== Validation: Validar numero de documento unico =======
+  id: 47857255578951728
+  identification: 
+    name: Validar numero de documento unico
+
+  execution: 
+    sequence: 330
+
+  validation: 
+    type: No Rows returned
+    sql-query: |
+      select 1 
+        from usuario_temporal
+       where numero_documento = :P99981_NUMERO_DOCUMENTO
+    always-execute: false
+
+  error: 
+    error-message: Este documento ya esta en uso
+    display-location: Inline with Field
+    associated-item: P99981_NUMERO_DOCUMENTO # 67020419626665248
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Validation: Validar terminos y condiciones ==========
+  id: 47858136652951736
+  identification: 
+    name: Validar terminos y condiciones
+
+  execution: 
+    sequence: 340
+
+  validation: 
+    type: Item != Value
+    item: P99981_VERSION_TERMINOS
+    value: N
+    always-execute: false
+
+  error: 
+    error-message: Por favor acepte los términos y condiciones para continuar
+    display-location: Inline with Field
+    associated-item: P99981_VERSION_TERMINOS # 67027667925665276
+
+- # ====== Validation: Validar contrato ========================
+  id: 47858230662951737
+  identification: 
+    name: Validar contrato
+
+  execution: 
+    sequence: 350
+
+  validation: 
+    type: Item != Value
+    item: P99981_VERSION_CONTRATO_MANDATO
+    value: N
+    always-execute: false
+
+  error: 
+    error-message: Por favor acepte el contrato para continuar
+    display-location: Inline with Field
+    associated-item: P99981_VERSION_CONTRATO_MANDATO # 67028414207665279
+
+- # ====== Validation: P99981_FECHA_REGISTRO must be timestamp =
+  id: 47895082848047440
+  identification: 
+    name: P99981_FECHA_REGISTRO must be timestamp
+
+  execution: 
+    sequence: 130
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P99981_FECHA_REGISTRO
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P99981_FECHA_REGISTRO # 67024385086665264
+
+- # ====== Validation: P99981_FECHA_EXPIRACION must be timestamp
+  id: 47895422840047442
+  identification: 
+    name: P99981_FECHA_EXPIRACION must be timestamp
+
+  execution: 
+    sequence: 140
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P99981_FECHA_EXPIRACION
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P99981_FECHA_EXPIRACION # 67025270014665267
+
+processes: 
+- # ====== Process: Enviar email de confirmacion ===============
+  id: 48064951719845288
+  identification: 
+    name: Enviar email de confirmacion
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          inv_utils_pkg.enviar_email_activacion(
+                p_id_usuario => :P99981_ID_USUARIO_TEMP
+              );
+      END;
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Procesar Registro ==========================
+  id: 48236976967591299
+  identification: 
+    name: Procesar Registro
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          inv_registro_pkg.insert_usuario_temporal(
+              p_tipo_persona_rc          => :P99981_TIPO_PERSONA_RC,
+              p_tipo_documento_rc        => :P99981_TIPO_DOCUMENTO_RC,
+              p_numero_documento         => :P99981_NUMERO_DOCUMENTO,
+              p_razon_social             => :P99981_RAZON_SOCIAL,
+              p_nombres                  => :P99981_NOMBRES,
+              p_apellido_paterno         => :P99981_APELLIDO_PATERNO,
+              p_apellido_materno         => :P99981_APELLIDO_MATERNO,
+              p_fecha_nacimiento         => :P99981_FECHA_NACIMIENTO,
+              p_correo                   => :P99981_CORREO,
+              p_celular                  => :P99981_CELULAR,
+              p_tipo_rol_rc              => 'INVERSNSTA',
+              p_estado_rc                => 'PENDIENTE',
+              p_ip_origen                => NULL,
+              p_user_agent               => NULL,
+              p_observaciones            => NULL,
+              p_version_terminos         => '1.0',
+              p_version_datos_personales => '1.0',
+              p_version_contrato_mandato => '1.0',
+              p_id_pais                  => :P99981_ID_PAIS,
+              p_id_subdivision_n1        => :P99981_ID_DEPARTAMENTO,
+              p_id_subdivision_n2        => :P99981_ID_PROVINCIA,
+              p_id_usuario_temp          => :P99981_ID_USUARIO_TEMP,
+              p_contrasena               => :P99981_PASSWORD
+          );
+      END;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Generar Token ==============================
+  id: 48237509723591304
+  identification: 
+    name: Generar Token
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          inv_utils_pkg.generar_token(
+                p_id_usuario => :P99981_ID_USUARIO_TEMP
+              , p_tipo_rc    => 'ACTIVACION'
+              );
+      END;
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+branches: 
+- # ====== Branch: Go To Page 99982 ============================
+  id: 47897096824047450
+  identification: 
+    name: Go To Page 99982
+
+  execution: 
+    sequence: 1
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:99982:&SESSION.::&DEBUG.::P99982_ID_USUARIO_TEMP:&P99981_ID_USUARIO_TEMP.&success_msg=#SUCCESS_MSG#'
+      page: 99982 # Email de confirmacion
+      values: 
+        p99982_id_usuario_temp: '&P99981_ID_USUARIO_TEMP.'
+

@@ -1,0 +1,157 @@
+---
+- # ====== List of Values: LOV_TIPO_DOC ========================
+  id: 47911037332507468
+  identification: 
+    name: LOV_TIPO_DOC
+
+  subscription: 
+    master: 
+      referenced-id: 23843153956860607
+
+    version-number: 41718511828783
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select codigo r
+           , nombre || ' - ' || descripcion d
+        from codigo_referencia
+       where codigo_ref_tipo = 'TIPO_DOC'
+         and atributo1 = :P99981_TIPO_PERSONA_RC
+       order by secuencia
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: LOV_TIPO_PER ========================
+  id: 47914553632804432
+  identification: 
+    name: LOV_TIPO_PER
+
+  subscription: 
+    master: 
+      referenced-id: 23843460721860608
+
+    version-number: 41718511830703
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select codigo r
+           , nombre d
+        from codigo_referencia
+       where codigo_ref_tipo = 'TIPO_PER'
+       order by secuencia
+
+  column-mapping: 
+    return: R
+    display: D
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: LOV_PAIS_ACTIVO =====================
+  id: 49033916373222478
+  identification: 
+    name: LOV_PAIS_ACTIVO
+
+  subscription: 
+    master: 
+      referenced-id: 21351385575414396
+
+    version-number: 41717966181857
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select id_pais
+               , nombre 
+            from BKO_PAIS
+           where activo_sn = 'S'
+
+  column-mapping: 
+    return: ID_PAIS
+    display: NOMBRE
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: LOV_MONEDA_ACTIVO ===================
+  id: 51520136047487389
+  identification: 
+    name: LOV_MONEDA_ACTIVO
+
+  subscription: 
+    master: 
+      referenced-id: 23842868229860605
+
+    version-number: 41718511812345
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select codigo
+               , descripcion 
+            from CODIGO_REFERENCIA
+           where activo_sn = 'S'
+             and codigo_ref_tipo = 'TIPO_MON'
+
+  column-mapping: 
+    return: CODIGO
+    display: DESCRIPCION
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: LOV_INSTITUCION_FINANCIERA ==========
+  id: 51528129824661647
+  identification: 
+    name: LOV_INSTITUCION_FINANCIERA
+
+  subscription: 
+    master: 
+      referenced-id: 23843792013865106
+
+    version-number: 41718511823296
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: BKO_INSTITUCION_FINANCIERA
+
+  column-mapping: 
+    return: ID_INSTITUCION
+    display: NOMBRE
+    default-sort: NOMBRE
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_SI_NO ===========================
+  id: 51528465143661649
+  identification: 
+    name: LOV_SI_NO
+
+  subscription: 
+    master: 
+      referenced-id: 21946100176909272
+
+    version-number: 41718009321498
+
+  source: 
+    location: Static Values
+
+  entries: 
+  - # ====== Entry: Si ===========================================
+    id: 51528863896661651
+    entry: 
+      sequence: 1
+      display: Si
+      return: S
+
+  - # ====== Entry: No ===========================================
+    id: 51529251033661653
+    entry: 
+      sequence: 2
+      display: No
+      return: N
+

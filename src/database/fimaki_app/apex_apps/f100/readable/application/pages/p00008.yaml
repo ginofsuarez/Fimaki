@@ -49,7 +49,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Filters =====================================
-  id: 11498037109371786
+  id: 3316724519150028
   identification: 
     name: Filters
     type: Static Content
@@ -88,7 +88,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Buttons =====================================
-  id: 11498306461371789
+  id: 3316993871150031
   identification: 
     name: Buttons
     type: Static Content
@@ -126,14 +126,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Partes Involucradas =========================
-  id: 41968350439020678
+  id: 33787037848798920
   identification: 
     name: Partes Involucradas
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Filters # 11498037109371786
+    parent-region: Filters # 3316724519150028
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -167,14 +167,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Calificación ================================
-  id: 41968496971020679
+  id: 33787184380798921
   identification: 
     name: Calificación
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: Filters # 11498037109371786
+    parent-region: Filters # 3316724519150028
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -207,14 +207,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Montos ======================================
-  id: 41968545164020680
+  id: 33787232573798922
   identification: 
     name: Montos
     type: Static Content
 
   layout: 
     sequence: 30
-    parent-region: Filters # 11498037109371786
+    parent-region: Filters # 3316724519150028
     slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -248,7 +248,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P8_ID_EMPRESA_CEDENTE ====================
-  id: 11498093537371787
+  id: 3316780947150029
   identification: 
     name: P8_ID_EMPRESA_CEDENTE
     type: Popup LOV
@@ -273,7 +273,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Partes Involucradas # 41968350439020678
+    region: Partes Involucradas # 33787037848798920
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -294,7 +294,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_INSTITUCION_FINANCIERA # 32027293905104718
+    list-of-values: LOV_INSTITUCION_FINANCIERA # 23845981314882960
     display-extra-values: false
     display-null-value: true
 
@@ -320,7 +320,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P8_ID_EMPRESA_PAGADOR ====================
-  id: 11498193280371788
+  id: 3316880690150030
   identification: 
     name: P8_ID_EMPRESA_PAGADOR
     type: Popup LOV
@@ -345,7 +345,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Partes Involucradas # 41968350439020678
+    region: Partes Involucradas # 33787037848798920
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -366,7 +366,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_EMPRESA_ACTIVO # 43416572611996029
+    list-of-values: LOV_EMPRESA_ACTIVO # 35235260021774271
     display-extra-values: false
     display-null-value: true
 
@@ -389,7 +389,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P8_SCORE_PAGADOR_RC ======================
-  id: 11498606798371792
+  id: 3317294208150034
   identification: 
     name: P8_SCORE_PAGADOR_RC
     type: Select List
@@ -406,7 +406,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Calificación # 41968496971020679
+    region: Calificación # 33787184380798921
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -459,7 +459,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P8_MONTO_DISPONIBLE_MINIMO ===============
-  id: 11499193332371798
+  id: 3317880742150040
   identification: 
     name: P8_MONTO_DISPONIBLE_MINIMO
     type: Number Field
@@ -474,7 +474,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Montos # 41968545164020680
+    region: Montos # 33787232573798922
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -518,7 +518,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P8_MONTO_DISPONIBLE_MAXIMO ===============
-  id: 11499358205371799
+  id: 3318045615150041
   identification: 
     name: P8_MONTO_DISPONIBLE_MAXIMO
     type: Number Field
@@ -533,7 +533,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Montos # 41968545164020680
+    region: Montos # 33787232573798922
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -577,7 +577,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P8_SCORE_OPERACION_RC ====================
-  id: 41968228832020677
+  id: 33786916241798919
   identification: 
     name: P8_SCORE_OPERACION_RC
     type: Select List
@@ -594,7 +594,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Calificación # 41968496971020679
+    region: Calificación # 33787184380798921
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -647,7 +647,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P8_MONEDA_RC =============================
-  id: 45409137721386185
+  id: 37227825131164427
   identification: 
     name: P8_MONEDA_RC
     type: Select List
@@ -664,7 +664,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Montos # 41968545164020680
+    region: Montos # 33787232573798922
     slot: BODY
     alignment: Left
     start-new-layout: false
@@ -688,7 +688,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_MONEDA_ACTIVO # 32019300127930460
+    list-of-values: LOV_MONEDA_ACTIVO # 23837987537708702
     display-extra-values: false
     display-null-value: true
 
@@ -712,14 +712,14 @@ page-items:
 
 buttons: 
 - # ====== Button: APLICAR_FILTROS =============================
-  id: 11498402086371790
+  id: 3317089496150032
   identification: 
     button-name: APLICAR_FILTROS
     label: Aplicar Filtros
 
   layout: 
     sequence: 20
-    region: Buttons # 11498306461371789
+    region: Buttons # 3316993871150031
     slot: CREATE
     start-new-layout: false
     start-new-row: true
@@ -740,14 +740,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: CANCELAR ====================================
-  id: 11498467900371791
+  id: 3317155310150033
   identification: 
     button-name: CANCELAR
     label: Cancelar
 
   layout: 
     sequence: 10
-    region: Buttons # 11498306461371789
+    region: Buttons # 3316993871150031
     slot: CLOSE
     start-new-layout: false
     start-new-row: true
@@ -766,7 +766,7 @@ buttons:
     execute-validations: true
 
 - # ====== Button: LIMPIAR_EMP_CEDENTE =========================
-  id: 41967703943020671
+  id: 33786391352798913
   identification: 
     button-name: LIMPIAR_EMP_CEDENTE
     label: Limpiar
@@ -799,7 +799,7 @@ buttons:
     type: Never
 
 - # ====== Button: LIMPIAR_EMP_PAGADOR =========================
-  id: 41967760197020672
+  id: 33786447606798914
   identification: 
     button-name: LIMPIAR_EMP_PAGADOR
     label: Limpiar
@@ -827,7 +827,7 @@ buttons:
     execute-validations: true
 
 - # ====== Button: LIMPIAR_SCORE_PAGADOR =======================
-  id: 41969765378020692
+  id: 33788452787798934
   identification: 
     button-name: LIMPIAR_SCORE_PAGADOR
     label: Limpiar
@@ -855,7 +855,7 @@ buttons:
     execute-validations: true
 
 - # ====== Button: LIMPIAR_SCORE_OPERACION =====================
-  id: 41969872292020693
+  id: 33788559701798935
   identification: 
     button-name: LIMPIAR_SCORE_OPERACION
     label: Limpiar
@@ -883,7 +883,7 @@ buttons:
     execute-validations: true
 
 - # ====== Button: LIMPIAR_MONTO_MINIMO ========================
-  id: 41970524709020700
+  id: 33789212118798942
   identification: 
     button-name: LIMPIAR_MONTO_MINIMO
     label: Limpiar
@@ -911,7 +911,7 @@ buttons:
     execute-validations: true
 
 - # ====== Button: LIMPIAR_MONTO_MAXIMO ========================
-  id: 41970622630020701
+  id: 33789310039798943
   identification: 
     button-name: LIMPIAR_MONTO_MAXIMO
     label: Limpiar
@@ -939,7 +939,7 @@ buttons:
     execute-validations: true
 
 - # ====== Button: LIMPIAR_MONEDA ==============================
-  id: 45409252059386186
+  id: 37227939469164428
   identification: 
     button-name: LIMPIAR_MONEDA
     label: Limpiar
@@ -968,7 +968,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onPageLoad ==========================
-  id: 41967875734020673
+  id: 33786563143798915
   identification: 
     name: onPageLoad
 
@@ -981,7 +981,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: APEX Items with APEX Button =================
-    id: 41968059672020675
+    id: 33786747081798917
     identification: 
       action: APEX Items with APEX Button
 
@@ -990,16 +990,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_EMP_CEDENTE # 41967703943020671
+      button: LIMPIAR_EMP_CEDENTE # 33786391352798913
 
     execution: 
       sequence: 10
-      event: onPageLoad # 41967875734020673
+      event: onPageLoad # 33786563143798915
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: APEX Items with APEX Button =================
-    id: 41968117034020676
+    id: 33786804443798918
     identification: 
       action: APEX Items with APEX Button
 
@@ -1008,16 +1008,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_EMP_PAGADOR # 41967760197020672
+      button: LIMPIAR_EMP_PAGADOR # 33786447606798914
 
     execution: 
       sequence: 20
-      event: onPageLoad # 41967875734020673
+      event: onPageLoad # 33786563143798915
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: APEX Items with APEX Button =================
-    id: 41970356230020698
+    id: 33789043639798940
     identification: 
       action: APEX Items with APEX Button
 
@@ -1026,16 +1026,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_SCORE_PAGADOR # 41969765378020692
+      button: LIMPIAR_SCORE_PAGADOR # 33788452787798934
 
     execution: 
       sequence: 30
-      event: onPageLoad # 41967875734020673
+      event: onPageLoad # 33786563143798915
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: APEX Items with APEX Button =================
-    id: 41970509666020699
+    id: 33789197075798941
     identification: 
       action: APEX Items with APEX Button
 
@@ -1044,16 +1044,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_SCORE_OPERACION # 41969872292020693
+      button: LIMPIAR_SCORE_OPERACION # 33788559701798935
 
     execution: 
       sequence: 40
-      event: onPageLoad # 41967875734020673
+      event: onPageLoad # 33786563143798915
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: APEX Items with APEX Button =================
-    id: 41971183708020706
+    id: 33789871117798948
     identification: 
       action: APEX Items with APEX Button
 
@@ -1062,16 +1062,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_MONTO_MINIMO # 41970524709020700
+      button: LIMPIAR_MONTO_MINIMO # 33789212118798942
 
     execution: 
       sequence: 50
-      event: onPageLoad # 41967875734020673
+      event: onPageLoad # 33786563143798915
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: APEX Items with APEX Button =================
-    id: 41971260502020707
+    id: 33789947911798949
     identification: 
       action: APEX Items with APEX Button
 
@@ -1080,16 +1080,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_MONTO_MAXIMO # 41970622630020701
+      button: LIMPIAR_MONTO_MAXIMO # 33789310039798943
 
     execution: 
       sequence: 60
-      event: onPageLoad # 41967875734020673
+      event: onPageLoad # 33786563143798915
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: APEX Items with APEX Button =================
-    id: 45409558456386189
+    id: 37228245866164431
     identification: 
       action: APEX Items with APEX Button
 
@@ -1098,16 +1098,16 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_MONEDA # 45409252059386186
+      button: LIMPIAR_MONEDA # 37227939469164428
 
     execution: 
       sequence: 70
-      event: onPageLoad # 41967875734020673
+      event: onPageLoad # 33786563143798915
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Cancelar ==================
-  id: 41968707010020681
+  id: 33787394419798923
   identification: 
     name: onClick - Cancelar
 
@@ -1119,22 +1119,22 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: CANCELAR # 11498467900371791
+    button: CANCELAR # 3317155310150033
 
   actions: 
   - # ====== Action: Cancel Dialog ===============================
-    id: 41968777698020682
+    id: 33787465107798924
     identification: 
       action: Cancel Dialog
 
     execution: 
       sequence: 10
-      event: onClick - Cancelar # 41968707010020681
+      event: onClick - Cancelar # 33787394419798923
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Limpiar Empresa Pagador ===
-  id: 41969596881020690
+  id: 33788284290798932
   identification: 
     name: onClick - Limpiar Empresa Pagador
 
@@ -1146,11 +1146,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: LIMPIAR_EMP_PAGADOR # 41967760197020672
+    button: LIMPIAR_EMP_PAGADOR # 33786447606798914
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 41969700240020691
+    id: 33788387649798933
     identification: 
       action: Clear
 
@@ -1161,12 +1161,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Limpiar Empresa Pagador # 41969596881020690
+      event: onClick - Limpiar Empresa Pagador # 33788284290798932
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Limpiar Score Pagador =====
-  id: 41969982196020694
+  id: 33788669605798936
   identification: 
     name: onClick - Limpiar Score Pagador
 
@@ -1178,11 +1178,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: LIMPIAR_SCORE_PAGADOR # 41969765378020692
+    button: LIMPIAR_SCORE_PAGADOR # 33788452787798934
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 41970101041020695
+    id: 33788788450798937
     identification: 
       action: Clear
 
@@ -1193,12 +1193,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Limpiar Score Pagador # 41969982196020694
+      event: onClick - Limpiar Score Pagador # 33788669605798936
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Limpiar Score Operacion ===
-  id: 41970186240020696
+  id: 33788873649798938
   identification: 
     name: onClick - Limpiar Score Operacion
 
@@ -1210,11 +1210,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: LIMPIAR_SCORE_OPERACION # 41969872292020693
+    button: LIMPIAR_SCORE_OPERACION # 33788559701798935
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 41970289333020697
+    id: 33788976742798939
     identification: 
       action: Clear
 
@@ -1225,12 +1225,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Limpiar Score Operacion # 41970186240020696
+      event: onClick - Limpiar Score Operacion # 33788873649798938
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Limpiar Monto Minimo ======
-  id: 41970789687020702
+  id: 33789477096798944
   identification: 
     name: onClick - Limpiar Monto Minimo
 
@@ -1242,11 +1242,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: LIMPIAR_MONTO_MINIMO # 41970524709020700
+    button: LIMPIAR_MONTO_MINIMO # 33789212118798942
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 41970881932020703
+    id: 33789569341798945
     identification: 
       action: Clear
 
@@ -1257,12 +1257,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Limpiar Monto Minimo # 41970789687020702
+      event: onClick - Limpiar Monto Minimo # 33789477096798944
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Limpiar Monto Maximo ======
-  id: 41970980487020704
+  id: 33789667896798946
   identification: 
     name: onClick - Limpiar Monto Maximo
 
@@ -1274,11 +1274,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: LIMPIAR_MONTO_MAXIMO # 41970622630020701
+    button: LIMPIAR_MONTO_MAXIMO # 33789310039798943
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 41971047877020705
+    id: 33789735286798947
     identification: 
       action: Clear
 
@@ -1289,12 +1289,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Limpiar Monto Maximo # 41970980487020704
+      event: onClick - Limpiar Monto Maximo # 33789667896798946
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onClick - Limpiar Moneda ============
-  id: 45409392105386187
+  id: 37228079515164429
   identification: 
     name: onClick - Limpiar Moneda
 
@@ -1306,11 +1306,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: LIMPIAR_MONEDA # 45409252059386186
+    button: LIMPIAR_MONEDA # 37227939469164428
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 45409429314386188
+    id: 37228116724164430
     identification: 
       action: Clear
 
@@ -1321,13 +1321,13 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Limpiar Moneda # 45409392105386187
+      event: onClick - Limpiar Moneda # 37228079515164429
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: Close Dialog ===============================
-  id: 41968854988020683
+  id: 33787542397798925
   identification: 
     name: Close Dialog
     type: Close Dialog

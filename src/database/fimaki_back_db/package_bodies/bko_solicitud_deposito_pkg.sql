@@ -61,6 +61,49 @@ create or replace package body fimaki_back_db.bko_solicitud_deposito_pkg as
         where
             id_deposito = p_id_deposito;
 
+        -- === Envío de email de prueba (no bloquea si falla) ===
+        if sql%rowcount = 1 then
+            declare
+                l_to   varchar2(320) := 'agamazapata@gmail.com'; -- <-- CAMBIAR
+                l_from varchar2(320) := 'no-responder@fimaki.com.pe';       -- <-- CAMBIAR (debe estar permitido en tu SMTP)
+                l_html clob;
+                l_sgid number;
+            begin
+                l_html := '<p><b>[TEST]</b> Depósito confirmado.</p>'
+                          || '<ul>'
+                          || '<li><b>ID Depósito:</b> '
+                          || p_id_deposito
+                          || '</li>'
+                          || '<li><b>Monto:</b> '
+                          || to_char(l_deposito.monto, 'FM999G999G990D00')
+                          || ' '
+                          || nvl(l_moneda_rc, '')
+                          || '</li>'
+                          || '<li><b>ID Movimiento:</b> '
+                          || nvl(
+                    to_char(l_id_movimiento_financiero),
+                    '(n/a)'
+                )
+                          || '</li>'
+                          || '<li><b>Fecha validación:</b> '
+                          || to_char(systimestamp at time zone 'America/Lima', 'DD/MM/YYYY HH24:MI:SS')
+                          || '</li>'
+                          || '</ul>';
+
+                apex_mail.send(
+                    p_to        => l_to,
+                    p_from      => l_from,
+                    p_subj      => '[TEST] Depósito confirmado #' || p_id_deposito,
+                    p_body      => null,
+                    p_body_html => l_html
+                );
+
+            exception
+                when others then
+                    null; -- no bloquear la aprobación por fallo de correo
+            end;
+        end if;
+
     exception
         when no_data_found then
         -- Manejo específico si no se encuentra el depósito o la cuenta (opcional, para mayor robustez)
@@ -98,4 +141,4 @@ end bko_solicitud_deposito_pkg;
 /
 
 
--- sqlcl_snapshot {"hash":"aff58b8940a7e90b0475dc17882f7bf59799370c","type":"PACKAGE_BODY","name":"BKO_SOLICITUD_DEPOSITO_PKG","schemaName":"FIMAKI_BACK_DB","sxml":""}
+-- sqlcl_snapshot {"hash":"16b67c530051994985f5b3eaa548ccbdf14fbf0e","type":"PACKAGE_BODY","name":"BKO_SOLICITUD_DEPOSITO_PKG","schemaName":"FIMAKI_BACK_DB","sxml":""}

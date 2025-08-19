@@ -382,7 +382,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Facturas [Cards] ============================
-  id: 8186594465234482
+  id: 5281875012724
   identification: 
     name: Facturas [Cards]
     type: Cards
@@ -464,7 +464,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 8187554433234491
+    id: 6241843012733
     appearance: 
       layout: Grid
       grid-columns: Auto
@@ -601,7 +601,7 @@ regions:
       show-total-count: false
 
 - # ====== Region: Facturas [Grid] =============================
-  id: 8317203194450595
+  id: 135890604228837
   identification: 
     name: Facturas [Grid]
     type: Interactive Report
@@ -656,7 +656,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 8185573132234472
+    id: 4260542012714
     link: 
       link-column: Exclude Link Column
 
@@ -715,14 +715,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 8193693069266348
+      id: 12380479044590
       identification: 
         name: Primary Report
         alias: 276946
 
     columns: 
     - # ====== Column: Pagador =====================================
-      id: 8185674179234473
+      id: 4361589012715
       identification: 
         column-name: Pagador
         type: Plain Text
@@ -763,7 +763,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: Score De Riesgo =============================
-      id: 8185772372234474
+      id: 4459782012716
       identification: 
         column-name: Score De Riesgo
         type: Plain Text
@@ -804,7 +804,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: Tasa Rendimiento ============================
-      id: 8185901177234475
+      id: 4588587012717
       identification: 
         column-name: Tasa Rendimiento
         type: Plain Text
@@ -845,7 +845,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: Monto Total =================================
-      id: 8186059968234476
+      id: 4747378012718
       identification: 
         column-name: Monto Total
         type: Plain Text
@@ -886,7 +886,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: Monto Restante ==============================
-      id: 8186135913234477
+      id: 4823323012719
       identification: 
         column-name: Monto Restante
         type: Plain Text
@@ -927,7 +927,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: Plazo Estimado ==============================
-      id: 8186256402234478
+      id: 4943812012720
       identification: 
         column-name: Plazo Estimado
         type: Plain Text
@@ -968,7 +968,7 @@ regions:
         escape-special-characters: true
 
     - # ====== Column: Financiado ==================================
-      id: 8186333867234479
+      id: 5021277012721
       identification: 
         column-name: Financiado
         type: Plain Text
@@ -1052,7 +1052,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P5_ID_EMPRESA_PAGADOR ====================
-  id: 41968916309020684
+  id: 33787603718798926
   identification: 
     name: P5_ID_EMPRESA_PAGADOR
     type: Hidden
@@ -1082,7 +1082,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_SCORE_PAGADOR_RC ======================
-  id: 43425202503142467
+  id: 35243889912920709
   identification: 
     name: P5_SCORE_PAGADOR_RC
     type: Hidden
@@ -1112,7 +1112,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_SCORE_OPERACION_RC ====================
-  id: 43425307613142468
+  id: 35243995022920710
   identification: 
     name: P5_SCORE_OPERACION_RC
     type: Hidden
@@ -1142,7 +1142,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_MONTO_DISPONIBLE_MINIMO ===============
-  id: 43425362983142469
+  id: 35244050392920711
   identification: 
     name: P5_MONTO_DISPONIBLE_MINIMO
     type: Hidden
@@ -1172,7 +1172,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_MONTO_DISPONIBLE_MAXIMO ===============
-  id: 43425476846142470
+  id: 35244164255920712
   identification: 
     name: P5_MONTO_DISPONIBLE_MAXIMO
     type: Hidden
@@ -1202,7 +1202,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P5_MONEDA_RC =============================
-  id: 45409664844386190
+  id: 37228352254164432
   identification: 
     name: P5_MONEDA_RC
     type: Hidden
@@ -1233,14 +1233,14 @@ page-items:
 
 buttons: 
 - # ====== Button: GRILLA ======================================
-  id: 8186382574234480
+  id: 5069984012722
   identification: 
     button-name: GRILLA
     label: Grilla
 
   layout: 
     sequence: 30
-    region: Breadcrumb # 27854057095976059
+    region: Breadcrumb # 19672744505754301
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1265,14 +1265,14 @@ buttons:
     type: Never
 
 - # ====== Button: CARDS =======================================
-  id: 8186558934234481
+  id: 5246344012723
   identification: 
     button-name: CARDS
     label: Cards
 
   layout: 
     sequence: 40
-    region: Breadcrumb # 27854057095976059
+    region: Breadcrumb # 19672744505754301
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1297,14 +1297,14 @@ buttons:
     type: Never
 
 - # ====== Button: FILTROS =====================================
-  id: 10653922015920784
+  id: 2472609425699026
   identification: 
     button-name: FILTROS
     label: Filtros
 
   layout: 
     sequence: 20
-    region: Breadcrumb # 27854057095976059
+    region: Breadcrumb # 19672744505754301
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1330,14 +1330,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: LIMPIAR_FILTROS =============================
-  id: 43424406303142459
+  id: 35243093712920701
   identification: 
     button-name: LIMPIAR_FILTROS
     label: Quitar Filtros
 
   layout: 
     sequence: 10
-    region: Breadcrumb # 27854057095976059
+    region: Breadcrumb # 19672744505754301
     slot: EDIT
     start-new-layout: false
     start-new-row: true
@@ -1364,7 +1364,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: onDialogClosed - Filtros ============
-  id: 41969259591020687
+  id: 33787947000798929
   identification: 
     name: onDialogClosed - Filtros
 
@@ -1376,11 +1376,11 @@ dynamic-actions:
   when: 
     event: Dialog Closed
     selection-type: Button
-    button: FILTROS # 10653922015920784
+    button: FILTROS # 2472609425699026
 
   actions: 
   - # ====== Action: Set Value ===================================
-    id: 41969349281020688
+    id: 33788036690798930
     identification: 
       action: Set Value
 
@@ -1396,14 +1396,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onDialogClosed - Filtros # 41969259591020687
+      event: onDialogClosed - Filtros # 33787947000798929
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Refresh =====================================
-    id: 41969415572020689
+    id: 33788102981798931
     identification: 
       action: Refresh
 
@@ -1412,31 +1412,31 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Facturas [Cards] # 8186594465234482
+      region: Facturas [Cards] # 5281875012724
 
     execution: 
       sequence: 70
-      event: onDialogClosed - Filtros # 41969259591020687
+      event: onDialogClosed - Filtros # 33787947000798929
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Show ========================================
-    id: 43425050990142466
+    id: 35243738399920708
     identification: 
       action: Show
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_FILTROS # 43424406303142459
+      button: LIMPIAR_FILTROS # 35243093712920701
 
     execution: 
       sequence: 80
-      event: onDialogClosed - Filtros # 41969259591020687
+      event: onDialogClosed - Filtros # 33787947000798929
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Value ===================================
-    id: 43425610401142471
+    id: 35244297810920713
     identification: 
       action: Set Value
 
@@ -1452,14 +1452,14 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: onDialogClosed - Filtros # 41969259591020687
+      event: onDialogClosed - Filtros # 33787947000798929
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Set Value ===================================
-    id: 43425629255142472
+    id: 35244316664920714
     identification: 
       action: Set Value
 
@@ -1475,14 +1475,14 @@ dynamic-actions:
 
     execution: 
       sequence: 40
-      event: onDialogClosed - Filtros # 41969259591020687
+      event: onDialogClosed - Filtros # 33787947000798929
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Set Value ===================================
-    id: 43425768339142473
+    id: 35244455748920715
     identification: 
       action: Set Value
 
@@ -1498,14 +1498,14 @@ dynamic-actions:
 
     execution: 
       sequence: 50
-      event: onDialogClosed - Filtros # 41969259591020687
+      event: onDialogClosed - Filtros # 33787947000798929
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Set Value ===================================
-    id: 43425956047142475
+    id: 35244643456920717
     identification: 
       action: Set Value
 
@@ -1521,14 +1521,14 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: onDialogClosed - Filtros # 41969259591020687
+      event: onDialogClosed - Filtros # 33787947000798929
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Set Value ===================================
-    id: 45409756537386191
+    id: 37228443947164433
     identification: 
       action: Set Value
 
@@ -1544,14 +1544,14 @@ dynamic-actions:
 
     execution: 
       sequence: 60
-      event: onDialogClosed - Filtros # 41969259591020687
+      event: onDialogClosed - Filtros # 33787947000798929
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: onClick - Limpiar Filtros ===========
-  id: 43424440261142460
+  id: 35243127670920702
   identification: 
     name: onClick - Limpiar Filtros
 
@@ -1563,11 +1563,11 @@ dynamic-actions:
   when: 
     event: Click
     selection-type: Button
-    button: LIMPIAR_FILTROS # 43424406303142459
+    button: LIMPIAR_FILTROS # 35243093712920701
 
   actions: 
   - # ====== Action: Clear =======================================
-    id: 43424561846142461
+    id: 35243249255920703
     identification: 
       action: Clear
 
@@ -1583,12 +1583,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: onClick - Limpiar Filtros # 43424440261142460
+      event: onClick - Limpiar Filtros # 35243127670920702
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh =====================================
-    id: 43424693679142462
+    id: 35243381088920704
     identification: 
       action: Refresh
 
@@ -1597,31 +1597,31 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Facturas [Cards] # 8186594465234482
+      region: Facturas [Cards] # 5281875012724
 
     execution: 
       sequence: 20
-      event: onClick - Limpiar Filtros # 43424440261142460
+      event: onClick - Limpiar Filtros # 35243127670920702
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Hide ========================================
-    id: 43424787787142463
+    id: 35243475196920705
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_FILTROS # 43424406303142459
+      button: LIMPIAR_FILTROS # 35243093712920701
 
     execution: 
       sequence: 30
-      event: onClick - Limpiar Filtros # 43424440261142460
+      event: onClick - Limpiar Filtros # 35243127670920702
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: onPageLoad ==========================
-  id: 43424851279142464
+  id: 35243538688920706
   identification: 
     name: onPageLoad
 
@@ -1634,17 +1634,17 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 43424989721142465
+    id: 35243677130920707
     identification: 
       action: Hide
 
     affected-elements: 
       selection-type: Button
-      button: LIMPIAR_FILTROS # 43424406303142459
+      button: LIMPIAR_FILTROS # 35243093712920701
 
     execution: 
       sequence: 10
-      event: onPageLoad # 43424851279142464
+      event: onPageLoad # 35243538688920706
       fire-when-event-result-is: True
       fire-on-initialization: false
 
