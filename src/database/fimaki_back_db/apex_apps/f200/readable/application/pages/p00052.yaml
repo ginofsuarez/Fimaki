@@ -1,0 +1,2448 @@
+---
+# ====== Page: Contacto ======================================
+id: 52
+identification: 
+  name: Contacto
+  alias: CONTACTO
+  title: Contacto
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  width: 550
+  chained: false
+  resizable: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .t-Region-headerItems--controls {
+        padding-inline-start: var(--ut-region-header-item-spacing, .0rem);
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Contacto ====================================
+  id: 43963232801503339
+  identification: 
+    name: Contacto
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: BKO_CONTACTO
+    include-rowid-column: false
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Buttons =====================================
+  id: 43973705827503385
+  identification: 
+    name: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: Text (escape special characters)
+      show-line-breaks: true
+
+- # ====== Region: Audit =======================================
+  id: 43979198832559110
+  identification: 
+    name: Audit
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Collapsible
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - is-collapsed
+    - t-Region--noUI
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P52_ID_CONTACTO
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Persona =====================================
+  id: 43980076856559118
+  identification: 
+    name: Persona
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Contacto # 43963232801503339
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P52_ID_PERSONA_EMPRESA ===================
+  id: 42539712788450928
+  identification: 
+    name: P52_ID_PERSONA_EMPRESA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_NUMERO_DOC_CNTC ======================
+  id: 42540164474450933
+  identification: 
+    name: P52_NUMERO_DOC_CNTC
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 40
+    region: Contacto # 43963232801503339
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_ID_CONTACTO ==========================
+  id: 43963502867503340
+  identification: 
+    name: P52_ID_CONTACTO
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 30
+    region: Contacto # 43963232801503339
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: ID_CONTACTO
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_TIPO_CONTACTO_RC =====================
+  id: 43963941624503343
+  identification: 
+    name: P52_TIPO_CONTACTO_RC
+    type: Select List
+
+  label: 
+    label: Tipo Contacto
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 50
+    region: Contacto # 43963232801503339
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIP_CONTAC'
+             and (activo_sn = 'S' or codigo = :P52_TIPO_CONTACTO_RC)
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: TIPO_CONTACTO_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_ACTIVO_SN ============================
+  id: 43964328651503345
+  identification: 
+    name: P52_ACTIVO_SN
+    type: Switch
+
+  label: 
+    label: Activo
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    on-value: S
+    on-label: Si
+    off-value: N
+    off-label: No
+
+  layout: 
+    sequence: 100
+    region: Persona # 43980076856559118
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: 0
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    post-text-: '&nbsp;Activo'
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: ACTIVO_SN
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: S
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_ID_PERSONA ===========================
+  id: 43964755983503346
+  identification: 
+    name: P52_ID_PERSONA
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 20
+    region: Contacto # 43963232801503339
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: ID_PERSONA
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_CREADO_POR ===========================
+  id: 43965429474503352
+  identification: 
+    name: P52_CREADO_POR
+    type: Display Only
+
+  label: 
+    label: Creado Por
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Audit # 43979198832559110
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: CREADO_POR
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_CREADO ===============================
+  id: 43965800440503354
+  identification: 
+    name: P52_CREADO
+    type: Display Only
+
+  label: 
+    label: Creado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Audit # 43979198832559110
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: CREADO
+    data-type: TIMESTAMP WITH LOCAL TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_MODIFICADO_POR =======================
+  id: 43966645842503357
+  identification: 
+    name: P52_MODIFICADO_POR
+    type: Display Only
+
+  label: 
+    label: Modificado Por
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Audit # 43979198832559110
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: MODIFICADO_POR
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_MODIFICADO ===========================
+  id: 43967073938503359
+  identification: 
+    name: P52_MODIFICADO
+    type: Display Only
+
+  label: 
+    label: Modificado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Audit # 43979198832559110
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: MODIFICADO
+    data-type: TIMESTAMP WITH LOCAL TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_CARGO_RC =============================
+  id: 43967815425503361
+  identification: 
+    name: P52_CARGO_RC
+    type: Popup LOV
+
+  label: 
+    label: Cargo
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: false
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 60
+    region: Contacto # 43963232801503339
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'CARGO'
+             and (activo_sn = 'S' or codigo = :P52_CARGO_RC)
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: CARGO_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_NOTAS ================================
+  id: 43968262736503363
+  identification: 
+    name: P52_NOTAS
+    type: Textarea
+
+  label: 
+    label: Notas
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: false
+    character-counter: false
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 90
+    region: Persona # 43980076856559118
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+    height: 2
+
+  validation: 
+    value-required: false
+    maximum-length: 2000
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: NOTAS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_CORREO ===============================
+  id: 43968586456503365
+  identification: 
+    name: P52_CORREO
+    type: Text Field
+
+  label: 
+    label: Correo
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Persona # 43980076856559118
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-envelope-o
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: CORREO
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_TELEFONO_1 ===========================
+  id: 43969052005503366
+  identification: 
+    name: P52_TELEFONO_1
+    type: Text Field
+
+  label: 
+    label: Telefono Principal
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 60
+    region: Persona # 43980076856559118
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-phone
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 20
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: TELEFONO_1
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_TELEFONO_2 ===========================
+  id: 43969424370503368
+  identification: 
+    name: P52_TELEFONO_2
+    type: Text Field
+
+  label: 
+    label: Telefono Secundario
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 70
+    region: Persona # 43980076856559118
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-phone
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 20
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Contacto # 43963232801503339
+    column: TELEFONO_2
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_NOMBRES ==============================
+  id: 43979323678559111
+  identification: 
+    name: P52_NOMBRES
+    type: Text Field
+
+  label: 
+    label: Nombres
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: Persona # 43980076856559118
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_APELLIDO_PATERNO =====================
+  id: 43979447236559112
+  identification: 
+    name: P52_APELLIDO_PATERNO
+    type: Text Field
+
+  label: 
+    label: Apellido Paterno
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Persona # 43980076856559118
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_APELLIDO_MATERNO =====================
+  id: 43979552357559113
+  identification: 
+    name: P52_APELLIDO_MATERNO
+    type: Text Field
+
+  label: 
+    label: Apellido Materno
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Persona # 43980076856559118
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_NO_PERSON_FOUND ======================
+  id: 43980682748559125
+  identification: 
+    name: P52_NO_PERSON_FOUND
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: 0
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_TIPO_DOCUMENTO_RC ====================
+  id: 44002897576632565
+  identification: 
+    name: P52_TIPO_DOCUMENTO_RC
+    type: Select List
+
+  label: 
+    label: Tipo de Documento
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 70
+    region: Contacto # 43963232801503339
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIPO_DOC'
+             and (activo_sn = 'S' or codigo = :P52_TIPO_DOCUMENTO_RC)
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P52_ID_CONTACTO
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P52_NUMERO_DOC ===========================
+  id: 44003182590634927
+  identification: 
+    name: P52_NUMERO_DOC
+    type: Text Field
+
+  label: 
+    label: Numero Documento
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 80
+    region: Contacto # 43963232801503339
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 20
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  read-only: 
+    type: Item is NOT NULL
+    item: P52_ID_CONTACTO
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 43974176044503386
+  identification: 
+    button-name: CANCEL
+    label: Cancelar
+
+  layout: 
+    sequence: 10
+    region: Buttons # 43973705827503385
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 43975544109503391
+  identification: 
+    button-name: DELETE
+    label: Eliminar
+
+  layout: 
+    sequence: 20
+    region: Buttons # 43973705827503385
+    slot: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--danger
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P52_ID_CONTACTO
+
+- # ====== Button: SAVE ========================================
+  id: 43975940681503393
+  identification: 
+    button-name: SAVE
+    label: Aplicar Cambios
+
+  layout: 
+    sequence: 30
+    region: Buttons # 43973705827503385
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P52_ID_CONTACTO
+
+- # ====== Button: CREATE ======================================
+  id: 43976363536503394
+  identification: 
+    button-name: CREATE
+    label: Crear
+
+  layout: 
+    sequence: 40
+    region: Buttons # 43973705827503385
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P52_ID_CONTACTO
+
+- # ====== Button: VERIFICAR ===================================
+  id: 43979736308559115
+  identification: 
+    button-name: VERIFICAR
+    label: Verificar
+
+  layout: 
+    sequence: 100
+    region: Contacto # 43963232801503339
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padLeft
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P52_ID_CONTACTO
+
+- # ====== Button: RESTABLECER =================================
+  id: 43981140213559129
+  identification: 
+    button-name: RESTABLECER
+    label: Restablecer
+
+  layout: 
+    sequence: 110
+    region: Contacto # 43963232801503339
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--warning
+    - t-Button--padLeft
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 43974216253503386
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCEL # 43974176044503386
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 43975070288503390
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 43974216253503386
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onPageLoad ==========================
+  id: 43979846760559116
+  identification: 
+    name: onPageLoad
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+
+  when: 
+    event: Page Load
+
+  actions: 
+  - # ====== Action: APEX Items with APEX Button =================
+    id: 43979902625559117
+    identification: 
+      action: APEX Items with APEX Button
+
+    settings: 
+      item-where-the-button-is-added: P52_NUMERO_DOC
+
+    affected-elements: 
+      selection-type: Button
+      button: VERIFICAR # 43979736308559115
+
+    execution: 
+      sequence: 10
+      event: onPageLoad # 43979846760559116
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Disable =====================================
+    id: 43980293197559121
+    identification: 
+      action: Disable
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NOMBRES
+      - P52_APELLIDO_PATERNO
+      - P52_APELLIDO_MATERNO
+
+    execution: 
+      sequence: 30
+      event: onPageLoad # 43979846760559116
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: APEX Items with APEX Button =================
+    id: 43981195359559130
+    identification: 
+      action: APEX Items with APEX Button
+
+    settings: 
+      item-where-the-button-is-added: P52_NUMERO_DOC
+
+    affected-elements: 
+      selection-type: Button
+      button: RESTABLECER # 43981140213559129
+
+    execution: 
+      sequence: 20
+      event: onPageLoad # 43979846760559116
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Hide ========================================
+    id: 43981378421559131
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: RESTABLECER # 43981140213559129
+
+    execution: 
+      sequence: 40
+      event: onPageLoad # 43979846760559116
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: onClick - Verificar =================
+  id: 43980152434559119
+  identification: 
+    name: onClick - Verificar
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: VERIFICAR # 43979736308559115
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 40723416296789339
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        BEGIN
+            select id_contacto
+              into :P52_ID_CONTACTO
+              from bko_contacto
+             where id_persona = :P52_ID_PERSONA;
+        exception
+            when no_data_found then
+            :P52_ID_CONTACTO  := null;
+        END;
+      items-to-submit: 
+      - P52_ID_PERSONA
+      items-to-return: 
+      - P52_ID_CONTACTO
+      suppress-change-event: false
+
+    execution: 
+      sequence: 20
+      event: onClick - Verificar # 43980152434559119
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 43980220186559120
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        BEGIN
+            select id_persona
+                 , nombres
+                 , apellido_paterno
+                 , apellido_materno
+                 , 0
+                 , numero_doc
+              into :P52_ID_PERSONA
+                 , :P52_NOMBRES
+                 , :P52_APELLIDO_PATERNO
+                 , :P52_APELLIDO_MATERNO
+                 , :P52_NO_PERSON_FOUND
+                 , :P52_NUMERO_DOC_CNTC
+              from bko_persona
+             where tipo_documento_rc = :P52_TIPO_DOCUMENTO_RC
+               and numero_doc = :P52_NUMERO_DOC;
+        exception
+            when no_data_found then
+            :P52_NO_PERSON_FOUND  := 1;
+            :P52_ID_PERSONA       := null;  
+            :P52_NOMBRES          := null;
+            :P52_APELLIDO_PATERNO := null;
+            :P52_APELLIDO_MATERNO := null;
+            :P52_NUMERO_DOC_CNTC  := null;
+        END;
+      items-to-submit: 
+      - P52_TIPO_DOCUMENTO_RC
+      - P52_NUMERO_DOC
+      items-to-return: 
+      - P52_NOMBRES
+      - P52_APELLIDO_PATERNO
+      - P52_APELLIDO_MATERNO
+      - P52_ID_PERSONA
+      - P52_NO_PERSON_FOUND
+      - P52_NUMERO_DOC_CNTC
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: onClick - Verificar # 43980152434559119
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: onChange - ID Persona ===============
+  id: 43980471355559122
+  identification: 
+    name: onChange - ID Persona
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P52_NO_PERSON_FOUND
+
+  client-side-condition: 
+    type: Item = Value
+    item: P52_NO_PERSON_FOUND
+    value: 1
+
+  actions: 
+  - # ====== Action: Enable ======================================
+    id: 43980517731559123
+    identification: 
+      action: Enable
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NOMBRES
+      - P52_APELLIDO_PATERNO
+      - P52_APELLIDO_MATERNO
+      - P52_NUMERO_DOC
+
+    execution: 
+      sequence: 10
+      event: onChange - ID Persona # 43980471355559122
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Disable =====================================
+    id: 43980846888559126
+    identification: 
+      action: Disable
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NOMBRES
+      - P52_APELLIDO_PATERNO
+      - P52_APELLIDO_MATERNO
+      - P52_NUMERO_DOC
+
+    execution: 
+      sequence: 20
+      event: onChange - ID Persona # 43980471355559122
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Set Focus ===================================
+    id: 43980921485559127
+    identification: 
+      action: Set Focus
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_CORREO
+
+    execution: 
+      sequence: 30
+      event: onChange - ID Persona # 43980471355559122
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Set Focus ===================================
+    id: 43981075742559128
+    identification: 
+      action: Set Focus
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NOMBRES
+
+    execution: 
+      sequence: 20
+      event: onChange - ID Persona # 43980471355559122
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Hide ========================================
+    id: 43981391342559132
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: VERIFICAR # 43979736308559115
+
+    execution: 
+      sequence: 40
+      event: onChange - ID Persona # 43980471355559122
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 43981488116559133
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: RESTABLECER # 43981140213559129
+
+    execution: 
+      sequence: 50
+      event: onChange - ID Persona # 43980471355559122
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 43981645938559134
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: VERIFICAR # 43979736308559115
+
+    execution: 
+      sequence: 30
+      event: onChange - ID Persona # 43980471355559122
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Hide ========================================
+    id: 43981752268559135
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: RESTABLECER # 43981140213559129
+
+    execution: 
+      sequence: 40
+      event: onChange - ID Persona # 43980471355559122
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Clear =======================================
+    id: 43982034454559138
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NOMBRES
+      - P52_APELLIDO_PATERNO
+      - P52_APELLIDO_MATERNO
+
+    execution: 
+      sequence: 60
+      event: onChange - ID Persona # 43980471355559122
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onChange - Tipo Documento ===========
+  id: 43981815641559136
+  identification: 
+    name: onChange - Tipo Documento
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P52_TIPO_DOCUMENTO_RC
+
+  actions: 
+  - # ====== Action: Disable =====================================
+    id: 43982107149559139
+    identification: 
+      action: Disable
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NOMBRES
+      - P52_APELLIDO_PATERNO
+      - P52_APELLIDO_MATERNO
+
+    execution: 
+      sequence: 20
+      event: onChange - Tipo Documento # 43981815641559136
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Hide ========================================
+    id: 43982272557559140
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: RESTABLECER # 43981140213559129
+
+    execution: 
+      sequence: 40
+      event: onChange - Tipo Documento # 43981815641559136
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Clear =======================================
+    id: 43982375029559141
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NOMBRES
+      - P52_APELLIDO_PATERNO
+      - P52_APELLIDO_MATERNO
+      - P52_NUMERO_DOC
+
+    execution: 
+      sequence: 60
+      event: onChange - Tipo Documento # 43981815641559136
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Focus ===================================
+    id: 43982580974559143
+    identification: 
+      action: Set Focus
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NUMERO_DOC
+
+    execution: 
+      sequence: 70
+      event: onChange - Tipo Documento # 43981815641559136
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Enable ======================================
+    id: 43982661120559144
+    identification: 
+      action: Enable
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NUMERO_DOC
+
+    execution: 
+      sequence: 10
+      event: onChange - Tipo Documento # 43981815641559136
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 43982774050559145
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: VERIFICAR # 43979736308559115
+
+    execution: 
+      sequence: 50
+      event: onChange - Tipo Documento # 43981815641559136
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Restablecer ===============
+  id: 43982823752559146
+  identification: 
+    name: onClick - Restablecer
+
+  execution: 
+    sequence: 60
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: RESTABLECER # 43981140213559129
+
+  actions: 
+  - # ====== Action: Hide ========================================
+    id: 43982973840559147
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Button
+      button: RESTABLECER # 43981140213559129
+
+    execution: 
+      sequence: 10
+      event: onClick - Restablecer # 43982823752559146
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Show ========================================
+    id: 43983055190559148
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Button
+      button: VERIFICAR # 43979736308559115
+
+    execution: 
+      sequence: 20
+      event: onClick - Restablecer # 43982823752559146
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Clear =======================================
+    id: 43983145088559149
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NOMBRES
+      - P52_APELLIDO_PATERNO
+      - P52_APELLIDO_MATERNO
+      - P52_NUMERO_DOC
+
+    execution: 
+      sequence: 30
+      event: onClick - Restablecer # 43982823752559146
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Disable =====================================
+    id: 43983197843559150
+    identification: 
+      action: Disable
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NOMBRES
+      - P52_APELLIDO_PATERNO
+      - P52_APELLIDO_MATERNO
+
+    execution: 
+      sequence: 40
+      event: onClick - Restablecer # 43982823752559146
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Focus ===================================
+    id: 43983311509559151
+    identification: 
+      action: Set Focus
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NUMERO_DOC
+
+    execution: 
+      sequence: 60
+      event: onClick - Restablecer # 43982823752559146
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Enable ======================================
+    id: 43983397894559152
+    identification: 
+      action: Enable
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P52_NUMERO_DOC
+
+    execution: 
+      sequence: 50
+      event: onClick - Restablecer # 43982823752559146
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+validations: 
+- # ====== Validation: P52_CREADO must be timestamp ============
+  id: 43966324123503356
+  identification: 
+    name: P52_CREADO must be timestamp
+
+  execution: 
+    sequence: 50
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P52_CREADO
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P52_CREADO # 43965800440503354
+
+- # ====== Validation: P52_MODIFICADO must be timestamp ========
+  id: 43967509790503361
+  identification: 
+    name: P52_MODIFICADO must be timestamp
+
+  execution: 
+    sequence: 70
+
+  validation: 
+    type: Item is a valid timestamp
+    item: P52_MODIFICADO
+    always-execute: false
+
+  error: 
+    error-message: '#LABEL# must be a valid timestamp.'
+    display-location: Inline with Field and in Notification
+    associated-item: P52_MODIFICADO # 43967073938503359
+
+processes: 
+- # ====== Process: Process Contacto Persona ===================
+  id: 40723175681789337
+  identification: 
+    name: Process Contacto Persona
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_id_contacto_persona number;
+      BEGIN
+          select id_contacto_persona
+            into l_id_contacto_persona
+            from bko_contacto_persona
+           where id_persona = :P52_ID_PERSONA_EMPRESA
+             and id_contacto = :P52_ID_CONTACTO;
+      EXCEPTION
+          when no_data_found then
+              insert into bko_contacto_persona(
+                    id_persona
+                  , id_contacto
+              )
+              values(
+                    :P52_ID_PERSONA_EMPRESA
+                  , :P52_ID_CONTACTO
+              );
+      END;
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ':P52_ID_PERSONA_EMPRESA is not null'
+
+- # ====== Process: Initialize Persona =========================
+  id: 41315911222470192
+  identification: 
+    name: Initialize Persona
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |2
+          select nombres
+               , apellido_paterno
+               , apellido_materno
+               , numero_doc
+               , tipo_documento_rc
+            into :P52_NOMBRES
+               , :P52_APELLIDO_PATERNO
+               , :P52_APELLIDO_MATERNO
+               , :P52_NUMERO_DOC
+               , :P52_TIPO_DOCUMENTO_RC
+            from bko_persona  p
+            join bko_contacto c on c.id_persona = p.id_persona
+           where id_contacto = :P52_ID_CONTACTO;
+
+  execution: 
+    sequence: 20
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P52_ID_CONTACTO
+
+- # ====== Process: Eliminar Persona ===========================
+  id: 41316124748470195
+  identification: 
+    name: Eliminar Persona
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      delete bko_contacto
+       where id_contacto = :P52_ID_CONTACTO;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: DELETE # 43975544109503391
+
+- # ====== Process: Initialize form Contacto ===================
+  id: 43976693996503396
+  identification: 
+    name: Initialize form Contacto
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Contacto # 43963232801503339
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Contacto ======================
+  id: 43977109938503397
+  identification: 
+    name: Process form Contacto
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          bko_persona_pkg.upsert_contacto(
+                p_id_contacto      => :P52_ID_CONTACTO
+              , p_tipo_contacto_rc => :P52_TIPO_CONTACTO_RC
+              , p_activo_sn        => :P52_ACTIVO_SN
+              , p_id_persona       => :P52_ID_PERSONA
+              , p_cargo_rc         => :P52_CARGO_RC
+              , p_notas            => :P52_NOTAS
+              , p_correo           => :P52_CORREO
+              , p_telefono_1       => :P52_TELEFONO_1
+              , p_telefono_2       => :P52_TELEFONO_2
+          );
+      END;
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ':P52_ID_PERSONA_EMPRESA is not null'
+
+- # ====== Process: Close Dialog ===============================
+  id: 43977512689503398
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 70
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Process Persona Contacto ===================
+  id: 43983847272559156
+  identification: 
+    name: Process Persona Contacto
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_persona bko_persona%rowtype;
+      BEGIN
+          
+          bko_persona_pkg.upsert_persona(
+                p_id_persona        => :P52_ID_PERSONA
+              , p_tipo_persona_rc   => 'NAT'
+              , p_tipo_documento_rc => :P52_TIPO_DOCUMENTO_RC
+              , p_numero_doc        => :P52_NUMERO_DOC
+              , p_nombres           => :P52_NOMBRES
+              , p_apellido_paterno  => :P52_APELLIDO_PATERNO
+              , p_apellido_materno  => :P52_APELLIDO_MATERNO
+              , p_razon_social      => null
+              , p_fecha_nacimiento  => null
+              , p_estado_rc         => 'ACTVO'
+              , p_id_pais           => 1
+              , p_id_subdivision_n1 => null
+              , p_id_subdivision_n2 => null
+              );
+      END;
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ':P52_NO_PERSON_FOUND = 1 and :P52_ID_PERSONA_EMPRESA is not null'
+
+- # ====== Process: Process form Contacto Collection ===========
+  id: 44146201359367251
+  identification: 
+    name: Process form Contacto Collection
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      DECLARE
+          l_col_name apex_collections.collection_name%type := 'COL_CONTACTO';
+      BEGIN
+          IF NOT APEX_COLLECTION.COLLECTION_EXISTS('COL_CONTACTO')
+          THEN
+             APEX_COLLECTION.CREATE_COLLECTION('COL_CONTACTO');
+          END IF;
+      
+          apex_collection.add_member(
+                p_collection_name => l_col_name
+              , p_c001 => :P52_TIPO_CONTACTO_RC
+              , p_c002 => :P52_CARGO_RC
+              , p_c003 => :P52_NOTAS
+              , p_c004 => :P52_CORREO
+              , p_c005 => :P52_ACTIVO_SN
+              , p_c006 => :P52_TELEFONO_1
+              , p_c007 => :P52_TELEFONO_2
+              , p_c008 => :P52_NOMBRES
+              , p_c009 => :P52_APELLIDO_PATERNO
+              , p_c010 => :P52_APELLIDO_MATERNO
+              , p_c011 => :P52_TIPO_DOCUMENTO_RC
+              , p_c012 => coalesce(:P52_NUMERO_DOC,:P52_NUMERO_DOC_CNTC)
+              , p_n001 => :P52_ID_PERSONA
+          );
+      END;
+
+  execution: 
+    sequence: 60
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P52_ID_PERSONA_EMPRESA
+

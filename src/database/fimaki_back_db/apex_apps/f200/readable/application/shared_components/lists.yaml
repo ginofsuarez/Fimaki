@@ -1,0 +1,323 @@
+---
+- # ====== List: Navigation Menu ===============================
+  id: 31838512181434556
+  identification: 
+    name: Navigation Menu
+
+  subscription: 
+    version-number: 45174116147789
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Panel de Control =============================
+    id: 31850213565434591
+    label: 
+      label: Panel de Control
+
+    icon: 
+      image/icon-css-classes: fa-dial-gauge-chart
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&SESSION.::&DEBUG.::::'
+        page: 1 # Home
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Administración ===============================
+    id: 31859420729678053
+    label: 
+      label: Administración
+
+    icon: 
+      image/icon-css-classes: fa-gears
+
+    layout: 
+      sequence: 40
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:500:&SESSION.::&DEBUG.:RP,500:::'
+        page: 500 # Administracion
+        clear-cache: RP,500
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Empresas =====================================
+    id: 42658412363899332
+    label: 
+      label: Empresas
+
+    icon: 
+      image/icon-css-classes: fa-building-o
+
+    layout: 
+      sequence: 30
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:50:&SESSION.::&DEBUG.:50:::'
+        page: 50 # Empresas
+        clear-cache: 50
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Facturas =====================================
+    id: 43799049461829370
+    label: 
+      label: Facturas
+
+    icon: 
+      image/icon-css-classes: fa-folder-o
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:60:&SESSION.::&DEBUG.:60:::'
+        page: 60 # Facturas
+        clear-cache: 60
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: Navigation Bar ================================
+  id: 31839740442434562
+  identification: 
+    name: Navigation Bar
+
+  subscription: 
+    version-number: 45174241110512
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: &APP_USER. ===================================
+    id: 31851656810434599
+    label: 
+      label: '&APP_USER.'
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '#'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      2.: has-username
+
+  - # ====== Entry: --- ==========================================
+    id: 31852217646434600
+    label: 
+      label: '---'
+
+    layout: 
+      sequence: 20
+      parent-entry: '&APP_USER.' # 31851656810434599
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: separator
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+
+  - # ====== Entry: Cerrar Sesión ================================
+    id: 31852570826434601
+    label: 
+      label: Cerrar Sesión
+
+    icon: 
+      image/icon-css-classes: fa-sign-out
+
+    layout: 
+      sequence: 30
+      parent-entry: '&APP_USER.' # 31851656810434599
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '&LOGOUT_URL.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+
+- # ====== List: Sistema =======================================
+  id: 31867212860702977
+  identification: 
+    name: Sistema
+
+  subscription: 
+    version-number: 45174116354522
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Códigos de Referencia ========================
+    id: 31867377345702983
+    label: 
+      label: Códigos de Referencia
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:505:&SESSION.::&DEBUG.:505:::'
+        page: 505 # Codigos de Referencia
+        clear-cache: 505
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      1.: Ayuda a estandarizar sus datos. Limita los valores que los usuarios pueden seleccionar en un campo.
+
+  - # ====== Entry: Variables de Entorno =========================
+    id: 31870893779804903
+    label: 
+      label: Variables de Entorno
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:508:&SESSION.::&DEBUG.:510:::'
+        page: 508 # Variables de Sistema
+        clear-cache: 510
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      1.: Almacena las claves y los valores de los parámetros, que luego sirven como entrada para la aplicación.
+
+  - # ====== Entry: Plantillas de correo =========================
+    id: 50191237650981371
+    label: 
+      label: Plantillas de correo
+
+    layout: 
+      sequence: 30
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:95:&SESSION.::&DEBUG.:RP,95:::'
+        page: 95 # Plantillas de Correo
+        clear-cache: RP,95
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      1.: Permite crear y gestionar plantillas predefinidas para el envío automatizado de correos electrónicos. Define el contenido, formato y variables dinámicas que se utilizarán en las comunicaciones del sistema con los usuarios.
+
+- # ====== List: Aprobaciones ==================================
+  id: 48757583999179451
+  identification: 
+    name: Aprobaciones
+
+  subscription: 
+    version-number: 45173918295243
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Solicitudes de Depósito ======================
+    id: 48757791214179455
+    label: 
+      label: Solicitudes de Depósito
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:90:&SESSION.::&DEBUG.:RP,90:::'
+        page: 90 # Solicitudes de Aprobacion
+        clear-cache: RP,90
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      1.: Gestionar y aprobar las solicitudes de depósito pendientes de las empresas.
+

@@ -1,0 +1,53 @@
+---
+- # ====== Application Item: P_ID_PERSONA ======================
+  id: 32029978691121780
+  identification: 
+    name: P_ID_PERSONA
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 41718511897776
+
+- # ====== Application Item: P_ID_ROL_PERSONA ==================
+  id: 32123221999505904
+  identification: 
+    name: P_ID_ROL_PERSONA
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 41718518643596
+
+- # ====== Application Item: G_TOKEN_ERROR_MSG =================
+  id: 37104708201186537
+  identification: 
+    name: G_TOKEN_ERROR_MSG
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 41720445145267
+
+- # ====== Application Item: LOGIN_FAILED ======================
+  id: 44929482288564163
+  identification: 
+    name: LOGIN_FAILED
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 41722044395826
+

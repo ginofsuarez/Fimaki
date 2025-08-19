@@ -1,0 +1,786 @@
+---
+# ====== Page: Mantenimiento Archivo =========================
+id: 53
+identification: 
+  name: Mantenimiento Archivo
+  alias: MANTENIMIENTO-ARCHIVO
+  title: Mantenimiento Archivo
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  chained: true
+  resizable: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Mantenimiento Archivo =======================
+  id: 47134958471656133
+  identification: 
+    name: Mantenimiento Archivo
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: New =========================================
+  id: 47135879292656142
+  identification: 
+    name: New
+    type: Dropzone 2
+
+  layout: 
+    sequence: 60
+    parent-region: Mantenimiento Archivo # 47134958471656133
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      storage-type: APEX Collection
+      collection-/-table-name: EMP_ARCHIVOS_TMP
+      upload-mechanism: Normal
+      delete-files: False
+      dropzone-style: Grey Border
+      width: 700px
+      height: 400px
+      max.-filesize-in-mb: 2
+      max.-files: 1
+      clickable: True
+      show-file-previews: True
+      copy-&-paste-support: False
+      remove-files-after-upload: False
+      image-resizing: False
+
+- # ====== Region: Buttons =====================================
+  id: 47156723421807225
+  identification: 
+    name: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: Text (escape special characters)
+      show-line-breaks: true
+
+page-items: 
+- # ====== Page Item: P53_ID_ARCHIVO_EMPRESA ===================
+  id: 47133303573656117
+  identification: 
+    name: P53_ID_ARCHIVO_EMPRESA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Mantenimiento Archivo # 47134958471656133
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P53_ID_EMPRESA ===========================
+  id: 47133448536656118
+  identification: 
+    name: P53_ID_EMPRESA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: Mantenimiento Archivo # 47134958471656133
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P53_ATRIBUTO1 ============================
+  id: 47133647252656120
+  identification: 
+    name: P53_ATRIBUTO1
+    type: Text Field
+
+  label: 
+    label: Tipo de Documento
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Mantenimiento Archivo # 47134958471656133
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P53_ID_ARCHIVO ===========================
+  id: 47148983082807189
+  identification: 
+    name: P53_ID_ARCHIVO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Mantenimiento Archivo # 47134958471656133
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P53_ARCHIVO_NOMBRE =======================
+  id: 47149395678807194
+  identification: 
+    name: P53_ARCHIVO_NOMBRE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Mantenimiento Archivo # 47134958471656133
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P53_ARCHIVO_TIPO_MIME ====================
+  id: 47149801469807196
+  identification: 
+    name: P53_ARCHIVO_TIPO_MIME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: Mantenimiento Archivo # 47134958471656133
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P53_ARCHIVO_CONTENIDO ====================
+  id: 47150195638807198
+  identification: 
+    name: P53_ARCHIVO_CONTENIDO
+    type: File Upload
+
+  label: 
+    label: Archivo Contenido
+    alignment: Left
+
+  display: 
+    display-as: Block Dropzone
+    capture-using: NONE
+
+  storage:: 
+    type: Table APEX_APPLICATION_TEMP_FILES
+    purge-file-at: End of Session
+    allow-multiple-files: false
+
+  layout: 
+    sequence: 50
+    region: Mantenimiento Archivo # 47134958471656133
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 60
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9000_FILE_ID ============================
+  id: 47297731738024119
+  identification: 
+    name: P9000_FILE_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 70
+    region: Mantenimiento Archivo # 47134958471656133
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 47157172819807226
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Buttons # 47156723421807225
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 47158500068807233
+  identification: 
+    button-name: DELETE
+    label: Delete
+
+  layout: 
+    sequence: 20
+    region: Buttons # 47156723421807225
+    slot: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P53_ID_ARCHIVO
+
+- # ====== Button: SAVE ========================================
+  id: 47158921411807235
+  identification: 
+    button-name: SAVE
+    label: Apply Changes
+
+  layout: 
+    sequence: 30
+    region: Buttons # 47156723421807225
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P53_ID_ARCHIVO
+
+- # ====== Button: CREATE ======================================
+  id: 47159355545807236
+  identification: 
+    button-name: CREATE
+    label: Create
+
+  layout: 
+    sequence: 40
+    region: Buttons # 47156723421807225
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P53_ID_ARCHIVO
+
+dynamic-actions: 
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 47157245642807226
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCEL # 47157172819807226
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 47157992200807231
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 47157245642807226
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Fetch Data =================================
+  id: 47134867886656132
+  identification: 
+    name: Fetch Data
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      begin
+        select ae.id_archivo_empresa,
+               ae.id_empresa,
+               ae.atributo1,
+               a.id_archivo,
+               a.archivo_nombre,
+               a.archivo_tipo_mime,
+               a.archivo_contenido
+          into :P53_ID_ARCHIVO_EMPRESA,
+               :P53_ID_EMPRESA,
+               :P53_ATRIBUTO1,
+               :P53_ID_ARCHIVO,
+               :P53_ARCHIVO_NOMBRE,
+               :P53_ARCHIVO_TIPO_MIME,
+               :P53_ARCHIVO_CONTENIDO
+          from bko_archivo_empresa ae
+          join bko_archivo a
+            on ae.id_archivo = a.id_archivo
+         where ae.id_archivo_empresa = :P53_ID_ARCHIVO_EMPRESA;
+      end;
+
+  execution: 
+    sequence: 20
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P53_ID_ARCHIVO_EMPRESA
+
+- # ====== Process: New ========================================
+  id: 47135045474656134
+  identification: 
+    name: New
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+          l_file_names apex_t_varchar2;
+          l_file       apex_application_temp_files%rowtype;
+      begin
+          -- Obtener nombres de archivo desde :P53_ARCHIVO_CONTENIDO (es un string con los nombres separados por ":")
+          l_file_names := apex_string.split(p_str => :P53_ARCHIVO_CONTENIDO, p_sep => ':');
+      
+          for i in 1 .. l_file_names.count loop
+              -- Obtener metadata y contenido desde tabla temporal de APEX
+              select *
+                into l_file
+                from apex_application_temp_files
+               where name = l_file_names(i);
+      
+              -- Llamar a tu procedimiento para insertar o actualizar el archivo
+              bko_archivo_empresa_pkg.upsert_archivo(
+                  p_id_empresa                     => :P53_ID_EMPRESA,
+                  p_tipo_documento                 => :P53_ATRIBUTO1,
+                  p_nombre_archivo                 => l_file.filename,
+                  p_mime_type                      => l_file.mime_type,
+                  p_contenido_blob                 => l_file.blob_content,
+                  p_ignorar_restriccion_reservado  => 'N'
+              );
+          end loop;
+      end;
+      
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Close Dialog ===============================
+  id: 47160563003807241
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Process: Download File ==============================
+  id: 47297633931024118
+  identification: 
+    name: Download File
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      declare
+        l_file emp_archivos_tmp_v%rowtype;
+      begin
+        select *
+          into l_file
+          from emp_archivos_tmp_v
+         where id_tmp = :P9000_FILE_ID;  -- O usa :G_SEQ_ID según cómo llames
+      
+        owa_util.mime_header(l_file.archivo_tipo_mime, false);
+        htp.p('Content-Length: ' || dbms_lob.getlength(l_file.blob001));
+        htp.p('Content-Disposition: attachment; filename="' || l_file.archivo_nombre || '"');
+        owa_util.http_header_close;
+      
+        wpg_docload.download_file(l_file.blob001);
+      
+        apex_application.stop_apex_engine;
+      end;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+branches: 
+- # ====== Branch: Go To Page 51 ===============================
+  id: 47134614529656130
+  identification: 
+    name: Go To Page 51
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:51:&SESSION.::&DEBUG.::P51_ID_EMPRESA:&P53_ID_EMPRESA.&success_msg=#SUCCESS_MSG#'
+      page: 51 # Empresa
+      values: 
+        p51_id_empresa: '&P53_ID_EMPRESA.'
+

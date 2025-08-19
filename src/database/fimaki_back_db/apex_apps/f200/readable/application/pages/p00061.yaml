@@ -1,0 +1,4565 @@
+---
+# ====== Page: Factura =======================================
+id: 61
+identification: 
+  name: Factura
+  alias: FACTURA
+  title: Factura
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+dialog: 
+  width: 812
+  chained: true
+  resizable: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+javascript: 
+  file-urls: 
+  - '#APP_FILES#JS/utils#MIN#.js'
+
+css: 
+  inline: |
+    .t-Region-headerItems--controls {
+        padding-inline-start: var(--ut-region-header-item-spacing, .0rem);
+    }
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Auditoria ===================================
+  id: 45020822229032540
+  identification: 
+    name: Auditoria
+    type: Static Content
+
+  layout: 
+    sequence: 80
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Collapsible
+    template-options: 
+    - '#DEFAULT#'
+    - is-collapsed
+    - t-Region--noUI
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    - margin-top-none
+    - margin-bottom-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P61_ID_FACTURA
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Factura =====================================
+  id: 45895694411005010
+  identification: 
+    name: Factura
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: BKO_FACTURA
+    include-rowid-column: false
+
+  layout: 
+    sequence: 60
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--noPadding
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Buttons =====================================
+  id: 45906810015005074
+  identification: 
+    name: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: Text (escape special characters)
+      show-line-breaks: true
+
+- # ====== Region: Inversiones =================================
+  id: 45997423667143915
+  identification: 
+    name: Inversiones
+    type: Interactive Report
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |2
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+           union all
+          select '06-05-2025' as fecha
+               , 'Jhon Doe'   as Inversionista 
+               , 'S/.1200.00' as Monto
+               , '10%'        as Participacion
+            from dual
+
+  layout: 
+    sequence: 30
+    parent-region: Tab Container # 45998098698143922
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report
+    template-options: 
+    - '#DEFAULT#'
+    - js-showMaximizeButton
+    - t-IRR-region--hideHeader js-addHiddenHeadingRoleDesc
+    - margin-bottom-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 45997562956143916
+    link: 
+      link-column: Exclude Link Column
+
+    pagination: 
+      type: Row Ranges X to Y
+      display-position: Bottom - Right
+
+    performance: 
+      lazy-loading: false
+      maximum-rows-to-process: 1000000
+
+    search-bar: 
+      include-search-bar: true
+      search-field: true
+      finder-drop-down: true
+      reports-select-list: true
+      rows-per-page-selector: false
+
+    actions-menu: 
+      include-actions-menu: true
+      filter: true
+      select-columns: true
+      rows-per-page: true
+      sort: true
+      control-break: true
+      highlight: true
+      compute: true
+      aggregate: true
+      chart: true
+      group-by: true
+      pivot: true
+      flashback: true
+      save-report: true
+      save-public-report: false
+      reset: true
+      help: true
+      download: true
+      subscription: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Region
+      maximum-report-height: 300
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 46012067060422943
+      identification: 
+        name: Primary Report
+        alias: 298917
+
+    columns: 
+    - # ====== Column: FECHA =======================================
+      id: 45997642669143917
+      identification: 
+        column-name: FECHA
+        type: Plain Text
+
+      heading: 
+        heading: Fecha
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 10
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: INVERSIONISTA ===============================
+      id: 45997875467143919
+      identification: 
+        column-name: INVERSIONISTA
+        type: Plain Text
+
+      heading: 
+        heading: Inversionista
+        alignment: start
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 20
+        column-alignment: start
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: MONTO =======================================
+      id: 45997929341143920
+      identification: 
+        column-name: MONTO
+        type: Plain Text
+
+      heading: 
+        heading: Monto
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 30
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    - # ====== Column: PARTICIPACION ===============================
+      id: 45998031119143921
+      identification: 
+        column-name: PARTICIPACION
+        type: Plain Text
+
+      heading: 
+        heading: Participacion
+        alignment: end
+
+      single-row-view: 
+        use-column-heading: true
+
+      layout: 
+        sequence: 40
+        column-alignment: end
+
+      accessibility: 
+        value-identifies-row: false
+
+      source: 
+        primary-key: false
+
+      column-filter: 
+        type: Default Based on Column Type
+
+      enable-users-to: 
+        hide: true
+        sort: true
+        filter: true
+        highlight: true
+        control-break: true
+        aggregate: true
+        compute: true
+        chart: true
+        group-by: true
+        pivot: true
+
+      security: 
+        escape-special-characters: true
+
+    printing: 
+      output: 
+        layout: Default Report Layout
+        view-file-as: Attachment
+
+      page: 
+        size: A4
+        orientation: Landscape
+        units: Millimeters
+        width: 297
+        height: 210
+        border-width: 0.5
+        border-color: '#666666'
+
+      page-header: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+      column-headings: 
+        font: Helvetica
+        font-weight: Bold
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#EEEEEE'
+
+      columns: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 10
+        font-color: '#000000'
+        background-color: '#FFFFFF'
+
+      page-footer: 
+        font: Helvetica
+        font-weight: Normal
+        font-size: 12
+        font-color: '#000000'
+        alignment: center
+
+- # ====== Region: Tab Container ===============================
+  id: 45998098698143922
+  identification: 
+    name: Tab Container
+    type: Static Content
+
+  layout: 
+    sequence: 70
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--pill
+    - t-Form--slimPadding
+    - margin-top-sm
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Never
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Información general =========================
+  id: 46001487516143956
+  identification: 
+    name: Información general
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Factura # 45895694411005010
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--showIcon
+    - t-Region--stacked
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    icon: fa-credit-card-front
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  read-only: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_ESTADO_FACTURA_RC != 'FACT_INGRESADA'"
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Detalles Financieros ========================
+  id: 46001582262143957
+  identification: 
+    name: Detalles Financieros
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: Factura # 45895694411005010
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--showIcon
+    - t-Region--stacked
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    icon: fa-money-bag
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  read-only: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_ESTADO_FACTURA_RC != 'FACT_INGRESADA'"
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Partes Involucradas =========================
+  id: 46001721923143958
+  identification: 
+    name: Partes Involucradas
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: Factura # 45895694411005010
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--showIcon
+    - t-Region--stacked
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    icon: fa-handshake-o
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  read-only: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_ESTADO_FACTURA_RC != 'FACT_INGRESADA'"
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Checklist ===================================
+  id: 46278589596803257
+  identification: 
+    name: Checklist
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: Factura # 45895694411005010
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--showIcon
+    - t-Region--stacked
+    - t-Region--scrollBody
+    - t-Form--slimPadding
+    icon: fa-clipboard-list
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  read-only: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_ESTADO_FACTURA_RC != 'FACT_INGRESADA'"
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P61_CREADO ===============================
+  id: 39177414682142619
+  identification: 
+    name: P61_CREADO
+    type: Display Only
+
+  label: 
+    label: Creado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 20
+    region: Auditoria # 45020822229032540
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_TIME_FORMAT.'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: CREADO
+    data-type: TIMESTAMP WITH LOCAL TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_CREADO_POR ===========================
+  id: 39177508856142620
+  identification: 
+    name: P61_CREADO_POR
+    type: Display Only
+
+  label: 
+    label: Creado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 10
+    region: Auditoria # 45020822229032540
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: CREADO_POR
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_MODIFICADO ===========================
+  id: 39177657417142622
+  identification: 
+    name: P61_MODIFICADO
+    type: Display Only
+
+  label: 
+    label: Modificado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 40
+    region: Auditoria # 45020822229032540
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_TIME_FORMAT.'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: MODIFICADO
+    data-type: TIMESTAMP WITH LOCAL TIME ZONE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_MODIFICADO_POR =======================
+  id: 39177729881142623
+  identification: 
+    name: P61_MODIFICADO_POR
+    type: Display Only
+
+  label: 
+    label: Modificado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 30
+    region: Auditoria # 45020822229032540
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: MODIFICADO_POR
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_OBSERVACION ==========================
+  id: 39178148529142627
+  identification: 
+    name: P61_OBSERVACION
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 70
+    region: Factura # 45895694411005010
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: OBSERVACION
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ANEXO1_NOMBRE ========================
+  id: 39178227979142628
+  identification: 
+    name: P61_ANEXO1_NOMBRE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 110
+    region: Información general # 46001487516143956
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ANEXO1_NOMBRE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ANEXO1_TIPO_MIME =====================
+  id: 39178358233142629
+  identification: 
+    name: P61_ANEXO1_TIPO_MIME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 120
+    region: Información general # 46001487516143956
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ANEXO1_TIPO_MIME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ANEXO1_CONTENIDO =====================
+  id: 39178434711142630
+  identification: 
+    name: P61_ANEXO1_CONTENIDO
+    type: File Upload
+
+  label: 
+    label: Anexo XML
+    alignment: Left
+
+  display: 
+    display-as: Inline File Browse
+    display-download-link: true
+    content-disposition: Attachment
+    capture-using: NONE
+
+  storage:: 
+    type: BLOB column specified in Item Source attribute
+    mime-type-column: ANEXO1_TIPO_MIME
+    filename-column: ANEXO1_NOMBRE
+    file-types: application/xml,text/xml
+    maximum-file-size: 256
+
+  layout: 
+    sequence: 130
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ANEXO1_CONTENIDO
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ANEXO2_NOMBRE ========================
+  id: 39178610855142631
+  identification: 
+    name: P61_ANEXO2_NOMBRE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 140
+    region: Información general # 46001487516143956
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ANEXO2_NOMBRE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ANEXO2_TIPO_MIME =====================
+  id: 39178688201142632
+  identification: 
+    name: P61_ANEXO2_TIPO_MIME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 150
+    region: Información general # 46001487516143956
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ANEXO2_TIPO_MIME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ANEXO2_CONTENIDO =====================
+  id: 39178817184142633
+  identification: 
+    name: P61_ANEXO2_CONTENIDO
+    type: File Upload
+
+  label: 
+    label: Anexo PDF
+    alignment: Left
+
+  display: 
+    display-as: Inline File Browse
+    display-download-link: true
+    download-link-text: Descargar
+    content-disposition: Attachment
+    capture-using: NONE
+
+  storage:: 
+    type: BLOB column specified in Item Source attribute
+    mime-type-column: ANEXO2_TIPO_MIME
+    filename-column: ANEXO2_NOMBRE
+    file-types: application/pdf
+    maximum-file-size: 256
+
+  layout: 
+    sequence: 160
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ANEXO2_CONTENIDO
+    data-type: BLOB
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FECHA_EMISION ========================
+  id: 39250698208434037
+  identification: 
+    name: P61_FECHA_EMISION
+    type: Date Picker
+
+  label: 
+    label: Fecha Emision
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 80
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: FECHA_EMISION
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FECHA_PUBLICACION_MIN ================
+  id: 40719360839789299
+  identification: 
+    name: P61_FECHA_PUBLICACION_MIN
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Factura # 45895694411005010
+    slot: BODY
+
+  appearance: 
+    format-mask: '&DATE_FORMAT.'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Item
+    item: P61_FECHA_PUBLICACION
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: to_char(trunc(LOCALTIMESTAMP)+1,'&DATE_FORMAT.')
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FECHA_INGRESO_MIN ====================
+  id: 40719468401789300
+  identification: 
+    name: P61_FECHA_INGRESO_MIN
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Información general # 46001487516143956
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Item
+    item: P61_FECHA_INGRESO
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: to_char(trunc(LOCALTIMESTAMP),'&DATE_FORMAT.')
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_SCORE_CEDENTE_RC =====================
+  id: 40721630664789322
+  identification: 
+    name: P61_SCORE_CEDENTE_RC
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 90
+    region: Partes Involucradas # 46001721923143958
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: SCORE_CEDENTE_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_SCORE_PAGADOR_RC =====================
+  id: 40721789107789323
+  identification: 
+    name: P61_SCORE_PAGADOR_RC
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 100
+    region: Partes Involucradas # 46001721923143958
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: SCORE_PAGADOR_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_VISIBLE_MARKETPLACE_SN ===============
+  id: 44283927320289937
+  identification: 
+    name: P61_VISIBLE_MARKETPLACE_SN
+    type: Switch
+
+  label: 
+    label: Visible en Oportunidades
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    on-value: S
+    on-label: Si
+    off-value: N
+    off-label: No
+
+  layout: 
+    sequence: 30
+    region: Factura # 45895694411005010
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: 0
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    - margin-top-sm
+    - margin-left-sm
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    post-text-: '&nbsp;Visible en Oportunidades'
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: VISIBLE_EN_OPORTUNIDADES_SN
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: N
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_ESTADO_FACTURA_RC != 'FACT_CANCELADA'"
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FECHA_PUBLICACION ====================
+  id: 44284044573289938
+  identification: 
+    name: P61_FECHA_PUBLICACION
+    type: Date Picker
+
+  label: 
+    label: Fecha Publicacion
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: Item
+    minimum-item: P61_FECHA_PUBLICACION_MIN
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 40
+    region: Factura # 45895694411005010
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - margin-left-sm
+    format-mask: '&DATE_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: FECHA_PUBLICACION
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_ESTADO_FACTURA_RC != 'FACT_CANCELADA'"
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_TASA_INTERES =========================
+  id: 44286084631289959
+  identification: 
+    name: P61_TASA_INTERES
+    type: Number Field
+
+  label: 
+    label: '% Tasa Efectiva Anual'
+    alignment: Left
+
+  settings: 
+    minimum-value: 0
+    maximum-value: 100
+    number-alignment: End
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 140
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: TASA_INTERES
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ID_EMPRESA_PAGADOR ===================
+  id: 45021130601032543
+  identification: 
+    name: P61_ID_EMPRESA_PAGADOR
+    type: Popup LOV
+
+  label: 
+    label: Empresa Pagador
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: true
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 50
+    region: Partes Involucradas # 46001721923143958
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 8
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select 'RUC ' || numero_doc ||' - '||razon_social
+               , id_empresa
+            from bko_empresa_v
+           where score_pagador_rc is not null
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ID_EMPRESA_PAGADOR
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ID_FACTURA ===========================
+  id: 45896164909005015
+  identification: 
+    name: P61_ID_FACTURA
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Factura # 45895694411005010
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ID_FACTURA
+    data-type: NUMBER
+    query-only: true
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FECHA_INGRESO ========================
+  id: 45896561070005021
+  identification: 
+    name: P61_FECHA_INGRESO
+    type: Date Picker
+
+  label: 
+    label: Fecha Ingreso
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: Item
+    minimum-item: P61_FECHA_INGRESO_MIN
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 60
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_FORMAT.'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: FECHA_INGRESO
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_TIPO_COMPROBANTE_RC ==================
+  id: 45897260534005027
+  identification: 
+    name: P61_TIPO_COMPROBANTE_RC
+    type: Select List
+
+  label: 
+    label: Tipo Comprobante
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIP_COMP'
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: TIPO_COMPROBANTE_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_SERIE ================================
+  id: 45897625612005028
+  identification: 
+    name: P61_SERIE
+    type: Text Field
+
+  label: 
+    label: Serie
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 10
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: SERIE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_NUMERO ===============================
+  id: 45898021886005030
+  identification: 
+    name: P61_NUMERO
+    type: Text Field
+
+  label: 
+    label: Numero
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 10
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: NUMERO
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_MONEDA_RC ============================
+  id: 45898403542005031
+  identification: 
+    name: P61_MONEDA_RC
+    type: Select List
+
+  label: 
+    label: Moneda
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 30
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIPO_MON'
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: MONEDA_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_MONTO_TOTAL ==========================
+  id: 45898834543005033
+  identification: 
+    name: P61_MONTO_TOTAL
+    type: Number Field
+
+  label: 
+    label: Monto Total
+    alignment: Left
+
+  settings: 
+    minimum-value: 0
+    number-alignment: End
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 20
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: MONTO_TOTAL
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_DETRACCION ===========================
+  id: 45899238620005034
+  identification: 
+    name: P61_DETRACCION
+    type: Number Field
+
+  label: 
+    label: Detraccion
+    alignment: Left
+
+  settings: 
+    minimum-value: 0
+    number-alignment: End
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 30
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: DETRACCION
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: 0.00
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_DESCUENTOS ===========================
+  id: 45899624554005036
+  identification: 
+    name: P61_DESCUENTOS
+    type: Number Field
+
+  label: 
+    label: Descuentos
+    alignment: Left
+
+  settings: 
+    minimum-value: 0
+    number-alignment: End
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 10
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: DESCUENTOS
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: 0
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_SALDO_A_PAGO_DISP ====================
+  id: 45899983455005038
+  identification: 
+    name: P61_SALDO_A_PAGO_DISP
+    type: Display Only
+
+  label: 
+    label: Saldo a Pago
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 50
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--boldDisplay
+    css-classes: 
+    - u-textEnd
+    format-mask: '&NUMBER_FORMAT.'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_char(:P61_SALDO_A_PAGO,'&NUMBER_FORMAT.')"
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FECHA_VENCIMIENTO ====================
+  id: 45900460652005039
+  identification: 
+    name: P61_FECHA_VENCIMIENTO
+    type: Date Picker
+
+  label: 
+    label: Fecha Vencimiento
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 90
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_FORMAT.'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: FECHA_VENCIMIENTO
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ID_EMPRESA_CEDENTE ===================
+  id: 45901207437005042
+  identification: 
+    name: P61_ID_EMPRESA_CEDENTE
+    type: Popup LOV
+
+  label: 
+    label: Empresa Cedente
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: true
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Partes Involucradas # 46001721923143958
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 8
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select 'RUC ' || numero_doc ||' - '||razon_social
+               , id_empresa
+            from bko_empresa_v
+           where score_cedente_rc is not null
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ID_EMPRESA_CEDENTE
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_SCORE_PAGADOR_RC_DISP ================
+  id: 46001195390143953
+  identification: 
+    name: P61_SCORE_PAGADOR_RC_DISP
+    type: Radio Group
+
+  label: 
+    label: Score Pagador
+    alignment: Left
+
+  settings: 
+    number-of-columns: 5
+    page-action-on-selection: None
+
+  layout: 
+    sequence: 70
+    region: Partes Involucradas # 46001721923143958
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--radioButtonGroup
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select codigo D
+               , codigo R
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIP_SCORE'
+             and (activo_sn = 'S' or codigo = :P51_SCORE_PAGADOR_RC)
+           order by secuencia
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Item
+    item: P61_SCORE_PAGADOR_RC
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_SCORE_CEDENTE_RC_DISP ================
+  id: 46001361832143954
+  identification: 
+    name: P61_SCORE_CEDENTE_RC_DISP
+    type: Radio Group
+
+  label: 
+    label: Score Cedente
+    alignment: Left
+
+  settings: 
+    number-of-columns: 5
+    page-action-on-selection: None
+
+  layout: 
+    sequence: 40
+    region: Partes Involucradas # 46001721923143958
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--radioButtonGroup
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select codigo D
+               , codigo R
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIP_SCORE'
+             and (activo_sn = 'S' or codigo = :P61_SCORE_CEDENTE_RC)
+           order by secuencia
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Item
+    item: P61_SCORE_CEDENTE_RC
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  read-only: 
+    type: Always
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_PORCENTAJE_FINANCIADO ================
+  id: 46001410345143955
+  identification: 
+    name: P61_PORCENTAJE_FINANCIADO
+    type: Number Field
+
+  label: 
+    label: Financiado %
+    alignment: Left
+
+  settings: 
+    minimum-value: 0
+    maximum-value: 100
+    number-alignment: End
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 70
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: FINANCIADO_PCT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_MONTO_FINANCIADO_DISP ================
+  id: 46001876432143959
+  identification: 
+    name: P61_MONTO_FINANCIADO_DISP
+    type: Display Only
+
+  label: 
+    label: Monto Financiado
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 100
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_char(:P61_MONTO_FINANCIADO,'&NUMBER_FORMAT.')"
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_SCORE_OPERACION ======================
+  id: 46084070095915228
+  identification: 
+    name: P61_SCORE_OPERACION
+    type: Radio Group
+
+  label: 
+    label: Score Operación
+    alignment: Left
+
+  settings: 
+    number-of-columns: 5
+    page-action-on-selection: None
+
+  layout: 
+    sequence: 80
+    region: Partes Involucradas # 46001721923143958
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: 9
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--radioButtonGroup
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select codigo D
+               , codigo R
+            from codigo_referencia
+           where codigo_ref_tipo = 'TIP_SCORE'
+             and (activo_sn = 'S' or codigo = :P61_SCORE_CEDENTE_RC)
+           order by secuencia
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: SCORE_OPERACION_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FECHA_PAGO ===========================
+  id: 46273892833803210
+  identification: 
+    name: P61_FECHA_PAGO
+    type: Display Only
+
+  label: 
+    label: Fecha de Cancelación
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 100
+    region: Información general # 46001487516143956
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_FORMAT.'
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: FECHA_PAGO
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_ESTADO_FACTURA_RC ====================
+  id: 46274045362803211
+  identification: 
+    name: P61_ESTADO_FACTURA_RC
+    type: Display Only
+
+  label: 
+    label: Estado Factura
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Display Value of List of Values
+    show-line-breaks: true
+    send-on-page-submit: true
+
+  layout: 
+    sequence: 60
+    region: Factura # 45895694411005010
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: 10
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - margin-left-none
+    - margin-right-none
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select nombre
+               , codigo
+            from codigo_referencia
+           where codigo_ref_tipo = 'EST_FACT'
+    display-extra-values: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ESTADO_FACTURA_RC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: FACT_INGRESADA
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FACTRACK_VALIDO_SN ===================
+  id: 46278686350803258
+  identification: 
+    name: P61_FACTRACK_VALIDO_SN
+    type: Checkbox
+
+  label: 
+    label: XML válido y cargado en Factrack (CAVALI)
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    checked-value: S
+    unchecked-value: N
+
+  layout: 
+    sequence: 10
+    region: Checklist # 46278589596803257
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: FACTRACK_SN
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  default: 
+    type: Static
+    static-value: N
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_CONF_SUNAT_VALIDO_SN =================
+  id: 46278800546803259
+  identification: 
+    name: P61_CONF_SUNAT_VALIDO_SN
+    type: Radio Group
+
+  label: 
+    label: Factura con conformidad SUNAT
+    alignment: Left
+
+  settings: 
+    number-of-columns: 1
+    page-action-on-selection: None
+
+  layout: 
+    sequence: 40
+    region: Checklist # 46278589596803257
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: 0
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC:Factura con conformidad SUNAT Expresa;EXPRESA,Factura con conformidad SUNAT Presunta;PRESUNTA'
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: CONFORMIDAD_SUNAT
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    escape-special-characters: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FECHA_FACKTRACK ======================
+  id: 47117842010254210
+  identification: 
+    name: P61_FECHA_FACKTRACK
+    type: Date Picker
+
+  label: 
+    label: Carga Facktrack
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 20
+    region: Checklist # 46278589596803257
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: 6
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: FECHA_CARGA_FACTRACK
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_FECHA_SUNAT ==========================
+  id: 47117906937254211
+  identification: 
+    name: P61_FECHA_SUNAT
+    type: Date Picker
+
+  label: 
+    label: Carga SUNAT
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 50
+    region: Checklist # 46278589596803257
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: 6
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&DATE_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: FECHA_CARGA_SUNAT
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_POR_FINANCIAR_PCT_DISP ===============
+  id: 47117998322254212
+  identification: 
+    name: P61_POR_FINANCIAR_PCT_DISP
+    type: Display Only
+
+  label: 
+    label: Por Financiar (%)
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 80
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_char(:P61_POR_FINANCIAR_PCT,'&NUMBER_FORMAT.')"
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_MONTO_POR_FINANCIAR_DISP =============
+  id: 47118170399254213
+  identification: 
+    name: P61_MONTO_POR_FINANCIAR_DISP
+    type: Display Only
+
+  label: 
+    label: Monto Por Financiar
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 120
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: '&NUMBER_FORMAT.'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_char(:P61_MONTO_POR_FINANCIAR,'&NUMBER_FORMAT.')"
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_PLAZO_EN_DIAS_DISP ===================
+  id: 47118438802254216
+  identification: 
+    name: P61_PLAZO_EN_DIAS_DISP
+    type: Display Only
+
+  label: 
+    label: Plazo en Dias
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 150
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Item
+    item: P61_PLAZO_EN_DIAS
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_RETORNO_X_INVERSION_DISP =============
+  id: 47189360375545610
+  identification: 
+    name: P61_RETORNO_X_INVERSION_DISP
+    type: Display Only
+
+  label: 
+    label: Retorno por Inversion
+    alignment: Left
+
+  settings: 
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: false
+
+  layout: 
+    sequence: 170
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--boldDisplay
+    format-mask: '&NUMBER_FORMAT.'
+
+  advanced: 
+    css-classes: 
+    - u-textEnd
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_char(:P61_RETORNO_X_INVERSION,'&NUMBER_FORMAT.')"
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_SALDO_A_PAGO =========================
+  id: 47189652403545613
+  identification: 
+    name: P61_SALDO_A_PAGO
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 180
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: SALDO_A_PAGO
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_RETORNO_X_INVERSION ==================
+  id: 47189720091545614
+  identification: 
+    name: P61_RETORNO_X_INVERSION
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 230
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: ROI
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_PLAZO_EN_DIAS ========================
+  id: 47189925690545616
+  identification: 
+    name: P61_PLAZO_EN_DIAS
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 220
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: PLAZO_EN_DIAS
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_POR_FINANCIAR_PCT ====================
+  id: 47190038966545617
+  identification: 
+    name: P61_POR_FINANCIAR_PCT
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 190
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: POR_FINANCIAR_PCT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_MONTO_FINANCIADO =====================
+  id: 47190104494545618
+  identification: 
+    name: P61_MONTO_FINANCIADO
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 200
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: MONTO_FINANCIADO
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P61_MONTO_POR_FINANCIAR ==================
+  id: 47190189535545619
+  identification: 
+    name: P61_MONTO_POR_FINANCIAR
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 210
+    region: Detalles Financieros # 46001582262143957
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Factura # 45895694411005010
+    column: MONTO_POR_FINANCIAR
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: DETALLE_RETORNO =============================
+  id: 45123863355905131
+  identification: 
+    button-name: DETALLE_RETORNO
+    label: Ver Distribución de Retorno
+
+  layout: 
+    sequence: 10
+    region: Buttons # 45906810015005074
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-ai-sparkle-zoom-in
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:62:&SESSION.::&DEBUG.:62:P62_ID_FACTURA:&P61_ID_FACTURA.'
+      page: 62 # Distribucion de Retorno
+      clear-cache: 62
+      values: 
+        p62_id_factura: '&P61_ID_FACTURA.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+  server-side-condition: 
+    type: Item = Value
+    item: P61_ESTADO_FACTURA_RC
+    value: FACT_CANCELADA
+
+- # ====== Button: CANCEL ======================================
+  id: 45907197575005075
+  identification: 
+    button-name: CANCEL
+    label: Cancelar
+
+  layout: 
+    sequence: 10
+    region: Buttons # 45906810015005074
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: DELETE ======================================
+  id: 45908652664005081
+  identification: 
+    button-name: DELETE
+    label: Eliminar
+
+  layout: 
+    sequence: 20
+    region: Buttons # 45906810015005074
+    slot: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--danger
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_ESTADO_FACTURA_RC = 'FACT_INGRESADA' and :P61_ID_FACTURA is not null"
+
+- # ====== Button: SAVE ========================================
+  id: 45909060594005082
+  identification: 
+    button-name: SAVE
+    label: Aplicar Cambios
+
+  layout: 
+    sequence: 40
+    region: Buttons # 45906810015005074
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_ID_FACTURA is not null and :P61_ESTADO_FACTURA_RC != 'FACT_CANCELADA'"
+
+- # ====== Button: CREATE ======================================
+  id: 45909394976005083
+  identification: 
+    button-name: CREATE
+    label: Crear
+
+  layout: 
+    sequence: 50
+    region: Buttons # 45906810015005074
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P61_ID_FACTURA
+
+- # ====== Button: REGISTRAR_PAGO ==============================
+  id: 46274154474803212
+  identification: 
+    button-name: REGISTRAR_PAGO
+    label: Registrar Cancelacion
+
+  layout: 
+    sequence: 30
+    region: Buttons # 45906810015005074
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--success
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:80:&SESSION.::&DEBUG.:80:P80_ID_FACTURA:&P61_ID_FACTURA.'
+      page: 80 # Registrar Cancelacion
+      clear-cache: 80
+      values: 
+        p80_id_factura: '&P61_ID_FACTURA.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_ESTADO_FACTURA_RC = 'FACT_VIGENTE' and :P61_ID_FACTURA is not null"
+
+dynamic-actions: 
+- # ====== Dynamic Action: onChange - ID Empresa Cedente =======
+  id: 39249645620434027
+  identification: 
+    name: onChange - ID Empresa Cedente
+
+  execution: 
+    sequence: 80
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P61_ID_EMPRESA_CEDENTE
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 39249785294434028
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        select score_cedente_rc
+             , score_cedente_rc
+          into :P61_SCORE_CEDENTE_RC
+             , :P61_SCORE_CEDENTE_RC_DISP
+          from bko_empresa
+         where id_empresa = :P61_ID_EMPRESA_CEDENTE;
+      items-to-submit: 
+      - P61_ID_EMPRESA_CEDENTE
+      items-to-return: 
+      - P61_SCORE_CEDENTE_RC
+      - P61_SCORE_CEDENTE_RC_DISP
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: onChange - ID Empresa Cedente # 39249645620434027
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: onChange - ID Empresa Pagador =======
+  id: 39249856000434029
+  identification: 
+    name: onChange - ID Empresa Pagador
+
+  execution: 
+    sequence: 90
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P61_ID_EMPRESA_PAGADOR
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 39250012676434030
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        select score_cedente_rc
+             , score_cedente_rc
+          into :P61_SCORE_PAGADOR_RC
+             , :P61_SCORE_PAGADOR_RC_DISP
+          from bko_empresa
+         where id_empresa = :P61_ID_EMPRESA_PAGADOR;
+      items-to-submit: 
+      - P61_ID_EMPRESA_PAGADOR
+      items-to-return: 
+      - P61_SCORE_PAGADOR_RC
+      - P61_SCORE_PAGADOR_RC_DISP
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: onChange - ID Empresa Pagador # 39249856000434029
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: onDialogClosed - Registrar Pago =====
+  id: 43423000005134619
+  identification: 
+    name: onDialogClosed - Registrar Pago
+
+  execution: 
+    sequence: 100
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Dialog Closed
+    selection-type: Button
+    button: REGISTRAR_PAGO # 46274154474803212
+
+  actions: 
+  - # ====== Action: Close Dialog ================================
+    id: 43423081524134620
+    identification: 
+      action: Close Dialog
+
+    execution: 
+      sequence: 10
+      event: onDialogClosed - Registrar Pago # 43423000005134619
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onChange - Fecha Publicacion ========
+  id: 44284126684289939
+  identification: 
+    name: onChange - Fecha Publicacion
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P61_FECHA_PUBLICACION
+
+  client-side-condition: 
+    type: Item is not null
+    item: P61_FECHA_PUBLICACION
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 44284273333289940
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Static Assignment
+      value: N
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P61_VISIBLE_MARKETPLACE_SN
+
+    execution: 
+      sequence: 10
+      event: onChange - Fecha Publicacion # 44284126684289939
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: onChange - Visible en Marketplace ===
+  id: 44284451451289942
+  identification: 
+    name: onChange - Visible en Marketplace
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P61_VISIBLE_MARKETPLACE_SN
+
+  client-side-condition: 
+    type: Item = Value
+    item: P61_VISIBLE_MARKETPLACE_SN
+    value: S
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 40721549993789321
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P61_FECHA_PUBLICACION
+
+    execution: 
+      sequence: 40
+      event: onChange - Visible en Marketplace # 44284451451289942
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Hide ========================================
+    id: 44284576557289943
+    identification: 
+      action: Hide
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P61_FECHA_PUBLICACION
+
+    execution: 
+      sequence: 30
+      event: onChange - Visible en Marketplace # 44284451451289942
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+  - # ====== Action: Show ========================================
+    id: 44284651947289944
+    identification: 
+      action: Show
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P61_FECHA_PUBLICACION
+
+    execution: 
+      sequence: 10
+      event: onChange - Visible en Marketplace # 44284451451289942
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Cancel Dialog =======================
+  id: 45907288639005075
+  identification: 
+    name: Cancel Dialog
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCEL # 45907197575005075
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 45908148360005079
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: Cancel Dialog # 45907288639005075
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onChange - Porcentaje Financiado  ===
+  id: 47118244086254214
+  identification: 
+    name: 'onChange - Porcentaje Financiado '
+
+  execution: 
+    sequence: 60
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P61_PORCENTAJE_FINANCIADO
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 47118305062254215
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        DECLARE
+            l_pct_financiado    number := :P61_PORCENTAJE_FINANCIADO;
+            l_saldo_a_pago      number := :P61_SALDO_A_PAGO;
+            l_por_financiar_mnt number;
+            l_por_financiar_pct number;
+            l_financiado_mnt    number;
+            l_financiado_pct    number;
+        BEGIN
+            l_por_financiar_pct := 100 - l_pct_financiado;
+            l_financiado_mnt    := (l_saldo_a_pago * l_pct_financiado)/100;
+            l_por_financiar_mnt := l_saldo_a_pago - l_financiado_mnt;
+        
+            :P61_POR_FINANCIAR_PCT   := l_por_financiar_pct;
+            :P61_MONTO_FINANCIADO    := l_financiado_mnt;
+            :P61_MONTO_POR_FINANCIAR := l_por_financiar_mnt;
+            
+            :P61_POR_FINANCIAR_PCT_DISP   := TO_CHAR(:P61_POR_FINANCIAR_PCT,'&NUMBER_FORMAT.');
+            :P61_MONTO_FINANCIADO_DISP    := TO_CHAR(:P61_MONTO_FINANCIADO,'&NUMBER_FORMAT.');
+            :P61_MONTO_POR_FINANCIAR_DISP := TO_CHAR(:P61_MONTO_POR_FINANCIAR,'&NUMBER_FORMAT.');
+        END;
+      items-to-submit: 
+      - P61_PORCENTAJE_FINANCIADO
+      - P61_SALDO_A_PAGO
+      items-to-return: 
+      - P61_POR_FINANCIAR_PCT_DISP
+      - P61_MONTO_POR_FINANCIAR_DISP
+      - P61_MONTO_FINANCIADO_DISP
+      - P61_POR_FINANCIAR_PCT
+      - P61_MONTO_POR_FINANCIAR
+      - P61_MONTO_FINANCIADO
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: 'onChange - Porcentaje Financiado ' # 47118244086254214
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: onChange - Fecha Ingreso | Vencimient
+  id: 47118494308254217
+  identification: 
+    name: onChange - Fecha Ingreso | Vencimiento
+
+  execution: 
+    sequence: 70
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P61_FECHA_VENCIMIENTO
+    - P61_TASA_INTERES
+    - P61_MONTO_TOTAL
+    - P61_DETRACCION
+    - P61_FECHA_INGRESO
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 47118622938254218
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        DECLARE
+            l_roi number;
+        BEGIN
+            IF :P61_FECHA_VENCIMIENTO is not null and :P61_FECHA_INGRESO is not null THEN
+                :P61_PLAZO_EN_DIAS := (TRUNC(TO_DATE(:P61_FECHA_VENCIMIENTO,'&DATE_FORMAT.')) - TRUNC(TO_DATE(:P61_FECHA_INGRESO,'&DATE_FORMAT.')));
+                
+                -- l_roi := utils_pkg.get_retorno_por_inversion(
+                --       p_saldo_a_pago => :P61_SALDO_A_PAGO
+                --     , p_tasa_interes => :P61_TASA_INTERES
+                --     , p_plazo_dias   => :P61_PLAZO_EN_DIAS
+                --     );
+        
+                l_roi := bko_operaciones_pkg.calcular_roi(
+                      p_tasa_anual      => :P61_TASA_INTERES
+                    , p_fecha_pago      => TRUNC(TO_DATE(:P61_FECHA_VENCIMIENTO,'&DATE_FORMAT.'))
+                    , p_fecha_inversion => TRUNC(TO_DATE(:P61_FECHA_INGRESO,'&DATE_FORMAT.'))
+                    , p_monto_invertido => :P61_SALDO_A_PAGO
+                );
+        
+                :P61_RETORNO_X_INVERSION := l_roi;
+        
+                :P61_RETORNO_X_INVERSION_DISP := TO_CHAR(:P61_RETORNO_X_INVERSION,'&NUMBER_FORMAT.');
+                :P61_PLAZO_EN_DIAS_DISP := :P61_PLAZO_EN_DIAS;
+            END IF;
+        EXCEPTION
+            when others then
+            raise;
+        END;
+      items-to-submit: 
+      - P61_FECHA_VENCIMIENTO
+      - P61_SALDO_A_PAGO
+      - P61_TASA_INTERES
+      - P61_FECHA_INGRESO
+      items-to-return: 
+      - P61_PLAZO_EN_DIAS
+      - P61_PLAZO_EN_DIAS_DISP
+      - P61_RETORNO_X_INVERSION
+      - P61_RETORNO_X_INVERSION_DISP
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: onChange - Fecha Ingreso | Vencimiento # 47118494308254217
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: onChange - Monto Total | Detraccion =
+  id: 47189407233545611
+  identification: 
+    name: onChange - Monto Total | Detraccion
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: Item(s)
+    item(s): 
+    - P61_MONTO_TOTAL
+    - P61_DETRACCION
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 47189545632545612
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        DECLARE
+            l_saldo_a_pago number;
+        BEGIN
+            l_saldo_a_pago := utils_pkg.get_saldo_a_pago(
+                  p_monto_total => TO_NUMBER(:P61_MONTO_TOTAL,'&NUMBER_FORMAT.')
+                , p_detraccion  => TO_NUMBER(:P61_DETRACCION,'&NUMBER_FORMAT.')
+            );
+            :P61_SALDO_A_PAGO := l_saldo_a_pago;
+            :P61_SALDO_A_PAGO_DISP := TO_CHAR(:P61_SALDO_A_PAGO,'&NUMBER_FORMAT.');
+        END;
+      items-to-submit: 
+      - P61_MONTO_TOTAL
+      - P61_DETRACCION
+      items-to-return: 
+      - P61_SALDO_A_PAGO
+      - P61_SALDO_A_PAGO_DISP
+      suppress-change-event: false
+
+    execution: 
+      sequence: 10
+      event: onChange - Monto Total | Detraccion # 47189407233545611
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+validations: 
+- # ====== Validation: Cedente y Pagador son Diferentes ========
+  id: 39250066538434031
+  identification: 
+    name: Cedente y Pagador son Diferentes
+
+  execution: 
+    sequence: 10
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ':P61_ID_EMPRESA_CEDENTE != :P61_ID_EMPRESA_PAGADOR'
+    always-execute: false
+
+  error: 
+    error-message: 'La empresa Pagadora no puede ser la misma que la empresa Cedente. '
+    display-location: Inline with Field and in Notification
+    associated-item: P61_ID_EMPRESA_PAGADOR # 45021130601032543
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      :P61_ID_EMPRESA_CEDENTE is not null and
+      :P61_ID_EMPRESA_PAGADOR is not null
+
+- # ====== Validation: Factrack SN es Requerido ================
+  id: 39250492431434035
+  identification: 
+    name: Factrack SN es Requerido
+
+  execution: 
+    sequence: 20
+
+  validation: 
+    type: Item = Value
+    item: P61_FACTRACK_VALIDO_SN
+    value: S
+    always-execute: false
+
+  error: 
+    error-message: Para publicar esta factura, debes marcar que el XML es válido y fue cargado correctamente en Factrack (CAVALI).
+    display-location: Inline with Field and in Notification
+    associated-item: P61_FACTRACK_VALIDO_SN # 46278686350803258
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_VISIBLE_MARKETPLACE_SN = 'S' or :P61_FECHA_PUBLICACION is not null"
+
+- # ====== Validation: Fecha Vencimiento Es Mayor que Fecha de E
+  id: 40719606704789301
+  identification: 
+    name: Fecha Vencimiento Es Mayor que Fecha de Emision
+
+  execution: 
+    sequence: 60
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "to_date(:P61_FECHA_VENCIMIENTO,'&DATE_FORMAT.') >= to_date(:P61_FECHA_EMISION,'&DATE_FORMAT.')"
+    always-execute: false
+
+  error: 
+    error-message: La fecha de Vencimiento no puede ser menor que la fecha de emision.
+    display-location: Inline with Field and in Notification
+    associated-item: P61_FECHA_VENCIMIENTO # 45900460652005039
+
+- # ====== Validation: Fecha Factrack es Requerido =============
+  id: 40720918734789315
+  identification: 
+    name: Fecha Factrack es Requerido
+
+  execution: 
+    sequence: 30
+
+  validation: 
+    type: Item is NOT NULL
+    item: P61_FECHA_FACKTRACK
+    always-execute: false
+
+  error: 
+    error-message: Para publicar esta factura, debes ingresar le fecha de carga en Factrack (CAVALI).
+    display-location: Inline with Field and in Notification
+    associated-item: P61_FECHA_FACKTRACK # 47117842010254210
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_VISIBLE_MARKETPLACE_SN = 'S' or :P61_FECHA_PUBLICACION is not null"
+
+- # ====== Validation: Conf Sunat es Requerido =================
+  id: 40721022853789316
+  identification: 
+    name: Conf Sunat es Requerido
+
+  execution: 
+    sequence: 40
+
+  validation: 
+    type: Item is NOT NULL
+    item: P61_CONF_SUNAT_VALIDO_SN
+    always-execute: false
+
+  error: 
+    error-message: Para publicar esta factura, debes seleccionar si la factura cuenta con conformidad SUNAT.
+    display-location: Inline with Field and in Notification
+    associated-item: P61_CONF_SUNAT_VALIDO_SN # 46278800546803259
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_VISIBLE_MARKETPLACE_SN = 'S' or :P61_FECHA_PUBLICACION is not null"
+
+- # ====== Validation: Fecha Sunat es Requerido ================
+  id: 40721149708789317
+  identification: 
+    name: Fecha Sunat es Requerido
+
+  execution: 
+    sequence: 50
+
+  validation: 
+    type: Item is NOT NULL
+    item: P61_FECHA_SUNAT
+    always-execute: false
+
+  error: 
+    error-message: Para publicar esta factura, debes ingresar la fecha en que la factura fue registrada en SUNAT.
+    display-location: Inline with Field and in Notification
+    associated-item: P61_FECHA_SUNAT # 47117906937254211
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ":P61_VISIBLE_MARKETPLACE_SN = 'S' or :P61_FECHA_PUBLICACION is not null"
+
+computations: 
+- # ====== Computation: P61_VISIBLE_MARKETPLACE_SN =============
+  id: 47119085748254223
+  identification: 
+    item-name: P61_VISIBLE_MARKETPLACE_SN
+
+  execution: 
+    sequence: 10
+    point: After Submit
+
+  computation: 
+    type: Static Value
+    static-value: N
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P61_VISIBLE_MARKETPLACE_SN
+
+processes: 
+- # ====== Process: Process Estado Factura =====================
+  id: 40721313797789318
+  identification: 
+    name: Process Estado Factura
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      if :P61_VISIBLE_MARKETPLACE_SN = 'S' then
+          :P61_ESTADO_FACTURA_RC := 'FACT_VIGENTE';
+      end if;
+
+  execution: 
+    sequence: 10
+    point: After Submit
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE
+
+- # ====== Process: Initialize form Factura ====================
+  id: 45909827734005085
+  identification: 
+    name: Initialize form Factura
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Factura # 45895694411005010
+
+  execution: 
+    sequence: 20
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Factura =======================
+  id: 45910214518005086
+  identification: 
+    name: Process form Factura
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Factura # 45895694411005010
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Factura registrada con éxito.
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Close Dialog ===============================
+  id: 45910605721005088
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    show-success-messages: true
+
+  execution: 
+    sequence: 110
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Request is contained in Value
+    value: CREATE,SAVE,DELETE
+

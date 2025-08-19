@@ -1,0 +1,89 @@
+---
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: ORG_NAME ==============================
+  id: 2
+  identification: 
+    name: ORG_NAME
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: BASE_URL ==============================
+  id: 3
+  identification: 
+    name: BASE_URL
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: DATE_FORMAT ===========================
+  id: 4
+  identification: 
+    name: DATE_FORMAT
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: DATE_12H_FORMAT =======================
+  id: 5
+  identification: 
+    name: DATE_12H_FORMAT
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: DATE_24H_TZ_FORMAT ====================
+  id: 6
+  identification: 
+    name: DATE_24H_TZ_FORMAT
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: YEAR_FORMAT ===========================
+  id: 7
+  identification: 
+    name: YEAR_FORMAT
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: CURRENCY_FORMAT =======================
+  id: 8
+  identification: 
+    name: CURRENCY_FORMAT
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: CURRENCY_SYMBOL =======================
+  id: 9
+  identification: 
+    name: CURRENCY_SYMBOL
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: DATE_TIME_FORMAT ======================
+  id: 10
+  identification: 
+    name: DATE_TIME_FORMAT
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: NUMBER_FORMAT =========================
+  id: 11
+  identification: 
+    name: NUMBER_FORMAT
+
+  installation: 
+    prompt-substitution: false
+

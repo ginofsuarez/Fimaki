@@ -1,0 +1,290 @@
+---
+# ====== Page: Landing =======================================
+id: 101
+identification: 
+  name: Landing
+  alias: LANDING
+  title: Landing
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Landing =====================================
+  id: 24063097653558958
+  identification: 
+    name: Landing
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center; margin-top: 60px;">
+        <img src="#APP_FILES#fimaki_logo/2.png" alt="FIMAKI Logo"
+           style="width: 100%; max-width: 350px; height: auto; margin-bottom: 20px;">
+        <p style="font-size: 1.2em; margin-top: 40px;">
+          Bienvenido al mundo de la inversión.<br>
+          Invierte en facturas comerciales con bajo riesgo.
+        </p>
+      </div>
+      
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Alerta token invalido =======================
+  id: 32070502471927776
+  identification: 
+    name: Alerta token invalido
+    type: Static Content
+
+  source: 
+    html-code: '&P101_ERROR_MSG.'
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Alert
+    template-options: 
+    - '#DEFAULT#'
+    - t-Alert--horizontal
+    - t-Alert--noIcon
+    - t-Alert--danger
+    - t-Alert--removeHeading js-removeLandmark
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P101_ERROR_MSG
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Footer ======================================
+  id: 45124062776912959
+  identification: 
+    name: Footer
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center; margin-top: 60px;">
+        <img src="#APP_FILES#Logo-Waykitech powered-centro.png" alt="FIMAKI Logo"
+           style="width: 100%; max-width: 150px; height: auto; margin-bottom: 20px;">
+      </div>
+
+  layout: 
+    sequence: 10
+    parent-region: Landing # 24063097653558958
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: None
+    render-components: Above Content
+
+  advanced: 
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P101_ERROR_MSG ===========================
+  id: 32070607649927777
+  identification: 
+    name: P101_ERROR_MSG
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: login =======================================
+  id: 24063153252558959
+  identification: 
+    button-name: login
+    label: Iniciar Sesión
+
+  layout: 
+    sequence: 10
+    region: Landing # 24063097653558958
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:CR,9999::'
+      page: 9999 # Login Page
+      clear-cache: CR,9999
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: register ====================================
+  id: 24063251744558960
+  identification: 
+    button-name: register
+    label: Registrarse
+
+  layout: 
+    sequence: 20
+    region: Landing # 24063097653558958
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:99980:&SESSION.::&DEBUG.:CR,99980::'
+      page: 99980 # Register-form
+      clear-cache: CR,99980
+
+    warn-on-unsaved-changes: Do Not Check
+
+processes: 
+- # ====== Process: Resetear Estado de Login ===================
+  id: 42545100543458808
+  identification: 
+    name: Resetear Estado de Login
+    type: Clear Session State
+    execution-chain: None
+
+  settings: 
+    type: Clear Items
+    item(s): 
+    - LOGIN_FAILED
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+

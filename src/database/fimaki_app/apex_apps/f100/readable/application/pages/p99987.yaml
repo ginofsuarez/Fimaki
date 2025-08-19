@@ -1,0 +1,458 @@
+---
+# ====== Page: Cambiar Contraseña ============================
+id: 99987
+identification: 
+  name: Cambiar Contraseña
+  alias: CAMBIAR-CONTRASEÑA
+  title: Cambiar Contraseña
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Unrestricted
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Register-form ===============================
+  id: 104674784679649270
+  identification: 
+    name: Register-form
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Register # 120598156010004546
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Register ====================================
+  id: 120598156010004546
+  identification: 
+    name: Register
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center;">
+        <h1 style="font-size: 2.5em; font-weight: bold; letter-spacing: 0px;">
+          <img src="#APP_FILES#fimaki_logo/2.png" alt="FIMAKI Logo" style="max-width: 300px; ">
+        </h1>
+        <p style="font-size: 1.2em; font-weight: bold;">
+          Establecer nueva contraseña
+        </p>
+        <p style="font-size: 0.8em; font-weight: normal;text-aligment:left;">
+          <ul style="list-style: none; padding: 0 0 0 36px; margin: 0;">
+             <li style="display: flex; align-items: center; margin-bottom: 7px; font-size: 0.8em;">
+               <span style="width: 16px; height: 16px; background-color: #ccc; border-radius: 2px; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-right: 10px;">✓</span>
+               Debe tener al menos 8 caracteres.
+             </li>
+             <li style="display: flex; align-items: center; margin-bottom: 7px; font-size: 0.8em;">
+               <span style="width: 16px; height: 16px; background-color: #ccc; border-radius: 2px; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-right: 10px;">✓</span>
+               Requiere combinación de tipos de caracteres.
+             </li>
+             <li style="display: flex; align-items: center; margin-bottom: 7px; font-size: 0.8em;">
+               <span style="width: 16px; height: 16px; background-color: #ccc; border-radius: 2px; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-right: 10px;">✓</span>
+               Evita repeticiones excesivas.
+             </li>
+             <li style="display: flex; align-items: center; margin-bottom: 7px; font-size: 0.8em;">
+               <span style="width: 16px; height: 16px; background-color: #ccc; border-radius: 2px; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-right: 10px;">✓</span>
+               Evita las contraseñas más obvias.
+             </li>
+         </ul>
+        </p>
+      </div>
+      
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - margin-top-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P99987_CONTRASENA_CONFIRMAR ==============
+  id: 46724645938785372
+  identification: 
+    name: P99987_CONTRASENA_CONFIRMAR
+    type: Password
+
+  label: 
+    label: Confirmar Contraseña
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: true
+
+  layout: 
+    sequence: 20
+    region: Register-form # 104674784679649270
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-lock-password
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99987_CORREO ============================
+  id: 46724980959785375
+  identification: 
+    name: P99987_CORREO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Checksum Required - Application Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99987_TOKEN =============================
+  id: 46725077152785376
+  identification: 
+    name: P99987_TOKEN
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Checksum Required - Application Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99987_CONTRASENA ========================
+  id: 104682056580649310
+  identification: 
+    name: P99987_CONTRASENA
+    type: Password
+
+  label: 
+    label: Contraseña
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: true
+
+  layout: 
+    sequence: 10
+    region: Register-form # 104674784679649270
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-lock-password
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 46973078689908045
+  identification: 
+    button-name: CANCEL
+    label: Regresar al inicio de sesión
+
+  layout: 
+    sequence: 30
+    region: Register-form # 104674784679649270
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--link
+    - t-Button--iconLeft
+    icon: fa-arrow-left
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999::'
+      page: 9999 # Login Page
+      clear-cache: 9999
+
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+- # ====== Button: CHANGE ======================================
+  id: 46973435022908047
+  identification: 
+    button-name: CHANGE
+    label: Cambiar Contraseña
+
+  layout: 
+    sequence: 10
+    region: Register-form # 104674784679649270
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padTop
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+validations: 
+- # ====== Validation: La contraseña es valida =================
+  id: 46725328685785379
+  identification: 
+    name: La contraseña es valida
+
+  execution: 
+    sequence: 20
+
+  validation: 
+    type: Function Body (returning Error Text)
+    language: PL/SQL
+    pl/sql-function-body-returning-error-text: |
+      BEGIN
+          return IAM_AUTHZ_UTILS.validar_fortaleza_contrasena(
+                p_contrasena           => :P99987_CONTRASENA
+              , p_contrasena_confirmar => :P99987_CONTRASENA_CONFIRMAR
+          );
+      END;
+    always-execute: false
+
+  error: 
+    display-location: Inline with Field and in Notification
+
+processes: 
+- # ====== Process: Cambiar Contrasena =========================
+  id: 46974409840908059
+  identification: 
+    name: Cambiar Contrasena
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          IAM_AUTHZ_UTILS.cambiar_contrasena( 
+                p_nombre_usuario => :P99987_CORREO
+              , p_contrasena     => :P99987_CONTRASENA
+              , p_token          => :P99987_TOKEN 
+              );
+      END;
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Su contraseña ha sido actualizada con éxito.
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: CHANGE # 46973435022908047
+
+branches: 
+- # ====== Branch: Go To 99986 =================================
+  id: 46974810666908061
+  identification: 
+    name: Go To 99986
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999:P99986_CORREO:&P99987_CORREO.&success_msg=#SUCCESS_MSG#'
+      page: 9999 # Login Page
+      clear-cache: 9999
+      values: 
+        p99986_correo: '&P99987_CORREO.'
+

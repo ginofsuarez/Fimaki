@@ -1,0 +1,889 @@
+---
+# ====== Page: Password Reset ================================
+id: 99986
+identification: 
+  name: Password Reset
+  alias: PASSWORD-RESET
+  title: Password Reset
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+javascript: 
+  file-urls: 
+  - '#APP_FILES#JS/utils2#MIN#.js'
+
+css: 
+  inline: |
+    
+    /* Forzar layout horizontal SOLO para los campos de código */
+    .code-verification-form .t-Login-body {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 2px !important;
+        flex-wrap: nowrap !important;
+        margin: 20px 0 !important;
+    }
+    
+    /* Mantener el layout normal del contenedor principal */
+    .code-verification-form {
+        display: block !important;
+    }
+    
+    /* Sobrescribir el template de Login para estos campos específicos */
+    .code-verification-form .t-Login-body .t-Form-fieldContainer {
+        margin: 0 !important;
+        width: auto !important;
+        flex: 0 0 60px !important;
+        display: block !important;
+    }
+    
+    /* Ocultar labels completamente */
+    .code-verification-form .t-Form-labelContainer {
+        display: none !important;
+    }
+    
+    /* Input container adjustments */
+    .code-verification-form .t-Form-inputContainer {
+        width: 100% !important;
+        max-width: 60px !important;
+    }
+    
+    /* Estilizar los inputs */
+    .code-verification-form input[type="text"] {
+        width: 50px !important;
+        height: 50px !important;
+        text-align: center !important;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        border: 2px solid #ddd !important;
+        border-radius: 8px !important;
+        max-width: 50px !important;
+        min-width: 50px !important;
+    }
+    
+    .code-verification-form input[type="text"]:focus {
+        border-color: #0066cc !important;
+        outline: none !important;
+        box-shadow: 0 0 5px rgba(0, 102, 204, 0.3) !important;
+    }
+    
+    /* Asegurar que los botones queden debajo */
+    .code-verification-form .t-Login-buttons {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-top: 20px !important;
+        clear: both !important;
+    }
+    
+    /* Override para el template de login específicamente */
+    .t-Login-region .code-verification-form .t-Login-body .t-Form-fieldContainer {
+        float: none !important;
+        clear: none !important;
+    }
+    
+    /* Asegurar que no hay breaks en los campos */
+    .code-verification-form .t-Login-body .t-Form-fieldContainer::after {
+        content: none !important;
+    }
+    
+    /* Para mobile responsiveness */
+    @media (max-width: 640px) {
+        .code-verification-form .t-Login-body {
+            gap: 2px !important;
+        }
+        
+        .code-verification-form input[type="text"] {
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 16px !important;
+        }
+        
+        .code-verification-form .t-Login-body .t-Form-fieldContainer {
+            flex: 0 0 50px !important;
+        }
+    }
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Unrestricted
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Register-form ===============================
+  id: 104659746352207272
+  identification: 
+    name: Register-form
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Register # 120583117682562548
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - t-Form--slimPadding
+    css-classes: 
+    - code-verification-form
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Register ====================================
+  id: 120583117682562548
+  identification: 
+    name: Register
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center;">
+        <h1 style="font-size: 2.5em; font-weight: bold; letter-spacing: 0px;">
+          <img src="#APP_FILES#fimaki_logo/2.png" alt="FIMAKI Logo" style="max-width: 300px; ">
+        </h1>
+        <p style="font-size: 1.2em; font-weight: bold;">
+          Restablecer contraseña
+        </p>
+        <p style="font-size: 0.8em; font-weight: normal;">
+          Si la dirección de correo electrónico <b>&P99986_CORREO.</b> está asociada con una cuenta existente, recibirás un código de activación en los próximos minutos.
+        </p>
+      </div>
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - margin-top-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P99986_CODE1 =============================
+  id: 46723809278785363
+  identification: 
+    name: P99986_CODE1
+    type: Text Field
+
+  label: 
+    label: Code1
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: Register-form # 104659746352207272
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 1
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowOnlyNumbers(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99986_CODE2 =============================
+  id: 46723907681785364
+  identification: 
+    name: P99986_CODE2
+    type: Text Field
+
+  label: 
+    label: Code1
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 30
+    region: Register-form # 104659746352207272
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 1
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowOnlyNumbers(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99986_CODE3 =============================
+  id: 46723982651785365
+  identification: 
+    name: P99986_CODE3
+    type: Text Field
+
+  label: 
+    label: Code1
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: Register-form # 104659746352207272
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 1
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowOnlyNumbers(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99986_CODE4 =============================
+  id: 46724074164785366
+  identification: 
+    name: P99986_CODE4
+    type: Text Field
+
+  label: 
+    label: Code1
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: Register-form # 104659746352207272
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 1
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowOnlyNumbers(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99986_TOKEN =============================
+  id: 46725146279785377
+  identification: 
+    name: P99986_TOKEN
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99986_CORREO ============================
+  id: 104666867385207336
+  identification: 
+    name: P99986_CORREO
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: RESEND ======================================
+  id: 46724578811785371
+  identification: 
+    button-name: RESEND
+    label: Reenviar el código
+
+  layout: 
+    sequence: 20
+    region: Register-form # 104659746352207272
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padTop
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+    database-action: SQL INSERT action
+
+- # ====== Button: CANCEL ======================================
+  id: 46957885541466070
+  identification: 
+    button-name: CANCEL
+    label: Regresar al inicio de sesión
+
+  layout: 
+    sequence: 30
+    region: Register-form # 104659746352207272
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--link
+    - t-Button--iconLeft
+    icon: fa-arrow-left
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999::'
+      page: 9999 # Login Page
+      clear-cache: 9999
+
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+- # ====== Button: CONTINUAR ===================================
+  id: 46958298763466072
+  identification: 
+    button-name: CONTINUAR
+    label: Continuar
+
+  layout: 
+    sequence: 10
+    region: Register-form # 104659746352207272
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padTop
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+  advanced: 
+    static-id: continue_button
+
+dynamic-actions: 
+- # ====== Dynamic Action: onClick - Resend ====================
+  id: 46725555320785381
+  identification: 
+    name: onClick - Resend
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: RESEND # 46724578811785371
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 46725707787785382
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99986_CODE1
+      - P99986_CODE2
+      - P99986_CODE3
+      - P99986_CODE4
+
+    execution: 
+      sequence: 10
+      event: onClick - Resend # 46725555320785381
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Submit Page =================================
+    id: 46725797855785383
+    identification: 
+      action: Submit Page
+
+    settings: 
+      request-/-button-name: RESEND
+      show-processing: true
+
+    execution: 
+      sequence: 20
+      event: onClick - Resend # 46725555320785381
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: Nuevo_2 =============================
+  id: 47768405753718360
+  identification: 
+    name: Nuevo_2
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Key Release
+    selection-type: Item(s)
+    item(s): 
+    - P99986_CODE1
+    - P99986_CODE2
+    - P99986_CODE3
+    - P99986_CODE4
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 47768504033718361
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var currentFieldId = this.triggeringElement.id;
+        
+        var currentValue = this.triggeringElement.value;
+        
+        var currentDigit = parseInt(currentFieldId.slice(-1));
+        
+        var totalDigits = 4;
+        
+        var fieldIdPrefix = currentFieldId.slice(0, -1);
+        
+        var keyCode = this.browserEvent.which || this.browserEvent.keyCode;
+        
+        function updateContinueButtonState() {
+            var fullCode = '';
+        
+            for (var i = 1; i <= totalDigits; i++) {
+                fullCode += $("#" + fieldIdPrefix + i).val();
+            }
+        
+            var continueButton = $("#continue_button");
+        
+            if (fullCode.length === totalDigits) {
+                continueButton.prop('disabled', false); 
+            } else {
+                continueButton.prop('disabled', true);  
+            }
+        }
+        
+        if (currentValue.length > 1 && currentDigit === 1) { 
+        
+            var pastedCode = currentValue.substring(0, totalDigits);
+        
+            for (var i = 0; i < totalDigits; i++) {
+                var targetFieldId = fieldIdPrefix + (i + 1);
+                var charToSet = pastedCode[i] || ''; 
+                $("#" + targetFieldId).val(charToSet); 
+            }
+        
+            $("#" + fieldIdPrefix + totalDigits).focus();
+            updateContinueButtonState(); 
+            return; 
+        }
+        
+        if (currentValue.length === 1 && currentDigit < totalDigits && keyCode !== 8 && keyCode !== 46) {
+        
+            var nextDigit = currentDigit + 1;
+        
+            var nextFieldId = fieldIdPrefix + nextDigit;
+        
+            $("#" + nextFieldId).focus();
+        }
+        
+        else if (keyCode === 8 && currentValue.length === 0 && currentDigit > 1) {
+        
+            var prevDigit = currentDigit - 1;
+            var prevFieldId = fieldIdPrefix + prevDigit;
+            $("#" + prevFieldId).focus();
+        }
+        
+        updateContinueButtonState();
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P99986_CODE1
+      - P99986_CODE2
+      - P99986_CODE3
+      - P99986_CODE4
+
+    execution: 
+      sequence: 10
+      event: Nuevo_2 # 47768405753718360
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+validations: 
+- # ====== Validation: Token es válido =========================
+  id: 25922940065912004
+  identification: 
+    name: Token es válido
+
+  execution: 
+    sequence: 10
+
+  validation: 
+    type: Function Body (returning Boolean)
+    language: PL/SQL
+    pl/sql-function-body: |
+      BEGIN
+          return inv_utils_pkg.token_es_valido(
+                        p_correo => :P99986_CORREO
+                      , p_token => :P99986_TOKEN
+                      );
+      END;
+    always-execute: true
+
+  error: 
+    error-message: El código ingresado no es válido.
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: CONTINUAR # 46958298763466072
+
+processes: 
+- # ====== Process: Concatenar Token ===========================
+  id: 46725212855785378
+  identification: 
+    name: Concatenar Token
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: ':P99986_TOKEN := :P99986_CODE1||:P99986_CODE2||:P99986_CODE3||:P99986_CODE4;'
+
+  execution: 
+    sequence: 10
+    point: After Submit
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Reenviar Código ============================
+  id: 47768883201718365
+  identification: 
+    name: Reenviar Código
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          INV_UTILS_PKG.reset_user_password( 
+                p_nombre_usuario => :P99986_CORREO
+              , p_ip             => owa_util.get_cgi_env('REMOTE_ADDR')
+              , p_user_agent     => owa_util.get_cgi_env('HTTP_USER_AGENT')
+              );
+      END;
+
+  execution: 
+    sequence: 20
+    point: After Submit
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Se ha reenviado el código de verificación.
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: RESEND # 46724578811785371
+
+branches: 
+- # ====== Branch: Go To 99987 =================================
+  id: 46724801306785373
+  identification: 
+    name: Go To 99987
+
+  execution: 
+    sequence: 10
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:99987:&SESSION.::&DEBUG.:RR,99987:P99987_CORREO,P99987_TOKEN:&P99986_CORREO.,&P99986_TOKEN.&success_msg=#SUCCESS_MSG#'
+      page: 99987 # Cambiar Contraseña
+      clear-cache: RR,99987
+      values: 
+        p99987_correo: '&P99986_CORREO.'
+        p99987_token: '&P99986_TOKEN.'
+
+  server-side-condition: 
+    when-button-pressed: CONTINUAR # 46958298763466072
+

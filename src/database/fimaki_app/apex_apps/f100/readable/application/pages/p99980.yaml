@@ -1,0 +1,594 @@
+---
+# ====== Page: Register-form =================================
+id: 99980
+identification: 
+  name: Register-form
+  alias: REGISTER-FORM
+  title: Register-form
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Register-form ===============================
+  id: 27323199987839655
+  identification: 
+    name: Register-form
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Register # 43246571318194931
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Register ====================================
+  id: 43246571318194931
+  identification: 
+    name: Register
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center;">
+        <h1 style="font-size: 2.5em; font-weight: bold; letter-spacing: 0px;">
+          <img src="#APP_FILES#fimaki_logo/2.png" alt="FIMAKI Logo" style="max-width: 300px; ">
+        </h1>
+        <p style="font-size: 1.2em; font-weight: bold;">
+          Registro de usuario
+        </p>
+        <p style="font-size: 0.8em; font-weight: normal;text-aligment:left;">
+          <ul style="list-style: none; padding: 0 0 0 36px; margin: 0;">
+             <li style="display: flex; align-items: center; margin-bottom: 7px; font-size: 0.8em;">
+               <span style="width: 16px; height: 16px; background-color: #ccc; border-radius: 2px; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-right: 10px;">✓</span>
+               Su constraseña debe tener al menos 8 caracteres.
+             </li>
+             <li style="display: flex; align-items: center; margin-bottom: 7px; font-size: 0.8em;">
+               <span style="width: 16px; height: 16px; background-color: #ccc; border-radius: 2px; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-right: 10px;">✓</span>
+               Requiere combinación de tipos de caracteres.
+             </li>
+             <li style="display: flex; align-items: center; margin-bottom: 7px; font-size: 0.8em;">
+               <span style="width: 16px; height: 16px; background-color: #ccc; border-radius: 2px; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-right: 10px;">✓</span>
+               Evita repeticiones excesivas.
+             </li>
+             <li style="display: flex; align-items: center; margin-bottom: 7px; font-size: 0.8em;">
+               <span style="width: 16px; height: 16px; background-color: #ccc; border-radius: 2px; color: white; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin-right: 10px;">✓</span>
+               Evita las contraseñas más obvias.
+             </li>
+         </ul>
+        </p>
+      </div>
+      
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - margin-top-none
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P99980_CORREO ============================
+  id: 27327173100839672
+  identification: 
+    name: P99980_CORREO
+    type: Text Field
+
+  label: 
+    label: Correo electrónico
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: Register-form # 27323199987839655
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-envelope-o
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99980_CELULAR ===========================
+  id: 27327564314839673
+  identification: 
+    name: P99980_CELULAR
+    type: Text Field
+
+  label: 
+    label: Número de celular
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: Register-form # 27323199987839655
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-mobile
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 20
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99980_PASSWORD ==========================
+  id: 28352524891394760
+  identification: 
+    name: P99980_PASSWORD
+    type: Password
+
+  label: 
+    label: Contraseña
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: false
+
+  layout: 
+    sequence: 40
+    region: Register-form # 27323199987839655
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-key
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P99980_CONFIRMAR_PASSWORD ================
+  id: 28352630400394761
+  identification: 
+    name: P99980_CONFIRMAR_PASSWORD
+    type: Password
+
+  label: 
+    label: Confirmar Contraseña
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: false
+
+  layout: 
+    sequence: 50
+    region: Register-form # 27323199987839655
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-key
+    width: 30
+
+  validation: 
+    value-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: NEXT ========================================
+  id: 27344289598839736
+  identification: 
+    button-name: NEXT
+    label: Siguiente
+
+  layout: 
+    sequence: 10
+    region: Register-form # 27323199987839655
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padTop
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+- # ====== Button: CANCEL ======================================
+  id: 42544927975458807
+  identification: 
+    button-name: CANCEL
+    label: Cancelar
+
+  layout: 
+    sequence: 30
+    region: Register-form # 27323199987839655
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padTop
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:101:&SESSION.::&DEBUG.:101::'
+      page: 101 # Landing
+      clear-cache: 101
+
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+validations: 
+- # ====== Validation: Validar confirmar contraseña ============
+  id: 28352931671394764
+  identification: 
+    name: Validar confirmar contraseña
+
+  execution: 
+    sequence: 230
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ':P99980_PASSWORD = :P99980_CONFIRMAR_PASSWORD'
+    always-execute: false
+
+  error: 
+    error-message: Las contraseñas ingresadas no concuerdan.
+    display-location: Inline with Field
+    associated-item: P99980_CONFIRMAR_PASSWORD # 28352630400394761
+
+- # ====== Validation: Validar contraseña ======================
+  id: 28353565490394770
+  identification: 
+    name: Validar contraseña
+
+  execution: 
+    sequence: 240
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: ':P99980_PASSWORD = :P99980_CONFIRMAR_PASSWORD'
+    always-execute: false
+
+  error: 
+    error-message: Las contraseñas ingresadas no concuerdan.
+    display-location: Inline with Field
+    associated-item: P99980_PASSWORD # 28352524891394760
+
+- # ====== Validation: Validar formato =========================
+  id: 28353678030394771
+  identification: 
+    name: Validar formato
+
+  execution: 
+    sequence: 290
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "REGEXP_LIKE(:P99980_CORREO, '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')"
+    always-execute: false
+
+  error: 
+    error-message: El formato del correo electrónico no es válido
+    display-location: Inline with Field
+    associated-item: P99980_CORREO # 27327173100839672
+
+- # ====== Validation: Validar numero ==========================
+  id: 28353718813394772
+  identification: 
+    name: Validar numero
+
+  execution: 
+    sequence: 300
+
+  validation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "regexp_like(:P99980_CELULAR,'^[0-9]{9}$')"
+    always-execute: false
+
+  error: 
+    error-message: El número ingresado no es valido
+    display-location: Inline with Field
+    associated-item: P99980_CELULAR # 27327564314839673
+
+- # ====== Validation: Validar si el correo esta disponible ====
+  id: 28356403210394798
+  identification: 
+    name: Validar si el correo esta disponible
+
+  execution: 
+    sequence: 310
+
+  validation: 
+    type: No Rows returned
+    sql-query: 'select * from iam_usuario where upper(correo) = upper(:P99980_CORREO)'
+    always-execute: false
+
+  error: 
+    error-message: Ya existe una cuenta asociada a esta dirección de correo, intente iniciar sesión o recuperar su contraseña.
+    display-location: Inline with Field
+    associated-item: P99980_CORREO # 27327173100839672
+
+- # ====== Validation: Validar si el correo esta pendiente de ac
+  id: 34529806127986059
+  identification: 
+    name: Validar si el correo esta pendiente de activacion
+
+  execution: 
+    sequence: 320
+
+  validation: 
+    type: No Rows returned
+    sql-query: "select * from inv_usuario_temporal_v where correo = :P99980_CORREO and estado_rc = 'PENDIENTE'"
+    always-execute: false
+
+  error: 
+    error-message: Ya tienes un registro pendiente de activación. Revisa tu correo.
+    display-location: Inline with Field
+    associated-item: P99980_CORREO # 27327173100839672
+
+- # ====== Validation: La contraseña es valida =================
+  id: 48755506070103839
+  identification: 
+    name: La contraseña es valida
+
+  execution: 
+    sequence: 330
+
+  validation: 
+    type: Function Body (returning Error Text)
+    language: PL/SQL
+    pl/sql-function-body-returning-error-text: |
+      BEGIN
+          return IAM_AUTHZ_UTILS.validar_fortaleza_contrasena(
+                p_contrasena           => :P99980_PASSWORD
+              , p_contrasena_confirmar => :P99980_CONFIRMAR_PASSWORD
+          );
+      END;
+    always-execute: false
+
+  error: 
+    display-location: Inline with Field and in Notification
+
+  server-side-condition: 
+    when-button-pressed: NEXT # 27344289598839736
+
+branches: 
+- # ====== Branch: Go to Page 99981 [Registro] =================
+  id: 28353059549394765
+  identification: 
+    name: Go to Page 99981 [Registro]
+
+  execution: 
+    sequence: 11
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:99981:&SESSION.::&DEBUG.:99981:P99981_CORREO,P99981_PASSWORD,P99981_CELULAR,P99981_TIPO_PERSONA_RC:&P99980_CORREO.,&P99980_PASSWORD.,&P99980_CELULAR.,NAT&success_msg=#SUCCESS_MSG#'
+      page: 99981 # Datos Personales
+      clear-cache: 99981
+      values: 
+        p99981_correo: '&P99980_CORREO.'
+        p99981_password: '&P99980_PASSWORD.'
+        p99981_celular: '&P99980_CELULAR.'
+        p99981_tipo_persona_rc: NAT
+

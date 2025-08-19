@@ -1,0 +1,206 @@
+---
+# ====== Page: Activacion de Token ===========================
+id: 9950
+identification: 
+  name: Activacion de Token
+  alias: DEFAULT
+  title: Activacion de Token
+
+appearance: 
+  page-mode: Normal
+  page-template: Login
+  template-options: 
+  - '#DEFAULT#'
+  css-classes: 
+  - .form
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    .form {
+        background-color: white;
+    }
+
+security: 
+  authentication: Page Is Public
+  deep-linking: Disabled
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-meta-tags: false
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Activación de Cuenta ========================
+  id: 53204322539524661
+  identification: 
+    name: Activación de Cuenta
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div style="text-align:center;">
+        <h1 style="font-size: 2.5em; font-weight: bold; letter-spacing: 0px;">
+          <img src="#APP_FILES#fimaki_logo/2.png" alt="FIMAKI Logo" style="max-width: 300px; ">
+        </h1>
+        <p style="font-size: 1.2em; font-weight: bold;">
+          El enlace que estás utilizando ya no está activo. Solicita uno nuevo para continuar.
+        </p>
+      </div>
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Login
+    template-options: 
+    - '#DEFAULT#'
+    - t-Login-region--headerHidden js-removeLandmark
+    - margin-top-none
+    - margin-bottom-md
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+buttons: 
+- # ====== Button: NUEV0_ENLACE ================================
+  id: 37080458195928776
+  identification: 
+    button-name: NUEV0_ENLACE
+    label: Solicitar nuevo enlace
+
+  layout: 
+    sequence: 10
+    region: Activación de Cuenta # 53204322539524661
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--gapTop
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: VOLVER_INICIO ===============================
+  id: 37080638940928778
+  identification: 
+    button-name: VOLVER_INICIO
+    label: Volver al inicio
+
+  layout: 
+    sequence: 20
+    region: Activación de Cuenta # 53204322539524661
+    slot: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:101:&SESSION.::&DEBUG.:101::'
+      page: 101 # Landing
+      clear-cache: 101
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: Load ================================
+  id: 37330748214187537
+  identification: 
+    name: Load
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+
+  when: 
+    event: Page Load
+
+processes: 
+- # ====== Process: New ========================================
+  id: 37080974282928781
+  identification: 
+    name: New
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      BEGIN
+          apex_util.redirect_url(
+            p_url => 'f?p=&APP_ID.:201:&SESSION.::NO::&x01=34E88528E2D8A6FF923CE3E817F45658B26B7ECCFED00D9125543BEA07A317A6'
+          );
+      END;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Function Body
+    language: PL/SQL
+    pl/sql-function-body: |
+      BEGIN
+          RETURN IS_VALID_ACTIVATION_TOKEN_FN;
+      END;
+

@@ -1,0 +1,1353 @@
+---
+# ====== Page: Filtros Marketplace ===========================
+id: 8
+identification: 
+  name: Filtros Marketplace
+  alias: FILTROS-MARKETPLACE
+  title: Filtros
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Drawer
+  template-options: 
+  - '#DEFAULT#'
+  - t-Dialog--noPadding
+  - js-dialog-class-t-Drawer--pullOutEnd
+  - js-dialog-class-t-Drawer--sm
+
+dialog: 
+  chained: false
+  resizable: false
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+javascript: 
+  file-urls: 
+  - '#APP_FILES#JS/utils#MIN#.js'
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Filters =====================================
+  id: 11498037109371786
+  identification: 
+    name: Filters
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form--slimPadding
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Buttons =====================================
+  id: 11498306461371789
+  identification: 
+    name: Buttons
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Buttons Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Partes Involucradas =========================
+  id: 41968350439020678
+  identification: 
+    name: Partes Involucradas
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Filters # 11498037109371786
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--stacked
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Calificación ================================
+  id: 41968496971020679
+  identification: 
+    name: Calificación
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: Filters # 11498037109371786
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--stacked
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Montos ======================================
+  id: 41968545164020680
+  identification: 
+    name: Montos
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: Filters # 11498037109371786
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--stacked
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P8_ID_EMPRESA_CEDENTE ====================
+  id: 11498093537371787
+  identification: 
+    name: P8_ID_EMPRESA_CEDENTE
+    type: Popup LOV
+
+  label: 
+    label: Empresa Cedente
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: true
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Partes Involucradas # 41968350439020678
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_INSTITUCION_FINANCIERA # 32027293905104718
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  server-side-condition: 
+    type: Never
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P8_ID_EMPRESA_PAGADOR ====================
+  id: 11498193280371788
+  identification: 
+    name: P8_ID_EMPRESA_PAGADOR
+    type: Popup LOV
+
+  label: 
+    label: Empresa Pagadora
+    alignment: Left
+
+  settings: 
+    display-as: Inline Popup
+    initial-fetch: Automatic
+    manual-entry: false
+    fetch-on-search: true
+
+  search: 
+    match-type: Contains
+    case-sensitive: false
+    minimum-characters: 0
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Partes Involucradas # 41968350439020678
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_EMPRESA_ACTIVO # 43416572611996029
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P8_SCORE_PAGADOR_RC ======================
+  id: 11498606798371792
+  identification: 
+    name: P8_SCORE_PAGADOR_RC
+    type: Select List
+
+  label: 
+    label: Riesgo de Pagador
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: Calificación # 41968496971020679
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--stretchInputs
+    - t-Form-fieldContainer--radioButtonGroup
+    icon: fa-star-o
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select codigo ||' - '||nombre
+               , codigo
+            from codigo_referencia
+           where activo_sn = 'S'
+             and codigo_ref_tipo = 'TIP_SCORE'
+        order by secuencia
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P8_MONTO_DISPONIBLE_MINIMO ===============
+  id: 11499193332371798
+  identification: 
+    name: P8_MONTO_DISPONIBLE_MINIMO
+    type: Number Field
+
+  label: 
+    label: Monto disponible Mínimo
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 20
+    region: Montos # 41968545164020680
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-money
+    format-mask: '&NUMBER_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 7
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P8_MONTO_DISPONIBLE_MAXIMO ===============
+  id: 11499358205371799
+  identification: 
+    name: P8_MONTO_DISPONIBLE_MAXIMO
+    type: Number Field
+
+  label: 
+    label: Monto disponible Máximo
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 30
+    region: Montos # 41968545164020680
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 6
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-money
+    format-mask: '&NUMBER_FORMAT.'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 7
+
+  advanced: 
+    custom-attributes: 
+    - onkeypress="return
+    - allowDecimalInput(event);"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P8_SCORE_OPERACION_RC ====================
+  id: 41968228832020677
+  identification: 
+    name: P8_SCORE_OPERACION_RC
+    type: Select List
+
+  label: 
+    label: Riesgo de Operación
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Calificación # 41968496971020679
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--stretchInputs
+    - t-Form-fieldContainer--radioButtonGroup
+    icon: fa-star-o
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: SQL Query
+    sql-query: |2
+          select codigo ||' - '||nombre
+               , codigo
+            from codigo_referencia
+           where activo_sn = 'S'
+             and codigo_ref_tipo = 'TIP_SCORE'
+        order by secuencia
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P8_MONEDA_RC =============================
+  id: 45409137721386185
+  identification: 
+    name: P8_MONEDA_RC
+    type: Select List
+
+  label: 
+    label: Moneda
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Montos # 41968545164020680
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    - t-Form-fieldContainer--stretchInputs
+    - t-Form-fieldContainer--radioButtonGroup
+    icon: fa-coins
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_MONEDA_ACTIVO # 32019300127930460
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: APLICAR_FILTROS =============================
+  id: 11498402086371790
+  identification: 
+    button-name: APLICAR_FILTROS
+    label: Aplicar Filtros
+
+  layout: 
+    sequence: 20
+    region: Buttons # 11498306461371789
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CANCELAR ====================================
+  id: 11498467900371791
+  identification: 
+    button-name: CANCELAR
+    label: Cancelar
+
+  layout: 
+    sequence: 10
+    region: Buttons # 11498306461371789
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: LIMPIAR_EMP_CEDENTE =========================
+  id: 41967703943020671
+  identification: 
+    button-name: LIMPIAR_EMP_CEDENTE
+    label: Limpiar
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padLeft
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+  server-side-condition: 
+    type: Never
+
+- # ====== Button: LIMPIAR_EMP_PAGADOR =========================
+  id: 41967760197020672
+  identification: 
+    button-name: LIMPIAR_EMP_PAGADOR
+    label: Limpiar
+
+  layout: 
+    sequence: 40
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padLeft
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: LIMPIAR_SCORE_PAGADOR =======================
+  id: 41969765378020692
+  identification: 
+    button-name: LIMPIAR_SCORE_PAGADOR
+    label: Limpiar
+
+  layout: 
+    sequence: 60
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padLeft
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: LIMPIAR_SCORE_OPERACION =====================
+  id: 41969872292020693
+  identification: 
+    button-name: LIMPIAR_SCORE_OPERACION
+    label: Limpiar
+
+  layout: 
+    sequence: 70
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padLeft
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: LIMPIAR_MONTO_MINIMO ========================
+  id: 41970524709020700
+  identification: 
+    button-name: LIMPIAR_MONTO_MINIMO
+    label: Limpiar
+
+  layout: 
+    sequence: 80
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padLeft
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: LIMPIAR_MONTO_MAXIMO ========================
+  id: 41970622630020701
+  identification: 
+    button-name: LIMPIAR_MONTO_MAXIMO
+    label: Limpiar
+
+  layout: 
+    sequence: 90
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padLeft
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: LIMPIAR_MONEDA ==============================
+  id: 45409252059386186
+  identification: 
+    button-name: LIMPIAR_MONEDA
+    label: Limpiar
+
+  layout: 
+    sequence: 30
+    region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--padLeft
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: onPageLoad ==========================
+  id: 41967875734020673
+  identification: 
+    name: onPageLoad
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+
+  when: 
+    event: Page Load
+
+  actions: 
+  - # ====== Action: APEX Items with APEX Button =================
+    id: 41968059672020675
+    identification: 
+      action: APEX Items with APEX Button
+
+    settings: 
+      item-where-the-button-is-added: P8_ID_EMPRESA_CEDENTE
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_EMP_CEDENTE # 41967703943020671
+
+    execution: 
+      sequence: 10
+      event: onPageLoad # 41967875734020673
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: APEX Items with APEX Button =================
+    id: 41968117034020676
+    identification: 
+      action: APEX Items with APEX Button
+
+    settings: 
+      item-where-the-button-is-added: P8_ID_EMPRESA_PAGADOR
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_EMP_PAGADOR # 41967760197020672
+
+    execution: 
+      sequence: 20
+      event: onPageLoad # 41967875734020673
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: APEX Items with APEX Button =================
+    id: 41970356230020698
+    identification: 
+      action: APEX Items with APEX Button
+
+    settings: 
+      item-where-the-button-is-added: P8_SCORE_PAGADOR_RC
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_SCORE_PAGADOR # 41969765378020692
+
+    execution: 
+      sequence: 30
+      event: onPageLoad # 41967875734020673
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: APEX Items with APEX Button =================
+    id: 41970509666020699
+    identification: 
+      action: APEX Items with APEX Button
+
+    settings: 
+      item-where-the-button-is-added: P8_SCORE_OPERACION_RC
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_SCORE_OPERACION # 41969872292020693
+
+    execution: 
+      sequence: 40
+      event: onPageLoad # 41967875734020673
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: APEX Items with APEX Button =================
+    id: 41971183708020706
+    identification: 
+      action: APEX Items with APEX Button
+
+    settings: 
+      item-where-the-button-is-added: P8_MONTO_DISPONIBLE_MINIMO
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_MONTO_MINIMO # 41970524709020700
+
+    execution: 
+      sequence: 50
+      event: onPageLoad # 41967875734020673
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: APEX Items with APEX Button =================
+    id: 41971260502020707
+    identification: 
+      action: APEX Items with APEX Button
+
+    settings: 
+      item-where-the-button-is-added: P8_MONTO_DISPONIBLE_MAXIMO
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_MONTO_MAXIMO # 41970622630020701
+
+    execution: 
+      sequence: 60
+      event: onPageLoad # 41967875734020673
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: APEX Items with APEX Button =================
+    id: 45409558456386189
+    identification: 
+      action: APEX Items with APEX Button
+
+    settings: 
+      item-where-the-button-is-added: P8_MONEDA_RC
+
+    affected-elements: 
+      selection-type: Button
+      button: LIMPIAR_MONEDA # 45409252059386186
+
+    execution: 
+      sequence: 70
+      event: onPageLoad # 41967875734020673
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Cancelar ==================
+  id: 41968707010020681
+  identification: 
+    name: onClick - Cancelar
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: CANCELAR # 11498467900371791
+
+  actions: 
+  - # ====== Action: Cancel Dialog ===============================
+    id: 41968777698020682
+    identification: 
+      action: Cancel Dialog
+
+    execution: 
+      sequence: 10
+      event: onClick - Cancelar # 41968707010020681
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Limpiar Empresa Pagador ===
+  id: 41969596881020690
+  identification: 
+    name: onClick - Limpiar Empresa Pagador
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: LIMPIAR_EMP_PAGADOR # 41967760197020672
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 41969700240020691
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P8_ID_EMPRESA_PAGADOR
+
+    execution: 
+      sequence: 10
+      event: onClick - Limpiar Empresa Pagador # 41969596881020690
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Limpiar Score Pagador =====
+  id: 41969982196020694
+  identification: 
+    name: onClick - Limpiar Score Pagador
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: LIMPIAR_SCORE_PAGADOR # 41969765378020692
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 41970101041020695
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P8_SCORE_PAGADOR_RC
+
+    execution: 
+      sequence: 10
+      event: onClick - Limpiar Score Pagador # 41969982196020694
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Limpiar Score Operacion ===
+  id: 41970186240020696
+  identification: 
+    name: onClick - Limpiar Score Operacion
+
+  execution: 
+    sequence: 60
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: LIMPIAR_SCORE_OPERACION # 41969872292020693
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 41970289333020697
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P8_SCORE_OPERACION_RC
+
+    execution: 
+      sequence: 10
+      event: onClick - Limpiar Score Operacion # 41970186240020696
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Limpiar Monto Minimo ======
+  id: 41970789687020702
+  identification: 
+    name: onClick - Limpiar Monto Minimo
+
+  execution: 
+    sequence: 80
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: LIMPIAR_MONTO_MINIMO # 41970524709020700
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 41970881932020703
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P8_MONTO_DISPONIBLE_MINIMO
+
+    execution: 
+      sequence: 10
+      event: onClick - Limpiar Monto Minimo # 41970789687020702
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Limpiar Monto Maximo ======
+  id: 41970980487020704
+  identification: 
+    name: onClick - Limpiar Monto Maximo
+
+  execution: 
+    sequence: 70
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: LIMPIAR_MONTO_MAXIMO # 41970622630020701
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 41971047877020705
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P8_MONTO_DISPONIBLE_MAXIMO
+
+    execution: 
+      sequence: 10
+      event: onClick - Limpiar Monto Maximo # 41970980487020704
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: onClick - Limpiar Moneda ============
+  id: 45409392105386187
+  identification: 
+    name: onClick - Limpiar Moneda
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: LIMPIAR_MONEDA # 45409252059386186
+
+  actions: 
+  - # ====== Action: Clear =======================================
+    id: 45409429314386188
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P8_MONEDA_RC
+
+    execution: 
+      sequence: 10
+      event: onClick - Limpiar Moneda # 45409392105386187
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: Close Dialog ===============================
+  id: 41968854988020683
+  identification: 
+    name: Close Dialog
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    items-to-return-: 
+    - P8_ID_EMPRESA_PAGADOR
+    - P8_SCORE_PAGADOR_RC
+    - P8_SCORE_OPERACION_RC
+    - P8_MONTO_DISPONIBLE_MINIMO
+    - P8_MONTO_DISPONIBLE_MAXIMO
+    - P8_MONEDA_RC
+    show-success-messages: false
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
